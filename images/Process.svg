@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg963"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="Process.svg">
+  <defs
+     id="defs957" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="357.14286"
+     inkscape:cy="761.25984"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g1622"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1070"
+     inkscape:window-x="0"
+     inkscape:window-y="10"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata960">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       transform="translate(-17.76488,83.247725)"
+       id="g917">
+      <g
+         id="g932"
+         transform="translate(0,5.7149937)">
+        <rect
+           style="opacity:1;fill:#d6ffd5;fill-opacity:0.50196081;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect815"
+           width="115.66071"
+           height="18.142857"
+           x="52.538689"
+           y="30.90476" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="79.27047"
+           y="41.842731"
+           id="text851"><tspan
+             sodipodi:role="line"
+             id="tspan849"
+             x="79.27047"
+             y="41.842731"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';stroke-width:0.26458332">Uninitialised Variables (BSS)</tspan></text>
+      </g>
+      <g
+         id="g927"
+         transform="translate(0,0.7408301)">
+        <rect
+           y="57.363098"
+           x="52.538689"
+           height="18.142857"
+           width="115.66071"
+           id="rect817"
+           style="opacity:1;fill:#d5ffd5;fill-opacity:0.50196081;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <text
+           id="text855"
+           y="67.618187"
+           x="81.393883"
+           style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';stroke-width:0.26458332"
+             y="67.618187"
+             x="81.393883"
+             id="tspan853"
+             sodipodi:role="line">Initialised Variables (Data)</tspan></text>
+      </g>
+      <g
+         transform="translate(0,48.683337)"
+         id="g1582">
+        <rect
+           y="30.90476"
+           x="52.538689"
+           height="18.142857"
+           width="115.66071"
+           id="rect1576"
+           style="opacity:1;fill:#888888;fill-opacity:0.28235295;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <text
+           id="text1580"
+           y="41.842731"
+           x="90.710396"
+           style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';stroke-width:0.26458332"
+             y="41.842731"
+             x="90.710396"
+             id="tspan1578"
+             sodipodi:role="line">Instructions (Text)</tspan></text>
+      </g>
+      <g
+         id="g1590"
+         transform="matrix(1,0,0,2.1651023,0,-3.170487)"
+         style="stroke-width:0.67961162">
+        <rect
+           style="opacity:1;fill:none;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.17981391;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect1584"
+           width="127"
+           height="72.382439"
+           x="46.869045"
+           y="-23.334822" />
+      </g>
+      <g
+         transform="translate(0,-15.769161)"
+         id="g1598">
+        <rect
+           y="30.90476"
+           x="52.538689"
+           height="18.142857"
+           width="115.66071"
+           id="rect1592"
+           style="opacity:1;fill:#d7d5ff;fill-opacity:0.50196081;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <text
+           id="text1596"
+           y="41.842731"
+           x="104.13249"
+           style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';stroke-width:0.26458332"
+             y="41.842731"
+             x="104.13249"
+             id="tspan1594"
+             sodipodi:role="line">Heap</tspan></text>
+      </g>
+      <g
+         transform="translate(0,-58.737503)"
+         id="g1614">
+        <rect
+           y="30.90476"
+           x="52.538689"
+           height="18.142857"
+           width="115.66071"
+           id="rect1608"
+           style="opacity:1;fill:#ffdcd5;fill-opacity:0.50196081;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <text
+           id="text1612"
+           y="41.842731"
+           x="104.23923"
+           style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';stroke-width:0.26458332"
+             y="41.842731"
+             x="104.23923"
+             id="tspan1610"
+             sodipodi:role="line">Stack</tspan></text>
+      </g>
+      <g
+         id="g1622"
+         transform="translate(0,-80.433338)">
+        <rect
+           style="opacity:1;fill:#878787;fill-opacity:0.28235295;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect1616"
+           width="115.66071"
+           height="18.142857"
+           x="52.538689"
+           y="30.90476" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="95.33593"
+           y="41.842731"
+           id="text1620"><tspan
+             sodipodi:role="line"
+             id="tspan1618"
+             x="95.33593"
+             y="41.842731"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';stroke-width:0.26458332">Kernel Space</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
