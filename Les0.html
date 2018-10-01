@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Embedded &amp; Operating Systems 0">
+  <title>Wat is een OS?</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/white.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Wat is een OS?</h1>
+  <p class="author">Embedded &amp; Operating Systems 0</p>
+</section>
+
+<section id="introductie" class="slide level2">
+<h2>Introductie</h2>
+<aside class="notes">
+<p>Bij de eerste les ligt de focus op de volgende punten - Wat is een Operating System (en wat is het niet) - Wat zijn de voornaamste OSs - Waar zitten de belangrijkste verschillen tussen verschillende OSs Details over de interne werking (met name UNIX) komt in latere lessen aan bod. Het begrip SysCall wordt al wel gebruikt om het verschil tussen de OSs in te vatten.</p>
+</aside>
+</section>
+<section id="waar-waren-we-gebleven" class="slide level2">
+<h2>Waar waren we gebleven?</h2>
+<aside class="notes">
+<p>Een korte terugblik op het eindresultaat van het CS gedeelte van CSN. We hebben een simpele computer, die we met een eigen assembly-dialect kunnen programmeren.</p>
+</aside>
+<figure>
+<img data-src="images/CPU-io-fix-carry6.png" alt="De CPU" style="width:75.0%" /><figcaption>De CPU</figcaption>
+</figure>
+</section>
+<section id="instructies" class="slide level2">
+<h2>Instructies</h2>
+<aside class="notes">
+<p>Hoe programmeren we de computer? Machine-code / Assembly, maar CPU specifiek</p>
+</aside>
+<div style="font-size: 12px">
+<table>
+<tbody>
+<tr class="odd">
+<td>1000 Ra Rb</td>
+<td style="text-align: left;">ADD Ra Rb</td>
+<td style="text-align: left;">Tel Ra bij Rb</td>
+</tr>
+<tr class="even">
+<td>1001 Ra Rb</td>
+<td style="text-align: left;">SHR Ra Rb</td>
+<td style="text-align: left;">Shift Ra naar rechts</td>
+</tr>
+<tr class="odd">
+<td>1010 Ra Rb</td>
+<td style="text-align: left;">SHL Ra Rb</td>
+<td style="text-align: left;">Shift Ra naar links</td>
+</tr>
+<tr class="even">
+<td>1011 Ra Rb</td>
+<td style="text-align: left;">NOT Ra Rb</td>
+<td style="text-align: left;">Inverteer Ra</td>
+</tr>
+<tr class="odd">
+<td>1100 Ra Rb</td>
+<td style="text-align: left;">AND Ra Rb</td>
+<td style="text-align: left;">Ra AND Rb</td>
+</tr>
+<tr class="even">
+<td>1101 Ra Rb</td>
+<td style="text-align: left;">OR Ra Rb</td>
+<td style="text-align: left;">Ra OR Rb</td>
+</tr>
+<tr class="odd">
+<td>1110 Ra Rb</td>
+<td style="text-align: left;">XOR Ra Rb</td>
+<td style="text-align: left;">Ra XOR Rb</td>
+</tr>
+<tr class="even">
+<td>1111 Ra Rb</td>
+<td style="text-align: left;">CMP Ra Rb</td>
+<td style="text-align: left;">Vergelijk Ra en Rb</td>
+</tr>
+<tr class="odd">
+<td>0000 Ra Rb</td>
+<td style="text-align: left;">LD Ra Rb</td>
+<td style="text-align: left;">Laad de byte op adres Ra in Rb</td>
+</tr>
+<tr class="even">
+<td>0001 Ra Rb</td>
+<td style="text-align: left;">ST Ra Rb</td>
+<td style="text-align: left;">Sla de byte in Rb op in adres Ra</td>
+</tr>
+<tr class="odd">
+<td>0010 00 Rb</td>
+<td style="text-align: left;">DATA Rb, Addr</td>
+<td style="text-align: left;">Zet de volgende byte in Rb</td>
+</tr>
+<tr class="even">
+<td>0011 00 Rb</td>
+<td style="text-align: left;">JMPR Rb</td>
+<td style="text-align: left;">Spring naar adres in Rb</td>
+</tr>
+<tr class="odd">
+<td>0100 00 00</td>
+<td style="text-align: left;">JMP Addr</td>
+<td style="text-align: left;">Spring naar adres in next byte</td>
+</tr>
+<tr class="even">
+<td>0101 caez</td>
+<td style="text-align: left;">JCAEZ Addr</td>
+<td style="text-align: left;">Jump als flag aan is</td>
+</tr>
+<tr class="odd">
+<td>0110 00 00</td>
+<td style="text-align: left;">CLF</td>
+<td style="text-align: left;">Reset alle vlaggen.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="python" class="slide level2">
+<h2>Python</h2>
+<aside class="notes">
+<p>Vanaf de andere kant hebben we high-level code, zoals Python. Dit werkt op meerdere systemen (architectures) en is daarnaast ook minder “langdradig”.</p>
+</aside>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1">infile <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;input.txt&#39;</span>, <span class="st">&#39;r&#39;</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">outfile <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;output.txt&#39;</span>, <span class="st">&#39;w&#39;</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="cf">for</span> line <span class="kw">in</span> infile:</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">    outfile.write(line)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">outfile.close()</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">infile.close()</a></code></pre></div>
+</section>
+<section id="operating-systems" class="slide level2">
+<h2>Operating Systems</h2>
+</section>
+<section id="het-operating-system-os" class="slide level2">
+<h2>Het Operating System (OS)</h2>
+<aside class="notes">
+<p>Om deze twee werelden bij elkaar te brengen is een systeem nodig dat enerzijds met de specifeke hardware overweg kan, en anderzijds eenzelfde basis biedt voor software (ongeacht wat de onderliggende hardware is). Dit is het Operating System, dat als laag tussen de applicaties en de hardware zit. Het OS zelf bestaat weer uit twee lagen, de kernel die direct met de hardware communiceert en de rest van het OS. Het verschil zit hem in het feit dat de kernel in kernel mode draait, en de rest van het OS net als de andere software in userland. Hier komen we later op terug. Voor nu heeft het OS raakvlakken: - De specifieke hardware, die door het OS aangestuurd wordt - Software, waarvoor het OS een generieke basis levert</p>
+</aside>
+<figure>
+<img data-src="images/os-layers-1.png" alt="Basismodel Operating Systems" style="width:50.0%" /><figcaption>Basismodel Operating Systems</figcaption>
+</figure>
+</section>
+<section id="desktop-operating-systems" class="slide level2">
+<h2>Desktop Operating Systems</h2>
+<aside class="notes">
+<p>Waar denken de studenten aan bij een besturingssysteem? Op de slide de grootste drie besturingssystemen voor de desktop/laptop, maar er is meer dat we als besturingssysteem zien. Op de volgende slide ook iOS en Android.</p>
+</aside>
+<p><img data-src="images/ubuntu.jpg" alt="Linux" style="width:40.0%" /> <img data-src="images/windows10.jpg" alt="Windows" style="width:40.0%" /> <img data-src="images/macosx.jpg" alt="MacOS" style="width:40.0%" /></p>
+</section>
+<section id="mobiele-operating-systems" class="slide level2">
+<h2>Mobiele Operating Systems</h2>
+<aside class="notes">
+<p>Noem bij de mobiele OSs nog even dat iOS vooral een mobiele versie is van MacOS (en als Operating System dus in grote mate identiek is — de verschillen zitten hem in de aankleding, wat niet bij het OS hoort) en Android op Linux gebaseerd is. Wijs de studenten ook op dat hoewel het OS aan de bovenkant (vanuit de software gezien) hetzelfde is voor iOS/MacOS en Android/Linux, de systemen wel op heel andere hardware draaien.</p>
+</aside>
+<figure>
+<img data-src="images/mobile.jpg" alt="Smartphone OS: iOS en Android" style="width:60.0%" /><figcaption>Smartphone OS: iOS en Android</figcaption>
+</figure>
+</section>
+<section id="de-gui" class="slide level2">
+<h2><del>De GUI</del></h2>
+<aside class="notes">
+<p>Belangrijk punt (ook al even naar gehint bij de vorige slide) is dat de grafische omgeving niet deel van het besturingssysteem is, maar een applicatie die daarbovenop draait. Bij Linux is dit verschil duidelijker (je kan zelf kiezen welke interface je gebruikt), terwijl de interface van Windows en Mac vrijwel onlosmakelijk met het besturingssysteem geassocieerd is. Het feit dat je de software als pakket koopt en het geheel in de marketing een besturinssysteem genoemd wordt, betekent <strong>niet</strong> dat deze schil technisch deel van het OS is.</p>
+</aside>
+<figure>
+<img data-src="images/terminal.png" alt="Niet per sé een Grafische User Interface (GUI)" style="width:50.0%" /><figcaption>Niet per sé een Grafische User Interface (GUI)</figcaption>
+</figure>
+</section>
+<section id="taken-operating-system" class="slide level2">
+<h2>Taken Operating System</h2>
+<aside class="notes">
+<p>Aansturen gaat d.m.v. syscalls en staat ten dienst van user processes. Deze worden over een aantal slides behandeld.</p>
+</aside>
+<ul>
+<li>Abstractie van de hardware t.b.v. user processes</li>
+<li>Aansturen randapparatuur / IO</li>
+<li>Processen laden en managen / scheduling</li>
+<li>Bewaken system resources (e.g. memory, CPU-tijd)</li>
+<li>Leveren van een filesystem</li>
+</ul>
+</section>
+<section id="embedded-systemen" class="slide level2">
+<h2>Embedded Systemen</h2>
+<ul>
+<li>Een systeem zonder OS heet een embedded systeem</li>
+<li>Voor specifieke taak geprogrammeerd</li>
+<li>Zelfde principes gaan op, maar specifiek toegepast i.p.v. generiek</li>
+</ul>
+</section>
+<section id="abstractie" class="slide level2">
+<h2>Abstractie</h2>
+<aside class="notes">
+<p>De meerwaarde van het OS is dat je, in plaats van dat je software specifiek schrijft voor een bepaalde hardware-configuratie, schrijft voor een generiek OS. Nog steeds andere code nodig voor e.g. Linux vs Windows, maar dit betekent 1-3 platforms ondersteunen i.p.v. elke mogelijke hardwarecombinatie. Verdere abstractie is mogelijk (in Python maakt het nauwelijks uit of je voor Windows of Linux of Mac programmeert) maar dat is weer een laag bovenop het OS.</p>
+</aside>
+<ul>
+<li>OS levert abstractie van de hardware</li>
+<li>Software praat niet direct tegen CPU en devices maar tegen OS</li>
+<li>Software gebonden aan OS</li>
+</ul>
+</section>
+<section id="user-mode-vs-kernel-mode" class="slide level2">
+<h2>User mode vs Kernel Mode</h2>
+<aside class="notes">
+<p>Een processor draait in verschillende modes, elk met eigen priviliges. Hiertussen wordt dynamisch gewisseld. We onderscheiden hier twee modes: de kernel mode met alle privileges, en de user mode die niet direct tegen de hardware kan praten. User mode processen hebben daarmee ook geen toegang tot het hele geheugen (alleen eigen gedeelte). OS (of specifieker de kernel) draait in kernel mode, en kan wel overal bij.</p>
+</aside>
+<ul>
+<li>Processor draait in 2 (of meer) modes
+<ul>
+<li>Kernel mode</li>
+<li>User mode</li>
+</ul></li>
+</ul>
+</section>
+<section id="kernel-models" class="slide level2">
+<h2>Kernel Models</h2>
+<aside class="notes">
+<p>Daarmee meteen nog een belangrijk onderscheid tussen verschillende kernels: monolitisch vs microkernels. Monolitische kernels draaien alle traditionele OS taken in kernel mode, en zijn dus als een monoliet (grote steen uit één stuk). Microkernels draaien alleen het broodnodige in de kernel, en besteden alle het andere zoveel mogelijk uit aan user mode processen. Microkernels zouden veiliger zijn (al is dit een open debat) maar betalen hier wel voor met lagere peformance door meer switchen te moeten switchen tussen beide modes.</p>
+</aside>
+<ul>
+<li>Monolithic (e.g. Linux, Windows)
+<ul>
+<li>Alle taken OS in kernel mode</li>
+</ul></li>
+<li>Microkernel
+<ul>
+<li>Bare minimum</li>
+<li>Zoveel mogelijk in user mode</li>
+</ul></li>
+</ul>
+</section>
+<section id="syscalls" class="slide level2">
+<h2>SysCalls</h2>
+<aside class="notes">
+<p>Als een proces iets gedaan wil krijgen, heeft het voor veel taken niet de juiste privileges. Het is daarmee dus op het OS aangewezen. Een proces kan (en zal, met grote regelmaat) de kernel vragen om bijvoorbeeld (file) IO te doen, subprocessen aan te maken, extra geheugen te reserveren, etc. Dit gebeurt door middel van system calls (SysCalls). Dit zijn functies die vanuit de software worden aangeroepen, en de processor onderbreken. De code van het OS wordt geladen, en zal in kernel mode de gevraagde taak uitvoeren. Hierna kan de software verder gaan waar het is gebleven. Ieder proces (later meer details over processen) heeft een eigen kopie van de SysCall table met de nummers en adressen van de system calls. Dit zorgt ervoor dat SysCalls zo snel mogelijk kunnen worden afgehandeld.</p>
+</aside>
+<ul>
+<li>Functies die OS vragen om iets te doen</li>
+<li>Onderbreken user mode software</li>
+<li>Switch naar kernel mode, OS handelt verzoek af</li>
+<li>Iedere SysCall heeft een nummer</li>
+<li>Ieder proces eigen kopie SysCall table</li>
+</ul>
+</section>
+<section id="syscalls-1" class="slide level2">
+<h2>SysCalls</h2>
+<aside class="notes">
+<p>De SysCalls in een Linux systeem zijn heel anders dan die op Windows. Dit heeft ermee te maken dat de besturingssystemen een heel andere filosofie hanteren. In Linux is het bijvoorbeeld gebruikelijk om simpele command-line tools aan elkaar te koppelen; hier zijn eigen SysCalls voor, die in Windows niet aanwezig waren (inmiddels is dit concept ook door Windows geleend). Ook kunnen SysCalls met dezelfde functie net even anders werken. Dit is de reden dat Windows-software niet zonder meer op Linux werkt (en vice-versa). POSIX en SUS zijn standaarden waar Unix-achtige systemen (en in het geval van POSIX zelfs recente Windows versies) aan voldoen, om het makkelijker te maken software op meerdere platforms te laten draaien.</p>
+</aside>
+<ul>
+<li>Ieder OS heeft eigen set SysCalls
+<ul>
+<li>eigen abstracte model computer</li>
+<li>wel of niet extra verantwoordelijkheden</li>
+</ul></li>
+<li>Portable Operating System Interface (POSIX)</li>
+<li>Single UNIX Specification (SUS)</li>
+</ul>
+</section>
+<section id="de-von-neumann-architectuur" class="slide level2">
+<h2>De Von Neumann Architectuur</h2>
+</section>
+<section id="de-von-neumann-cyclus" class="slide level2">
+<h2>De Von Neumann Cyclus</h2>
+</section>
+<section id="een-enkele-taak" class="slide level2">
+<h2>Een enkele taak</h2>
+</section>
+<section id="intermezzo-stacks" class="slide level2">
+<h2>Intermezzo: Stacks</h2>
+</section>
+<section id="de-stack" class="slide level2">
+<h2>De Stack</h2>
+</section>
+<section id="stack-overflow" class="slide level2">
+<h2>Stack Overflow</h2>
+</section>
+<section id="de-heap" class="slide level2">
+<h2>De Heap</h2>
+</section>
+<section id="wat-hebben-we-deze-les-geleerd" class="slide level2">
+<h2>Wat hebben we deze les geleerd?</h2>
+<ul>
+<li>Wat is een OS?</li>
+<li>Waarom is een OS nodig?</li>
+<li>Wat is de basisarchitectuur van een OS?</li>
+<li>Wat zijn voorbeelden van OSs?</li>
+<li>Wat is User mode vs Kernel mode?</li>
+<li>Wat zijn system calls?</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
