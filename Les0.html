@@ -268,6 +268,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="embedded-systemen" class="slide level2">
 <h2>Embedded Systemen</h2>
+<aside class="notes">
+<p>Een operating system en embedded systeem hebben beide te maken met de directe hardware, en gebruiken veelal dezelfde principes om hiermee om te gaan. Het voornaamste verschil is dat het OS zelf geen taak heeft, behalve het ondersteunen van de applicaties die erop gedraaid worden. Een embedded systeem heeft wel een eigen taak, en is dus te beschouwen als de combinatie van een heel simpel OS en een enkele applicatie.</p>
+</aside>
 <ul>
 <li>Een systeem zonder OS heet een embedded systeem</li>
 <li>Voor specifieke taak geprogrammeerd</li>
@@ -343,26 +346,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Single UNIX Specification (SUS)</li>
 </ul>
 </section>
-<section id="de-von-neumann-architectuur" class="slide level2">
-<h2>De Von Neumann Architectuur</h2>
-</section>
-<section id="de-von-neumann-cyclus" class="slide level2">
-<h2>De Von Neumann Cyclus</h2>
-</section>
 <section id="een-enkele-taak" class="slide level2">
 <h2>Een enkele taak</h2>
+<aside class="notes">
+<p>Hoewel we het inmiddels een paar keer over processen hebben gehad, leggen we voor nu de nadruk nog even op een computer met een enkele taak. Later zullen we zien hoe een computer meerdere processen kan afwisselen (of met meerdere cores, tegelijk kan draaien). Het geheugen is opgedeeld in een aantal segmenten. De eerste sectie is Text en bevat de instructies van het proces. Dit gedeelte van het geheugen is read-only. Na de instructies volgen de Data en BSS segmenten. Data bevat alle globale en statische variabelen met een initiele waarde. Deze worden buiten functies gedefinieerd of zijn als static (onveranderbaar) gemarkeerd. BSS (historisch: Block Started by Symbol) bevat de statische variabelen die wel defined, maar niet geïnitialiseerd zijn. Na de BSS volgen de heap en de stack, die in de volgende slides besproken worden. Beide kunnen hun formaat dynamisch aanpassen. De stack en heap beginnen leeg en groeien naar elkaar toe. Tot slot hebben we een stuk kernel space; deze bevat de code van de SysCalls en een index: een tabel met voor elke SysCall het nummer van de call en het geheugenadres waar de bijbehorende code te vinden is. Doorgaans hebben SysCalls ook een naam, maar deze wordt door de computer intern niet gebruikt.</p>
+</aside>
 <figure>
 <img data-src="images/Process.png" alt="Geheugenmodel Proces" style="width:30.0%" /><figcaption>Geheugenmodel Proces</figcaption>
 </figure>
 </section>
 <section id="intermezzo-stacks" class="slide level2">
 <h2>Intermezzo: Stacks</h2>
+<aside class="notes">
+<p>Eerst zullen we even inzoomen op de Stack, en om deze te begrijpen moeten we eerst weten wat <strong>een</strong> stack is. Een stack (stapel) is een datastructuur waar dynamisch informatie aan toegevoegd of uitgehaald kan worden. De stack werkt volgens het <strong>Last in, first out</strong> principe, en wordt daarom ook wel de LIFO genoemd. De stack begint leeg, waarna hier data aan kan worden toegevoegd. Nieuwe data wordt bovenop de stack gezet (dit heet een <strong>push</strong>), en alleen het bovenste element van de stack is zichtbaar. Als het bovenste element gelezen wordt, wordt het meteen van de stack verwijderd (dit een heet <strong>pop</strong>).</p>
+</aside>
 <figure>
 <img data-src="images/Stack%20Structure.png" alt="Stack (LIFO)" style="width:100.0%" /><figcaption>Stack (LIFO)</figcaption>
 </figure>
 </section>
 <section id="de-stack" class="slide level2">
 <h2>De Stack</h2>
+<aside class="notes">
+<p>Ook in het geheugen wordt gebruik gemaakt van een stack. De stack heeft als voordeel dat je altijd de meest recente informatie bovenaan hebt. De stack wordt gebruikt om function calls mogelijk te maken. Als een functie wordt aangeroepen, wordt een frame aangemaakt. Dit frame bevat de parameters van de functieaanroep, het adres van waaraf de functie werd aangeroepen (return address) en het formaat van het frame (zodat bekend is welke bytes per <em>pop</em> gelezen moeten worden). Als een functiecall klaar is dan keert de computer terug naar de instructie direct na de functieaanroep. Deze is te vinden doordat het return adres in het frame op de stack staat opgeslagen. Zodra de computer het return adres nodig heeft wordt het frame gepopt, en wordt de stack meteen een frame kleiner.</p>
+</aside>
 <div class="columns">
 <div class="column" style="width:60%;">
 <figure>
@@ -382,13 +388,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
+<aside class="notes">
+<p>De stack heeft een maximale grootte. Bij simpele systemen kan dit komen door een beperkte hoeveelheid geheugen, in complexere systemen met meerdere processen is er een maximum vastgesteld. Als dit maximum bereikt wordt, spreken we van een stack overflow, en wordt de executie van het programma onderbroken. Het maximumformaat van de stack is doorgaans vrij groot, een stack overflow wordt dan ook meestal door een programmeerfout veroorzaakt. Het meest simepele voorbeeld is een functie die zichzelf herhaaldelijk aanroept (recursie). Recursie is in principe geen probleem (en in sommige gevallen zelfs de meest nette oplossing) maar als een functie altijd zichzelf aan blijft roepen (en niet na een beperkt aantal keren returnt) dan hebben we een oneindige loop waarbij de stack snel volgezet wordt. Bij een beperktere recursie wordt ook een stack opgebouwd, maar op een gegeven moment zal de laatste aanroep returnen, waarna de aanroep daarvoor returnt, etc. en de stack ook weer wordt afgebroken.</p>
+</aside>
 <p><img data-src="images/stack-overflow.png" style="width:70.0%" /></p>
 </section>
 <section id="de-heap" class="slide level2">
 <h2>De Heap</h2>
+<aside class="notes">
+<p>Waar BSS en Data voor statische data gebruikt wordt, is de heap voor dynamische data: data waarvan tijdens het programmeren en compilen nog niet bekend is hoeveel ruimte ervoor nodig is. De heap wordt tijdens het uitvoeren van de code expliciet toebedeeld (gealloceerd).</p>
+</aside>
+<ul>
+<li>Dynamische alloceerbaar</li>
+<li>Expliciet gereserveerd</li>
+<li>Na gebruik vrijgeven</li>
+</ul>
 </section>
 <section id="memory-allocation" class="slide level2">
 <h2>Memory Allocation</h2>
+<aside class="notes">
+<p>Met behulp van <code>malloc</code> en <code>free</code> geeft de software aan hoeveel geheugenadressen in de adresruimte gekoppeld moet worden aan daadwerkelijk geheugen, zodat de software deze kan gebruiken. Bij het gebruik van <code>malloc</code> moet worden aangegeven hoeveel ruimte nodig is, maar dit kan dynamisch berekend worden op basis van bijvoorbeeld input. Waar dit geheugen komt te staan wordt door het OS bepaald, maar het zal altijd een aaneengesloten stuk geheugen zijn. Geheugen moet altijd teruggegeven worden om te voorkomen dat er memory leaks onstaan, en het is niet toegestaan geheugen aan te spreken die niet gealloceerd is (dit leidt tot een “segmentation fault”). Onder water wordt gebruik gemaakt van system calls waaronder <code>mmap</code>, <code>brk</code> en <code>munmap</code>. De aanroep naar <code>malloc</code> gebruikt bijvoorbeeld intern ergens een aanroep in de trant van <code>syscall(SYS_brk, 128*128*3)</code> om het besturingssysteem te vragen de ruimte vrij te maken. <code>SYS_brk</code> is een constante met de waarde <code>12</code>, het nummer van de system call.</p>
+</aside>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">// reserveer ruimte voor 128x128 pixels met 3 bytes per pixel</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="dt">int</span> *img_data = malloc(<span class="dv">128</span>*<span class="dv">128</span>*<span class="dv">3</span>);</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">// img_data verwijst naar begin van de gereserveerde ruimte</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">free(img_data); <span class="co">// geef de ruimte terug aan het OS</span></a></code></pre></div>
+<h3 id="onder-water">Onder water</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="dt">int</span> *img_data = syscall(SYS_brk, <span class="dv">128</span>*<span class="dv">128</span>*<span class="dv">3</span>);</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">syscall(SYS_munmap, img_data, <span class="dv">128</span>*<span class="dv">128</span>*<span class="dv">3</span>);</a></code></pre></div>
 </section>
 <section id="wat-hebben-we-deze-les-geleerd" class="slide level2">
 <h2>Wat hebben we deze les geleerd?</h2>
