@@ -9,13 +9,16 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="127.17982mm"
+   height="157.10471mm"
+   viewBox="0 0 127.17982 157.10471"
    version="1.1"
    id="svg963"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="Process.svg">
+   sodipodi:docname="Process.svg"
+   inkscape:export-filename="/home/peikos/Work/V1EOS/Slides/images/Process.png"
+   inkscape:export-xdpi="149.86"
+   inkscape:export-ydpi="149.86">
   <defs
      id="defs957" />
   <sodipodi:namedview
@@ -26,16 +29,20 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="357.14286"
-     inkscape:cy="761.25984"
+     inkscape:cx="247.48267"
+     inkscape:cy="343.48978"
      inkscape:document-units="mm"
-     inkscape:current-layer="g1622"
+     inkscape:current-layer="g917"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1070"
      inkscape:window-x="0"
      inkscape:window-y="10"
-     inkscape:window-maximized="0" />
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata960">
     <rdf:RDF>
@@ -51,7 +58,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-29.014258,-29.360304)">
     <g
        transform="translate(-17.76488,83.247725)"
        id="g917">
@@ -59,7 +67,7 @@
          id="g932"
          transform="translate(0,5.7149937)">
         <rect
-           style="opacity:1;fill:#d6ffd5;fill-opacity:0.50196081;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           style="opacity:1;fill:#d6ffd5;fill-opacity:0.50196078;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
            id="rect815"
            width="115.66071"
            height="18.142857"
@@ -86,7 +94,7 @@
            height="18.142857"
            width="115.66071"
            id="rect817"
-           style="opacity:1;fill:#d5ffd5;fill-opacity:0.50196081;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+           style="opacity:1;fill:#d5ffd5;fill-opacity:0.50196078;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         <text
            id="text855"
            y="67.618187"
@@ -108,7 +116,7 @@
            height="18.142857"
            width="115.66071"
            id="rect1576"
-           style="opacity:1;fill:#888888;fill-opacity:0.28235295;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+           style="opacity:1;fill:#888888;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         <text
            id="text1580"
            y="41.842731"
@@ -142,7 +150,7 @@
            height="18.142857"
            width="115.66071"
            id="rect1592"
-           style="opacity:1;fill:#d7d5ff;fill-opacity:0.50196081;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+           style="opacity:1;fill:#d7d5ff;fill-opacity:0.50196078;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         <text
            id="text1596"
            y="41.842731"
@@ -164,7 +172,7 @@
            height="18.142857"
            width="115.66071"
            id="rect1608"
-           style="opacity:1;fill:#ffdcd5;fill-opacity:0.50196081;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+           style="opacity:1;fill:#ffdcd5;fill-opacity:0.50196078;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         <text
            id="text1612"
            y="41.842731"
@@ -181,7 +189,7 @@
          id="g1622"
          transform="translate(0,-80.433338)">
         <rect
-           style="opacity:1;fill:#878787;fill-opacity:0.28235295;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           style="opacity:1;fill:#878787;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
            id="rect1616"
            width="115.66071"
            height="18.142857"
