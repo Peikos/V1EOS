@@ -328,7 +328,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Onderbreken user mode software</li>
 <li>Switch naar kernel mode, OS handelt verzoek af</li>
 <li>Iedere SysCall heeft een nummer</li>
-<li>Ieder proces eigen kopie SysCall table</li>
 </ul>
 </section>
 <section id="syscalls-1" class="slide level2">
@@ -372,16 +371,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="columns">
 <div class="column" style="width:60%;">
 <figure>
-<img data-src="images/Memory%20Stack.png" alt="De Stack" style="width:100.0%" /><figcaption>De Stack</figcaption>
+<img data-src="images/Memory%20Stack%20A.png" alt="De Stack" style="width:100.0%" /><figcaption>De Stack</figcaption>
 </figure>
 </div><div class="column" style="width:40%;">
 <p><br />
 </p>
-<h4 id="per-frame">Per frame:</h4>
+<h4 id="frame-per-function-call">Frame per function call</h4>
 <ul>
-<li>lokale variabelen</li>
-<li>return address</li>
-<li>framegrootte</li>
+<li>Lokale variabelen</li>
+<li>Return address</li>
+<li>Framegrootte</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="de-stack-1" class="slide level2">
+<h2>De Stack</h2>
+<aside class="notes">
+<p>Ook in het geheugen wordt gebruik gemaakt van een stack. De stack heeft als voordeel dat je altijd de meest recente informatie bovenaan hebt. De stack wordt gebruikt om function calls mogelijk te maken. Als een functie wordt aangeroepen, wordt een frame aangemaakt. Dit frame bevat de parameters van de functieaanroep, het adres van waaraf de functie werd aangeroepen (return address) en het formaat van het frame (zodat bekend is welke bytes per <em>pop</em> gelezen moeten worden). Als een functiecall klaar is dan keert de computer terug naar de instructie direct na de functieaanroep. Deze is te vinden doordat het return adres in het frame op de stack staat opgeslagen. Zodra de computer het return adres nodig heeft wordt het frame gepopt, en wordt de stack meteen een frame kleiner.</p>
+</aside>
+<div class="columns">
+<div class="column" style="width:60%;">
+<figure>
+<img data-src="images/Memory%20Stack%20B.png" alt="De Stack" style="width:100.0%" /><figcaption>De Stack</figcaption>
+</figure>
+</div><div class="column" style="width:40%;">
+<p><br />
+</p>
+<h4 id="function-call-of-syscall">Function call of syscall</h4>
+<ul>
+<li>Push nieuw frame</li>
+<li>Bewaar PC</li>
+<li>Bewaar variabelen</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="de-stack-2" class="slide level2">
+<h2>De Stack</h2>
+<aside class="notes">
+<p>Ook in het geheugen wordt gebruik gemaakt van een stack. De stack heeft als voordeel dat je altijd de meest recente informatie bovenaan hebt. De stack wordt gebruikt om function calls mogelijk te maken. Als een functie wordt aangeroepen, wordt een frame aangemaakt. Dit frame bevat de parameters van de functieaanroep, het adres van waaraf de functie werd aangeroepen (return address) en het formaat van het frame (zodat bekend is welke bytes per <em>pop</em> gelezen moeten worden). Als een functiecall klaar is dan keert de computer terug naar de instructie direct na de functieaanroep. Deze is te vinden doordat het return adres in het frame op de stack staat opgeslagen. Zodra de computer het return adres nodig heeft wordt het frame gepopt, en wordt de stack meteen een frame kleiner.</p>
+</aside>
+<div class="columns">
+<div class="column" style="width:60%;">
+<figure>
+<img data-src="images/Memory%20Stack%20C.png" alt="De Stack" style="width:100.0%" /><figcaption>De Stack</figcaption>
+</figure>
+</div><div class="column" style="width:40%;">
+<p><br />
+</p>
+<h4 id="return">Return</h4>
+<ul>
+<li>Zet variabelen terug</li>
+<li>Reset PC</li>
+<li>Pas SP aan</li>
 </ul>
 </div>
 </div>
@@ -400,7 +443,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </aside>
 <ul>
 <li>Dynamische alloceerbaar</li>
-<li>Expliciet gereserveerd</li>
+<li>Expliciet ruimte reserveren</li>
 <li>Na gebruik vrijgeven</li>
 </ul>
 </section>
@@ -428,6 +471,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Wat zijn voorbeelden van OSs?</li>
 <li>Wat is User mode vs Kernel mode?</li>
 <li>Wat zijn system calls?</li>
+<li>Hoe ziet een enkel proces eruit?</li>
 </ul>
 </section>
     </div>
