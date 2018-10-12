@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="170.84525mm"
+   height="190.12201mm"
+   viewBox="0 0 170.84525 190.12201"
+   version="1.1"
+   id="svg4562"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="Memory Processes.svg">
+  <defs
+     id="defs4556" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="250"
+     inkscape:cy="392.85708"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-global="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1190"
+     inkscape:window-x="1920"
+     inkscape:window-y="10"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata4559">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-24.190477,-47.535713)">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:0.98723408;stroke:none;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect7705"
+       width="170.84525"
+       height="190.12201"
+       x="24.190477"
+       y="47.535713" />
+    <g
+       transform="translate(203.14325,35.289727)"
+       id="g2856">
+      <g
+         transform="translate(-220.53017,67.796051)"
+         id="g1453">
+        <path
+           style="opacity:1;fill:#87decd;fill-opacity:0.50196078;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 52.538689,23.333421 H 168.1994 V 56.61896 H 52.538689 Z"
+           id="rect1447"
+           inkscape:connector-curvature="0" />
+        <text
+           id="text1451"
+           y="41.842731"
+           x="109.94414"
+           style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+             y="41.842731"
+             x="109.94414"
+             id="tspan1449"
+             sodipodi:role="line">Proces B</tspan></text>
+      </g>
+      <g
+         transform="translate(-220.53017,81.871887)"
+         id="g1461">
+        <path
+           style="opacity:1;fill:#87decd;fill-opacity:0.50196078;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 52.538689,57.363098 H 168.1994 V 75.505955 H 52.538689 Z"
+           id="rect1455"
+           inkscape:connector-curvature="0" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="109.88344"
+           y="67.618187"
+           id="text1459"><tspan
+             sodipodi:role="line"
+             id="tspan1457"
+             x="109.88344"
+             y="67.618187"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">Proces A</tspan></text>
+      </g>
+      <g
+         id="g1469"
+         transform="translate(-220.53017,131.93106)">
+        <path
+           style="opacity:1;fill:#c83737;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 52.538689,30.90476 H 168.1994 V 49.047617 H 52.538689 Z"
+           id="rect1463"
+           inkscape:connector-curvature="0" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="109.88344"
+           y="41.842731"
+           id="text1467"><tspan
+             sodipodi:role="line"
+             id="tspan1465"
+             x="109.88344"
+             y="41.842731"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">OS</tspan></text>
+      </g>
+      <g
+         style="fill:none;stroke-width:0.67961162"
+         transform="matrix(1,0,0,2.1651023,-220.53017,80.077238)"
+         id="g1473">
+        <rect
+           y="-23.334822"
+           x="46.869045"
+           height="72.382439"
+           width="127"
+           id="rect1471"
+           style="opacity:1;fill:none;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.17981391;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      </g>
+      <g
+         id="g1481"
+         transform="translate(-220.53017,25.145228)">
+        <path
+           style="opacity:1;fill:#87decd;fill-opacity:0.50196078;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 52.538689,15.407735 H 168.1994 V 59.252974 H 52.538689 Z"
+           id="rect1475"
+           inkscape:connector-curvature="0" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="109.88344"
+           y="39.196896"
+           id="text1479"><tspan
+             sodipodi:role="line"
+             id="tspan1477"
+             x="109.88344"
+             y="39.196896"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">Proces C</tspan></text>
+      </g>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="172.43939"
+       y="220.77634"
+       id="text1467-3"><tspan
+         sodipodi:role="line"
+         id="tspan1465-6"
+         x="172.43939"
+         y="220.77634"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">0x00000000</tspan></text>
+    <text
+       id="text5189"
+       y="68.905441"
+       x="172.43939"
+       style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="68.905441"
+         x="172.43939"
+         id="tspan5187"
+         sodipodi:role="line">0xFFFFFFFF</tspan></text>
+  </g>
+</svg>
