@@ -104,67 +104,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="introductie" class="slide level2">
 <h2>Introductie</h2>
-<!--
-- Recap naar vorige week
-- Dez les meerdere processen
--->
 <aside class="notes">
-<p>Vorige week zijn we onze tour door de interne werking van het OS gestopt bij het geheugenmodel van een enkele taak. Doorgaans draaien op een computer echter vele taken tegelijkertijd: ieder programma heeft op z’n minst een eigen taak (en soms veel meer, bijvoorbeeld een taak per tabblad in de Browser). Deze les gaan we kijken hoe de computer hiermee om kan gaan.</p>
+<ul>
+<li>Recap naar vorige week</li>
+<li>Dez les meerdere processen</li>
+</ul>
 </aside>
+<!--
+Vorige week zijn we onze tour door de interne werking van het OS gestopt bij het geheugenmodel van een enkele taak. Doorgaans draaien op een computer echter vele taken tegelijkertijd: ieder programma heeft op z'n minst een eigen taak (en soms veel meer, bijvoorbeeld een taak per tabblad in de Browser). Deze les gaan we kijken hoe de computer hiermee om kan gaan.
+-->
 <figure>
 <img data-src="images/Process.png" alt="Geheugenmodel Proces" style="width:30.0%" /><figcaption>Geheugenmodel Proces</figcaption>
 </figure>
 </section>
 <section id="processen-op-één-core" class="slide level2">
 <h2>Processen op één core</h2>
-<!--
-- Kernel code overal aanwezig, maar 1 keer in geheugen
-- Uitleg in les 4 (paging etc)
--->
 <aside class="notes">
-<p>Het geheugenmodel van vorige week komt mooi overeen met hoe een proces er van binnen uitziet, alleen heb je er dan dus meerdere. De kernel code is in beide processen aanwezig, maar staat maar op één plek in het geheugen. Hoe dat werkt komen we op terug.</p>
+<ul>
+<li>Kernel code overal aanwezig, maar 1 keer in geheugen</li>
+<li>Uitleg in les 4 (paging etc)</li>
+</ul>
 </aside>
+<!--
+Het geheugenmodel van vorige week komt mooi overeen met hoe een proces er van binnen uitziet, alleen heb je er dan dus meerdere. De kernel code is in beide processen aanwezig, maar staat maar op één plek in het geheugen. Hoe dat werkt komen we op terug.
+-->
 <figure>
 <img data-src="images/Processes.png" alt="Meerdere Processen" style="width:60.0%" /><figcaption>Meerdere Processen</figcaption>
 </figure>
 </section>
 <section id="meerdere-cores" class="slide level2">
 <h2>Meerdere cores</h2>
-<!--
-Nooit 1 proces tegelijk op 2 cores!
--->
 <aside class="notes">
-<p>Bij meerdere cores draait hetzelfde proces nooit op twee cores tegelijkertijd. Kernel code kan wel op meerdere cores actief zijn, waarom is dat?</p>
+<p>Nooit 1 proces tegelijk op 2 cores!</p>
 </aside>
+<!--
+Bij meerdere cores draait hetzelfde proces nooit op twee cores tegelijkertijd. Kernel code kan wel op meerdere cores actief zijn, waarom is dat?
+-->
 <figure>
 <img data-src="images/2cores.png" alt="Drie Processen, Twee Cores" style="width:80.0%" /><figcaption>Drie Processen, Twee Cores</figcaption>
 </figure>
 </section>
 <section id="process-state" class="slide level2">
 <h2>Process State</h2>
-<!--
-- Ready to run: niet aan de beurt
-- Blocked: wacht ergens op
--->
 <aside class="notes">
-<p>Een proces kan zich in meerdere toestanden bevinden. Een proces dat op dit moment CPU-tijd heeft, noemen we running. Als een proces niet actief is, omdat de CPU iets anders heeft te doen, dan noemen we dit ready-to-run of soms waiting. Die laatste naam heeft echter niet de voorkeur, omdat deze ook soms voor de derde state wordt gebruikt: blocked. Als een proces deze state heeft dan kan het proces niet verder omdat het op nieuwe data moet wachten, zoals bijvoorbeeld een toetsaanslag van de gebruiker of gegevens via een trage netwerkverbinding. Bij het bereiken van een van deze gevallen (ready-to-run en blocked) vindt een context-switch plaats en zal de processor met een ander proces verder gaan. Afhankelijk van de reden van deze switch zal de CPU het process opnieuw activeren zodra het aan de beurt is, of zodra het de benodigde gegevens heeft om verder te gaan.</p>
+<ul>
+<li>Ready to run: niet aan de beurt</li>
+<li>Blocked: wacht ergens op</li>
+</ul>
 </aside>
+<!--
+Een proces kan zich in meerdere toestanden bevinden. Een proces dat op dit moment CPU-tijd heeft, noemen we running. Als een proces niet actief is, omdat de CPU iets anders heeft te doen, dan noemen we dit ready-to-run of soms waiting. Die laatste naam heeft echter niet de voorkeur, omdat deze ook soms voor de derde state wordt gebruikt: blocked. Als een proces deze state heeft dan kan het proces niet verder omdat het op nieuwe data moet wachten, zoals bijvoorbeeld een toetsaanslag van de gebruiker of gegevens via een trage netwerkverbinding. Bij het bereiken van een van deze gevallen (ready-to-run en blocked) vindt een context-switch plaats en zal de processor met een ander proces verder gaan. Afhankelijk van de reden van deze switch zal de CPU het process opnieuw activeren zodra het aan de beurt is, of zodra het de benodigde gegevens heeft om verder te gaan.
+-->
 <figure>
 <img data-src="images/states.png" alt="Process State Diagram" style="width:80.0%" /><figcaption>Process State Diagram</figcaption>
 </figure>
 </section>
 <section id="process-files" class="slide level2">
 <h2>Process Files</h2>
-<!--
-- exe = link naar binary (zelfs als verwijderd)
-- cmdline = argumenten
-- environ = env variabelen
-- stack = call stack
-- nog veel meer
--->
 <aside class="notes">
-<p>Voor ieder proces is in het Linux filesysteem een virtueel bestand aanwezig. Dit is deel van de Unix filosofie: alles is een bestand. We gaan hier later meer van zien zodra we het Linux filesysteem gaan bekijken, maar dit is vast een voorbeeld waar we dit principe in actie zien.</p>
+<ul>
+<li>exe = link naar binary (zelfs als verwijderd)</li>
+<li>cmdline = argumenten</li>
+<li>environ = env variabelen</li>
+<li>stack = call stack</li>
+<li>nog veel meer</li>
+</ul>
 </aside>
+<!--
+Voor ieder proces is in het Linux filesysteem een virtueel bestand aanwezig. Dit is deel van de Unix filosofie: alles is een bestand. We gaan hier later meer van zien zodra we het Linux filesysteem gaan bekijken, maar dit is vast een voorbeeld waar we dit principe in actie zien.
+-->
 <ul>
 <li>Process IDs</li>
 <li><code>/proc/PID</code> process directory
@@ -179,12 +187,12 @@ Nooit 1 proces tegelijk op 2 cores!
 </section>
 <section id="threads" class="slide level2">
 <h2>Threads</h2>
-<!--
-Niet de focus dit vak. Nadruk op wat shared is binnen proces en wat niet.
--->
 <aside class="notes">
-<p>Een process kan meerdere threads bevatten en zo meerdere taken “tegelijkertijd” uitvoeren. Het afwisselen van threads gaat een stuk sneller dan het afwisselen van processen, en alle threads binnen een proces delen dezelfde data. Threads worden bijvoorbeeld gebruikt om de GUI en functionaliteit van een programma te scheiden: het programma kan verder terwijl de GUI geblokeerd is omdat deze wacht op gebruikersinvoer, en de GUI blijft responsive als de andere threads lang bezig zijn.</p>
+<p>Niet de focus dit vak. Nadruk op wat shared is binnen proces en wat niet.</p>
 </aside>
+<!--
+Een process kan meerdere threads bevatten en zo meerdere taken "tegelijkertijd" uitvoeren. Het afwisselen van threads gaat een stuk sneller dan het afwisselen van processen, en alle threads binnen een proces delen dezelfde data. Threads worden bijvoorbeeld gebruikt om de GUI en functionaliteit van een programma te scheiden: het programma kan verder terwijl de GUI geblokeerd is omdat deze wacht op gebruikersinvoer, en de GUI blijft responsive als de andere threads lang bezig zijn.
+-->
 <div class="columns">
 <div class="column" style="width:50%;">
 <figure>
@@ -202,25 +210,29 @@ Niet de focus dit vak. Nadruk op wat shared is binnen proces en wat niet.
 </section>
 <section id="context-switch" class="slide level2">
 <h2>Context Switch</h2>
-<!--
-- Process control block (switchframe)
-- register
-- procesinformatie
-- verwijzingen geheugen
--->
 <aside class="notes">
-<p>Bij het draaien van meerdere processen (of het aanroepen van een SysCall) moet de CPU constant vrijgemaakt worden voor een nieuwe taak. De oude informatie kan echter niet worden weggegooid, want deze is later weer nodig als de bijbehorende taak weer aan de beurt is. Dit noemen we een context switch: het OS zet alle state van het lopende proces opzij en laadt de nieuwe informatie. De informatie wordt opgeslagen in een Process Control Block (PCB) of Switchframe, en bevat de inhoud van de registers (met name de Program Counter) informatie over het proces, en informatie over welk geheugen bij het proces hoort. Dit laatste betekent dat het geheugen zelf niet verplaatst hoeft te worden, maar dat de CPU enkel de verwijzingen aan hoeft te passen.</p>
+<ul>
+<li>Process control block (switchframe)</li>
+<li>register</li>
+<li>procesinformatie</li>
+<li>verwijzingen geheugen</li>
+</ul>
 </aside>
+<!--
+Bij het draaien van meerdere processen (of het aanroepen van een SysCall) moet de CPU constant vrijgemaakt worden voor een nieuwe taak. De oude informatie kan echter niet worden weggegooid, want deze is later weer nodig als de bijbehorende taak weer aan de beurt is. Dit noemen we een context switch: het OS zet alle state van het lopende proces opzij en laadt de nieuwe informatie. De informatie wordt opgeslagen in een Process Control Block (PCB) of Switchframe, en bevat de inhoud van de registers (met name de Program Counter) informatie over het proces, en informatie over welk geheugen bij het proces hoort. Dit laatste betekent dat het geheugen zelf niet verplaatst hoeft te worden, maar dat de CPU enkel de verwijzingen aan hoeft te passen.
+-->
 <p><img data-src="images/Context%20Switch.png" style="width:80.0%" /></p>
 </section>
 <section id="scheduling" class="slide level2">
 <h2>Scheduling</h2>
-<!--
-- voordelen en nadelen van cooperative vs pre-emptive
--->
 <aside class="notes">
-<p>Of we nu met één of meerdere cores te maken hebben, het zal niet snel genoeg zijn om alle processen tegelijk te draaien. Het OS zal dus moeten bepalen hoeveel tijd iedereen heeft en wie wanneer aan de beurt is. Hiervoor zijn twee stijlen te onderscheiden: cooperative multitasking, waarbij de context switch door het proces wordt geïnitieerd en dus zelf bepaalt hoe lang het de CPU vast houdt, en pre-emptive multitasking, waarbij het OS na een bepaalde tijd een proces onderbreekt om te kijken wie er nu aan de beurt is. Wat zijn de voordelen van de twee stijlen, en wat zijn de nadelen? Wanneer zou je cooperative multitasking gebruiken? En wanneer niet?</p>
+<ul>
+<li>voordelen en nadelen van cooperative vs pre-emptive</li>
+</ul>
 </aside>
+<!--
+Of we nu met één of meerdere cores te maken hebben, het zal niet snel genoeg zijn om alle processen tegelijk te draaien. Het OS zal dus moeten bepalen hoeveel tijd iedereen heeft en wie wanneer aan de beurt is. Hiervoor zijn twee stijlen te onderscheiden: cooperative multitasking, waarbij de context switch door het proces wordt geïnitieerd en dus zelf bepaalt hoe lang het de CPU vast houdt, en pre-emptive multitasking, waarbij het OS na een bepaalde tijd een proces onderbreekt om te kijken wie er nu aan de beurt is. Wat zijn de voordelen van de twee stijlen, en wat zijn de nadelen? Wanneer zou je cooperative multitasking gebruiken? En wanneer niet?
+-->
 <p><img data-src="images/2cores.png" style="width:80.0%" /></p>
 <h4 id="strategiën">Strategiën</h4>
 <ul>
@@ -230,9 +242,9 @@ Niet de focus dit vak. Nadruk op wat shared is binnen proces en wat niet.
 </section>
 <section id="pre-emptive-multitasking" class="slide level2">
 <h2>Pre-emptive Multitasking</h2>
-<aside class="notes">
-<p>We zoomen even in op pre-emptive multitasking. Hierbij ziet de context-switch er als volgt uit. De CPU interrupt wordt gedaan met behulp van een timer, zodat het lopende proces na een bepaalde tijd onderbroken wordt. De interrupt voert een simpele context-switch uit, van het proces naar de interrupt handler. Deze zal de rest van de process-state bewaren, eventuele achterstallige OS taken uitvoeren en de scheduler aanroepen. De scheduler heeft een lijst van alle processen. De scheduler weet welke processen belangrijker zijn en hoe lang geleden ieder proces aan de beurt is geweest. Op basis van deze factoren wordt een nieuw proces geselecteerd, waarna de state voor dat proces wordt klaargezet. Als dit gebeurt is kan het proces exact verder waar het gebleven was.</p>
-</aside>
+<!--
+We zoomen even in op pre-emptive multitasking. Hierbij ziet de context-switch er als volgt uit. De CPU interrupt wordt gedaan met behulp van een timer, zodat het lopende proces na een bepaalde tijd onderbroken wordt. De interrupt voert een simpele context-switch uit, van het proces naar de interrupt handler. Deze zal de rest van de process-state bewaren, eventuele achterstallige OS taken uitvoeren en de scheduler aanroepen. De scheduler heeft een lijst van alle processen. De scheduler weet welke processen belangrijker zijn en hoe lang geleden ieder proces aan de beurt is geweest. Op basis van deze factoren wordt een nieuw proces geselecteerd, waarna de state voor dat proces wordt klaargezet. Als dit gebeurt is kan het proces exact verder waar het gebleven was.
+-->
 <ol type="1">
 <li>CPU interrupt</li>
 <li>Interrupt bewaart PC</li>
@@ -247,15 +259,19 @@ Niet de focus dit vak. Nadruk op wat shared is binnen proces en wat niet.
 </section>
 <section id="realtime" class="slide level2">
 <h2>Realtime</h2>
-<!--
-- niet realtime: lange berekening
-- soft: sensor voor weerdata
-- firm: streaming audio / video
-- hard: maanlander
--->
 <aside class="notes">
-<p>Het schedulen is het meest complex wanneer we met realtime applicaties te maken hebben. Dit zijn processen waarbij een deadline geldt die gehaald dient te worden. We vergelijken vier processen: een lange berekening met weerdata (A), de sensor controller die de weerdata leest (B), Spotify (C) en de computer die een maanlander bestuurt (D). Ongeacht het verschil in de belangrijkheid van de taken, vallen de vier processen in vier verschillende categoriën met het oog op realtime. Proces A is (doorgaans) een voorbeeld van <em>not realtime</em>. Er is geen deadline, en hoewel het vervelend is als dit te lang duurt, maakt een vertraging het resultaat niet meteeen onbruikbaar (al ligt dit er natuurlijk wel aan waar de berekening toe dient). Proces B is een <em>soft realtime</em> proces; de deadlines mogen zo af en toe gemist worden, en hoe vaker de deadline niet gehaald wordt, des te groter is het waardeverlies. In dit geval zal de voorspelling op minder data gebaseerd zijn, en de waarde neemt af wanneer meer metingen worden gemist. Bij C spreken we van <em>firm realtime</em>: ook hier is het missen van een deadline nog acceptabel, zo lang het niet te vaak gebeurt. Waar bij soft realtime de waarde afneemt, is er bij firm realtime een punt waarop de resultaten waardeloos worden. Als Spotify te veel frames mist is het resultaat niet meer als muziek te herkennen. Voorbeeld D, tot slot, is een <em>hard realtime</em> systeem. Het missen van een enkele deadline kan leiden tot een crash, waarmee het hele resultaat in een klap (letterlijk) waardeloos is geworden.</p>
+<ul>
+<li>niet realtime: lange berekening</li>
+<li>soft: sensor voor weerdata</li>
+<li>firm: streaming audio / video</li>
+<li>hard: maanlander</li>
+</ul>
 </aside>
+<!--
+Het schedulen is het meest complex wanneer we met realtime applicaties te maken hebben. Dit zijn processen waarbij een deadline geldt die gehaald dient te worden. We vergelijken vier processen: een lange berekening met weerdata (A), de sensor controller die de weerdata leest (B), Spotify (C) en de computer die een maanlander bestuurt (D). Ongeacht het verschil in de belangrijkheid van de taken, vallen de vier processen in vier verschillende categoriën met het oog op realtime. Proces A is (doorgaans) een voorbeeld van _not realtime_. Er is geen deadline, en hoewel het vervelend is als dit te lang duurt, maakt een vertraging het resultaat niet meteeen onbruikbaar (al ligt dit er natuurlijk wel aan waar de berekening toe dient). Proces B is een _soft realtime_ proces; de deadlines mogen zo af en toe gemist worden, en hoe vaker de deadline niet gehaald wordt, des te groter is het waardeverlies. In dit geval zal de voorspelling op minder data gebaseerd zijn, en de waarde neemt af wanneer meer metingen worden gemist. 
+Bij C spreken we van _firm realtime_: ook hier is het missen van een deadline nog acceptabel, zo lang het niet te vaak gebeurt. Waar bij soft realtime de waarde afneemt, is er bij firm realtime een punt waarop de resultaten waardeloos worden. Als Spotify te veel frames mist is het resultaat niet meer als muziek te herkennen.
+Voorbeeld D, tot slot, is een _hard realtime_ systeem. Het missen van een enkele deadline kan leiden tot een crash, waarmee het hele resultaat in een klap (letterlijk) waardeloos is geworden.
+-->
 <ul>
 <li>Hard realtime</li>
 <li>Firm realtime</li>
@@ -265,13 +281,14 @@ Niet de focus dit vak. Nadruk op wat shared is binnen proces en wat niet.
 </section>
 <section id="scheduling-strategiën" class="slide level2">
 <h2>Scheduling Strategiën</h2>
-<!--
-RMS: prioriteit gebaseerd op duur, kortere taken vaker
-EDF: prioriteit voor vroegere deadlines
--->
 <aside class="notes">
-<p>Afhankelijk van het type realtime en de lengte van de deadlines kan de CPU verschillende strategiën gebruiken voor het schedulen van taken. De belangrijkste vormen zijn Rate Monotonic Scheduling en Earliest Deadline First. Bij RMS wordt de prioriteit van een taak gebaseerd op hoe lang deze taak nodig heeft. Kortere taken hebben een hogere prioriteit en komen vaker aan de beurt. Bij EDF wordt gekeken naar de deadline van een proces: wanneer moet het proces resultaten opleveren. Processen die minder speling hebben komen eerder aan de beurt.</p>
+<p>RMS: prioriteit gebaseerd op duur, kortere taken vaker EDF: prioriteit voor vroegere deadlines</p>
 </aside>
+<!--
+Afhankelijk van het type realtime en de lengte van de deadlines kan de CPU verschillende strategiën gebruiken voor het schedulen van taken. De belangrijkste vormen zijn Rate Monotonic Scheduling en Earliest Deadline First. 
+Bij RMS wordt de prioriteit van een taak gebaseerd op hoe lang deze taak nodig heeft. Kortere taken hebben een hogere prioriteit en komen vaker aan de beurt.
+Bij EDF wordt gekeken naar de deadline van een proces: wanneer moet het proces resultaten opleveren. Processen die minder speling hebben komen eerder aan de beurt.
+-->
 <ul>
 <li>Rate Monotonic Scheduling</li>
 <li>Earliest Deadline First</li>
@@ -279,9 +296,9 @@ EDF: prioriteit voor vroegere deadlines
 </section>
 <section id="inter-process-communication" class="slide level2">
 <h2>Inter Process Communication</h2>
-<aside class="notes">
-<p>Vaak moeten meerdere processen samenwerken om een doel te bereiken. Als je een mail binnenkrijgt dan zal dit bijvoorbeeld door je mailprogramma worden binnengehaald. Ondertussen zorgt een ander proces ervoor dat je een notificatie in je scherm krijgt, en is er mogelijk nog een aparte notificatielijst, of een widget op het bureaublad, of… Met andere woorden: dezelfde informatie is vaak in meerdere processen nodig. Om de info te kunnen delen kennen we twee belangrijke varianten. Shared Memory en Message Passing.</p>
-</aside>
+<!--
+Vaak moeten meerdere processen samenwerken om een doel te bereiken. Als je een mail binnenkrijgt dan zal dit bijvoorbeeld door je mailprogramma worden binnengehaald. Ondertussen zorgt een ander proces ervoor dat je een notificatie in je scherm krijgt, en is er mogelijk nog een aparte notificatielijst, of een widget op het bureaublad, of... Met andere woorden: dezelfde informatie is vaak in meerdere processen nodig. Om de info te kunnen delen kennen we twee belangrijke varianten. Shared Memory en Message Passing.
+-->
 <ul>
 <li>Shared Memory</li>
 <li>Message Passing</li>
@@ -289,44 +306,41 @@ EDF: prioriteit voor vroegere deadlines
 </section>
 <section id="shared-memory" class="slide level2">
 <h2>Shared Memory</h2>
+<p>::: notes - Voorbeeld printer - Context switch tussen zoeken plek en vullen - Overschreven ::: end pre</p>
 <!--
-- Voorbeeld printer
-- Context switch tussen zoeken plek en vullen
-- Overschreven
-::: end pre
-::: notes
 In eerste instantie werd voor dit soort problemen vooral gebruik gemaakt van shared memory: stukken geheugen die door meerdere processen te lezen en schrijven zijn. Dit kan echter makkelijk misgaan; stel bijvoorbeeld het volgende scenario voor:
 Twee processen willen beide een bestand afdrukken. Proces A is aan de beurt, en zoekt de eerste vrije plaats in de wachtrij. Op dit moment gebeurt er een context switch, en is Proces B is aan de beurt. Ook deze zoekt de eerste vrije plaats, en zet op dat geheugenadres (hetzelfde adres als A had gevonden) een verwijzing naar een te printen bestand. Na de volgende context switch is A weer aan de beurt, die op hetzelfde adres een ander bestand zet. Het originele bestand is overschreven, zonder dat A of B dit gemerkt heeft.
-:::
-
-![](images/overwrite.png){ width=80% }
-
-## Shared Memory
-
-<!--
-- Mutexes, Semaphores
-- Starvation, Deadlocks
 -->
+<p><img data-src="images/overwrite.png" style="width:80.0%" /></p>
+</section>
+<section id="shared-memory-1" class="slide level2">
+<h2>Shared Memory</h2>
 <aside class="notes">
-<p>Gelukkkig zijn hier oplossingen voor, maar die voegen een hoop complexiteit toe en zijn vaak lastig toe te passen, zeker in grotere systemen. Voorbeelden hiervan zijn mutexes (Mutual Exclusion) en Semaphores (vlaggen die aangeven dat een stuk geheugen in gebruik is), maar hier gaan we deze cursus verder niet op in.</p>
+<ul>
+<li>Mutexes, Semaphores</li>
+<li>Starvation, Deadlocks</li>
+</ul>
 </aside>
+<!--
+Gelukkkig zijn hier oplossingen voor, maar die voegen een hoop complexiteit toe en zijn vaak lastig toe te passen, zeker in grotere systemen. Voorbeelden hiervan zijn mutexes (Mutual Exclusion) en Semaphores (vlaggen die aangeven dat een stuk geheugen in gebruik is), maar hier gaan we deze cursus verder niet op in.
+-->
 <p><img data-src="images/skeleton.jpg" style="width:30.0%" /></p>
 </section>
 <section id="alternatief-message-passing" class="slide level2">
 <h2>Alternatief: Message Passing</h2>
-<!--
-Beide processen communiceren met printer manager
--->
 <aside class="notes">
-<p>Een alternatief is message passing: beide processen communiceren via een naar een printer manager proces, dat alleenrechten heeft op het betreffende stuk geheugen.</p>
+<p>Beide processen communiceren met printer manager</p>
 </aside>
+<!--
+Een alternatief is message passing: beide processen communiceren via een naar een printer manager proces, dat alleenrechten heeft op het betreffende stuk geheugen.
+-->
 <p><img data-src="images/messages.png" style="width:80.0%" /></p>
 </section>
 <section id="inter-process-communication-1" class="slide level2">
 <h2>Inter Process Communication</h2>
-<aside class="notes">
-<p>Beide variaties zijn in de meeste moderne operating systems aanwezig. Shared memory wordt soms via bestanden toegepast, voor message passing zijn in Unix sockets aanwezig (die zowel over het netwerk als binnen het OS bruikbaar zijn). Hier worden de system calls <code>send</code> en <code>receive</code> getoond, die op Linux beschikbaar zijn om over sockets te communiceren.</p>
-</aside>
+<!--
+Beide variaties zijn in de meeste moderne operating systems aanwezig. Shared memory wordt soms via bestanden toegepast, voor message passing zijn in Unix sockets aanwezig (die zowel over het netwerk als binnen het OS bruikbaar zijn). Hier worden de system calls `send` en `receive` getoond, die op Linux beschikbaar zijn om over sockets te communiceren.
+-->
 <ul>
 <li>Shared Files</li>
 <li>Sockets / Unix Domain Socket</li>
@@ -336,19 +350,19 @@ Beide processen communiceren met printer manager
 </section>
 <section id="processen-in-linux" class="slide level2">
 <h2>Processen in Linux</h2>
-<!--
-Parent = init proces (PID 1)
--->
 <aside class="notes">
-<p>In Linux zijn processen in een tree georganiseerd. Ieder proces heeft een parent, met uitzondering van het <em>init</em> proces dat de root van de tree vormt. Dit proces wordt als eerste gestart en heeft PID 1. Alle processen stammen van init af, en verweesde processen worden door init geadopteerd.</p>
+<p>Parent = init proces (PID 1)</p>
 </aside>
+<!--
+In Linux zijn processen in een tree georganiseerd. Ieder proces heeft een parent, met uitzondering van het _init_ proces dat de root van de tree vormt. Dit proces wordt als eerste gestart en heeft PID 1. Alle processen stammen van init af, en verweesde processen worden door init geadopteerd.
+-->
 <p><img data-src="images/processtree.png" style="width:80.0%" /></p>
 </section>
 <section id="sys_fork" class="slide level2">
 <h2><code>SYS_fork</code></h2>
-<aside class="notes">
-<p>De enige manier om een nieuw proces te starten in Linux is een beetje merkwaardig: met <code>fork()</code> kan een proces zichzelf geheel dupliceren, waarna je twee vrijwel identieke processen hebt die verder gaan na de <code>fork</code> call. Het enige verschil is de return-waarde van de <code>fork</code>: voor het parent proces zal dit de PID van de kopie zijn, maar voor het kind is deze 0. Dit klinkt wat omslachtig, maar het valt mee: beide processen delen hetzelfde geheugen totdat er ergens iets veranderd wordt, pas dan wordt er een kopie gemaakt van het geheugendeel in kwestie. Het geheugen is als copy-on-write (CoW) gemarkeerd, en op het moment dat een van beide processen probeert te schrijven volgt een interrupt, waarna de kernel ervoor zorgt dat het benodigde geheugen gekopieerd wordt.</p>
-</aside>
+<!--
+De enige manier om een nieuw proces te starten in Linux is een beetje merkwaardig: met `fork()` kan een proces zichzelf geheel dupliceren, waarna je twee vrijwel identieke processen hebt die verder gaan na de `fork` call. Het enige verschil is de return-waarde van de `fork`: voor het parent proces zal dit de PID van de kopie zijn, maar voor het kind is deze 0. Dit klinkt wat omslachtig, maar het valt mee: beide processen delen hetzelfde geheugen totdat er ergens iets veranderd wordt, pas dan wordt er een kopie gemaakt van het geheugendeel in kwestie. Het geheugen is als copy-on-write (CoW) gemarkeerd, en op het moment dat een van beide processen probeert te schrijven volgt een interrupt, waarna de kernel ervoor zorgt dat het benodigde geheugen gekopieerd wordt.
+-->
 <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="cf">if</span> (syscall(SYS_fork) == <span class="dv">0</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">{ </a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="co">// This is the child </span></a>
@@ -362,13 +376,17 @@ Parent = init proces (PID 1)
 </section>
 <section id="sys_exec-en-sys_wait" class="slide level2">
 <h2><code>SYS_exec</code> en <code>SYS_wait</code></h2>
-<!--
-- parent eerder dood: orphan, adoptie door init
-- parent watch niet op dood kind: zombie
--->
 <aside class="notes">
-<p>Hoewel het mogelijk is beide ge<code>fork</code>te processen met dezelfde code door te laten draaien, is dit doorgaans niet hoe <code>fork</code> gebruikt wordt. In plaats daarvan zal een van beide processen, doorgaans het kind, een <code>execve</code> system call doen om een andere executable uit te voeren. Het gehele geadreseerde geheugen wordt weggegooid, en de code uit de executable wordt ingeladen als text segment. De data en bss worden geïnitialiseerd, en het proces heeft een lege heap en stack. Het programma begint met de <code>main()</code> van de executable. Het parent proces kan de originele code hervatten, maar zal in veel gevallen wachten tot het kind doodgaat. Hiervoor wordt de <code>wait</code> system call gebruikt, met het PID van het kind. Hoewel dit wat tragisch klinkt, is het in Unix een groter probleem als de parent komt te overleiden terwijl de child nog leeft: in dat geval hebben we een orphan (weesproces), dat door het init process wordt geadopteerd. Als de parent besluit niet op het kind te wachten, en dit komt te overleiden, dan zal het kind niet direct verwijderd worden. Het proces is welliswaar beëindigd, maar komt nog wel in de procestabel voor tot de parent het overleiden heeft geregistreerd door de exit-code te lezen. Tot die tijd wordt dit kind een zombie-proces genoemd.</p>
+<ul>
+<li>parent eerder dood: orphan, adoptie door init</li>
+<li>parent watch niet op dood kind: zombie</li>
+</ul>
 </aside>
+<!--
+Hoewel het mogelijk is beide ge`fork`te processen met dezelfde code door te laten draaien, is dit doorgaans niet hoe `fork` gebruikt wordt. In plaats daarvan zal een van beide processen, doorgaans het kind, een `execve` system call doen om een andere executable uit te voeren. Het gehele geadreseerde geheugen wordt weggegooid, en de code uit de executable wordt ingeladen als text segment. De data en bss worden geïnitialiseerd, en het proces heeft een lege heap en stack. Het programma begint met de `main()` van de executable.
+Het parent proces kan de originele code hervatten, maar zal in veel gevallen wachten tot het kind doodgaat. Hiervoor wordt de `wait` system call gebruikt, met het PID van het kind. Hoewel dit wat tragisch klinkt, is het in Unix een groter probleem als de parent komt te overleiden terwijl de child nog leeft: in dat geval hebben we een orphan (weesproces), dat door het init process wordt geadopteerd.
+Als de parent besluit niet op het kind te wachten, en dit komt te overleiden, dan zal het kind niet direct verwijderd worden. Het proces is welliswaar beëindigd, maar komt nog wel in de procestabel voor tot de parent het overleiden heeft geregistreerd door de exit-code te lezen. Tot die tijd wordt dit kind een zombie-proces genoemd.
+-->
 <div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="dt">int</span> pid = fork();</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="cf">if</span> (pid == <span class="dv">0</span>)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">{ </a>
@@ -385,23 +403,25 @@ Parent = init proces (PID 1)
 </section>
 <section id="sys_exit" class="slide level2">
 <h2><code>SYS_exit</code></h2>
-<!--
-- Exit code 0 = OK
-- Al het andere = error
-- Welke? Ligt aan proces
--->
 <aside class="notes">
-<p>Een proces dat klaar is zal zichzelf beëindigen met behulp van de <code>SYS_exit</code> call. Deze krijgt een argument mee van het type <code>int</code>, die vertelt waarom het proces gestopt is. Dit wordt de exit-code genoemd. Een exit-code van <code>0</code> betekent dat alles goed is gegaan. Een ander getal duidt op een error, waarbij het specifieke getal gebruikt kan worden om de foutmelding aan te geven. Hiervoor is verder geen conventie, de betekenis van de overige exit-codes verschilt van programma tot programma.</p>
+<ul>
+<li>Exit code 0 = OK</li>
+<li>Al het andere = error</li>
+<li>Welke? Ligt aan proces</li>
+</ul>
 </aside>
+<!--
+Een proces dat klaar is zal zichzelf beëindigen met behulp van de `SYS_exit` call. Deze krijgt een argument mee van het type `int`, die vertelt waarom het proces gestopt is. Dit wordt de exit-code genoemd. Een exit-code van `0` betekent dat alles goed is gegaan. Een ander getal duidt op een error, waarbij het specifieke getal gebruikt kan worden om de foutmelding aan te geven. Hiervoor is verder geen conventie, de betekenis van de overige exit-codes verschilt van programma tot programma.
+-->
 <div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" data-line-number="1">syscall(SYS_exit, <span class="dv">0</span>);</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">// of</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">_exit(<span class="dv">0</span>);</a></code></pre></div>
 </section>
 <section id="states-revisited" class="slide level2">
 <h2>States (revisited)</h2>
-<aside class="notes">
-<p>Inmiddels hebben we het hele plaatje, inclusief de system calls die aan het begin en einde van het leven van een proces staan.</p>
-</aside>
+<!--
+Inmiddels hebben we het hele plaatje, inclusief de system calls die aan het begin en einde van het leven van een proces staan.
+-->
 <figure>
 <img data-src="images/states2.png" alt="Process State Diagram" style="width:60.0%" /><figcaption>Process State Diagram</figcaption>
 </figure>
