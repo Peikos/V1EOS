@@ -15,7 +15,10 @@
    version="1.1"
    id="svg3007"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="2cores.svg">
+   sodipodi:docname="2cores.svg"
+   inkscape:export-filename="/home/peikos/Work/V1EOS/Slides/images/2cores.png"
+   inkscape:export-xdpi="149.86"
+   inkscape:export-ydpi="149.86">
   <defs
      id="defs3001">
     <marker
@@ -69,7 +72,7 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:window-width="1920"
-     inkscape:window-height="1070"
+     inkscape:window-height="1190"
      inkscape:window-x="0"
      inkscape:window-y="10"
      inkscape:window-maximized="0" />

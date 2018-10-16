@@ -46,8 +46,95 @@
 Deze les gaan we kijken hoe meerdere processen in het geheugen gemapped worden. Wijs nog even op de gedeelde kernel space.
 -->
 <figure>
-<img data-src="images/Processes.png" alt="Geheugenmodel Processen" style="width:30.0%" /><figcaption>Geheugenmodel Processen</figcaption>
+<img data-src="images/Processes.png" alt="Meerdere Processen" style="width:60.0%" /><figcaption>Meerdere Processen</figcaption>
 </figure>
+</section>
+<section id="wat-is-geheugen" class="slide level2">
+<h2>Wat is geheugen?</h2>
+<aside class="notes">
+<p>Een computer heeft verschillende vormen van geheugen. De registers hebben we in CSN gezien: deze slaan kleine hoeveelheden data op (in CSN 8 bits, in moderne computers doorgaans 64 bits) en kunnen direct door de processor aangesproken worden voor berekeningen. RAM-geheugen is een stuk langzamer: informatie moet worden opgezocht en dan in een register worden gezet om ermee te kunnen werken. Tussen deze twee lagen zit de cache. Deze heeft meerdere levels, tegenwoordig doorgaans 3. De level 1 cache is vrij klein en is erg snel aan te spreken, de level 2 cache is wat groter maar minder snel, en level 3 het langzaamst (maar nog steeds veel sneller dan het RAM) en het grootst (maar nog steeds veel kleiner dan RAM). Je kunt de cache zien als een kleine hoeveelheid eersteklas geheugen. De cache wordt gebruikt voor data die recent nodig is geweest, en die mogelijk binnenkort opnieuw nodig zal zijn. Gegevens die door de processor gebruikt worden gaan via de cache, waar een kopie bewaard wordt. Als de CPU dezelfde gegevens opnieuw opvraagt, dan wordt dit uit het snelst mogelijke geheugen opgeleverd. Tot slot hebben we de non-volatile storage: de harde schijf en/of solid state disk. Beide zijn erg veel groter en minder snel dan het geheugen, maar hebben het voordeel dat ze informatie vasthouden zelfs als de computer wordt uitgezet. De verschillende lagen geheugen kunnen worden vergeleken met fysieke opslagruimte: de registers zijn je handen, die de dingen bevatten waar je nu mee bezig bent. Cache komt overeen met je bureau: level 1 is recht voor je neus, level 3 is op de hoek. Je kunt objecten hier niet direct gebruiken, maar je kunt ze erg snel oppakken. Het RAM geheugen is in deze vergelijking de kast naast je bureau, nog steeds redelijk bij de hand. De harde schijf is een schuur waar je dingen voor langere tijd in opslaat.</p>
+</aside>
+<!--
+Op volgorde van snel/klein naar groot/langzaam. Vergelijking:
+- registers = handen
+- cache = bureau
+- RAM = kast
+- HD/SSD = schuur
+-->
+<ul>
+<li>Registers</li>
+<li>Cache</li>
+<li>RAM</li>
+<li>HD / SSD</li>
+</ul>
+</section>
+<section id="cache" class="slide level2">
+<h2>Cache</h2>
+<aside class="notes">
+<p>Cachen verhoogt de snelheid van een computer doordat veel data vaker wordt opgevraagd. Recent gebruikte of berekende data wordt in de cache gezet, en zodra de cache vol zit wordt oudere data verwijderd. Mogelijk is de data nog wel in een andere cache aanwezig, die verder van de CPU verwijderd wordt, waardoor deze niet opnieuw uit het geheugen hoeft te worden gehaald totdat het uit alle caches is verdwenen. De data is dan relatief lang niet nodig geweest, en de kans is groot dat deze niet snel weer gebruikt zal worden. Waar bij normaal geheugen een index bepaalt hoe een stuk geheugen geaddresseerd kan worden, heeft een cache twee indices: de index binnen de cache en een verwijzing naar de geheugenplaats waar de data een kopie van is. De eerste byte in het cache geheugen op de slide verwijst naar byte <code>0x02</code> in het geheugen. Als de gevraagde gegevens in de cache worden gevonden spreken we over een <em>cache hit</em>, en als de gegevens er niet zijn (en dus elders vandaan worden gehaald) dan hebben we een <em>cache miss</em>. Het precentage van de requests dat in een hit resulteert noemen we de <em>hit ratio</em>.</p>
+</aside>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="memory">Memory</h4>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Index</td>
+<td style="text-align: left;">Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;"><code>01011101</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>0x01</code></td>
+<td style="text-align: left;"><code>10100110</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>0x02</code></td>
+<td style="text-align: left;"><code>10000101</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>0x03</code></td>
+<td style="text-align: left;"><code>11100110</code></td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<h4 id="cache-memory">Cache Memory</h4>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Index</td>
+<td style="text-align: left;">Tag</td>
+<td style="text-align: left;">Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;"><code>0x02</code></td>
+<td style="text-align: left;"><code>10000101</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>0x01</code></td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;"><code>01011101</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="physical-en-virtual-memory" class="slide level2">
+<h2>Physical en Virtual Memory</h2>
+</section>
+<section id="segmentation" class="slide level2">
+<h2>Segmentation</h2>
+</section>
+<section id="paging" class="slide level2">
+<h2>Paging</h2>
+</section>
+<section id="on-demand-paging" class="slide level2">
+<h2>On-demand Paging</h2>
 </section>
     </div>
   </div>
