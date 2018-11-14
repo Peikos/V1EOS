@@ -280,7 +280,6 @@ Met de `-i` flag kun je `ls` vragen de inode-nummers te printen. Op de slide is 
 <h2>RAID en LVM</h2>
 <!--
 RAID (Redundant Array of Independent Disks) is een opslag-virtualisatie technologie die met name in de serverwereld gebruikt wordt. De koppeling tussen fysieke media en logische partities wordt hierbij verder losgelaten: een partitie kan zich op meerdere schijven bevinden, zowel parallel (alle data is op elke schijf aanwezig) als serieel (data staat over schijven verdeeld). Parallelle data-opslag zorgt voor redundancy: een schijf kan falen, maar er is altijd een tweede of derde schijf met dezelfde data. Seriële data-opslag combineert schijven tot een groter geheel. Beide methoden geven ook een snelheidswinsts: omdat delen van een bestand op andere schijven staan kunnen deze tegelijk worden gelezen. Voor RAID bestaan verschillende levels, waarbij parallel en serieel vaak worden gecombineerd: RAID 0 gebruikt _striping_ (seriële segmentering van data over schijven), RAID 1 gebruikt _data mirroring_ (parallel). Hogere RAID-levels gebruiken verschillende technieken om data-integriteit te bevorderen. Verschillende RAID-levels kunnen worden gecombineerd, zoals RAID 0+1 en RAID 1+0 (beide combineren RAID 0 en 1, maar in een andere volgorde). RAID kan op software-niveau geïmplementeerd worden, maar is meestal hardware-matig in servers aanwezig.
-LVM (Logical Volume Manager) is iets gebruikelijker in consumenten-systemen, en is geheel als kernel-niveau software geïmplementeerd. Ook bij LVM wordt de koppeling tussen fysieke media en partities zoveel mogelijk losgelaten, maar bij LVM is het doel met name het combineren van schijven voor opslagruimte. Daarnaast heeft LVM het voordeel dat partities makkelijker aangepast kunnen worden, bijvoorbeeld als deze groter of kleiner dan gewenst is. Bij LVM worden verschillende Physical Volumes (PVs) gecombineerd tot Volume Groups (VGs). Binnen deze VG worden Logical Volumes (LVs) aangemaakt, die als virtuele schijven benaderd worden en een filesystem kunnen hebben. Daarnaast maakt LVM het mogelijk snapshots (momentopnames van de toestand van het systeem op een bepaald moment, als een backup) van LVs te maken, en meerdere PVs met een enkel wachtwoord te encrypten.
 -->
 <aside class="notes">
 <ul>
@@ -302,6 +301,17 @@ LVM (Logical Volume Manager) is iets gebruikelijker in consumenten-systemen, en 
 </section>
 <section id="lvm" class="slide level2">
 <h2>LVM</h2>
+<!--
+LVM (Logical Volume Manager) is iets gebruikelijker in consumenten-systemen, en is geheel als kernel-niveau software geïmplementeerd. Ook bij LVM wordt de koppeling tussen fysieke media en partities zoveel mogelijk losgelaten, maar bij LVM is het doel met name het combineren van schijven voor opslagruimte. Daarnaast heeft LVM het voordeel dat partities makkelijker aangepast kunnen worden, bijvoorbeeld als deze groter of kleiner dan gewenst is. Bij LVM worden verschillende Physical Volumes (PVs) gecombineerd tot Volume Groups (VGs). Binnen deze VG worden Logical Volumes (LVs) aangemaakt, die als virtuele schijven benaderd worden en een filesystem kunnen hebben. Daarnaast maakt LVM het mogelijk snapshots (momentopnames van de toestand van het systeem op een bepaald moment, als een backup) van LVs te maken, en meerdere PVs met een enkel wachtwoord te encrypten.
+-->
+<aside class="notes">
+<ul>
+<li>Iedere schijf onderverdeeld in kleine Physical Partitions (allemaal zelfde formaat)</li>
+<li>PPs maken onderdeel uit van Volume Group</li>
+<li>Verschillende PPs binnen VG vormen een LV</li>
+<li>LV heeft een FS en Mount-Point</li>
+</ul>
+</aside>
 <p><img data-src="images/lvm.png" style="width:90.0%" /></p>
 </section>
 <section id="the-next-generation" class="slide level2">
