@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="246.68977mm"
+   height="129.62572mm"
+   viewBox="0 0 246.68977 129.62572"
+   version="1.1"
+   id="svg1640"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="lvm.svg"
+   inkscape:export-filename="/home/peikos/annex/hu/vakken/v1eos/dev18/git/Slides/images/lvm.png"
+   inkscape:export-xdpi="149.86"
+   inkscape:export-ydpi="149.86">
+  <defs
+     id="defs1634">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker5294"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#edb2d5;fill-opacity:1;fill-rule:evenodd;stroke:#edb2d5;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path5292"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker5272"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#87de87;fill-opacity:1;fill-rule:evenodd;stroke:#87de87;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path5270"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path2198"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#97cee9;fill-opacity:1;fill-rule:evenodd;stroke:#97cee9;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="352.60257"
+     inkscape:cy="251.94302"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1070"
+     inkscape:window-x="0"
+     inkscape:window-y="10"
+     inkscape:window-maximized="0"
+     inkscape:snap-global="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata1637">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-33.94323,-164.46657)">
+    <g
+       id="g5207">
+      <rect
+         y="164.46657"
+         x="33.94323"
+         height="129.62572"
+         width="246.68977"
+         id="rect4825"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:1.00000001, 1.00000001;stroke-dashoffset:0;stroke-opacity:1" />
+      <g
+         transform="translate(118.55969,-31.073072)"
+         id="g4904">
+        <rect
+           style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect21676"
+           width="23.051113"
+           height="14.363109"
+           x="71.300453"
+           y="232.00427" />
+        <text
+           xml:space="preserve"
+           x="82.823586"
+           y="241.18396"
+           id="text21680"><tspan
+             id="tspan21678"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle"
+             sodipodi:role="line"
+             x="82.823586"
+             y="241.18396">/</tspan></text>
+        <g
+           id="g4813">
+          <rect
+             style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             id="rect21670"
+             width="23.051113"
+             height="14.363109"
+             x="23.675455"
+             y="253.17096" />
+          <text
+             xml:space="preserve"
+             x="35.198589"
+             y="262.35065"
+             id="text21684"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R'"><tspan
+               id="tspan21682"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:center;text-anchor:middle"
+               sodipodi:role="line"
+               x="35.198589"
+               y="262.35065">/bin</tspan></text>
+        </g>
+        <g
+           id="g4779"
+           transform="translate(31.750001)">
+          <rect
+             y="253.17096"
+             x="55.425457"
+             height="14.363109"
+             width="23.051113"
+             id="rect21672"
+             style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <text
+             id="text21688"
+             y="262.35065"
+             x="66.948593"
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R'"><tspan
+               y="262.35065"
+               x="66.948593"
+               sodipodi:role="line"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:center;text-anchor:middle"
+               id="tspan21686">/usr</tspan></text>
+        </g>
+        <g
+           id="g4784"
+           transform="translate(-31.750001)">
+          <rect
+             y="253.17091"
+             x="87.175468"
+             height="14.363109"
+             width="23.051113"
+             id="rect21702"
+             style="opacity:1;fill:#97cee9;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <text
+             xml:space="preserve"
+             x="98.698586"
+             y="262.35065"
+             id="text21692"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R'"><tspan
+               id="tspan21690"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:center;text-anchor:middle"
+               sodipodi:role="line"
+               x="98.698586"
+               y="262.35065">/home</tspan></text>
+        </g>
+        <g
+           id="g2755-0"
+           transform="translate(39.687505,74.083337)">
+          <path
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="M 32.752982,172.28404 7.0390657,179.08761"
+             id="path2742-6"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="cc" />
+          <path
+             inkscape:connector-curvature="0"
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 48.232376,172.28404 9.838912,6.80357"
+             id="path2744-26"
+             sodipodi:nodetypes="cc" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path2750-1"
+             d="m 43.138513,172.28404 -15.875,6.80357"
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             sodipodi:nodetypes="cc" />
+          <path
+             id="path4823"
+             d="m 53.524043,172.28404 25.713912,6.80357"
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="cc" />
+        </g>
+        <g
+           id="g4808"
+           transform="translate(31.750001)">
+          <rect
+             y="274.33762"
+             x="71.300453"
+             height="14.363109"
+             width="23.051113"
+             id="rect21696"
+             style="opacity:1;fill:#87de87;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <text
+             id="text21710"
+             y="286.16309"
+             x="82.823586"
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R'"><tspan
+               y="286.16309"
+               x="82.823586"
+               sodipodi:role="line"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:center;text-anchor:middle"
+               id="tspan21708">/www</tspan></text>
+          <text
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';stroke-width:1"
+             xml:space="preserve"
+             x="82.724815"
+             y="281.04074"
+             id="text21692-8"><tspan
+               id="tspan21690-4"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:center;text-anchor:middle;stroke-width:1"
+               sodipodi:role="line"
+               x="82.724815"
+               y="281.04074">/var</tspan></text>
+        </g>
+        <g
+           id="g4801"
+           transform="translate(31.750001)">
+          <rect
+             y="274.33762"
+             x="103.05048"
+             height="14.363109"
+             width="23.051113"
+             id="rect21700"
+             style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <text
+             id="text21718"
+             y="286.16309"
+             x="114.57362"
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R'"><tspan
+               y="286.16309"
+               x="114.57362"
+               sodipodi:role="line"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:center;text-anchor:middle"
+               id="tspan21716">/log</tspan></text>
+          <text
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';stroke-width:1"
+             xml:space="preserve"
+             x="114.50336"
+             y="281.04074"
+             id="text21772"><tspan
+               id="tspan21770"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:center;text-anchor:middle;stroke-width:1"
+               sodipodi:role="line"
+               x="114.50336"
+               y="281.04074">/var</tspan></text>
+        </g>
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 125.35718,267.53403 -9.83892,6.80357"
+           id="path2742-7"
+           inkscape:connector-curvature="0" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 135.54491,267.53403 9.83891,6.80357"
+           id="path2744-9" />
+        <g
+           transform="translate(63.500003)"
+           id="g4821"
+           style="fill:#ff2727;fill-opacity:0.28235294">
+          <rect
+             style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             id="rect4815"
+             width="23.051113"
+             height="14.363109"
+             x="55.425457"
+             y="253.17096" />
+          <text
+             xml:space="preserve"
+             x="66.948593"
+             y="262.35065"
+             id="text4819"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';fill:#000000;fill-opacity:0.87726363"><tspan
+               id="tspan4817"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0.87726363"
+               sodipodi:role="line"
+               x="66.948593"
+               y="262.35065">/var</tspan></text>
+        </g>
+      </g>
+      <g
+         id="g5015">
+        <path
+           style="opacity:1;fill:#cccccc;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 39.056424,174.04434 h 91.031506 v 47.7006 H 39.056424 Z"
+           id="rect21572"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <text
+           id="text21576"
+           y="177.25293"
+           x="40.932587"
+           xml:space="preserve"
+           style="font-size:3.17499995px;text-align:start;text-anchor:start;stroke-width:1"><tspan
+             y="177.25293"
+             x="40.932587"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:start;text-anchor:start;stroke-width:1"
+             id="tspan21574">Volume Group (VG)</tspan></text>
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path4297"
+           d="m 40.379338,182.52967 h 33.579117 v 38.12499 H 40.379338 Z"
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 75.304339,182.52967 h 33.579111 v 38.12499 H 75.304339 Z"
+           id="path4299"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path4301"
+           d="m 110.7585,182.52967 h 17.5935 v 38.12499 h -17.5935 z"
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path
+           style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 41.966837,210.46334 h 14.39792 v 8.70064 h -14.39792 z"
+           id="path4303"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path4305"
+           d="m 57.973037,210.46334 h 14.397919 v 8.70064 H 57.973037 Z"
+           style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path4307"
+           d="m 41.966837,200.53022 h 14.39792 v 8.70064 h -14.39792 z"
+           style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path
+           style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 57.973037,200.53022 h 14.397919 v 8.70064 H 57.973037 Z"
+           id="path4309"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           style="opacity:1;fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 41.966837,190.5971 h 14.39792 v 8.70064 h -14.39792 z"
+           id="path4311"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path4313"
+           d="m 57.973037,190.5971 h 14.397919 v 8.70064 H 57.973037 Z"
+           style="opacity:1;fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path
+           style="opacity:1;fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 76.891835,210.46334 h 14.39792 v 8.70064 h -14.39792 z"
+           id="path4303-3"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path4305-5"
+           d="m 92.898035,210.46334 h 14.397915 v 8.70064 H 92.898035 Z"
+           style="opacity:1;fill:#87de87;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path4307-6"
+           d="m 76.891835,200.53022 h 14.39792 v 8.70064 h -14.39792 z"
+           style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path
+           style="opacity:1;fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 92.898035,200.53022 h 14.397915 v 8.70064 H 92.898035 Z"
+           id="path4309-2"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           style="opacity:1;fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 76.891835,190.5971 h 14.39792 v 8.70064 h -14.39792 z"
+           id="path4311-9"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path4313-1"
+           d="m 92.898035,190.5971 h 14.397915 v 8.70064 H 92.898035 Z"
+           style="opacity:1;fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path4366"
+           d="m 112.346,210.46334 h 14.39792 v 8.70064 H 112.346 Z"
+           style="opacity:1;fill:#97cee9;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path
+           style="opacity:1;fill:#97cee9;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 112.346,200.53022 h 14.39792 v 8.70064 H 112.346 Z"
+           id="path4370"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path4374"
+           d="m 112.346,190.5971 h 14.39792 v 8.70064 H 112.346 Z"
+           style="opacity:1;fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <text
+           style="font-size:3.17499995px;text-align:start;text-anchor:start;stroke-width:1"
+           xml:space="preserve"
+           x="41.941174"
+           y="185.73825"
+           id="text4430"><tspan
+             id="tspan4428"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:start;text-anchor:start;stroke-width:1"
+             sodipodi:role="line"
+             x="41.941174"
+             y="185.73825">Phyisical Volume (PV)</tspan></text>
+        <text
+           id="text4434"
+           y="185.73825"
+           x="76.866173"
+           xml:space="preserve"
+           style="font-size:3.17499995px;text-align:start;text-anchor:start;stroke-width:1"><tspan
+             y="185.73825"
+             x="76.866173"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:start;text-anchor:start;stroke-width:1"
+             id="tspan4432">PV</tspan></text>
+        <text
+           style="font-size:3.17499995px;text-align:start;text-anchor:start;stroke-width:1"
+           xml:space="preserve"
+           x="112.32033"
+           y="185.73825"
+           id="text4438"><tspan
+             id="tspan4436"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:start;text-anchor:start;stroke-width:1"
+             sodipodi:role="line"
+             x="112.32033"
+             y="185.73825">PV</tspan></text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:start;text-anchor:start;stroke-width:1"
+           xml:space="preserve"
+           x="40.932587"
+           y="180.42789"
+           id="text4442"><tspan
+             id="tspan4440"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:start;text-anchor:start;stroke-width:1"
+             sodipodi:role="line"
+             x="40.932587"
+             y="180.42789">myVG</tspan></text>
+        <text
+           id="text4446"
+           y="188.91321"
+           x="41.941174"
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:start;text-anchor:start;stroke-width:1"><tspan
+             y="188.91321"
+             x="41.941174"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:start;text-anchor:start;stroke-width:1"
+             id="tspan4444">hdisk0</tspan></text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:start;text-anchor:start;stroke-width:1"
+           xml:space="preserve"
+           x="76.866173"
+           y="188.91321"
+           id="text4450"><tspan
+             id="tspan4448"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:start;text-anchor:start;stroke-width:1"
+             sodipodi:role="line"
+             x="76.866173"
+             y="188.91321">hdisk1</tspan></text>
+        <text
+           id="text4454"
+           y="188.91321"
+           x="112.32033"
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:start;text-anchor:start;stroke-width:1"><tspan
+             y="188.91321"
+             x="112.32033"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:start;text-anchor:start;stroke-width:1"
+             id="tspan4452">hdisk2</tspan></text>
+        <text
+           id="text4462"
+           y="193.94518"
+           x="49.175476"
+           xml:space="preserve"
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"><tspan
+             y="193.94518"
+             x="49.175476"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4464">Physical</tspan><tspan
+             y="197.91393"
+             x="49.175476"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4468">8 MB</tspan></text>
+        <text
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"
+           xml:space="preserve"
+           x="49.175476"
+           y="203.8783"
+           id="text4474"><tspan
+             id="tspan4470"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="49.175476"
+             y="203.8783">PP</tspan><tspan
+             id="tspan4472"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="49.175476"
+             y="207.84705">8 MB</tspan></text>
+        <text
+           id="text4480"
+           y="213.81142"
+           x="49.175476"
+           xml:space="preserve"
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"><tspan
+             y="213.81142"
+             x="49.175476"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4476">PP</tspan><tspan
+             y="217.78017"
+             x="49.175476"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4478">8 MB</tspan></text>
+        <text
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"
+           xml:space="preserve"
+           x="65.181679"
+           y="193.94518"
+           id="text4486"><tspan
+             id="tspan4482"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="65.181679"
+             y="193.94518">Partition</tspan><tspan
+             id="tspan4484"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="65.181679"
+             y="197.91393">8 MB</tspan></text>
+        <text
+           id="text4492"
+           y="203.8783"
+           x="65.181679"
+           xml:space="preserve"
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"><tspan
+             y="203.8783"
+             x="65.181679"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4488">PP</tspan><tspan
+             y="207.84705"
+             x="65.181679"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4490">8 MB</tspan></text>
+        <text
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"
+           xml:space="preserve"
+           x="65.181679"
+           y="213.81142"
+           id="text4498"><tspan
+             id="tspan4494"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="65.181679"
+             y="213.81142">PP</tspan><tspan
+             id="tspan4496"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="65.181679"
+             y="217.78017">8 MB</tspan></text>
+        <text
+           id="text4504"
+           y="193.94518"
+           x="84.100471"
+           xml:space="preserve"
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"><tspan
+             y="193.94518"
+             x="84.100471"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4500">PP</tspan><tspan
+             y="197.91393"
+             x="84.100471"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4502">8 MB</tspan></text>
+        <text
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"
+           xml:space="preserve"
+           x="84.100471"
+           y="203.8783"
+           id="text4510"><tspan
+             id="tspan4506"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="84.100471"
+             y="203.8783">PP</tspan><tspan
+             id="tspan4508"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="84.100471"
+             y="207.84705">8 MB</tspan></text>
+        <text
+           id="text4516"
+           y="213.81142"
+           x="84.100471"
+           xml:space="preserve"
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"><tspan
+             y="213.81142"
+             x="84.100471"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4512">PP</tspan><tspan
+             y="217.78017"
+             x="84.100471"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4514">8 MB</tspan></text>
+        <text
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"
+           xml:space="preserve"
+           x="100.10667"
+           y="193.94518"
+           id="text4522"><tspan
+             id="tspan4518"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="100.10667"
+             y="193.94518">PP</tspan><tspan
+             id="tspan4520"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="100.10667"
+             y="197.91393">8 MB</tspan></text>
+        <text
+           id="text4528"
+           y="203.8783"
+           x="100.10667"
+           xml:space="preserve"
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"><tspan
+             y="203.8783"
+             x="100.10667"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4524">PP</tspan><tspan
+             y="207.84705"
+             x="100.10667"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4526">8 MB</tspan></text>
+        <text
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"
+           xml:space="preserve"
+           x="100.10667"
+           y="213.81142"
+           id="text4534"><tspan
+             id="tspan4530"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="100.10667"
+             y="213.81142">PP</tspan><tspan
+             id="tspan4532"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="100.10667"
+             y="217.78017">8 MB</tspan></text>
+        <text
+           id="text4540"
+           y="193.94518"
+           x="119.55464"
+           xml:space="preserve"
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"><tspan
+             y="193.94518"
+             x="119.55464"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4536">PP</tspan><tspan
+             y="197.91393"
+             x="119.55464"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4538">8 MB</tspan></text>
+        <text
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"
+           xml:space="preserve"
+           x="119.55464"
+           y="203.8783"
+           id="text4546"><tspan
+             id="tspan4542"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="119.55464"
+             y="203.8783">PP</tspan><tspan
+             id="tspan4544"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             sodipodi:role="line"
+             x="119.55464"
+             y="207.84705">8 MB</tspan></text>
+        <text
+           id="text4552"
+           y="213.81142"
+           x="119.55464"
+           xml:space="preserve"
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"><tspan
+             y="213.81142"
+             x="119.55464"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4548">PP</tspan><tspan
+             y="217.78017"
+             x="119.55464"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+             id="tspan4550">8 MB</tspan></text>
+        <g
+           id="g5244">
+          <path
+             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#edb2d5;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:1.00000003, 1.00000003;stroke-dashoffset:0;stroke-opacity:1"
+             d="M 39.056424,243.88566 H 130.08793 V 225.6846 H 39.056424 Z"
+             id="path4562"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="ccccc" />
+          <path
+             style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             d="m 41.966837,232.15919 h 14.39792 v 8.70064 h -14.39792 z"
+             id="path4398"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="ccccc" />
+          <path
+             sodipodi:nodetypes="ccccc"
+             inkscape:connector-curvature="0"
+             id="path4400"
+             d="m 57.841838,232.15919 h 14.39792 v 8.70064 h -14.39792 z"
+             style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <path
+             style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             d="m 73.716839,232.15919 h 14.39792 v 8.70064 h -14.39792 z"
+             id="path4402"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="ccccc" />
+          <path
+             sodipodi:nodetypes="ccccc"
+             inkscape:connector-curvature="0"
+             id="path4404"
+             d="m 89.59184,232.15919 h 14.39792 v 8.70064 H 89.59184 Z"
+             style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <path
+             style="opacity:1;fill:#edb2d5;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             d="m 105.46684,232.15919 h 14.39793 v 8.70064 h -14.39793 z"
+             id="path4406"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="ccccc" />
+          <text
+             style="font-size:3.17499995px;text-align:start;text-anchor:start;stroke-width:1"
+             xml:space="preserve"
+             x="41.941174"
+             y="230.18826"
+             id="text4556"><tspan
+               id="tspan4554"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:start;text-anchor:start;stroke-width:1"
+               sodipodi:role="line"
+               x="41.941174"
+               y="230.18826">Logical Volume (LV)</tspan></text>
+          <text
+             id="text4560"
+             y="230.18826"
+             x="78.982841"
+             xml:space="preserve"
+             style="font-size:3.17499995px;text-align:start;text-anchor:start;stroke-width:1"><tspan
+               y="230.18826"
+               x="78.982841"
+               sodipodi:role="line"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:start;text-anchor:start;stroke-width:1"
+               id="tspan4558">/dev/mapper/rootLV</tspan></text>
+          <text
+             id="text4595"
+             y="230.18826"
+             x="127.9716"
+             xml:space="preserve"
+             style="font-size:3.17499995px;text-align:end;text-anchor:end;stroke-width:1"><tspan
+               y="230.18826"
+               x="127.9716"
+               sodipodi:role="line"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:end;text-anchor:end;stroke-width:1"
+               id="tspan4593">FS: BtrFS</tspan></text>
+        </g>
+        <g
+           id="g5230"
+           transform="translate(0,21.166667)">
+          <path
+             sodipodi:nodetypes="ccccc"
+             inkscape:connector-curvature="0"
+             id="path4581"
+             d="M 39.056424,265.05234 H 130.08793 V 246.85128 H 39.056424 Z"
+             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#87de87;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:1.00000003, 1.00000003;stroke-dashoffset:0;stroke-opacity:1" />
+          <path
+             sodipodi:nodetypes="ccccc"
+             inkscape:connector-curvature="0"
+             id="path4408"
+             d="m 41.966837,253.32587 h 14.39792 v 8.70064 h -14.39792 z"
+             style="opacity:1;fill:#87de87;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <text
+             id="text4575"
+             y="251.35495"
+             x="41.941174"
+             xml:space="preserve"
+             style="font-size:3.17499995px;text-align:start;text-anchor:start;stroke-width:1"><tspan
+               y="251.35495"
+               x="41.941174"
+               sodipodi:role="line"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:start;text-anchor:start;stroke-width:1"
+               id="tspan4573">Logical Volume (LV)</tspan></text>
+          <text
+             style="font-size:3.17499995px;text-align:start;text-anchor:start;stroke-width:1"
+             xml:space="preserve"
+             x="78.982841"
+             y="251.35495"
+             id="text4579"><tspan
+               id="tspan4577"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:start;text-anchor:start;stroke-width:1"
+               sodipodi:role="line"
+               x="78.982841"
+               y="251.35495">/dev/mapper/wwwLV</tspan></text>
+          <text
+             style="font-size:3.17499995px;text-align:end;text-anchor:end;stroke-width:1"
+             xml:space="preserve"
+             x="127.97161"
+             y="251.35495"
+             id="text4599"><tspan
+               id="tspan4597"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:end;text-anchor:end;stroke-width:1"
+               sodipodi:role="line"
+               x="127.97161"
+               y="251.35495">FS: Ext4</tspan></text>
+        </g>
+        <g
+           id="g5220"
+           transform="translate(0,-21.166667)">
+          <path
+             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#97cee9;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:1.00000003, 1.00000003;stroke-dashoffset:0;stroke-opacity:1"
+             d="M 39.056424,286.21902 H 130.08793 V 268.01796 H 39.056424 Z"
+             id="path4591"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="ccccc" />
+          <path
+             style="opacity:1;fill:#97cee9;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             d="m 41.966837,275.02172 h 14.39792 v 8.70064 h -14.39792 z"
+             id="path4418"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="ccccc" />
+          <path
+             sodipodi:nodetypes="ccccc"
+             inkscape:connector-curvature="0"
+             id="path4420"
+             d="m 57.841838,275.02172 h 14.39792 v 8.70064 h -14.39792 z"
+             style="opacity:1;fill:#97cee9;fill-opacity:1;stroke:#000000;stroke-width:0.50006253;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <text
+             style="font-size:3.17499995px;text-align:start;text-anchor:start;stroke-width:1"
+             xml:space="preserve"
+             x="41.941174"
+             y="273.05075"
+             id="text4585"><tspan
+               id="tspan4583"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:start;text-anchor:start;stroke-width:1"
+               sodipodi:role="line"
+               x="41.941174"
+               y="273.05075">Logical Volume (LV)</tspan></text>
+          <text
+             id="text4589"
+             y="273.05075"
+             x="78.982841"
+             xml:space="preserve"
+             style="font-size:3.17499995px;text-align:start;text-anchor:start;stroke-width:1"><tspan
+               y="273.05075"
+               x="78.982841"
+               sodipodi:role="line"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Envy Code R';-inkscape-font-specification:'Envy Code R';text-align:start;text-anchor:start;stroke-width:1"
+               id="tspan4587">/dev/mapper/homeLV</tspan></text>
+          <text
+             id="text4603"
+             y="272.52158"
+             x="127.97161"
+             xml:space="preserve"
+             style="font-size:3.17499995px;text-align:end;text-anchor:end;stroke-width:1"><tspan
+               y="272.52158"
+               x="127.97161"
+               sodipodi:role="line"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:end;text-anchor:end;stroke-width:1"
+               id="tspan4601">FS: ZFS</tspan></text>
+        </g>
+        <path
+           style="fill:none;stroke:#97cee9;stroke-width:0.36500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.73, 0.73;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+           d="m 130.42753,252.66551 c 29.56644,2.41543 43.06484,0.34732 53.98844,-15.77427"
+           id="path5246"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#87de87;stroke-width:0.36500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.73, 0.73;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker5272)"
+           d="m 129.89299,272.44346 c 31.09709,-6.43785 63.97777,-10.49758 91.13891,-22.18337"
+           id="path5248"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <path
+         style="fill:none;stroke:#edb2d5;stroke-width:0.36500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.73, 0.73;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker5294)"
+         d="m 129.89299,236.52189 c 10.01771,-2.37858 7.66954,-22.86573 14.99264,-36.96154 9.7826,-18.82994 36.68566,-18.5434 55.72096,0.46381"
+         id="path5209"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="csc" />
+    </g>
+  </g>
+</svg>

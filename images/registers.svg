@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="273.36035mm"
+   height="155.4254mm"
+   viewBox="0 0 273.36035 155.4254"
+   version="1.1"
+   id="svg18279"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="registers.svg">
+  <defs
+     id="defs18273" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.91757856"
+     inkscape:cx="567.78271"
+     inkscape:cy="156.94426"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1190"
+     inkscape:window-x="0"
+     inkscape:window-y="10"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata18276">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0.53166664,-34.59944)">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#808080;stroke-width:0.005;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect20303"
+       width="273.35535"
+       height="155.42039"
+       x="-0.52916664"
+       y="34.60194" />
+    <g
+       id="g19516">
+      <path
+         id="path18893"
+         d="m 4.6069536,51.782345 v 6.172234 H 44.530096 v -6.172234 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path18891"
+         d="m 4.6069538,42.786512 v 6.172234 H 86.86343 v -6.172234 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path18889"
+         d="m 4.6069538,60.778178 v 6.172235 c 20.3632702,0 40.7265392,0 61.0898092,0 v -6.172235 c -20.36327,0 -40.726539,0 -61.0898092,0 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path18887"
+         d="m 4.6069538,69.774012 v 6.172234 c 20.3632702,0 40.7265392,0 61.0898092,0 v -6.172234 c -20.36327,0 -40.726539,0 -61.0898092,0 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path18885"
+         d="m 46.940289,51.782345 v 6.172234 h 39.923143 v -6.172234 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path18883"
+         d="m 68.106955,60.778178 v 6.172235 h 18.756477 v -6.172235 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path18881"
+         d="m 78.690384,69.774017 h 8.172812 v 6.172154 h -8.172812 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path18879"
+         d="m 68.107056,69.774017 h 8.172812 v 6.172154 h -8.172812 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path18864"
+         d="m 68.107056,69.774017 h 8.172812 v 6.172154 h -8.172812 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <text
+         id="text18919"
+         y="47.554672"
+         x="45.193325"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="47.554672"
+           x="45.193325"
+           id="tspan18917"
+           sodipodi:role="line">RAX (64 bits)</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="66.359993"
+         y="56.550507"
+         id="text18923"><tspan
+           sodipodi:role="line"
+           id="tspan18921"
+           x="66.359993"
+           y="56.550507"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">EAX (32 bits)</tspan></text>
+      <text
+         id="text18927"
+         y="65.489899"
+         x="77.485191"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="65.489899"
+           x="77.485191"
+           id="tspan18925"
+           sodipodi:role="line">AX (16)</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="72.193459"
+         y="74.858231"
+         id="text18931"><tspan
+           sodipodi:role="line"
+           id="tspan18929"
+           x="72.193459"
+           y="74.858231"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">AH</tspan></text>
+      <text
+         id="text18935"
+         y="74.858231"
+         x="82.776787"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="74.858231"
+           x="82.776787"
+           id="tspan18933"
+           sodipodi:role="line">AL</tspan></text>
+    </g>
+    <g
+       id="g19537">
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 94.565292,51.782345 v 6.172234 h 39.923158 v -6.172234 z"
+         id="path18937" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 94.565292,42.786512 v 6.172234 h 82.256518 v -6.172234 z"
+         id="path18939" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 94.565292,60.778178 v 6.172235 c 20.363278,0 40.726558,0 61.089838,0 v -6.172235 c -20.36328,0 -40.72656,0 -61.089838,0 z"
+         id="path18941" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 94.565292,69.774012 v 6.172234 c 20.363278,0 40.726558,0 61.089838,0 v -6.172234 c -20.36328,0 -40.72656,0 -61.089838,0 z"
+         id="path18943" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 136.89865,51.782345 v 6.172234 h 39.92316 v -6.172234 z"
+         id="path18945" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 158.06532,60.778178 v 6.172235 h 18.75649 v -6.172235 z"
+         id="path18947" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 168.64876,69.774017 h 8.17282 v 6.172154 h -8.17282 z"
+         id="path18949" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 158.06542,69.774017 h 8.17282 v 6.172154 h -8.17282 z"
+         id="path18951" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 158.06542,69.774017 h 8.17282 v 6.172154 h -8.17282 z"
+         id="path18953" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="135.15166"
+         y="47.554672"
+         id="text18957"><tspan
+           sodipodi:role="line"
+           id="tspan18955"
+           x="135.15166"
+           y="47.554672"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">RCX (64 bits)</tspan></text>
+      <text
+         id="text18961"
+         y="56.550507"
+         x="156.31834"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="56.550507"
+           x="156.31834"
+           id="tspan18959"
+           sodipodi:role="line">ECX (32 bits)</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="167.44356"
+         y="65.489899"
+         id="text18965"><tspan
+           sodipodi:role="line"
+           id="tspan18963"
+           x="167.44356"
+           y="65.489899"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">CX (16)</tspan></text>
+      <text
+         id="text18969"
+         y="74.858231"
+         x="162.15181"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="74.858231"
+           x="162.15181"
+           id="tspan18967"
+           sodipodi:role="line">CH</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="172.73515"
+         y="74.858231"
+         id="text18973"><tspan
+           sodipodi:role="line"
+           id="tspan18971"
+           x="172.73515"
+           y="74.858231"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">CL</tspan></text>
+    </g>
+    <g
+       id="g19820">
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 4.6069536,94.115689 v 6.172241 H 44.530096 v -6.172241 z"
+         id="path18975" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="M 4.6069538,85.119856 V 91.29209 H 86.86343 v -6.172234 z"
+         id="path18977" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 4.6069538,103.11153 v 6.17223 c 20.3632702,0 40.7265392,0 61.0898092,0 v -6.17223 c -20.36327,0 -40.726539,0 -61.0898092,0 z"
+         id="path18979" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 4.6069538,112.10737 v 6.17223 c 20.3632702,0 40.7265392,0 61.0898092,0 v -6.17223 c -20.36327,0 -40.726539,0 -61.0898092,0 z"
+         id="path18981" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 46.940289,94.115689 v 6.172241 h 39.923143 v -6.172241 z"
+         id="path18983" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 68.106955,103.11153 v 6.17223 h 18.756477 v -6.17223 z"
+         id="path18985" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 78.690384,112.10737 h 8.172812 v 6.17216 h -8.172812 z"
+         id="path18987" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 68.107056,112.10737 h 8.172812 v 6.17216 h -8.172812 z"
+         id="path18989" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 68.107056,112.10737 h 8.172812 v 6.17216 h -8.172812 z"
+         id="path18991" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="45.193325"
+         y="89.888008"
+         id="text18995"><tspan
+           sodipodi:role="line"
+           id="tspan18993"
+           x="45.193325"
+           y="89.888008"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">RDX (64 bits)</tspan></text>
+      <text
+         id="text18999"
+         y="98.883835"
+         x="66.359993"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="98.883835"
+           x="66.359993"
+           id="tspan18997"
+           sodipodi:role="line">EDX (32 bits)</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="77.485191"
+         y="107.82321"
+         id="text19003"><tspan
+           sodipodi:role="line"
+           id="tspan19001"
+           x="77.485191"
+           y="107.82321"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">DX (16)</tspan></text>
+      <text
+         id="text19007"
+         y="117.19154"
+         x="72.193459"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="117.19154"
+           x="72.193459"
+           id="tspan19005"
+           sodipodi:role="line">DH</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="82.776787"
+         y="117.19154"
+         id="text19011"><tspan
+           sodipodi:role="line"
+           id="tspan19009"
+           x="82.776787"
+           y="117.19154"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">DL</tspan></text>
+    </g>
+    <g
+       id="g19841">
+      <path
+         id="path19013"
+         d="m 94.565292,94.115689 v 6.172241 h 39.923158 v -6.172241 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19015"
+         d="M 94.565292,85.119856 V 91.29209 H 176.82181 V 85.119856 Z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19017"
+         d="m 94.565292,103.11153 v 6.17223 c 20.363278,0 40.726558,0 61.089838,0 v -6.17223 c -20.36328,0 -40.72656,0 -61.089838,0 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19019"
+         d="m 94.565292,112.10737 v 6.17223 c 20.363278,0 40.726558,0 61.089838,0 v -6.17223 c -20.36328,0 -40.72656,0 -61.089838,0 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19021"
+         d="m 136.89865,94.115689 v 6.172241 h 39.92316 v -6.172241 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19023"
+         d="m 158.06532,103.11153 v 6.17223 h 18.75649 v -6.17223 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19025"
+         d="m 168.64876,112.10737 h 8.17282 v 6.17216 h -8.17282 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19027"
+         d="m 158.06542,112.10737 h 8.17282 v 6.17216 h -8.17282 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19029"
+         d="m 158.06542,112.10737 h 8.17282 v 6.17216 h -8.17282 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <text
+         id="text19033"
+         y="89.888008"
+         x="135.15166"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="89.888008"
+           x="135.15166"
+           id="tspan19031"
+           sodipodi:role="line">RBX (64 bits)</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="156.31834"
+         y="98.883835"
+         id="text19037"><tspan
+           sodipodi:role="line"
+           id="tspan19035"
+           x="156.31834"
+           y="98.883835"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">EBX (32 bits)</tspan></text>
+      <text
+         id="text19041"
+         y="107.82321"
+         x="167.44356"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="107.82321"
+           x="167.44356"
+           id="tspan19039"
+           sodipodi:role="line">BX (16)</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="162.15181"
+         y="117.19154"
+         id="text19045"><tspan
+           sodipodi:role="line"
+           id="tspan19043"
+           x="162.15181"
+           y="117.19154"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">BH</tspan></text>
+      <text
+         id="text19049"
+         y="117.19154"
+         x="172.73515"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="117.19154"
+           x="172.73515"
+           id="tspan19047"
+           sodipodi:role="line">BL</tspan></text>
+    </g>
+    <g
+       id="g20004">
+      <path
+         id="path19051"
+         d="m 4.6069536,136.44906 v 6.17224 H 44.530096 v -6.17224 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19053"
+         d="m 4.6069538,127.45322 v 6.17224 H 86.86343 v -6.17224 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19055"
+         d="m 4.6069538,145.4449 v 6.17223 c 20.3632702,0 40.7265392,0 61.0898092,0 v -6.17223 c -20.36327,0 -40.726539,0 -61.0898092,0 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19059"
+         d="m 46.940289,136.44906 v 6.17224 h 39.923143 v -6.17224 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19061"
+         d="m 68.106955,145.4449 v 6.17223 h 18.756477 v -6.17223 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <text
+         id="text19071"
+         y="132.22137"
+         x="45.193325"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="132.22137"
+           x="45.193325"
+           id="tspan19069"
+           sodipodi:role="line">RSP (64 bits)</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="66.359993"
+         y="141.21718"
+         id="text19075"><tspan
+           sodipodi:role="line"
+           id="tspan19073"
+           x="66.359993"
+           y="141.21718"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">ESP (32 bits)</tspan></text>
+      <text
+         id="text19079"
+         y="150.15659"
+         x="77.485191"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="150.15659"
+           x="77.485191"
+           id="tspan19077"
+           sodipodi:role="line">SP (16)</tspan></text>
+    </g>
+    <g
+       id="g20195">
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 94.565292,136.44906 v 6.17224 h 39.923158 v -6.17224 z"
+         id="path19089" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 94.565292,127.45322 v 6.17224 h 82.256518 v -6.17224 z"
+         id="path19091" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 94.565292,145.4449 v 6.17223 c 20.363278,0 40.726558,0 61.089838,0 v -6.17223 c -20.36328,0 -40.72656,0 -61.089838,0 z"
+         id="path19093" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 136.89865,136.44906 v 6.17224 h 39.92316 v -6.17224 z"
+         id="path19097" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 158.06532,145.4449 v 6.17223 h 18.75649 v -6.17223 z"
+         id="path19099" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="135.15166"
+         y="132.22137"
+         id="text19109"><tspan
+           sodipodi:role="line"
+           id="tspan19107"
+           x="135.15166"
+           y="132.22137"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">RBP (64 bits)</tspan></text>
+      <text
+         id="text19113"
+         y="141.21718"
+         x="156.31834"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="141.21718"
+           x="156.31834"
+           id="tspan19111"
+           sodipodi:role="line">EBP (32 bits)</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="167.44356"
+         y="150.15659"
+         id="text19117"><tspan
+           sodipodi:role="line"
+           id="tspan19115"
+           x="167.44356"
+           y="150.15659"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">BP (16)</tspan></text>
+    </g>
+    <g
+       id="g20169">
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 4.6069536,169.78659 v 6.17224 H 44.530096 v -6.17224 z"
+         id="path19127" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 4.6069538,160.79075 v 6.17224 H 86.86343 v -6.17224 z"
+         id="path19129" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 4.6069538,178.78243 v 6.17223 c 20.3632702,0 40.7265392,0 61.0898092,0 v -6.17223 c -20.36327,0 -40.726539,0 -61.0898092,0 z"
+         id="path19131" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 46.940289,169.78659 v 6.17224 h 39.923143 v -6.17224 z"
+         id="path19133" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 68.106955,178.78243 v 6.17223 h 18.756477 v -6.17223 z"
+         id="path19135" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="45.193325"
+         y="165.55888"
+         id="text19139"><tspan
+           sodipodi:role="line"
+           id="tspan19137"
+           x="45.193325"
+           y="165.55888"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">RSI (64 bits)</tspan></text>
+      <text
+         id="text19143"
+         y="174.55469"
+         x="66.359993"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="174.55469"
+           x="66.359993"
+           id="tspan19141"
+           sodipodi:role="line">ESI (32 bits)</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="77.485191"
+         y="183.49409"
+         id="text19147"><tspan
+           sodipodi:role="line"
+           id="tspan19145"
+           x="77.485191"
+           y="183.49409"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">SI (16)</tspan></text>
+    </g>
+    <g
+       id="g20182">
+      <path
+         id="path19149"
+         d="m 94.565292,169.78659 v 6.17224 h 39.923158 v -6.17224 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19151"
+         d="m 94.565292,160.79075 v 6.17224 h 82.256518 v -6.17224 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19153"
+         d="m 94.565292,178.78243 v 6.17223 c 20.363278,0 40.726558,0 61.089838,0 v -6.17223 c -20.36328,0 -40.72656,0 -61.089838,0 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#808080;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19155"
+         d="m 136.89865,169.78659 v 6.17224 h 39.92316 v -6.17224 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path19157"
+         d="m 158.06532,178.78243 v 6.17223 h 18.75649 v -6.17223 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <text
+         id="text19161"
+         y="165.55888"
+         x="135.15166"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="165.55888"
+           x="135.15166"
+           id="tspan19159"
+           sodipodi:role="line">RDI (64 bits)</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="156.31834"
+         y="174.55469"
+         id="text19165"><tspan
+           sodipodi:role="line"
+           id="tspan19163"
+           x="156.31834"
+           y="174.55469"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">EDI (32 bits)</tspan></text>
+      <text
+         id="text19169"
+         y="183.49409"
+         x="167.44356"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="183.49409"
+           x="167.44356"
+           id="tspan19167"
+           sodipodi:role="line">DI (16)</tspan></text>
+    </g>
+    <text
+       id="text19197"
+       y="184.95467"
+       x="158.06532"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="194.31844"
+         x="158.06532"
+         id="tspan19195"
+         sodipodi:role="line" /></text>
+    <g
+       transform="translate(179.91672,-2.3282991e-5)"
+       id="g19379">
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 4.6069538,42.786535 v 6.172234 H 86.86343 v -6.172234 z"
+         id="path19305" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="45.193325"
+         y="47.554695"
+         id="text19323"><tspan
+           sodipodi:role="line"
+           id="tspan19321"
+           x="45.193325"
+           y="47.554695"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">SS (64 bits)</tspan></text>
+    </g>
+    <g
+       id="g19387"
+       transform="translate(179.91672,14.287476)">
+      <path
+         id="path19381"
+         d="m 4.6069538,42.786535 v 6.172234 H 86.86343 v -6.172234 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <text
+         id="text19385"
+         y="47.554695"
+         x="45.193325"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="47.554695"
+           x="45.193325"
+           id="tspan19383"
+           sodipodi:role="line">CS (64 bits)</tspan></text>
+    </g>
+    <g
+       transform="translate(179.91672,28.574976)"
+       id="g19395">
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 4.6069538,42.786535 v 6.172234 H 86.86343 v -6.172234 z"
+         id="path19389" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="45.193325"
+         y="47.554695"
+         id="text19393"><tspan
+           sodipodi:role="line"
+           id="tspan19391"
+           x="45.193325"
+           y="47.554695"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">DS (64 bits)</tspan></text>
+    </g>
+    <g
+       id="g19403"
+       transform="translate(179.91672,42.862476)">
+      <path
+         id="path19397"
+         d="m 4.6069538,42.786535 v 6.172234 H 86.86343 v -6.172234 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <text
+         id="text19401"
+         y="47.554695"
+         x="45.193325"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="47.554695"
+           x="45.193325"
+           id="tspan19399"
+           sodipodi:role="line">ES (64 bits)</tspan></text>
+    </g>
+    <g
+       transform="translate(179.91672,57.149976)"
+       id="g19411">
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 4.6069538,42.786535 v 6.172234 H 86.86343 v -6.172234 z"
+         id="path19405" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="45.193325"
+         y="47.554695"
+         id="text19409"><tspan
+           sodipodi:role="line"
+           id="tspan19407"
+           x="45.193325"
+           y="47.554695"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">FS (64 bits)</tspan></text>
+    </g>
+    <g
+       id="g19419"
+       transform="translate(179.91672,71.437476)">
+      <path
+         id="path19413"
+         d="m 4.6069538,42.786535 v 6.172234 H 86.86343 v -6.172234 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <text
+         id="text19417"
+         y="47.554695"
+         x="45.193325"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="47.554695"
+           x="45.193325"
+           id="tspan19415"
+           sodipodi:role="line">GS (64 bits)</tspan></text>
+    </g>
+    <g
+       id="g19435"
+       transform="translate(179.91672,135.99589)">
+      <path
+         id="path19429"
+         d="m 4.6069538,42.786535 v 6.172234 H 86.86343 v -6.172234 z"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <text
+         id="text19433"
+         y="47.554695"
+         x="45.193325"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="47.554695"
+           x="45.193325"
+           id="tspan19431"
+           sodipodi:role="line">IP (64 bits)</tspan></text>
+    </g>
+    <g
+       id="g19457"
+       transform="translate(0,57.15007)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888903px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="204.38095"
+         y="108.40884"
+         id="text19425"><tspan
+           sodipodi:role="line"
+           id="tspan19423"
+           x="204.38095"
+           y="108.40884"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">EFLAGS (32 bits)</tspan></text>
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.49999997;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 184.52367,103.64068 v 6.17223 h 39.92316 v -6.17223 z"
+         id="path19021-4" />
+    </g>
+    <text
+       id="text18919-9"
+       y="41.418652"
+       x="45.713047"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="41.418652"
+         x="45.713047"
+         id="tspan18917-2"
+         sodipodi:role="line">Accumulator</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="135.6714"
+       y="41.418652"
+       id="text20245"><tspan
+         sodipodi:role="line"
+         id="tspan20243"
+         x="135.6714"
+         y="41.418652"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332">Counter</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="45.713047"
+       y="83.751991"
+       id="text20249"><tspan
+         sodipodi:role="line"
+         id="tspan20247"
+         x="45.713047"
+         y="83.751991"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332">Data</tspan></text>
+    <text
+       id="text20253"
+       y="83.722618"
+       x="135.6714"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="83.722618"
+         x="135.6714"
+         id="tspan20251"
+         sodipodi:role="line">Base</tspan></text>
+    <text
+       id="text20257"
+       y="126.08561"
+       x="45.713047"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="126.08561"
+         x="45.713047"
+         id="tspan20255"
+         sodipodi:role="line">Stack Pointer</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="135.6714"
+       y="126.08561"
+       id="text20261"><tspan
+         sodipodi:role="line"
+         id="tspan20259"
+         x="135.6714"
+         y="126.08561"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332">Base Pointer</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="45.713047"
+       y="159.42316"
+       id="text20265"><tspan
+         sodipodi:role="line"
+         id="tspan20263"
+         x="45.713047"
+         y="159.42316"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332">Source Index</tspan></text>
+    <text
+       id="text20269"
+       y="159.42316"
+       x="135.6714"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="159.42316"
+         x="135.6714"
+         id="tspan20267"
+         sodipodi:role="line">Destination Index</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="225.44058"
+       y="41.418911"
+       id="text20273"><tspan
+         sodipodi:role="line"
+         id="tspan20271"
+         x="225.44058"
+         y="41.418911"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332">Stack Segment</tspan></text>
+    <text
+       id="text20277"
+       y="55.676777"
+       x="225.44058"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="55.676777"
+         x="225.44058"
+         id="tspan20275"
+         sodipodi:role="line">Code Segment</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="225.44058"
+       y="69.964279"
+       id="text20281"><tspan
+         sodipodi:role="line"
+         id="tspan20279"
+         x="225.44058"
+         y="69.964279"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332">Data Segment</tspan></text>
+    <text
+       id="text20285"
+       y="84.251778"
+       x="225.44058"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="84.251778"
+         x="225.44058"
+         id="tspan20283"
+         sodipodi:role="line">Extra Segment</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="225.44058"
+       y="98.539276"
+       id="text20289"><tspan
+         sodipodi:role="line"
+         id="tspan20287"
+         x="225.44058"
+         y="98.539276"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332">F Segment</tspan></text>
+    <text
+       id="text20293"
+       y="112.82677"
+       x="225.44058"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="112.82677"
+         x="225.44058"
+         id="tspan20291"
+         sodipodi:role="line">G Segment</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="204.27393"
+       y="159.42316"
+       id="text20297"><tspan
+         sodipodi:role="line"
+         id="tspan20295"
+         x="204.27393"
+         y="159.42316"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332">Flags</tspan></text>
+    <text
+       id="text20301"
+       y="177.41484"
+       x="225.49086"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'Avenir LT 35 Light';-inkscape-font-specification:'Avenir LT 35 Light,  Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="177.41484"
+         x="225.49086"
+         id="tspan20299"
+         sodipodi:role="line">Instruction Pointer</tspan></text>
+  </g>
+</svg>

@@ -67,13 +67,29 @@ De verschillende lagen geheugen kunnen worden vergeleken met fysieke opslagruimt
 <li>HD / SSD</li>
 </ul>
 </section>
+<section id="registers" class="slide level2">
+<h2>Registers</h2>
+<!--
+Het register hebben we met CSN gezien. Registers bevatten waardes waar de CPU direct bij moet kunnen. We zijn een aantal "general purpose" registers tegengekomen: registers 0 tot 3, het instruction register (IR), instruction address register (IAR) en het memory address register (MAR). Ook de flags die we hebben gezien worden doorgaans in een register opgeslagen; voor de simpele CPU van CSN waren dit er 4 (dus dat past makkelijk in een byte), bij moderne Intel-compatible CPUs zijn dit er 32.
+Totaal bevat een dergelijke CPU 8 general purpose registers, 6 segment registers (meestal niet meer gebruikt), een flag register en de instruction pointer. De architectuur is ooit met 16 bits begonnen, en vertoont wat backwards compatibility. Zo isieder general purpose register niet alleen in 64 bits, maar oo in 32 of 16 bits aan te spreken, waarbij je telkens de laagste bits krijgt. Daarnaast hebben de accumulator, counter, data en base registers ook twee 8-bits identifiers, voor bits 0-7 en 8-15.
+-->
+<aside class="notes">
+
+</aside>
+<figure>
+<img data-src="images/registers.png" alt="64 bits x86 registers" style="width:80.0%" /><figcaption>64 bits x86 registers</figcaption>
+</figure>
+</section>
 <section id="cache" class="slide level2">
 <h2>Cache</h2>
 <!--
-Cachen verhoogt de snelheid van een computer doordat veel data vaker wordt opgevraagd. Recent gebruikte of berekende data wordt in de cache gezet, en zodra de cache vol zit wordt oudere data verwijderd. Mogelijk is de data nog wel in een andere cache aanwezig, die verder van de CPU verwijderd wordt, waardoor deze niet opnieuw uit het geheugen hoeft te worden gehaald totdat het uit alle caches is verdwenen. De data is dan relatief lang niet nodig geweest, en de kans is groot dat deze niet snel weer gebruikt zal worden.
+Tussen de registers en het RAM geheugen zit de cache. Deze wordt op dezelfde manier aangesproken als het geheugen, maar kan recent gebruikte waardes sneller leveren. Cachen verhoogt de snelheid van een computer doordat veel data vaker wordt opgevraagd. Recent gebruikte of berekende data wordt in de cache gezet, en zodra de cache vol zit wordt oudere data verwijderd. Mogelijk is de data nog wel in een andere cache aanwezig, die verder van de CPU verwijderd wordt, waardoor deze niet opnieuw uit het geheugen hoeft te worden gehaald totdat het uit alle caches is verdwenen. De data is dan relatief lang niet nodig geweest, en de kans is groot dat deze niet snel weer gebruikt zal worden.
 Waar bij normaal geheugen een index bepaalt hoe een stuk geheugen geaddresseerd kan worden, heeft een cache twee indices: de index binnen de cache en een verwijzing naar de geheugenplaats waar de data een kopie van is. De eerste byte in het cache geheugen op de slide verwijst naar byte `0x02` in het geheugen.
-Als de gevraagde gegevens in de cache worden gevonden spreken we over een _cache hit_, en als de gegevens er niet zijn (en dus elders vandaan worden gehaald) dan hebben we een _cache miss_. Het precentage van de requests dat in een hit resulteert noemen we de _hit ratio_.
 -->
+<aside class="notes">
+<p>Toelichten hoe cache tag naar geheugenadres verwijst.</p>
+</aside>
+<div style="font-size: 24px">
 <div class="columns">
 <div class="column" style="width:50%;">
 <h4 id="memory">Memory</h4>
@@ -124,18 +140,146 @@ Als de gevraagde gegevens in de cache worden gevonden spreken we over een _cache
 </table>
 </div>
 </div>
+</div>
 </section>
-<section id="physical-en-virtual-memory" class="slide level2">
-<h2>Physical en Virtual Memory</h2>
+<section id="cache-1" class="slide level2">
+<h2>Cache</h2>
+<!--
+Als de gevraagde gegevens in de cache worden gevonden spreken we over een _cache hit_, en als de gegevens er niet zijn (en dus elders vandaan worden gehaald) dan hebben we een _cache miss_. Het precentage van de requests dat in een hit resulteert noemen we de _hit ratio_.
+-->
+<ul>
+<li>Cache Hit / Miss</li>
+<li>Hit Ratio</li>
+</ul>
 </section>
-<section id="segmentation" class="slide level2">
-<h2>Segmentation</h2>
+<section id="ram-geheugen" class="slide level2">
+<h2>RAM Geheugen</h2>
+<!--
+De werking van RAM geheugen hebben we tijdens CSN gezien. De hoeveelheid RAM die we kunnen aanspreken hangt af van de adresruimte en de hoeveelheid bits per adres. Maar de computer is CSN was nog vrij eenvoudig: die hoefde nog niet met meerdere processen om te kunnen gaan. In de code kan worden verwezen naar specifieke geheugenadressen, waar code of data te vinden is. Maar hoe voorkomen we dat de ruimte waar naar verwezen wordt aan een ander proces toebehoort?
+Om deze reden werken computer met relatieve adressen. Een verwijzing naar een functie wordt bij het compileren door de computer vertaalt naar een specifiek geheugenadres, maar in plaats van dat dit bij 0 begint is dit gerekend vanaf een bepaalde geheugeneenheid. Het proces is zich hier niet van bewust, en denkt dat het daadwerkelijk naar een vastgesteld adres schrijft.
+-->
+<aside class="notes">
+<p>Addresseerbaar geheugen: herhaling CSN</p>
+</aside>
+<ul>
+<li>Adresruimte (64 bits)</li>
+<li>Bits per adres (meestal 1 byte)</li>
+<li>Totaal adresseerbaar geheugen</li>
+<li>Alles heeft een adres</li>
+<li>Maar wat als we meerdere processen hebben?</li>
+</ul>
+</section>
+<section id="segmentation-en-de-mmu" class="slide level2">
+<h2>Segmentation en de MMU</h2>
+<!--
+Deze vertaling wordt gedaan door de Memory Management Unit (MMU). Deze weet waar elk proces in het geheugen staat, en telt het relatieve adres hierbij op. Waar in de machine-instructies voor een functie-aanroep een adres als `0x00004203` staat, rekent de MMU het daadwerkelijke adres uit. Als de geheugenruimte van het proces bijvoorbeeld op `0xdb130000` begint, dan is het daadwerkelijke geheugenadres dus `0xdb134203`.
+Addressen van syscalls hoeven niet vertaald te worden, maar zijn voor ieder proces hetzelfde. Op deze manier wordt dit (read-only) stuk van het geheugen door alle processen gedeeld.
+-->
+<aside class="notes">
+<ul>
+<li>De MMU telt offset op bij begin proces</li>
+<li>Elk proces lijkt op zelfde punt (na kernel memory) te beginne</li>
+</ul>
+</aside>
+<figure>
+<img data-src="images/mmu.png" alt="Vertaling adressen door MMU" style="width:40.0%" /><figcaption>Vertaling adressen door MMU</figcaption>
+</figure>
 </section>
 <section id="paging" class="slide level2">
 <h2>Paging</h2>
+<!--
+Bij segmentation worden processen als hele blokken geheugen beschouwd, en op die manier vertaald door de MMU. Tegenwoordig zien we doorgaans paging als alternatief. Hierbij wordt met blokken van een vast formaat gewerkt, en kan een proces meerdere pages hebben. De pages zijn ergens in het geheugen aanwezig, maar niet per sé bij elkaar of in de juiste volgorde. Voor het proces lijkt het echter nog steeds alsof het een aaneengesloten stuk geheugen heeft.
+Een voordeel van deze aanpak is dat als een klein proces beëindigd wordt, de vrijgekomen page (of pages) direct voor een ander proces inzetbaar is. Ook als een nieuw proces te groot is om de ruimte te vullen kan de vrijgekomen ruimte worden gebruikt voor een of meerdere pages. Dit in tegenstelling tot segmentation, waarbij naar verloop van tijd het geheugen vol zit met grote blokken geheugen, met hiertussen onbruikbaar kleine stukken vrij geheugen (dit noemen we _external fragmentation_).
+Een nadeel is echter dat de pagesize niet flexibel is. Als een proces ook maar één byte meer nodig heeft dan de pagesize toelaat, dan is meteen een volledige nieuwe pagina gevuld. Dit noemen we _internal fragmentation_.
+-->
+<aside class="notes">
+<ul>
+<li>Paging is segmentation met vaste blokken geheugen.</li>
+<li>Vastgestelde page-size (hardware), een of meerdere pages per proces</li>
+<li>Wasted space als proces net iets te groot is - internal fragmentation</li>
+<li>Geen external fragmentation: vrijgekomen ruimte is altijd herbruikbaar</li>
+<li>Volgorde maakt niet uit</li>
+</ul>
+</aside>
+<p><img data-src="images/paging.png" style="width:30.0%" /></p>
 </section>
-<section id="on-demand-paging" class="slide level2">
-<h2>On-demand Paging</h2>
+<section id="physical-en-virtual-memory" class="slide level2">
+<h2>Physical en Virtual Memory</h2>
+<!--
+Tot nu toe hebben we telkens het werkgeheugen (het geheugen van het OS en de processen) en het RAM als synoniem beschouwd: het werkgeheugen staat altijd in het RAM. Dit is echter niet per sé nodig: nu we pages hebben kunnen we die ook op andere plaatsten op slaan. Als het geheugen vol zit kunnen we bijvoorbeeld de oudste (langst niet gebruikte) pagina's uit het geheugen verwijderen en in plaats daarvan op de harde schijf bewaren. Dit is een stuk langzamer te benaderen dan het vanuit het RAM zou zijn, maar dat is nog altijd beter dan een systeem dat onbruikbaar wordt omdat het geen geheugen meer heeft. Een stuk geheugen dat lang ongebruikt is heeft een hoge kans dat het voorlopig nog niet nodig is, waardoor het verlies aan snelheid minder uitmaakt. Als de pagina toch nodig blijkt zal het OS het systeem kort pauzeren om ruimte vrij te maken en de pagina naar het geheugen te verplaatsen. Geheugen op de harde schijf noemen we virtueel geheugen.
+In Windows is voor dit virtuele geheugen een speciaal bestand aanwezig, de zogenaamde swapfile of pagefile. Linux (en andere Unices) gebruiken hiervoor doorgaans een aparte partitie, de swap partitie. Deze heeft als nadeel dat deze niet ergens anders voor te gebruiken is, maar is wel sneller omdat het geheugen direct op de schijf wordt opgeslagen, in plaats van dat hier nog een filesystem tussen zit. Omdat Linux echter makkelijk een filesystem in een file kan zetten, kun je in geval van nood ook snel een swapfile aanmaken.
+-->
+<aside class="notes">
+<ul>
+<li>Geheugen op de hardeschijf ipv RAM</li>
+<li>Pagefile op windows</li>
+<li>Swap partition op Linux</li>
+<li>File op Linux is mogelijk</li>
+</ul>
+</aside>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/swapfile.jpg" style="width:80.0%" /></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/swappart.jpg" style="width:80.0%" /></p>
+</div>
+</div>
+</section>
+<section id="forks-en-de-syscall-table" class="slide level2">
+<h2>Forks en de SysCall Table</h2>
+<!--
+Een laatste voordeel van het paging systeem is dat het mogelijk is op meerdere plaatsen naar eenzelfde stuk geheugen te verwijzen. Dit is hoe in de meeste paging-systemen met de syscall table (en rest van de kernel space) wordt omgegaan: de pages die dit deel van het geheugen bevatten worden bij elk proces vooraan gezet. Een ander voorbeeld hiervan is de `SYS_fork` system-call. Deze maakt een exacte kopie van het draaiende proces, wat ontzettend inefficiënt zou zijn als al het geheugen ook daadwerkelijk gekopieerd zou moeten worden. In plaats daarvan worden dezelfde pages vanuit beide processen aangeroepen, en pas als er iets in een page verandert wordt deze gekopieerd en aangepast. Veel pages bevatten echter programma-code en andere read-only data, dus zullen nooit gekopieerd hoeven worden.
+-->
+<p><img data-src="images/cowfork.png" style="width:60.0%" /></p>
+</section>
+<section id="non-volatile-storage" class="slide level2">
+<h2>Non-volatile Storage</h2>
+<!--
+Met virtual memory op de harde schijf hebben we meteen een mooi bruggetje naar de laatste soort geheugen in ons lijstje van het begin. Onder non-volatile geheugen verstaan we harde schijven en SSDs, maar bijvoorbeeld ook USB-sticks, CD-ROMS, Floppy's, etc. Een overeenkomst tussen al deze voorbeelden (en de meeste moderne voorbeelden van non-volatile storage) is dat we hier niet over denken alsof het een groot blok data is, maar als een filestystem met daarop bestanden (doorgaans ingedeeld in directories). In les 6 worden filesystems uitvoerig behandeld.
+-->
+<aside class="notes">
+<p>Vooral om het lijstje even af te maken. In les 6 wordt hier verder op ingegaan.</p>
+</aside>
+<ul>
+<li>Harde Schijf</li>
+<li>SSD</li>
+<li>USB Stick, CD-ROM, Floppy, …</li>
+</ul>
+</section>
+<section id="rom-geheugen" class="slide level2">
+<h2>ROM Geheugen</h2>
+<!--
+Een laatste vorm van geheugen die we willen behandelen is het zogenaamde ROM: Read-only memory. Dit is geheugen dat eenmalig geschreven wordt, en daarna alleen maar wordt gelezen. Er bestaan vormen van geheugen die gewist en herschreven kunnen worden, maar ook in dat geval zal het herschrijven slechts erg sporadisch gebeuren.
+Qua terminologie is ROM de meest simpele vorm: een geheugen dat met inhoud geleverd wordt, en die onveranderbaar is. Denk aan bijvoobeeld een cartridge voor een oude game-console. 
+Programmable ROM wordt leeg gekocht, en kan eenmalig geschreven worden. Hiermee konden mensen bijvoorbeeld hun eigen cartridges maken.
+De volgende ontwikkeling was Erasable PROM, dat met behulp van UV licht gewist kon worden, en later Electronic Erasable PROM. Dat laatste wordt nog steeds gebruikt, bijvoorbeeld voor de firmware van een computer. Bij het opstarten zal een computer eerst inhoud van een stukje EEPROM op het moederbord lezen, waarin de instructies staan die nodig zijn om het systeem verder op te starten. Bij een update kan deze firmware "geflashed" worden (bijvoorbeeld als ergens een fout is ontdekt), maar doorgaans zal dit geheugen alleen gelezen worden.
+De laatste ontwikkeling op het gebied van deze ROM-chips was uiteindelijk het Flash geheugen: non-volatile, maar wel op bit-niveau aan te passen. Dit is de technologie die aan de basis van SSDs en USB sticks staat.
+-->
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/cartridge.jpg" style="width:80.0%" /></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Read Only Memory (ROM)</li>
+<li>Programmable ROM (PROM)</li>
+<li>Erasable PROM (EPROM)</li>
+<li>Electronic EPROM (EEPROM)</li>
+<li>Flash</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="wat-hebben-we-deze-les-geleerd" class="slide level2">
+<h2>Wat hebben we deze les geleerd?</h2>
+<ul>
+<li>Registers</li>
+<li>Cache</li>
+<li>Segmenation en Pagination</li>
+<li>Virtual Memory</li>
+<li>Copy-on-Write</li>
+<li>Non-volatile geheugen</li>
+<li>ROM</li>
+</ul>
 </section>
     </div>
   </div>

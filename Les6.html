@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Embedded &amp; Operating Systems 6">
-  <title>Filesystems en LFS</title>
+  <title>Filesystems en FHS</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -14,6 +14,71 @@
       span.smallcaps{font-variant: small-caps;}
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
   <!-- Printing and PDF exports -->
@@ -33,11 +98,347 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Filesystems en LFS</h1>
+  <h1 class="title">Filesystems en FHS</h1>
   <p class="author">Embedded &amp; Operating Systems 6</p>
 </section>
 
-<section><section id="introductie" class="title-slide slide level2"><h2>Introductie</h2></section></section>
+<section id="introductie" class="slide level2">
+<h2>Introductie</h2>
+<!--
+Deze les: harde schijven, filesystems, mounting, lvm/raids, linux mappenstructuur en rechten
+-->
+</section>
+<section id="de-harde-schijf" class="slide level2">
+<h2>De Harde Schijf</h2>
+<aside class="notes">
+<p>Vanuit de CPU gezien is de harde schijf niet veel meer dan een IO device: het zit op de IO bus, en er kan data naartoe of vanaf. De disk slaat deze data op met behulp van magnetisme (let op: we hebben het hier niet over SSDs; die zijn in les 4 aan bod gekomen) en is daarmee non-volatile. De manier waarop de disk informatie bewaart is gebaseerd op disks, tracks en sectors. Een harde schijf bestaat doorgaans uit meerdere daadwerkelijke schijven met elk twee kanten. Elke kant heeft een eigen head, een klein stukje electronica dat data kan lezen of schrijven. Een schijfoppervlak is onderverdeeld in tracks: dunne ringen waar de kop naartoe bewogen kan worden. Elke ring bevat tot slot meerdere sectoren, waar de daadwerkelijke data aan gekoppeld is. Het is alleen mogelijk hele blocks (de inhoud van een sector, vaak enkele kilobytes) te lezen of te schrijven. Deze worden in hun geheel naar het geheugen gekopieerd als er iets met de data moet worden gedaan. Om te lezen en te schrijven moet de hardeschijf-controller dus een read-write bit krijgen, plus getallen die de head, track en sector aanduiden. Dit is een heel andere wereld dan de nette geheugenadressen die de computer gewend is, en nog verder verwijderd dan de bekende mappenstructuur die je denkt op de harde schijf te hebben. De laag hiertussen noemen we het filesystem.</p>
+</aside>
+<ul>
+<li>IO Device</li>
+<li>Heads, Tracks en Sectors</li>
+<li>Blocks</li>
+<li>Abstractie!</li>
+</ul>
+</section>
+<section id="filesystems" class="slide level2">
+<h2>Filesystems</h2>
+<aside class="notes">
+<p>Er bestaan verschillende filesystems, elk met eigen voor- en nadelen. Een aantal concepten komt echter bij alle filesystems terug: data wordt verpakt in files (bestanden), en deze files worden ingedeeld in directories (ook wel mappen of folders). Elke file of directory heeft een naam (soms meerdere namen), en door deze paden aan elkaar te plakken hebben we paden waarmee we een bestand kunnen terugvinden. Veel filesystems (met name op Linux en andere unices) ondersteunen daarnaast ook verschillende vormen van links. Conceptueel is een link een snelkoppeling (zoals in Windows), maar waar een snelkoppelling een bestand is met een verwijzing naar een bestand of programmma, is een link op filesystem-niveau geïmplementeerd. Links zorgen ervoor dat één bestand meerdere namen kan hebben.</p>
+</aside>
+<!--
+Wat alle (de meeste) filesystems gemeen hebben. Links op FS niveau niet op Windows, wel Linux / Mac.
+-->
+<ul>
+<li>Files</li>
+<li>Directories</li>
+<li>Links</li>
+</ul>
+</section>
+<section id="fat" class="slide level2">
+<h2>FAT</h2>
+<aside class="notes">
+<p>FAT (File Allocation Table) is een van de oudste en meest eenvoudige filesystems. Origineel is FAT ontwikkeld voor floppy disks, maar doordat het bestandssysteem door vroege versies van Windows gebruikt werd heeft het de floppy met flink wat jaren overleefd (zij het met de nodige aanpassingen om het systeem te moderniseren). De basis van FAT is een datastructuur die de File Allocation Table heet. De schijf is opgedeeld in <em>clusters</em> van een vast formaat, en ieder bestand heeft de vorm van een <em>chain</em> of <em>linked list</em> van clusters. Dit betekent dat ieder cluster naast data ook een verwijzing bevat naar het volgende cluster: waar het bestand verder gaat. Een bestand wordt afgesloten met een <em>EOF</em> (end of file) marker in plaats van een verwijzing naar een volgend cluster. In eerste instantie worden clusters meestal netjes achter elkaar gezet, maar dit hoeft niet. Als een bestaand bestand wordt uitgebreid kan het zijn dat de ruimte erna niet meer vrij is. Door het gebruik van verwijzingen kan op een vrij deel van de schijf verder geschreven worden, en hoeft enkel een verwijzing aangebracht te worden waar het bestand verder gaat. Het gevolg hiervan is wel dat bestanden na verloop van tijd over de hele schijf verspreid staan, wat een vertraging met zich mee brengt omdat de harde schijf veel over moet springen. Dit fenomeen wordt <em>fragmentatie</em> genoemd. Naast de gewone clusters met data bevat FAT ook een aantal speciale clusters voor metadata (FAT ID, formaat, …), directories en clusters die als beschadigd zijn gemarkeerd (en dus niet meer worden gebruikt). Directory tables bevatten per bestand een directory entry. Hierin staat de filenaam, die traditioneel uit 8 karakters + 3 karakters extensie (<code>filenaam.txt</code>) bestaat. Naast de bestandsnaam worden attributes bewaard, zoals of een bestand verborgen of alleen-lezen is, en zijn er bytes gereserveerd voor tijd/datum van de laatste aanpassing en de grootte van het bestand. Tot slot bevat een entry een verwijzing naar het eerste cluster waar de data van het bestand te vinden is. In recentere versies worden langere bestandsnamen ook ondersteund, maar ieder bestand heeft ook nog steeds zogenaamde <em>8+3</em> bestandsnaam die intern gebruikt wordt: het bestand <code>bestandmetlangenaam.txt</code> heeft intern een naam als <code>bestan~1.txt</code>. De lange bestandsnaam wordt vervolgens in een of meerdere “fake entries” opgeslagen.</p>
+</aside>
+<!--
+- File allocation table
+- Clusters, linked list
+- Fragmentatie
+- Directory entries
+- Fake entries voor long filenames
+-->
+<p><img data-src="images/fat.png" style="width:80.0%" /></p>
+</section>
+<section id="ntfs" class="slide level2">
+<h2>NTFS</h2>
+<aside class="notes">
+<p>FAT was aanvankelijk 8-bits en ontwikkeld voor gebruik op floppies, en hoewel Microsoft verschillende verbeterde versies heeft uitgebracht (FAT12, FAT16, FAT32, ExFAT) is het bestandssysteem op een gegeven moment ingeruild voor het nieuwere NTFS (New Technology FileSystem). NTFS biedt beter ondersteuning voor metadata, heeft van nature langere bestandsnamen en ondersteunt bestand groter dan <span class="math inline">2<sup>32</sup></span> bytes (4 GiB), de bovengrens van FAT32. Delen van de werking van NTFS zijn echter niet vrijgegeven, waardoor het bestandssysteem eigenlijk alleen op Windows gebruikt wordt. Mac en Linux kunnen het systeem lezen, maar in de meeste gevallen niet schrijven. FAT-afstammelingen en het voor CD-ROMS ontwikkelde UDF (Universal Disk Format) zijn nog steeds de standaard voor uitwisselbare media die op meerdere besturingssystemen gebruikt moeten worden.</p>
+</aside>
+<!--
+- UDF en FAT-afstammelingen voor uitwisseling
+-->
+<ul>
+<li>FAT verouderd</li>
+<li>Nieuw FS voor Windows</li>
+<li>Windows-only</li>
+</ul>
+</section>
+<section id="inodes" class="slide level2">
+<h2>inodes</h2>
+<aside class="notes">
+<p>Unices gebruiken een ander model voor het structureren van filesystems: het hele filesystem is in twee delen opgedeeld: inodes en data. Een inode is een datastructuur die alle metadata van een bestand bevat: rechten, eigenaar en groep (meer hierover later), formaat, een aantal timestamps en het aantal links naar de file. Wat een inode niet bevat is de bestandsnaam / het pad. Deze wordt in een directory bewaard: een tabel van bestandsnamen en bijbehorende de bijbehorende inode. Meerdere bestandsnamen kunnen naar dezelfde inode verwijzen (dit noemen we hardlinks) en de gebruiker kan naar wens links toevoegen en verwijderen. Zodra een inode nergens meer gelinkt wordt, kan deze worden verwijderd (vandaar dat het aantal links wordt bijgehouden). Het maken van een link kan met het programma <code>ln</code>, dat hetzelfde werkt als <code>cp</code>, maar zonder de data daadwerkelijk te kopiëren: een extra verwijzing is genoeg. Links verwijderen gaat met <code>rm</code>: zo lang er meer links naar een bestand zijn wordt het niet verwijderd, maar alleen de verwijzing. Een inode bevat de verwijzingen naar de daadwerkelijke data-blocks die bij het bestand horen. Een inode in de meeste moderne filesystems bevat 15 pointers (verwijzingen), waarvan de eerste 12 direct naar een block met data verwijzen. De volgende pointer is “singly indirect”, en verwijst indien nodig naar een block vol pointers. De volgende pointer is “doubly indirect”, en verwijst naar een block vol met singly linked pointers. De laatste pointer is “triply indirect”, nog een laag dieper dus. Iedere laag pointers geeft een exponentiële groei aan het aantal koppelbare data blocks. Een directory entry kan ook naar een subdirectory verwijzen: directories zijn ook gewoon inodes, die met een directory-table verbonden zijn in plaats van bestands-data. De mappen <code>.</code> en <code>..</code> die we eerder hebben gezien zijn de eerste entries die in iedere directory aanwezig zijn. Tot slot kan een directory entry niet naar een inode verwijzen, maar naar een pad op de harde schijf; dit noemen we een soft-link. Omdat een soft-link niet naar een bestand maar naar een pad verwijst, en het bestand waarnaar gelinkt wordt niet van de link afweet, kan een soft-link verwijzen naar een pad dat niet meer bestaat: het bronbestand is verwijderd of verplaatst. Dit noemen we een dode link, en is een nadeel van soft-links ten opzichte van hard links. In sommige gevallen is het juist wenselijk naar de locatie te linken in plaats van het bestand. Als een bestand vervangen wordt door een nieuwere versie maar op dezelfde plek staat, zal een soft-link ook automatisch naar het nieuwe bestand verwijzen. Het verschilt per situatie welke link dus het beste is. Een Unix partitie is opgebouwd uit een superblock met informatie over de partitie, een inode en zone bitmap met voor iedere inode / zone een bitje dat aangeeft of de inode/zone nog vrij is. Daarna komen de inodes en zones zelf. De aantallen inodes en datazones staan bij het formateren vast, en kunnen niet aangepast worden.</p>
+</aside>
+<!--
+- inode datatructuur
+- inode
+  - pointers data zones
+  - subdirectory
+- directory
+  - (hard)link naar inode
+  - softlink naar pad
+- indeling hardeschijf
+- bitmaps
+-->
+<p><img data-src="images/inodes.png" style="width:60.0%" /></p>
+</section>
+<section id="partities" class="slide level2">
+<h2>Partities</h2>
+<aside class="notes">
+<p>Vaak is het wenselijk een harde schijf onder te verdelen in meerdere logische units. Deze onderverdeling noemen we partities, en worden door het OS als aparte schijven behandeld die toevallig op hetzelfde fysieke medium staan. Met name in Linux is het partitioneren van de harde schijf erg gebruikelijk: <code>boot</code> staat bijvoorbeeld vaak op een aparte partitie, met een ander filesystem. Omdat de BIOS meestal niet met complexe bestandssystemen om kan gaan is dit een van de opties om het systeem te starten. De boot-partitie bevat de informatie die nodig is om de rest van de schijf te lezen. Daarnaast wordt vaak een speciale partitie voor swap-ruimte gereserveerd. Meerdere partities komen ook vaak voor bij externe harde schijven, waarbij een kleine partitie wordt gebruikt om software te leveren die de rest van de schijf (beter) bruikbaar maakt. De partitieindeling staat aan het begin van de schijf opgeslagen. Bij oudere systemen gebeurt dit in het zogenaamde Master Boot Record (MBR), maar tegenwoordig wordt vaak het modernere GUID Partition Table (GPT) gebruikt. MBR heeft een maximum van 4 primary partitions (waarvan je er een kunt op offeren om een paar extra logical partitions toe te kunnen voegen). Naast dit gebrek aan flexibiliteit gebruikt MBR ook nog 32-bits om de startpunten van partities mee aan te kunnen geven, waardoor disks groter dan 2.2 TB niet volledig te gebruiken zijn. Bij dergelijke grote disks verlies je ook flexibiliteit in de verdeling van je ruimte, omdat dit maximum alleen met een optimale indeling te behalen valt. GPT is ontwikkeld om deze tekortkomingen op te lossen. GPT maakt gebruik van zogenaamde GUIDs om partities mee te labelen: een lange random string die uniek is op een harde schijf. De string is zelfs dermate lang dat de kans dat een andere schijf wel eenzelfde GUID heeft, te verwaarlozen is. Dankzij deze identifiers kun je zoveel partities maken als je wilt, zonder logical partitions nodig te hebben. Het OS kan het aantal partities nog wel beperken, zoals 128 als bovengrens voor Windows. Daarnaast heeft GPT een veel groter maximum qua diskgrootte: ergens in de orde van tientallen zettabyte (<span class="math inline">10<sup>21</sup></span> bytes; een terabyte is <span class="math inline">10<sup>12</sup></span> bytes).</p>
+</aside>
+<!--
+- MBR: Max 4 partities, of 3 + 1 extended, daarbinnen logical partitions
+- MBR: Max 2.2TB
+- GPT: Unieke identifiers voor partities, GUIDs
+- GUID willekeurig en dermate lang dat kans op een dubbele ergens op de wereld vrijwel 0 is
+-->
+<ul>
+<li>Softwarematige verdeling harde schijf</li>
+<li>Voor het OS bruikbaar alsof het een schijf is</li>
+<li>MBR vs. GPT</li>
+</ul>
+</section>
+<section id="mounting" class="slide level2">
+<h2>Mounting</h2>
+<aside class="notes">
+<p>Waar Windows voor iedere schijf of partitie een eigen root heeft (<code>C:\</code>, <code>D:\</code>, …) wordt bij Linux altijd een root voor het hele systeem gehanteerd. Extra schijven of partities worden <em>gemount</em>, wat betekent dat een (doorgaans) lege map wordt gebruikt om de inhoud van de extra partitie onder te zetten. Bestanden en directories die in de root-map van partitie 2 stonden, staan nu in de map die als “mount-point” gebruikt is, en alle paden relatief vanaf de root van partitie 2 zijn nu relatief vanaf het mountpoint op partitie 1 te benaderen. Als de map in kwestie niet leeg was, is de inhoud onbenaderbaar totdat de mount ongedaan gemaakt is. Omdat “unmount” erg veel typen is, is het commando hiervoor <code>umount</code>. Hardlinks kunnen alleen binnen een partitie gebruikt worden, en niet over een mount-point heen. Iedere partitie heeft immers dezelfde inode-nummers voor andere bestanden in gebruik, en het is niet mogelijk aan te geven welke partitie een link naar zou moeten verwijzen. Soft-links daarentegen werken wel over partities heen, al worden dit dode links als de partitie waar het verwezen bestand op staat niet gemount is. Als de partitie later alsnog wordt gemount, werken de links weer.</p>
+</aside>
+<!--
+- geen drive letters zoals windows: 1 root
+- extra filesystems onder root gemount
+- mounten in lege directory (anders bestanden verborgen tot unmount)
+- hard links niet over partitiegrens (want, eigen inodes)
+- soft links wel over partities (maar dode links als niet gemount)
+-->
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="fu">sudo</span> mount /dev/sda2 /home</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="fu">sudo</span> umount /home <span class="co"># of sudo umount /dev/sda2</span></a></code></pre></div>
+<p><img data-src="images/mount.png" style="width:35.0%" /></p>
+</section>
+<section id="inodes-inzien-met-ls--i" class="slide level2">
+<h2>inodes inzien met <code>ls -i</code></h2>
+<!--
+- root van schijf altijd inode `2` (eerste kolom)
+- virtuele mappen (later deze les) ook 1 ???
+- `..` van root heeft ook `2` (de `..` van `/` bestaat niet, en verwijst dus maar naar zichzelf)
+- `home` is ook 2... Waarom kan dit zijn?
+- `home` staat op een eigen partitie, dus dit is inode `2` van diens eigen partitie
+- `0` en `1` voor gebruik partitieinformatie, soms ook voor virtuele mappen
+-->
+<aside class="notes">
+<p>Met de <code>-i</code> flag kun je <code>ls</code> vragen de inode-nummers te printen. Op de slide is de <code>ls -ila</code> van een root-partitie te zien. De root partitie heeft op de meeste systemen inode <code>2</code>. Omdat root geen parent heeft, verwijst <code>..</code> naar de root-map zelf, en is dus ook <code>2</code>. inodes <code>0</code> en <code>1</code> worden gebruikt voor partitieinformatie, maar soms ook toegekend voor virtuele mappen. In de listing valt op dat <code>boot</code> ook inode <code>2</code> heeft. Dit komt omdat deze gemount is, en dus de root van een eigen partitie.</p>
+</aside>
+<pre><code>      2 drwxr-xr-x   1 root root   112 Sep  7 14:27 ./
+      2 drwxr-xr-x   1 root root   112 Sep  7 14:27 ../
+ 509707 drwxr-xr-x   1 root root     4 Oct  3 14:37 bin/
+ 510435 drwxr-xr-x   4 root root  4096 Jan  1  1970 boot/
+   1025 drwxr-xr-x  20 root root  3720 Oct 18 18:17 dev/
+    258 drwxr-xr-x   1 root root  1118 Oct 19 12:44 etc/
+      2 drwxr-xr-x   1 root root    20 Aug  7 10:34 home/
+2259030 drwxr-xr-x   1 root root    12 Sep  7 14:27 media/
+ 510827 drwxr-xr-x   1 root root     0 Aug  6 15:43 mnt/
+      1 dr-xr-xr-x 292 root root     0 Oct  3 14:37 proc/
+ 509700 drwx------   1 root root   198 Oct 19 12:44 root/
+   3085 drwxr-xr-x  21 root root   680 Oct  5 18:42 run/
+      1 dr-xr-xr-x  13 root root     0 Oct  3 14:37 sys/
+ 510245 drwxrwxrwt   1 root root 16318 Oct 19 17:19 tmp/
+ 509874 drwxr-xr-x   1 root root     6 Aug  6 15:33 usr/
+ 509710 drwxr-xr-x   1 root root    82 Oct  3 14:37 var/</code></pre>
+</section>
+<section id="raid-en-lvm" class="slide level2">
+<h2>RAID en LVM</h2>
+<aside class="notes">
+<p>RAID (Redundant Array of Independent Disks) is een opslag-virtualisatie technologie die met name in de serverwereld gebruikt wordt. De koppeling tussen fysieke media en logische partities wordt hierbij verder losgelaten: een partitie kan zich op meerdere schijven bevinden, zowel parallel (alle data is op elke schijf aanwezig) als serieel (data staat over schijven verdeeld). Parallelle data-opslag zorgt voor redundancy: een schijf kan falen, maar er is altijd een tweede of derde schijf met dezelfde data. Seriële data-opslag combineert schijven tot een groter geheel. Beide methoden geven ook een snelheidswinsts: omdat delen van een bestand op andere schijven staan kunnen deze tegelijk worden gelezen. Voor RAID bestaan verschillende levels, waarbij parallel en serieel vaak worden gecombineerd: RAID 0 gebruikt <em>striping</em> (seriële segmentering van data over schijven), RAID 1 gebruikt <em>data mirroring</em> (parallel). Hogere RAID-levels gebruiken verschillende technieken om data-integriteit te bevorderen. Verschillende RAID-levels kunnen worden gecombineerd, zoals RAID 0+1 en RAID 1+0 (beide combineren RAID 0 en 1, maar in een andere volgorde). RAID kan op software-niveau geïmplementeerd worden, maar is meestal hardware-matig in servers aanwezig. LVM (Logical Volume Manager) is iets gebruikelijker in consumenten-systemen, en is geheel als kernel-niveau software geïmplementeerd. Ook bij LVM wordt de koppeling tussen fysieke media en partities zoveel mogelijk losgelaten, maar bij LVM is het doel met name het combineren van schijven voor opslagruimte. Daarnaast heeft LVM het voordeel dat partities makkelijker aangepast kunnen worden, bijvoorbeeld als deze groter of kleiner dan gewenst is. Bij LVM worden verschillende Physical Volumes (PVs) gecombineerd tot Volume Groups (VGs). Binnen deze VG worden Logical Volumes (LVs) aangemaakt, die als virtuele schijven benaderd worden en een filesystem kunnen hebben. Daarnaast maakt LVM het mogelijk snapshots (momentopnames van de toestand van het systeem op een bepaald moment, als een backup) van LVs te maken, en meerdere PVs met een enkel wachtwoord te encrypten.</p>
+</aside>
+<!--
+- Physical volumes = harde schijven
+- Pools = combinaties van physical volumes / partities
+- Binnen pools logical volumes aanmaken, hierop filesystem
+- Logical volumes mogen groter dan harde schijven
+- RAID hardwarematig zelfde doelen
+-->
+<ul>
+<li>LVM voegt een extra laag toe onder het filesystem</li>
+<li>Volumes niet 1-op-1 gebonden aan partities</li>
+<li>Extra features, e.g. snapshots</li>
+<li>Physical volumes, volume groups en logical volumes</li>
+<li>Redundancy</li>
+<li>RAID</li>
+</ul>
+</section>
+<section id="lvm" class="slide level2">
+<h2>LVM</h2>
+<p><img data-src="images/lvm.png" style="width:90.0%" /></p>
+</section>
+<section id="the-next-generation" class="slide level2">
+<h2>The Next Generation</h2>
+<aside class="notes">
+<p>Om een filesystem power-safe te maken wordt in moderne filesystems gebruik gemaakt van Copy-on-Write. Nieuwe data kan niet zonder meer oude data overschrijven, maar in plaats daarvan wordt de nieuwe situatie elders op de disk opgebouwd. Ongeweizigde data wordt niet gekopieerd, maar verwijst naar de bestaande data; op het moment dat er wel iets verandert, wordt alleen dat deel gekopieerd. Zodra de vernieuwde situatie klaar is, wordt deze “live” gemaakt en kunnen blokken die niet meer nodig zijn van de oude situatie worden verwijderd. Copy-on-Write wordt daarnaast ook gebruikt voor snapshots, waarbij de oude data als snapshot blijft bestaan en naast de nieuwe situatie op te roepen is. Filesystems als ZFS (Sun) en Btrfs (B-Tree FS, Oracle) maken gebruik van deze nieuwe ideeën. ZFS ondersteunt ook een eigen vorm van RAID en logical volume management. Hiermee verhogen zij de veiligheid, performance en capaciteit ten opzichte van de oudere, simpelere filesystems.</p>
+</aside>
+<!--
+- copy on write bekend van geheugen (forks), nu voor schijfinhoud
+- snapshot = geintergreerde backup
+- Veel voordelen RAID en LVM binnen FS
+- ZFS "koploper" van Sun, Btrfs (B-Tree FS) door Oracle
+-->
+<ul>
+<li>Copy-on-Write</li>
+<li>Snapshots</li>
+<li>ZFS, Btrfs</li>
+</ul>
+</section>
+<section id="de-filesystem-hierarchy-standard" class="slide level2">
+<h2>De Filesystem Hierarchy Standard</h2>
+<aside class="notes">
+<p>De indeling van een Linux bestandssysteem is in grote mate gestandaardiseerd. Waar dit in Windows makkelijk is (iedere versie van Windows wordt door hetzelfde bedrijf uitgebracht), is het voor Linux wenselijk dat verschillende distro-makers dezelfde structuur hanteren.</p>
+</aside>
+<!--
+-->
+<div style="font-size: 24px">
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><code>bin</code> - binaries (executables)</li>
+<li><code>boot</code> - boot informatie</li>
+<li><code>dev</code> - devices (virtueel)</li>
+<li><code>etc</code> - system-level configuratie</li>
+<li><code>home</code> - user-level</li>
+<li><code>lib</code> - libraies</li>
+<li><code>media</code> - opvolger van <code>mnt</code></li>
+<li><code>mnt</code> - designated mount-point</li>
+<li><code>proc</code> - processen en systeem-informatie (virtueel)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><code>root</code> - home-directory van de systeembeheerder</li>
+<li><code>run</code> - run-time variabele data</li>
+<li><code>sbin</code> - binaries voor alleen root</li>
+<li><code>sys</code> - info over devices, drivers en kernel-features (virtueel)</li>
+<li><code>tmp</code> - tijdelijke map, wordt bij reboot geleegd</li>
+<li><code>usr</code> - secondary hierarchy, bevat mappen voor multi-user</li>
+<li><code>var</code> - variabele data, logs, tijdelijke bestanden</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="dev" class="slide level2">
+<h2><code>/dev</code></h2>
+<aside class="notes">
+<p>In Linux (en Unix in het algemeen) wordt alles als bestand gezien; dit geldt ook voor fysieke devices. Dergelijke <em>device files</em> of <em>special files</em> werken als interface naar een device driver, en zijn te vinden in de map <code>/dev</code>. Bij de uitleg over het mounten van filesystems hebben we daar al een voorbeeld van gezien: de partitie die we willen mounten wordt aangeduid met bijvoorbeeld <code>/dev/sda1</code>: de eerste partitie op de eerste (SATA) harde schijf. Met <code>/dev/sda</code> kan de schijf als geheel aangeduid worden, bijvoorbeeld om de partitie-structuur aan te passen. Ook bij de afbeelding over LVM hebben we entries in <code>/dev</code> gezien voor Logical Volumes. Ook pseudo-terminal slaves (<code>/dev/pts/*</code>), en virtual consoles (<code>/dev/ttyN</code>) hebben entries inde <code>/dev</code>-directory. <code>/dev/tty</code> zonder nummer verwijst naar de terminal die het huidige proces beheert. Met behulp van <code>cat</code> en <code>echo</code> kunnen we dit bestand lezen en schrijven: <code>cat /dev/tty</code> geeft alle invoer terug (tot je cat beëindigt met <code>C-c</code> of <code>C-d</code>), en <code>echo foo &gt; /dev/tty</code> print informatie naar de huidige terminal (net als gewoon <code>echo</code> zou doen). Als je de device-file van een terminal weet (hier kom je achter met het <code>tty</code> commando) kun je ook naar een andere terminal <code>echo</code>en, of de invoer met <code>cat</code> afvangen (al leidt dit vooral tot ongedefinieerd gedrag).</p>
+</aside>
+<!--
+- Device files
+- `/dev/sda1` voor schijf 1 (a) partitie 1
+- Pseudo-terminal slaves: `/dev/pts/N`, achterhalen met `tty` command
+-->
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><code>/dev/sda</code></li>
+<li><code>/dev/sda1</code></li>
+<li><code>/dev/mapper/lv</code></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><code>/dev/pts/</code></li>
+<li><code>/dev/tty</code></li>
+<li><code>/dev/ttyN</code></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="pseudo-devices" class="slide level2">
+<h2>Pseudo Devices</h2>
+<aside class="notes">
+<p>De <code>/dev</code>-directory bevat een aantal files die vooral handig zijn om als invoer of uitvoer van processen te dienen. Het bestand <code>/dev/null</code> kan altijd naar geschreven worden, en de data die erin terecht komt verdwijnt. Dit is bijvoobeeld handig om de <code>STDOUT</code> of <code>STDERR</code> van een proces naartoe te schrijven als deze niet nodig is. <code>/dev/zero</code> en <code>/dev/urandom</code> zijn data generators: <code>zero</code> geeft een constante stroom <code>NULL</code>-karakters (ASCII waarde 0), en <code>/dev/urandom</code> genereert random data. Beide kunnen bijvoorbeeld gebruikt worden met <code>dd</code> (byte level kopiëren van data) om een file of partitie leeg te maken of met random data te vullen.</p>
+</aside>
+<!--
+-->
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="fu">find</span> . -name <span class="st">&quot;*.svg&quot;</span> <span class="op">2&gt;</span> /dev/null <span class="co"># verberg error messages</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="fu">dd</span> count=512 if=/dev/zero of=zerofile <span class="co"># vul een file voor 512 blocks met NULL-karakters</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="fu">dd</span> count=512 if=/dev/urandom of=randomfile <span class="co"># vul een file voor 512 blocks met random data</span></a></code></pre></div>
+</section>
+<section id="proc-en-sys" class="slide level2">
+<h2><code>/proc</code> en <code>/sys</code></h2>
+<aside class="notes">
+<p>Naast devices heeft ook ieder proces zijn eigen file in Linux. In les 2 hebben we deze al voorbij zien komen: per proces is binnen <code>/proc</code> een directory aanwezig waarin alle informatie over dit proces te vinden is. Daarnaast bevat <code>/proc</code> ook andere virtuele bestanden, zoals <code>/proc/cpuinfo</code> en <code>/proc/meminfo</code> met informatie over de CPU en geheugen van de computer. Vroeger werd <code>/proc</code> voor nog meer gebruikt virtuele bestanden gebruikt, waaronder informatie over de ACPI (Advanced Configuration and Power Interface) zoals de toestand van de batterij van een laptop. Deze informatie is tegenwoordig naar <code>/sys</code> verplaatst, die verschillende kernel-level datastructuren beschikbaar maakt. In deze map is diverse systeem- en hardware-informatie op een gestructureerde manier te vinden. Beide mappen (en <code>/dev</code>) zijn niet op de schijf, maar in het RAM aanwezig.</p>
+</aside>
+<!--
+- Terugverwijzing Les 2
+-->
+<ul>
+<li>Process Files</li>
+<li>TTY Files</li>
+</ul>
+</section>
+<section id="users" class="slide level2">
+<h2>Users</h2>
+<aside class="notes">
+<p>Ieder bestand op een Linux systeem heeft een eigenaar, een groep en een verzameling rechten. De root-gebruiker is de systeembeheerder en heeft overal toegang toe. Groepen zijn labels die een gebruiker wel of niet kan hebben; als een gebruiker het label <code>wheel</code> heeft, dan maakt deze gebruiker deel uit van deze groep. De <code>wheel</code> groep is gereserveerd voor gebruikers die root-rechten kunnen aanvragen. Voor veel specifieke rechten zijn groepen, zoals het direct aanspreken van USB-apparaten, het gebruiken van audio en zelfs het spelen van games. De meeste systemen zijn tegenwoordig Single-user, waarbij de hoofdgebruiker in de meeste (zo niet alle) groepen zit. De groepen (en in mindere mate, gebruikers) stammen nog uit de tijd van de mainframes, maar worden nog veel gebruikt om achtergrond-processen beperkte rechten te geven. Iedere gebruiker heeft een standaard-groep, die meestal dezelfde naam heeft als de gebruiker.</p>
+</aside>
+<!--
+-->
+<p><img data-src="images/root.jpg" /></p>
+</section>
+<section id="virtual-filesystems-en-fuse" class="slide level2">
+<h2>Virtual Filesystems en FUSE</h2>
+<aside class="notes">
+<p>Naast de standaardmappen die we zojuist hebben gezien, wordt in Linux vaker gebruik gemaakt van virtuele filesystems. Een goed voorbeeld hiervan is Filesystems in Userspace (FUSE), waarbij het mogelijk is in user space bestandssystemen aan te koppelen. Dit wordt gebruikt voor “vreemde” bestandssystemen zoals NTFS, maar ook om dingen die geen bestandssysteem zijn wel als bestandssysteem te benaderen. Voorbeelden hiervan zijn WikipediaFS, GMailFS en ytfs (YouTube filesystem).</p>
+</aside>
+<!--
+- Alles kan een FS zijn in Linux: Wikipedia, GMail, Youtube als mappen structuur
+- `cd`, `ls`, `cat` etc om door data-store heen te lopen
+- Userspace: FUSE draait in Kernel maar handler program in US
+-->
+<p><img data-src="images/vfs-fuse.png" style="width:50.0%" /></p>
+</section>
+<section id="rechten" class="slide level2">
+<h2>Rechten</h2>
+<aside class="notes">
+<p>Voor de andere gebruikers geldt echter het rechten-systeem. Een bestand kan leesbaar, schrijfbaar en uitvoerbaar zijn, en deze eigenschappen worden op drie niveaus bijgehouden: wat de eigenaar mag, wat gebruikers in de juiste groep mogen, en wat de rest van de wereld mag. Ieder bestand op een Linux systeem heeft een eigenaar, een groep en een verzameling rechten. Een bestand kan leesbaar, schrijfbaar en uitvoerbaar zijn, en deze eigenschappen worden op drie niveaus bijgehouden: wat de eigenaar mag, wat gebruikers in de juiste groep mogen, en wat de rest van de wereld mag. De root-gebruiker mag altijd alles met ieder bestand. De rechten van een bestand worden bijgehouden met octale getallen, waarbij een bit op een bepaalde positie <code>1</code> is als de gebruiker/groep/wereld het recht heeft, en <code>0</code> als dat niet zo is. Op de slide is de volgorde van de bits te zien. Ieder octaal getal (groep van 3 bits) staat voor een niveau (user, group, others), en de bits binnen het getal staan voor de rechten. De eerste bit in ieder niveau is <code>Read</code>: voor een bestand betekent dit dat de inhoud van het bestand gelezen mag worden, voor een directory dat de bestandslijst mag worden opgevraagd. De tweede bit in ieder niveau is <code>Write</code>: voor een bestand betekent dit dat het bestand mag worden gewijzigd of verwijderd, voor een directory dat bestanden en subdirectories mogen worden aangemaakt. De laatste bit in ieder niveau is <code>eXecute</code>: voor een bestand betekent dit dat het uitgevoerd mag worden (bijvoorbeeld bij scripts), bij directories dat de map als werkmap gebruikt mag worden en je ernaar kunt <code>cd</code>en. Deze bits worden doorgaans als getal (e.g. <code>755</code>) of symbolisch (e.g. <code>-rwxr-xr-x</code>) weergegeven. Ieder bestand heeft naast deze drie rechten-niveaus ook nog een drietal andere bits: <code>Setuid</code>, <code>Setgid</code> en <code>sTicky</code>. De <code>setuid</code>-bit heeft alleen maar zin als de user execute bit gezet is: in dit geval kan het programma of script door iedereen worden uitgevoerd, en wordt dit als de eigenaar van de executable gedaan. Een voorbeeld is het <code>passwd</code> commando, dat waarmee een gebruiker haar wachtwoord kan aanpassen. Hiervoor moet in een bestand geschreven worden dat alleen door root te gebruiken is; dankzij de <code>setuid</code> bit krijgt de gebruiker bij het uitvoeren van dit programma de rechten van root, zodat het bestand kan worden aangepast. Het is van belang dat hier zorgvuldig mee wordt omgegaan. De <code>setgid</code>-bit werkt hetzelfde, maar dan voor de group in plaats van de user. Deze bit heeft enkel zin als het bestand voor de group uitvoerbaar is. In tegenstelling tot <code>setuid</code> heeft deze bit ook invloed op mappen: een gebruiker die een bestand in de map met <code>setgid</code>-bit aanmaakt, doet dit niet met haar standaard-group, maar met de group van de map. De <code>sticky</code>-bit, tot slot, werkt enkel op directories. Als deze gezet is, zijn alle bestanden binnen de map alleen door de eigenaar aan te passen. Standaard is de inhoud van de bestanden veilig, maar kan iemand met de juiste rechten wel bestanden uit een map verwijderen (zelfs zonder rechten voor het bestand zelf). Meestal wordt dit voorkomen door de rechten van de map ook te beperken, maar voor sommige mappen is dit niet wenselijk. <code>/tmp</code> moet bijvoorbeeld voor iedere gebruiker te schrijven zijn. In de symbolische notatie (<code>-rwxrwxrwx</code>) wordt <code>setuid</code> aangeduid met een <code>s</code> op de plaats van de <code>x</code> bij de gebruiker. Omdat deze bit geen zin heeft als het bestand niet user-executable is, impliceert de <code>s</code> dat ook de <code>x</code> gezet is. In het geval dat <code>setuid</code> wel gezet is, maar <code>x</code> bij de gebruiker niet wordt een <code>S</code> getoond als waarschuwing. <code>setgid</code> heeft dezelfde notatie, maar nu bij de group <code>x</code>, en <code>sTicky</code> gebruikt de <code>t</code> bij de <code>x</code> van others. Numeriek worden <code>setuid</code>, <code>setgid</code> en <code>sticky</code> gecombineerd tot een vierde octale getal, dat vooraan wordt geplaatst. De bitwaardes zijn respectievelijk 4, 2 en 1.</p>
+</aside>
+<!--
+- Per drie bits een octaal getal voor user, group en others
+- Vierde octale getal voor `setuid`/`setgid`/`sticky`
+- Symbolische weergave met `Read`, `Write` en `eXecute`
+- `setuid`/`setgid`/`sticky` vervangen `x` bij user, group en others resp
+- Deze bits alleen zinvol als geassocieerde `x` gezet
+-->
+<p><img data-src="images/permissions.png" style="width:80.0%" /></p>
+</section>
+<section id="eigenaar-groep-en-rechten-aanpassen" class="slide level2">
+<h2>Eigenaar, groep en rechten aanpassen</h2>
+<aside class="notes">
+<p>Om de eigenaar van een bestand aan te passen, kun je <code>chown</code> gebruiken: <code>chown user file</code>. Met behulp van de <code>-R</code> flag kun je dit recursief op een map en alles daaronder toepassen. <code>chgrp</code> doet hetzelfde voor groepen, en als je beide wilt veranderen kan dit met <code>chown user:group file</code>. De rechten van een bestand aanpassen gaat met <code>chmod</code>. Doorgaans wordt hiervoor de numerieke notatie gebruikt, maar je kunt ook een short-hand als <code>u+x</code> gebruiken om voor de gebruiker de <code>eXecutable</code> bit te toe te kennen. <code>u</code>, <code>g</code> en <code>o</code> staan hierbij respectievelijk voor de user, groep en others. Deze eerste letter is optioneel, als deze niet is gegeven worden de rechten zowel voor user als group als others gezet. De <code>+</code> wordt gebruikt om rechten toe te kennen, de <code>-</code> om rechten te ontnemen. De laatste letter is doorgaans <code>r</code>, <code>w</code> of <code>x</code>, maar kan ook <code>s</code> of <code>t</code> zijn om <code>setuid</code>, <code>setgid</code> en <code>sticky</code> aan te passen. Om <code>setgid</code> voor een bestand te zetten gebruik je dus bijvoorbeeld <code>chmod g+s file</code>, en voor het <code>sticky</code> maken van een map <code>chmod o+t</code>.</p>
+</aside>
+<!--
+- `chown user:group file` (user en group met een command)
+- `chmod -R group directory` (recursief)
+- `chmod 755 file` (numerieke waarde)
+- `chmod u+x` (zet execute voor user)
+- `chmod +x` (zet execute voor user, group en others)
+- `chmod o+t` (zet sticky bit)
+-->
+<ul>
+<li><code>chown user:group file</code></li>
+<li><code>chmod -R group directory</code></li>
+<li><code>chmod 755 file</code></li>
+<li><code>chmod u+x</code></li>
+<li><code>chmod +x</code></li>
+<li><code>chmod o+t</code></li>
+</ul>
+</section>
+<section id="wat-hebben-we-deze-les-geleerd" class="slide level2">
+<h2>Wat hebben we deze les geleerd?</h2>
+<ul>
+<li>Schijven, partities en filesystems</li>
+<li>FAT vs inodes</li>
+<li>Mounting</li>
+<li>RAID en LVM</li>
+<li>De FHS</li>
+<li>Virtuele bestandssystemen in Linux (<code>dev</code>, <code>proc</code> en <code>sys</code>)</li>
+<li>Users en rechten</li>
+</ul>
+</section>
     </div>
   </div>
 

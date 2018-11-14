@@ -284,7 +284,7 @@ Waar `STDIN` en `STDOUT` precies aan verbonden zijn, is te vinden in de de envir
 <p>en 2&gt;&gt; append</p>
 </blockquote>
 </blockquote></li>
-<li>&lt;&lt; EOF = lees tot regel met alleen EOF</li>
+<li>&lt;&lt; EOF = lees tot regel met alleen EOF (heredoc)</li>
 </ul>
 </aside>
 <!--
@@ -551,6 +551,7 @@ Het belangrijke verschil in de werking is dat `su` het wachtwoord van de doelgeb
 <!--
 Lange commando' of bestandsnamen kan Bash voor je aanvullen. Dit gebeurt met de Tab toets en heet tab-completion.
 ``*`` en ``?`` kunnen in een bestandsnaam gebruikt worden als soort van wildcards. ``*`` zal zoveel characters matchen als nodig is (inclusief 0): ``File*.png`` matcht bijvoorbeeld ``File.png``, maar ook ``FileFooBarUnicornLasers.png``. ``?`` werkt op eenzelfde manier, maar zal altijd exact één karakter matchen.
+Als je veel tussen dezelfde mappen heen en weer beweegt en `cd -` niet meer voldoende is kun je `pushd` als alternatief voor `cd` gebruiken om meteen je huidige werkmap op een stack te zetten, en `popd` gebruiken om terug te keren. Het commando `dirs` toont de opgebouwde directory stack.
 Met de pijltjes naar boven en beneden kan je door je command-history lopen. Het vorige command nogmaals uitvoeren kan door een keer op pijltje naar boven te drukken, en dan op enter. `C-p` en `C-n` staan respectievelijk voor previous en next, en kunnen in plaats van boven en beneden gebruikt worden. `C-r` staat je toe te zoeken in je command history, en met `history` kan je de history bekijken en eventueel entries verwijderen.
 Om een programma te stoppen kun je `C-c` gebruiken, en in sommige gevallen `C-d`. Die laatste stopt bijvoorbeeld je huidige shell. Waar `C-c` als een letterlijk stop commando geïnterpreteerd wordt, is `C-d` een end-of-file (EOF) karakter. Omdat je shell de interactie met de gebruiker als de `STDIN` file ziet, kun je deze met een EOF beëindigen en stopt de shell. `C-z` stuurt een `SIGSTOP` en is ook handig om programma's te onderbreken.
 Tot slot nog een paar toetsenbordcombinaties die als alternatief gebruikt kunnen worden voor toetsen die mogelijk verder weg zitten: `C-a` is Home en `C-e` is End. `C-j` komt overeen met Enter. `C-l` komt niet met een toets overeen, maar met het commando `clear`, voor als je de terminal leeg wil maken.
@@ -561,6 +562,7 @@ Tot slot nog een paar toetsenbordcombinaties die als alternatief gebruikt kunnen
 <li><ul>
 <li>kan naar alles expanden om bestandsnaam te matchen, ? naar precies 1 symbool</li>
 </ul></li>
+<li>popd, pushd = directory stack, dirs shows stack</li>
 <li>pijltje naar boven = vorig commando, control p / n (previous / next) voor minder rsi</li>
 <li>C-r om te zoeken in command history, history om lijst te zien / manipuleren</li>
 <li>C-c = kill huidig proces, terug naar shell. C-d = einde input. C-z is SIGSTOP</li>
@@ -574,6 +576,7 @@ Tot slot nog een paar toetsenbordcombinaties die als alternatief gebruikt kunnen
 <li><code>C-r</code> en <code>history</code></li>
 <li><code>C-c</code>, <code>C-d</code> en <code>C-z</code></li>
 <li><code>C-a</code>, <code>C-e</code>, <code>C-j</code> en <code>C-l</code></li>
+<li><code>popd</code>, <code>pushd</code> en <code>dirs</code></li>
 </ul>
 </section>
 <section id="wat-hebben-we-deze-les-geleerd" class="slide level2">
