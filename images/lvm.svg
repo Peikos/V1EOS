@@ -82,7 +82,7 @@
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1070"
+     inkscape:window-height="1190"
      inkscape:window-x="0"
      inkscape:window-y="10"
      inkscape:window-maximized="0"
@@ -844,7 +844,7 @@
                x="127.9716"
                sodipodi:role="line"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:end;text-anchor:end;stroke-width:1"
-               id="tspan4593">FS: BtrFS</tspan></text>
+               id="tspan4593">FS: Ext3</tspan></text>
         </g>
         <g
            id="g5230"
@@ -948,7 +948,7 @@
                x="127.97161"
                sodipodi:role="line"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:end;text-anchor:end;stroke-width:1"
-               id="tspan4601">FS: ZFS</tspan></text>
+               id="tspan4601">FS: XFS</tspan></text>
         </g>
         <path
            style="fill:none;stroke:#97cee9;stroke-width:0.36500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.73, 0.73;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
