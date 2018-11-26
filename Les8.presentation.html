@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Embedded &amp; Operating Systems 8">
-  <title>Bootstrapping</title>
+  <title>Compilation and Bootstrapping</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -14,6 +14,71 @@
       span.smallcaps{font-variant: small-caps;}
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
   <!-- Printing and PDF exports -->
@@ -33,11 +98,713 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Bootstrapping</h1>
+  <h1 class="title">Compilation and Bootstrapping</h1>
   <p class="author">Embedded &amp; Operating Systems 8</p>
 </section>
 
-<section><section id="introductie" class="title-slide slide level2"><h2>Introductie</h2></section></section>
+<section id="introductie" class="slide level2">
+<h2>Introductie</h2>
+<!--
+We hebben inmiddels de meeste taken van een OS gezien. Wat echter nog niet is besproken, is hoe we een OS moeten starten: hoe maken we van onze programmeercode een executable, en hoe zorgen we dat deze start als de computer wordt aangezet? Deze les gaan we daar naar kijken.
+-->
+</section>
+<section id="where-to-start" class="slide level2">
+<h2>Where to start?</h2>
+<!--
+Zodra je de computer aan zet, wordt eerst een stuk (EEP)ROM vanaf het moederbord geladen. Dit is bij oudere computers de BIOS (Basic Input/Output System), maar tegenwoordig vaak UEFI (Unified Extensible Firmware Interface). Beide zullen bij het aanzetten van de PC de aanwezige hardware inventariseren en testen, en vervolgens op zoek gaan naar een OS. Hiertoe kan de gebruiker een boot-order instellen, welke de firmware van boven naar beneden afgaat. Deze zijn op device-niveau vastgesteld: een harde schijf of USB stick heeft een positie in deze rangorde, van partities is nog geen sprake.
+In het geval van de BIOS wordt bij de geselecteerde schijf (de eerste in de boot-order, of de volgende als de schijf niet bootable was) het Master Boot Record (MBR) gelezen. Hier staat aangegeven welke partities er aanwezig zijn, waar deze beginnen en eindigen, welke partitie de boot-partitie is, en code om de boot-sector (ook wel Volume Boot Record of VBR) van deze partitie te lezen.
+Bij UEFI wordt gebruik gemaakt van een speciaal gemarkeerde EFI boot-partitie, de ESP (EFI System Partition). Deze bevat een of meerdere EFI bootloaders, doorgaans een enkele per OS. De ESP is bevat voor backwards compatibility een boot-sector (zoals bij MBR), maar kan in de praktijk veel grotere binaries bevatten om complexe taken uit te voeren, zoals het booten van bijzondere filesystems of een netwerk.
+-->
+<aside class="notes">
+
+</aside>
+<ul>
+<li>BIOS / UEFI</li>
+<li>Firmware (EEPROM)</li>
+<li>Power-On Self-Test</li>
+<li>Boot-disk, MBR en boot-sector</li>
+</ul>
+</section>
+<section id="de-boot-sector" class="slide level2">
+<h2>De boot-sector</h2>
+<!--
+De boot-sector bevat instructies die nodig zijn om een programma op te starten. Doorgaans is dit programma het OS, maar als een embedded systeem een enkele applicatie moet draaien en geen OS functionaliteit nodig heeft kan deze ook in de plaats van het OS staan. Zodra de BIOS een boot-device geselecteerd heeft wordt de eerste sector (512 bytes) naar het geheugen geplaatst (bij IBM-compatible PCs naar het geheugenadres `0x7c00`). Deze sector bevat de instructies die nodig zijn om de volgende fase van het boot-proces te laden, en eindigt altijd op de hexadecimale code `0x55aa`: dit _boot sector signature_ geeft aan dat de instructies als boot-instructie bedoeld zijn, en veilig kunnen worden uitgevoerd.
+-->
+<aside class="notes">
+
+</aside>
+<p><img data-src="images/bootsectors.png" style="width:40.0%" /></p>
+</section>
+<section id="nd-stage-bootloader" class="slide level2">
+<h2>2nd-stage bootloader</h2>
+<!--
+Omdat de eerste sector (van 512 bytes) ook nog eens informatie over de partitie-indeling van een schijf kan moeten bevatten, en daarmee erg weinig ruimte overblijft om een heel besturingssyteem mee te kunnen laden, wordt het boot-proces vaak in 2 trappen gedaan. De first-stage bootloader bevat alles dat nodig is om de second-stage bootloader te laden, die vervolgens in staat is om een OS te laden en de uitvoering ervan te starten. Tijdens de installatie van de Gentoo VM ben je al een van deze bootloaders tegengekomen: vermoedelijk was dat Grub, al zijn LiLo (Linux Loader) en Syslinux ook mogelijkheden. Ook op Windows wordt een second-stage bootloader gebruikt, doorgaans BOOTMGR of voor oudere verhttp://hackage.haskell.org/package/netwiresies NTLDR.
+-->
+<aside class="notes">
+
+</aside>
+<p><img data-src="images/grub.jpg" style="width:40.0%" /> <img data-src="images/winboot.png" style="width:34.0%" /></p>
+</section>
+<section id="compilation-vs-intepretation" class="slide level2">
+<h2>Compilation vs intepretation</h2>
+<!--
+Aan het einde van deze les gaan we zien wat er nodig is om een eigen first-stage bootloader operationeel te krijgen. Om dit te kunnen volgen missen we echter nog wat kennis over het compilen van code, dus hier zullen we eerst even naar kijken.
+Het eerste onderscheid dat we moeten maken, is dat tussen compilation van code en interpretation van scripts. Dit onderscheid bepaalt hoe een programma van de programmeur naar de eindgebruiker gaat. Python, waar je in het eerste semester kennis mee hebt gemaakt, is een voorbeeld van een interpreted language: de code wordt als een tekst-bestand verspreid, en de Python-interpreter is nodig om het script uit te voeren. Wat de interpreter doet, is regel voor regel door het script heen lopen, en deze on-the-fly naar machine-code vertalen. Dit is heel anders dan bijvoorbeeld C++, waar je een compiler gebruikt om de hele source in een keer naar machine-code te vertalen. Dit resulteert in een binair bestand, dat vervolgens in het geheugen van een computer kan worden geladen om deze uit te voeren.
+We zullen eerst nauwkeurig kijken naar compilation (en de andere stappen die hierbij komen kijken), waarna we ook de eigenschappen van interpretation en JIT (Just-In-Time) compilation kort zullen behandelen. Het is belangrijk om hierbij te onthouden dat hoewel de meeste talen *doorgaans* compiled of interpreted gebruit worden, dit geen noodzakelijke eigenschap van de taal zelf is: Python, bijvoorbeeld, kan zowel interpreted als JIT gebruikt worden. De programmeertaal dicteert de syntax: wat is een geldig programma en hoe wordt deze naar machine-code vertaald. Of dit in een keer van te voren, of on-the-fly gebeurt hangt vaak wel samen met de programmeertaal, maar dit is zeker niet een één-op-één-relatie.
+-->
+<aside class="notes">
+
+</aside>
+<p><img data-src="images/xkcd-compiling.png" style="width:40.0%" /></p>
+</section>
+<section id="compilation" class="slide level2">
+<h2>Compilation</h2>
+<p><img data-src="images/cpp-compilation.png" /></p>
+</section>
+<section id="compilation-1" class="slide level2">
+<h2>Compilation</h2>
+<!--
+Bij compilation wordt de source-code door de compiler vertaalt naar machine-code, met als resultaat een executable. Deze executable kan verspreid worden, zonder dat de source-code meegedeeld hoeft te worden. Bij open-source software is dit logischerwijs wel het geval, maar van veel closed-source software is de broncode een (soms zwaar verdedigd) bedrijfsgeheim.
+Het voordeel van compiled code is dat deze vele malen sneller is. Allereerst is het vertalen al gebeurd, wat een hoop tijd scheelt. Daarnaast kan compiled code verder geoptimaliseerd worden, waar doorgaans de meeste winst behaald wordt. Hier staat tegenover dat het ontwikkelen wel iets trager gaat: het compilen van een fors programma kan minuten tot uren duren, waardoor het lang duurt voor er feedback is of de nieuwe code werkt, waarna je voor een kleine aanpassing opnieuw moet compilen. De compiler zal de meeste syntax- en typefouten gelukkig snel vinden, waardoor het proces vroeg beëindigd kan worden, maar valide code die niet het juiste resultaat levert wordt vaak niet door de compiler gevonden.
+Een ander nadeel is dat de binary executables die een compiler genereert platform- en CPU specifiek zijn. Een programma dat op Linux is gecompileerd zal niet zonder meer werken op een Windows systeem. Hetzelfde geldt voor processor-architecturen: een programma dat is gecompileerd voor een Intel x86-64 CPU (gebruikelijk voor PCs en laptops) werkt niet op een ARM computer (waaronder de meeste tablets, smartphones en sommige netbooks). Hoewel er "compatibiliteitslagen" bestaan om bijvoorbeeld Windows-binaries op Linux te draaien, werkt dit lang niet altijd 100% en kan dit de performance behoorlijk beïnvloeden. In de praktijk betekent dit dat cross-platform software voor verschillende OS en CPU combinaties gecompileerd moet worden.
+-->
+<aside class="notes">
+
+</aside>
+<ul>
+<li>GCC, LLVM+Clang</li>
+<li>Platform en CPU-specifiek</li>
+<li>Snelle executie</li>
+<li>Langzamere development</li>
+<li>Verspreiding (doorgaans) als binary</li>
+</ul>
+</section>
+<section id="linking" class="slide level2">
+<h2>Linking</h2>
+<!--
+De meeste programma's bestaan uit verschillende source-bestanden, die elk individueel gecompileerd worden. Het resultaat is machinecode, maar nog niet een uitvoerbaar bestand. Iedere source-file levert een eigen _object_-file op, die de vertaalde machine-instructies van dat bestand bevat. Als hierin verwezen wordt naar subroutines uit een ander bestand, zal de compiler deze niet kunnen vinden. De compiler gaat er voor het gemak vanuit dat de subroutines in een ander bestand staan.
+Om uit verschillende object-files een uitvoerbaar bestand te maken is een _linker_ nodig. Deze kijkt naar de verschillende object-files, en verifieert dat alle verwezen subroutines kloppen. Vervolgens wordt alle benodigde machine-code in een enkel uitvoerbaar bestand gezet, en zorgt de linker ervoor dat de adressen van alle subroutines kloppen.
+Het voordeel van deze manier van werken is (naast het feit dat de compiler en linker eenvoudiger te houden zijn als ze een enkele taak hebben) dat bij het opnieuw compileren alleen nieuwe object files gemaakt hoeven te worden voor de source-files waarin iets veranderd is. De ongeweizigde bestanden geven exact dezelfde object files, en de linker heeft er geen probleem mee als een deel van de object files al wat ouder is.
+Een belangrijk onderscheid dat tijdens het linken gemaakt wordt is het dynamic vs static linken van gebruikte subroutines. Bij static linken wordt de machine-code van de subroutine in de executable opgenomen, terwijl bij dynamic linken een verwijzing naar een gedeelde bibliotheek wordt verwezen.
+-->
+<aside class="notes">
+
+</aside>
+<ul>
+<li>Eén object-file per source bestand</li>
+<li>Compiler niet bewust van externe subroutines</li>
+<li>Linker combineert tot een geheel</li>
+<li>Static vs Dynamic linking</li>
+</ul>
+</section>
+<section id="makefiles" class="slide level2">
+<h2>Makefiles</h2>
+<!--
+Doorgaans wordt het linken automatisch bij het compilen meegenomen: bij het gebruik van de `-o` flag roept de compiler de linker aan om direct een executable binary te generen. Soms moet er echter handmatig gelinkt worden, en wordt `ld` handmatig aangeroepen. Hierbij kan een _linker script_ worden meegegeven om te specificeren hoe de verschillende object-files gecombineerd moeten worden.
+Bij complexere projecten moeten vaak meerdere bestanden gecompileerd en aan elkaar gelinkt worden. Daarnaast is het soms nodig een preprocessor te draaien, of zijn er andere taken die telkens in de juiste volgorde moeten worden uitgevoerd. Dit handmatige werk wordt meestal met een script opgelost, de zogenaamde _Makefile_. Dit is een bestandsformaat dat speciaal gemaakt is om gestructureerd "recepten" op te bouwen om bijvoorbeeld code te compileren. Ook andere command-line tools die bestanden als input en output hebben kunnen met een makefile gecombineerd worden (deze slides, bijvoorbeeld, worden met behulp van een makefile omgezet van Markdown naar HTML en PDF). Ook taken als het installeren van de software (alle bestanden op de juiste plek in het bestandssysteem van de gebruiker zetten), het genereren van documentatie en het opruimen van de build-directory wordt vaak met een (apart recept binnen dezelfde) makefile gedaan. De recepten worden aangeroepen met het `make` commando, met als argument het gevraagde recept.
+Op de slide is een simpel voorbeeld van een makefile te zien, gevolgd door een meer algemene. In het eerste geval gebruiken we macros voor de compiler en de compile flags, die letterlijk vervangen kunnen worden. Het recept om `main` te maken is afhankelijk van `main.cc` en `functions.cc`, en als deze aanwezig zijn kan de executable gemaakt worden door het recept te volgen. Als de executable aanwezig is, en de afhankelijkheden zijn niet geweizigd, dan zal `make` ook niet opnieuw compilen. Deze makefile is echter vrij naief: we beheren de call naar de compiler handmatig, en alles wordt in één commando gedaan. Als een enkel bestand aangepast wordt, zal alles opnieuw gecompileerd worden.
+De tweede makefile is flink veralgemeniseerd. We definiëren een recept dat vertelt hoe een `.o` bestand van een `.cc` bestand gemaakt kan worden. De procent-tekens gelden als wildcards, waarbij De speciale variabele `$@` verwijst naar het doelbestand van het recept, `$<` naar het bronbestand. Het recept is verder afhankelijk van de header-files, zodat een aanpassing in de header ook voldoende is om hercompilatie te triggeren. Een tweede recept, `main`, is afhankelijk van de object files en wordt gebruikt om `g++` te vragen deze te linken. In dit voorbeeld zal een aanpassing aan een enkel bestand ertoe leiden dat alleen dat object opnieuw gecompiled wordt, waarna de binary opnieuw gelinkt wordt.
+-->
+<aside class="notes">
+
+</aside>
+<div class="sourceCode" id="cb1"><pre class="sourceCode makefile"><code class="sourceCode makefile"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="dt">CXX</span><span class="ch">=</span><span class="st">g++</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="dt">CXXFLAGS</span><span class="ch">=</span><span class="st">-I.</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="dv">main:</span><span class="dt"> main.cc functions.cc</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">     <span class="ch">$(</span><span class="dt">CXX</span><span class="ch">)</span> -o main main.cc functions.cc <span class="ch">$(</span><span class="dt">CXXFLAGS</span><span class="ch">)</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode makefile"><code class="sourceCode makefile"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="dt">CXX</span><span class="ch">=</span><span class="st">g++</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="dt">CXXFLAGS</span><span class="ch">=</span><span class="st">-I.</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="dt">DEPS </span><span class="ch">=</span><span class="st"> functions.hh</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="dt">OBJ </span><span class="ch">=</span><span class="st"> main.o functions.o </span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="dv">%.o:</span><span class="dt"> %.cc </span><span class="ch">$(</span><span class="dt">DEPS</span><span class="ch">)</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">    <span class="ch">$(</span><span class="dt">CXX</span><span class="ch">)</span> -c -o <span class="ch">$@</span> <span class="ch">$&lt;</span> <span class="ch">$(</span><span class="dt">CXXFLAGS</span><span class="ch">)</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="dv">main:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">OBJ</span><span class="ch">)</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">    <span class="ch">$(</span><span class="dt">CXX</span><span class="ch">)</span> -o <span class="ch">$@</span> <span class="ch">$^</span> <span class="ch">$(</span><span class="dt">CXXFLAGS</span><span class="ch">)</span></a></code></pre></div>
+</section>
+<section id="elf-binaries" class="slide level2">
+<h2>ELF Binaries</h2>
+<!--
+De binaries die we voor onze bootloader zullen maken zijn niet zomaar uitwisselbaar met binaries die we op ons eigen systeem zullen draaien: ze gebruiken een ander binair formaat. Bootable binaries zijn zo simpel mogelijk: ze bevatten informatie over wat waar in de binary te vinden is, en verder enkel data en code. Applicaties op een modern besturingssysteem zijn vaak complexer: het Windows `.exe` formaat en de Linux ELF (Executable and Linkable Format) binaries bevatten flink wat extra structuur. Het ELF formaat wordt daarnaast ook voor gedeelde bibliotheken (op Windows: `.dll`) en core dumps (een dump van het geheugen in het bestand, om mee te debuggen) gebruikt. Ieder ELF bestand begint met een header, waarin informatie over de binary te vinden is, zoals het platform waarvoor deze gecompileerd is, waar de verschillende segmenten zich bevinden, en uit welke bronbestanden het bestand opgebouwd is. Met het `readelf` commando is deze informatie uit te lezen (`readelf -a filename` geeft alle informatie weer). Op de slide de ELF header van een simpel hello world programma uit twee source files, om een beeld te geven van de informatie die bovenop de daadwerkelijke code in de executable bewaard wordt.
+-->
+<aside class="notes">
+
+</aside>
+<pre><code>ELF Header:
+  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF64
+  Data:                              2&#39;s complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           Advanced Micro Devices X86-64
+  Version:                           0x1
+  Entry point address:               0x400510
+  Start of program headers:          64 (bytes into file)
+  Start of section headers:          8232 (bytes into file)
+  Flags:                             0x0
+  Size of this header:               64 (bytes)
+  Size of program headers:           56 (bytes)
+  Number of program headers:         10
+  Size of section headers:           64 (bytes)
+  Number of section headers:         33
+  Section header string table index: 32
+
+Section Headers:
+  [Nr] Name              Type             Address           Offset
+       Size              EntSize          Flags  Link  Info  Align
+  [ 0]                   NULL             0000000000000000  00000000
+       0000000000000000  0000000000000000           0     0     0
+  [ 1] .interp           PROGBITS         0000000000400270  00000270
+       0000000000000054  0000000000000000   A       0     0     1
+  [ 2] .note.ABI-tag     NOTE             00000000004002c4  000002c4
+       0000000000000020  0000000000000000   A       0     0     4
+  [ 3] .hash             HASH             00000000004002e8  000002e8
+       0000000000000024  0000000000000004   A       4     0     8
+  [ 4] .dynsym           DYNSYM           0000000000400310  00000310
+       0000000000000060  0000000000000018   A       5     1     8
+  [ 5] .dynstr           STRTAB           0000000000400370  00000370
+       00000000000000e1  0000000000000000   A       0     0     1
+  [ 6] .gnu.version      VERSYM           0000000000400452  00000452
+       0000000000000008  0000000000000002   A       4     0     2
+  [ 7] .gnu.version_r    VERNEED          0000000000400460  00000460
+       0000000000000020  0000000000000000   A       5     1     8
+  [ 8] .rela.dyn         RELA             0000000000400480  00000480
+       0000000000000048  0000000000000018   A       4     0     8
+  [ 9] .init             PROGBITS         00000000004004c8  000004c8
+       0000000000000017  0000000000000000  AX       0     0     4
+  [10] .plt              PROGBITS         00000000004004e0  000004e0
+       0000000000000010  0000000000000010  AX       0     0     16
+  [11] .plt.got          PROGBITS         00000000004004f0  000004f0
+       0000000000000008  0000000000000000  AX       0     0     8
+  [12] .text             PROGBITS         0000000000400500  00000500
+       0000000000000172  0000000000000000  AX       0     0     16
+  [13] .fini             PROGBITS         0000000000400674  00000674
+       0000000000000009  0000000000000000  AX       0     0     4
+  [14] .rodata           PROGBITS         0000000000400680  00000680
+       0000000000000015  0000000000000000   A       0     0     4
+  [15] .eh_frame_hdr     PROGBITS         0000000000400698  00000698
+       0000000000000044  0000000000000000   A       0     0     4
+  [16] .eh_frame         PROGBITS         00000000004006e0  000006e0
+       000000000000011c  0000000000000000   A       0     0     8
+  [17] .init_array       INIT_ARRAY       0000000000600dc0  00000dc0
+       0000000000000008  0000000000000008  WA       0     0     8
+  [18] .fini_array       FINI_ARRAY       0000000000600dc8  00000dc8
+       0000000000000008  0000000000000008  WA       0     0     8
+  [19] .dynamic          DYNAMIC          0000000000600dd0  00000dd0
+       0000000000000200  0000000000000010  WA       5     0     8
+  [20] .got              PROGBITS         0000000000600fd0  00000fd0
+       0000000000000030  0000000000000008  WA       0     0     8
+  [21] .data             PROGBITS         0000000000601000  00001000
+       0000000000000010  0000000000000000  WA       0     0     8
+  [22] .bss              NOBITS           0000000000601010  00001010
+       0000000000000008  0000000000000000  WA       0     0     1
+  [23] .comment          PROGBITS         0000000000000000  00001010
+       0000000000000022  0000000000000001  MS       0     0     1
+  [24] .debug_aranges    PROGBITS         0000000000000000  00001040
+       00000000000000d0  0000000000000000           0     0     16
+  [25] .debug_info       PROGBITS         0000000000000000  00001110
+       0000000000000184  0000000000000000           0     0     1
+  [26] .debug_abbrev     PROGBITS         0000000000000000  00001294
+       0000000000000076  0000000000000000           0     0     1
+  [27] .debug_line       PROGBITS         0000000000000000  0000130a
+       000000000000014a  0000000000000000           0     0     1
+  [28] .debug_str        PROGBITS         0000000000000000  00001454
+       000000000000013c  0000000000000001  MS       0     0     1
+  [29] .debug_ranges     PROGBITS         0000000000000000  00001590
+       0000000000000080  0000000000000000           0     0     16
+  [30] .symtab           SYMTAB           0000000000000000  00001610
+       0000000000000648  0000000000000018          31    49     8
+  [31] .strtab           STRTAB           0000000000000000  00001c58
+       000000000000029e  0000000000000000           0     0     1
+  [32] .shstrtab         STRTAB           0000000000000000  00001ef6
+       0000000000000130  0000000000000000           0     0     1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (comnotessed), x (unknown), o (OS specific), E (exclude),
+  l (large), p (processor specific)
+
+There are no section groups in this file.
+
+Program Headers:
+  Type           Offset             VirtAddr           PhysAddr
+                 FileSiz            MemSiz              Flags  Align
+  PHDR           0x0000000000000040 0x0000000000400040 0x0000000000400040
+                 0x0000000000000230 0x0000000000000230  R E    0x8
+  INTERP         0x0000000000000270 0x0000000000400270 0x0000000000400270
+                 0x0000000000000054 0x0000000000000054  R      0x1
+      [Requesting program interpreter: /nix/store/hwwqshlmazzjzj7yhrkyjydxamvvkfd3-glibc-2.26-131/lib/ld-linux-x86-64.so.2]
+  LOAD           0x0000000000000000 0x0000000000400000 0x0000000000400000
+                 0x00000000000007fc 0x00000000000007fc  R E    0x200000
+  LOAD           0x0000000000000dc0 0x0000000000600dc0 0x0000000000600dc0
+                 0x0000000000000250 0x0000000000000258  RW     0x200000
+  DYNAMIC        0x0000000000000dd0 0x0000000000600dd0 0x0000000000600dd0
+                 0x0000000000000200 0x0000000000000200  RW     0x8
+  NOTE           0x00000000000002c4 0x00000000004002c4 0x00000000004002c4
+                 0x0000000000000020 0x0000000000000020  R      0x4
+  GNU_EH_FRAME   0x0000000000000698 0x0000000000400698 0x0000000000400698
+                 0x0000000000000044 0x0000000000000044  R      0x4
+  GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000
+                 0x0000000000000000 0x0000000000000000  RW     0x10
+  GNU_RELRO      0x0000000000000dc0 0x0000000000600dc0 0x0000000000600dc0
+                 0x0000000000000240 0x0000000000000240  R      0x1
+  PAX_FLAGS      0x0000000000000000 0x0000000000000000 0x0000000000000000
+                 0x0000000000000000 0x0000000000000000         0x8
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     
+   01     .interp 
+   02     .interp .note.ABI-tag .hash .dynsym .dynstr .gnu.version .gnu.version_r .rela.dyn .init .plt .plt.got .text .fini .rodata .eh_frame_hdr .eh_frame 
+   03     .init_array .fini_array .dynamic .got .data .bss 
+   04     .dynamic 
+   05     .note.ABI-tag 
+   06     .eh_frame_hdr 
+   07     
+   08     .init_array .fini_array .dynamic .got 
+   09     
+
+Dynamic section at offset 0xdd0 contains 27 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x000000000000001d (RUNPATH)            Library runpath: [/nix/store/hwwqshlmazzjzj7yhrkyjydxamvvkfd3-glibc-2.26-131/lib:/nix/store/12zhmzzhrwszdc8q3fwgifpwjkwi3mzc-gcc-7.3.0-lib/lib]
+ 0x000000000000000c (INIT)               0x4004c8
+ 0x000000000000000d (FINI)               0x400674
+ 0x0000000000000019 (INIT_ARRAY)         0x600dc0
+ 0x000000000000001b (INIT_ARRAYSZ)       8 (bytes)
+ 0x000000000000001a (FINI_ARRAY)         0x600dc8
+ 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)
+ 0x0000000000000004 (HASH)               0x4002e8
+ 0x0000000000000005 (STRTAB)             0x400370
+ 0x0000000000000006 (SYMTAB)             0x400310
+ 0x000000000000000a (STRSZ)              225 (bytes)
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000015 (DEBUG)              0x0
+ 0x0000000000000003 (PLTGOT)             0x600fd0
+ 0x0000000000000007 (RELA)               0x400480
+ 0x0000000000000008 (RELASZ)             72 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x000000000000001e (FLAGS)              BIND_NOW
+ 0x000000006ffffffb (FLAGS_1)            Flags: NOW
+ 0x000000006ffffffe (VERNEED)            0x400460
+ 0x000000006fffffff (VERNEEDNUM)         1
+ 0x000000006ffffff0 (VERSYM)             0x400452
+ 0x0000000000000000 (NULL)               0x0
+
+Relocation section &#39;.rela.dyn&#39; at offset 0x480 contains 3 entries:
+  Offset          Info           Type           Sym. Value    Sym. Name + Addend
+000000600fe8  000100000006 R_X86_64_GLOB_DAT 0000000000000000 puts@GLIBC_2.2.5 + 0
+000000600ff0  000200000006 R_X86_64_GLOB_DAT 0000000000000000 __libc_start_main@GLIBC_2.2.5 + 0
+000000600ff8  000300000006 R_X86_64_GLOB_DAT 0000000000000000 __gmon_start__ + 0
+
+The decoding of unwind sections for machine type Advanced Micro Devices X86-64 is not currently supported.
+
+Symbol table &#39;.dynsym&#39; contains 4 entries:
+   Num:    Value          Size Type    Bind   Vis      Ndx Name
+     0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND puts@GLIBC_2.2.5 (2)
+     2: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@GLIBC_2.2.5 (2)
+     3: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
+
+Symbol table &#39;.symtab&#39; contains 67 entries:
+   Num:    Value          Size Type    Bind   Vis      Ndx Name
+     0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 0000000000400270     0 SECTION LOCAL  DEFAULT    1 
+     2: 00000000004002c4     0 SECTION LOCAL  DEFAULT    2 
+     3: 00000000004002e8     0 SECTION LOCAL  DEFAULT    3 
+     4: 0000000000400310     0 SECTION LOCAL  DEFAULT    4 
+     5: 0000000000400370     0 SECTION LOCAL  DEFAULT    5 
+     6: 0000000000400452     0 SECTION LOCAL  DEFAULT    6 
+     7: 0000000000400460     0 SECTION LOCAL  DEFAULT    7 
+     8: 0000000000400480     0 SECTION LOCAL  DEFAULT    8 
+     9: 00000000004004c8     0 SECTION LOCAL  DEFAULT    9 
+    10: 00000000004004e0     0 SECTION LOCAL  DEFAULT   10 
+    11: 00000000004004f0     0 SECTION LOCAL  DEFAULT   11 
+    12: 0000000000400500     0 SECTION LOCAL  DEFAULT   12 
+    13: 0000000000400674     0 SECTION LOCAL  DEFAULT   13 
+    14: 0000000000400680     0 SECTION LOCAL  DEFAULT   14 
+    15: 0000000000400698     0 SECTION LOCAL  DEFAULT   15 
+    16: 00000000004006e0     0 SECTION LOCAL  DEFAULT   16 
+    17: 0000000000600dc0     0 SECTION LOCAL  DEFAULT   17 
+    18: 0000000000600dc8     0 SECTION LOCAL  DEFAULT   18 
+    19: 0000000000600dd0     0 SECTION LOCAL  DEFAULT   19 
+    20: 0000000000600fd0     0 SECTION LOCAL  DEFAULT   20 
+    21: 0000000000601000     0 SECTION LOCAL  DEFAULT   21 
+    22: 0000000000601010     0 SECTION LOCAL  DEFAULT   22 
+    23: 0000000000000000     0 SECTION LOCAL  DEFAULT   23 
+    24: 0000000000000000     0 SECTION LOCAL  DEFAULT   24 
+    25: 0000000000000000     0 SECTION LOCAL  DEFAULT   25 
+    26: 0000000000000000     0 SECTION LOCAL  DEFAULT   26 
+    27: 0000000000000000     0 SECTION LOCAL  DEFAULT   27 
+    28: 0000000000000000     0 SECTION LOCAL  DEFAULT   28 
+    29: 0000000000000000     0 SECTION LOCAL  DEFAULT   29 
+    30: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS init.c
+    31: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS main.cc
+    32: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS /nix/store/czxcii58v6d3yh
+    33: 0000000000400540     0 FUNC    LOCAL  DEFAULT   12 deregister_tm_clones
+    34: 0000000000400570     0 FUNC    LOCAL  DEFAULT   12 register_tm_clones
+    35: 00000000004005b0     0 FUNC    LOCAL  DEFAULT   12 __do_global_dtors_aux
+    36: 0000000000601010     1 OBJECT  LOCAL  DEFAULT   22 completed.6983
+    37: 0000000000600dc8     0 OBJECT  LOCAL  DEFAULT   18 __do_global_dtors_aux_fin
+    38: 00000000004005e0     0 FUNC    LOCAL  DEFAULT   12 frame_dummy
+    39: 0000000000600dc0     0 OBJECT  LOCAL  DEFAULT   17 __frame_dummy_init_array_
+    40: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS functions.cc
+    41: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS /nix/store/czxcii58v6d3yh
+    42: 00000000004007f8     0 OBJECT  LOCAL  DEFAULT   16 __FRAME_END__
+    43: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS 
+    44: 0000000000400698     0 NOTYPE  LOCAL  DEFAULT   15 __GNU_EH_FRAME_HDR
+    45: 0000000000600dd0     0 OBJECT  LOCAL  DEFAULT   19 _DYNAMIC
+    46: 0000000000600dc8     0 NOTYPE  LOCAL  DEFAULT   17 __init_array_end
+    47: 0000000000600dc0     0 NOTYPE  LOCAL  DEFAULT   17 __init_array_start
+    48: 0000000000600fd0     0 OBJECT  LOCAL  DEFAULT   20 _GLOBAL_OFFSET_TABLE_
+    49: 0000000000601010     0 NOTYPE  GLOBAL DEFAULT   21 _edata
+    50: 0000000000601000     0 NOTYPE  WEAK   DEFAULT   21 data_start
+    51: 0000000000400680     4 OBJECT  GLOBAL DEFAULT   14 _IO_stdin_used
+    52: 0000000000400500    16 FUNC    GLOBAL DEFAULT   12 main
+    53: 0000000000601008     0 OBJECT  GLOBAL HIDDEN    21 __dso_handle
+    54: 0000000000400674     0 FUNC    GLOBAL DEFAULT   13 _fini
+    55: 00000000004005f0    12 FUNC    GLOBAL DEFAULT   12 _Z16myPrintHelloMakev
+    56: 0000000000400510    43 FUNC    GLOBAL DEFAULT   12 _start
+    57: 00000000004004c8     0 FUNC    GLOBAL DEFAULT    9 _init
+    58: 0000000000601010     0 OBJECT  GLOBAL HIDDEN    21 __TMC_END__
+    59: 0000000000601000     0 NOTYPE  GLOBAL DEFAULT   21 __data_start
+    60: 0000000000601018     0 NOTYPE  GLOBAL DEFAULT   22 _end
+    61: 0000000000601010     0 NOTYPE  GLOBAL DEFAULT   22 __bss_start
+    62: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND puts@@GLIBC_2.2.5
+    63: 0000000000400600   101 FUNC    GLOBAL DEFAULT   12 __libc_csu_init
+    64: 0000000000400670     2 FUNC    GLOBAL DEFAULT   12 __libc_csu_fini
+    65: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@@GLIBC_
+    66: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
+
+Histogram for bucket list length (total of 3 buckets):
+ Length  Number     % of total  Coverage
+      0  2          ( 66.7%)
+      1  0          (  0.0%)      0.0%
+      2  1          ( 33.3%)    100.0%
+
+Version symbols section &#39;.gnu.version&#39; contains 4 entries:
+ Addr: 0000000000400452  Offset: 0x000452  Link: 4 (.dynsym)
+  000:   0 (*local*)       2 (GLIBC_2.2.5)   2 (GLIBC_2.2.5)   0 (*local*)    
+
+Version needs section &#39;.gnu.version_r&#39; contains 1 entries:
+ Addr: 0x0000000000400460  Offset: 0x000460  Link: 5 (.dynstr)
+  000000: Version: 1  File: libc.so.6  Cnt: 1
+  0x0010:   Name: GLIBC_2.2.5  Flags: none  Version: 2
+
+Displaying notes found in: .note.ABI-tag
+  Owner                 Data size   Description
+  GNU                  0x00000010   NT_GNU_ABI_TAG (ABI version tag)
+    OS: Linux, ABI: 2.6.32</code></pre>
+</section>
+<section id="cross-compilation" class="slide level2">
+<h2>Cross compilation</h2>
+<!--
+Tot nu toe hebben we bij compilation gezien dat de compiler code omzet in binary executables voor hetzelfde platform als waar de compiler op draait. Bij cross compilation is dit niet het geval: de compiler, draaiend op platform A, maakt executables voor platform B. Dit is bijvoorbeeld nodig bij embedded systemen, waar het doelplatform niet de capaciteit heeft om een compiler te draaien. Ook is cross compilation handig om voor meerder platformen te ontwikkelen, of om gebruik te maken van een server farm. Een platform is hier de combinatie van een processor-architectuur en een OS. In het compilen van OSs is cross-compilation een gegeven, tenzij het OS ver genoeg ontwikkeld is dat het zelf een compiler kan draaien.
+Bij cross-compilation komen extra uitdagingen kijken, omdat de meeste compilers ervan uit gaan dat binary tools en libraries voor het doel-platform op het build-platform aanwezig zijn. GCC heeft bijvoorbeeld de gecompileerde _binutils_ nodig, die dus eerst gecompileerd moeten worden voor dezelfde target en in de PATH beschikbaar moeten zijn. 
+-->
+<aside class="notes">
+
+</aside>
+<p><img data-src="images/cross1.png" style="width:50.0%" /> <img data-src="images/cross2.png" style="width:50.0%" /></p>
+</section>
+<section id="interpretation" class="slide level2">
+<h2>Interpretation</h2>
+<p><img data-src="images/python-interpretation.png" /></p>
+</section>
+<section id="interpretation-1" class="slide level2">
+<h2>Interpretation</h2>
+<!--
+Tegenover compilation vinden we interpretation. Interpretation heeft globaal dezelfde voordelen als compilation nadelen heeft, en vice versa. Interpreted scripts zijn van nature redelijk cross-platform (de code zelf moet dit natuurlijk ook zijn, een Python script dat direct van Windows system-calls gebruikt maakt werkt niet op Linux) en makkelijk / snel te debuggen. Daar staat tegenover dat de scripts zelf een stuk minder snel uitvoeren, en dat het lastig is de source-code verborgen te houden. Voor dat laatste zijn er tools om je code zo onleesbaar mogelijk te maken, maar dit is nog altijd makkelijker ongedaan te maken dan het decompilen van een binary.
+-->
+<aside class="notes">
+
+</aside>
+<ul>
+<li>Voornamelijk script-talen</li>
+<li>Platform en CPU-onafhankelijk</li>
+<li>Trage executie</li>
+<li>Snellere development</li>
+<li>Verspreiding als source</li>
+</ul>
+</section>
+<section id="jit-compilation" class="slide level2">
+<h2>JIT Compilation</h2>
+<p><img data-src="images/java-jit.png" /></p>
+</section>
+<section id="jit-compilation-1" class="slide level2">
+<h2>JIT compilation</h2>
+<!--
+Om de voordelen van compilation en interpretation zoveel mogelijk te combineren wordt gebruik gemaakt van Just-In-Time (JIT) compilation. Hierbij wordt de code door een compiler vertaalt naar een _Intermediate Language_ ofwel _bytecode_, die op een lichtgewicht virtuele machine draait. De code wordt als het ware "half" gecompiled, en het resultaat is cross-platform zolang de virtuele machine aanwezig is. JIT-compiled software is sneller en beter te optimaliseren dan interpreted code, maar nog altijd minder snel dan compiled code. Net als bij compilation moet tijdens het programmeren herhaaldelijk gecompileerd worden. Omdat de bytecode een soort van assembly voor een virtuele machine is, blijft ook de source code standaard verborgen.
+JIT wordt vooral geassocieerd met talen als Java (op de JVM, de Java Virtual Machine) en C# (op de .NET virtual machine), maar ook talen als Python ondersteunen hun eigen vorm van bytecode. Daarnaast is het voor veel scriptingtalen (zoals Python en Ruby) mogelijk om te compilen naar .NET of de JVM.
+-->
+<aside class="notes">
+
+</aside>
+<ul>
+<li>Java Virtual Machine en .NET</li>
+<li>Gedeeltelijke compilatie tot Intermediate Language</li>
+<li>Speciale VM nodig voor executie</li>
+<li>Sneller dan interpreted, langzamer dan compiled</li>
+<li>Verspreiding als bytecode</li>
+</ul>
+</section>
+<section id="assembly" class="slide level2">
+<h2>Assembly</h2>
+<!--
+Als laatste bekijken we ook nog even het principe van Assembly. Dit is niet zozeer een programmeertaal die naar machinecode vertaald hoeft te worden, maar een letterlijke 1-op-1 codering van de machinecode. Waar een loop in een programmeertaal naar een hele serie instructies met jumps vertaalt zal worden, worden deze in assembly uitgeschreven. Dit geeft complete controle over de resulterende machinecode, maar is erg ongebruiksvriendelijk. Om deze reden wordt assembly eigenlijk niet meer met de hand geprogrammeerd (compilers leveren nog wel vaak assembly als optionele tussenstap), maar hier zijn uitzonderingen op. Het programmeren van de bootloader is hier één van: omdat de juiste bits op de juiste adressen moeten staan: denk aan de offset `0x7c00` waar de BIOS naar bootable code zoekt, en de signature `0xaa55` die exact 510 bytes daarna moeten komen. Een compiler zal de code interpreteren en een zo efficient mogelijke binary proberen te maken, en is zich niet van deze regels bewust. Natuurlijk is het mogelijk een compiler te schrijven speciaal voor deze eigenaardigheden, maar dit is meer werk dan dat het bespaart: allereerst is de boot code heel beperkt (zoals we later zullen zien, past het op een paar slides) en kunnen we vrij snel verder in een makkelijkere taal zoals C++. Daarnaast is er weinig variatie in de boot-code voor een gegeven platform en kan de code met miscchien een kleine aanpassing vrijwel 1-op-1 worden overgenomen van een bestaande bootloader.
+In de volgende slides zullen we wat assembly-fragmenten voorbij zien komen. Deze zijn misschien een beetje afschrikwekkend, maar schrik hier niet van. In principe hoef je voor dit vak geen assembly te kunnen, de voorbeelden laten vooral zien hoe de eisen die we hebben gezien in code te vertalen zijn, en dat ook dit fundamentele deel van het systeem uiteindelijk ook maar programmeercode is die op afspraken met de hardware gebaseerd is. Om een bootbaar OS te ontwikkelen moeten de gegeven voorbeelden (op de juiste manier gecombineerd) volstaan om verder in C++ aan de slag te kunnen.
+-->
+<aside class="notes">
+
+</aside>
+<ul>
+<li>Erg low-level</li>
+<li>1-op-1 overeenkomst commando en machinecode</li>
+<li>Makkelijker te typen dan binair</li>
+<li>Niet makkelijker te programmeren</li>
+</ul>
+</section>
+<section id="v1e-os-een-simpele-bootloader" class="slide level2">
+<h2>V1E-OS: een simpele bootloader</h2>
+<!--
+-->
+<aside class="notes">
+
+</aside>
+<div class="sourceCode" id="cb4"><pre class="sourceCode asm"><code class="sourceCode fasm"><a class="sourceLine" id="cb4-1" data-line-number="1">bits <span class="dv">16</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="bu">org</span><span class="bn"> 0x7c00              </span><span class="co">; begin op dit adres</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="fu">boot:</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">    <span class="bu">mov</span> <span class="kw">si</span>,welcome      <span class="co">; si bevat het adres van welcome</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="bu">mov</span><span class="bn"> ah,0x0e         </span><span class="co">; nodig voor interupt 0x10: schrijf karakter</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="fu">.loop:</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">    <span class="bu">lodsb</span>               <span class="co">; laad eerste karakter in al</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">    <span class="bu">or</span> <span class="kw">al</span>,<span class="kw">al</span>            <span class="co">; als al 0 is:</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">    <span class="bu">jz</span> halt             <span class="co">;   spring naar halt</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">    <span class="bu">int</span><span class="bn"> 0x10            </span><span class="co">; BIOS interrupt 0x10 (video services)</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">    <span class="bu">jmp</span> .<span class="bu">loop</span>           <span class="co">; loop</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="fu">halt:</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">    <span class="bu">cli</span>                 <span class="co">; clear interrupt flag</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">    <span class="bu">hlt</span>                 <span class="co">; halt execution</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="fu">welcome:</span> <span class="dt">db</span> <span class="st">&quot;V1E-OS loading...&quot;</span>,<span class="dv">0</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="pp">times</span> <span class="dv">510</span> - (<span class="dv">$</span>-<span class="dv">$$</span>) <span class="dt">db</span> <span class="dv">0</span> <span class="co">; vul tot byte 510</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="dt">dw</span> <span class="bn">0xaa55</span>               <span class="co">; laatste twee bytes: signature</span></a></code></pre></div>
+</section>
+<section id="de-boot-sector-1" class="slide level2">
+<h2>De Boot-sector</h2>
+<div style="font-size:0.7em">
+<pre><code>00000000: be10 7cb4 0eac 08c0 7404 cd10 ebf7 faf4  ..|.....t.......
+00000010: 5631 452d 4f53 206c 6f61 6469 6e67 2e2e  V1E-OS loading..
+00000020: 2e00 0000 0000 0000 0000 0000 0000 0000  ................
+00000030: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+*
+000001f0: 0000 0000 0000 0000 0000 0000 0000 55aa  ..............U.</code></pre>
+</div>
+</section>
+<section id="bios-calls-interrupts" class="slide level2">
+<h2>BIOS-calls / Interrupts</h2>
+<!--
+-->
+<aside class="notes">
+
+</aside>
+<ul>
+<li>Function code in AH / BH</li>
+<li>Parameters in overige registers</li>
+<li>Return values in registers</li>
+<li><code>int 0x10</code> voor video services</li>
+<li><code>int 0x13</code> voor low-level disk services</li>
+<li><code>int 0x15</code> voor system services</li>
+</ul>
+</section>
+<section id="registers" class="slide level2">
+<h2>Registers</h2>
+<figure>
+<img data-src="images/registers.png" alt="64 bits x86 registers" style="width:80.0%" /><figcaption>64 bits x86 registers</figcaption>
+</figure>
+</section>
+<section id="bits-mode" class="slide level2">
+<h2>32-bits mode</h2>
+<!--
+de GDT zullen we in de volgende slide naar kijken
+-->
+<aside class="notes">
+
+</aside>
+<div class="sourceCode" id="cb6"><pre class="sourceCode asm"><code class="sourceCode fasm"><a class="sourceLine" id="cb6-1" data-line-number="1">bits <span class="dv">16</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="bu">org</span><span class="bn"> 0x7c00               </span><span class="co">; begin op dit adres</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="fu">boot:</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">    <span class="bu">mov</span> <span class="kw">ax</span><span class="bn">, 0x2401       </span><span class="co">; function code</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">    <span class="bu">int</span><span class="bn"> 0x15             </span><span class="co">; enable &gt;1MB geheugen</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">    <span class="bu">cli</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">    <span class="bu">lgdt</span> [gdt_pointer]   <span class="co">; laad GDT tabel</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">    <span class="bu">mov</span> <span class="kw">eax</span>, <span class="kw">cr0</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">    <span class="bu">or</span> <span class="kw">eax</span><span class="bn">,0x1           </span><span class="co">; protected mode bit 1</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">    <span class="bu">mov</span> <span class="kw">cr0</span>, <span class="kw">eax</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">    <span class="bu">jmp</span> CODE_SEG:boot2</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">bits <span class="dv">32</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="fu">boot2:</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">    <span class="co">; &lt;32-bits instructies&gt;</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15">    <span class="bu">cli</span>                 <span class="co">; clear interrupt flag</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16">    <span class="bu">hlt</span>                 <span class="co">; halt execution</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="pp">times</span> <span class="dv">510</span> - (<span class="dv">$</span>-<span class="dv">$$</span>) <span class="dt">db</span> <span class="dv">0</span> <span class="co">; vul tot byte 510</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="dt">dw</span> <span class="bn">0xaa55</span>               <span class="co">; laatste twee bytes: signature</span></a></code></pre></div>
+</section>
+<section id="de-general-descriptor-table" class="slide level2">
+<h2>De General Descriptor Table</h2>
+<!--
+De Global Descriptor Table vertelt de CPU waar de verschillende geheugensegmenten te vinden zijn: de offsets waarop deze beginnen en de grootte van de segmenten. 
+Deze wordt in de binary opgebouwd uit letterlijke bytewaardes. In assembly worden deze met data-commando's gegeven: `db` voor data byte, `dw` voor data woord, etc. Doordat de tabel een vast formaat heeft kan de CPU deze data interpreteren om het geheugen klaar te maken voor een OS.
+-->
+<aside class="notes">
+
+</aside>
+<figure>
+<img data-src="images/gdt.png" alt="Formaat van een segment descriptor" style="width:80.0%" /><figcaption>Formaat van een segment descriptor</figcaption>
+</figure>
+</section>
+<section id="code-voor-de-gdt" class="slide level2">
+<h2>Code voor de GDT</h2>
+<!--
+-->
+<aside class="notes">
+
+</aside>
+<div class="sourceCode" id="cb7"><pre class="sourceCode asm"><code class="sourceCode fasm"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">; offset 0x0</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">.null descriptor:</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">    <span class="dt">dq</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">; offset 0x8</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="fu">.code:</span>              <span class="co">; cs register verwijst hiernaar</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">    <span class="dt">dw</span> <span class="bn">0xffff</span>       <span class="co">; segment limit eerste 0-15 bits</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">    <span class="dt">dw</span> <span class="dv">0</span>            <span class="co">; base eerste 0-15 bits</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">    <span class="dt">db</span> <span class="dv">0</span>            <span class="co">; base 16-23 bits</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">    <span class="dt">db</span><span class="bn"> 0x9a         </span><span class="co">; access byte</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">    <span class="dt">db</span><span class="bn"> 11001111b    </span><span class="co">; eerste 4 bits (flags) rest (limit 4 laatste bits)(limit is 20 bits breeds)</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">    <span class="dt">db</span> <span class="dv">0</span>            <span class="co">; base 24-31 bits</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">; offset 0x10</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="fu">.data:</span>              <span class="co">; ds, ss, es, fs, en gs verwijzen hiernaar</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16">    <span class="dt">dw</span> <span class="bn">0xffff</span>       <span class="co">; segment limit eerste 0-15 bits</span></a>
+<a class="sourceLine" id="cb7-17" data-line-number="17">    <span class="dt">dw</span> <span class="dv">0</span>            <span class="co">; base eerste 0-15 bits</span></a>
+<a class="sourceLine" id="cb7-18" data-line-number="18">    <span class="dt">db</span> <span class="dv">0</span>            <span class="co">; base 16-23 bits</span></a>
+<a class="sourceLine" id="cb7-19" data-line-number="19">    <span class="dt">db</span><span class="bn"> 0x92         </span><span class="co">; access byte</span></a>
+<a class="sourceLine" id="cb7-20" data-line-number="20">    <span class="dt">db</span><span class="bn"> 11001111b    </span><span class="co">; eerste 4 bits (flags) rest (limit 4 laatste bits)(limit is 20 bits breeds)</span></a>
+<a class="sourceLine" id="cb7-21" data-line-number="21">    <span class="dt">db</span> <span class="dv">0</span>            <span class="co">; base 24-31 bits</span></a></code></pre></div>
+</section>
+<section id="meer-dan-512-bytes" class="slide level2">
+<h2>Meer dan 512 bytes</h2>
+<!--
+-->
+<aside class="notes">
+
+</aside>
+<div class="sourceCode" id="cb8"><pre class="sourceCode asm"><code class="sourceCode fasm"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="bu">mov</span><span class="bn"> ah, 0x2         </span><span class="co">; functie: lees sectoren</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="bu">mov</span> <span class="kw">al</span>, <span class="dv">1</span>           <span class="co">; aantal sectoren</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="bu">mov</span><span class="bn"> ch, </span><span class="dv">0</span>           <span class="co">; welke cylinder</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="bu">mov</span><span class="bn"> dh, </span><span class="dv">0</span>           <span class="co">; welke head</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="bu">mov</span> <span class="kw">cl</span>, <span class="dv">2</span>           <span class="co">; welke sector</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="bu">mov</span> <span class="kw">dl</span>, [disk]      <span class="co">; welke disk</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="bu">mov</span> <span class="kw">bx</span>, copy_target <span class="co">; target pointer</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="bu">int</span><span class="bn"> 0x13            </span><span class="co">; do the thing</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode asm"><code class="sourceCode fasm"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co">; &lt;code met daarin jump naar label&gt;</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="pp">times</span> <span class="dv">510</span> - (<span class="dv">$</span>-<span class="dv">$$</span>) <span class="dt">db</span> <span class="dv">0</span> </a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="dt">dw</span> <span class="bn">0xaa55</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="pp">label</span>:</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">  <span class="co">; &lt;code&gt;</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="pp">times</span> <span class="dv">1024</span> - (<span class="dv">$</span>-<span class="dv">$$</span>) <span class="dt">db</span> <span class="dv">0</span></a></code></pre></div>
+</section>
+<section id="klaar-voor-c" class="slide level2">
+<h2>Klaar voor C++</h2>
+<!--
+-->
+<aside class="notes">
+
+</aside>
+<div class="sourceCode" id="cb10"><pre class="sourceCode asm"><code class="sourceCode fasm"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="bu">mov</span><span class="bn"> ah, 0x2               </span><span class="co">; functie: lees sectoren</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="bu">mov</span> <span class="kw">al</span>, <span class="dv">6</span>                 <span class="co">; 6 sectoren = 3kb</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="bu">mov</span><span class="bn"> ch, </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="bu">mov</span><span class="bn"> dh, </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="bu">mov</span> <span class="kw">cl</span>, <span class="dv">2</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="bu">mov</span> <span class="kw">dl</span>, [disk]</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="bu">mov</span> <span class="kw">bx</span>, copy_target</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="bu">int</span><span class="bn"> 0x13</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">; &lt;GDT code&gt;</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="bu">mov</span> <span class="kw">esp</span>,kernel_stack_top  <span class="co">; stack pointer naar label na code</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11">extern kmain              <span class="co">; maak externe functie kmain beschikbaar</span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="bu">call</span> kmain                <span class="co">; roep C++ functie kmain aan</span></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="bu">cli</span></a>
+<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="bu">hlt</span></a>
+<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="bu">section</span> .bss</a>
+<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="bu">align</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="fu">kernel_stack_bottom:</span> <span class="pp">equ</span> <span class="dv">$</span></a>
+<a class="sourceLine" id="cb10-18" data-line-number="18">    resb <span class="dv">16384</span>            <span class="co">; reserveer 16 KB stack ruimte in het bss segment</span></a>
+<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="fu">kernel_stack_top:</span></a></code></pre></div>
+</section>
+<section id="cross-compilen-en-linken" class="slide level2">
+<h2>Cross-compilen en Linken</h2>
+<!--
+-->
+<aside class="notes">
+
+</aside>
+<pre class="ld"><code>ENTRY(boot)
+OUTPUT_FORMAT(&quot;binary&quot;)
+SECTIONS {
+    . = 0x7c00;
+    .text :
+    {
+        *(.boot)
+        *(.text)
+    }
+    .rodata :
+    {
+        *(.rodata)
+    }
+    .data :
+    {
+        *(.data)
+    }
+    .bss :
+    {
+        *(.bss)
+    }
+}</code></pre>
+</section>
+<section id="het-leven-zonder-glibc" class="slide level2">
+<h2>Het leven zonder glibc</h2>
+<!--
+Hoewel we inmiddels in C++ verder kunnen, en ons leven alweer een stuk makkelijker is dan met alleen assembly, is het nog lang niet zo eenvoudig als je gewend bent. Alle libraries waar je mee hebt leren werken zijn nog niet op ons nieuwe platform beschikbaar, en zullen in low-level C++ opnieuw geïmplementeerd moeten worden. Zelfs de system calls die we aan het begin van deze cursus gezien hebben, moeten nog worden opgebouwd. 
+De `kmain` functie die op de slides te zien is werkt welliswaar al met een loop in plaats van de handmatig jumps van assembly, maar het schrijven naar het scherm gebeurt nog altijd door handmatig waardes in geheugenadressen te schrijven. De variabele `vga` is een verwijzing naar het geheugenadres waar de inhoud van het scherm te vinden is, en met een loop schrijven we hier handmatig karakters en kleur-waardes naartoe.
+-->
+<aside class="notes">
+
+</aside>
+<div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="at">extern</span> <span class="st">&quot;C&quot;</span> <span class="dt">void</span> kmain()</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">{ <span class="at">const</span> <span class="dt">short</span> color = <span class="bn">0x0F00</span>;</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">  <span class="at">const</span> <span class="dt">char</span>* hello = <span class="st">&quot;Welcome to V1E-OS!&quot;</span>;</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">  <span class="dt">short</span>* vga = (<span class="dt">short</span>*)<span class="bn">0xb8000</span>;</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">  <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i&lt;<span class="dv">16</span>;++i)</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">    vga[i<span class="dv">+80</span>] = color | hello[i]; }</a></code></pre></div>
+</section>
+<section id="wat-hebben-we-deze-les-geleerd" class="slide level2">
+<h2>Wat hebben we deze les geleerd?</h2>
+<ul>
+<li>BIOS en UEFI</li>
+<li>De Boot Sector</li>
+<li>Bootloaders</li>
+<li>Compilation vs Interpretation</li>
+<li>Linking en Makefiles</li>
+<li>Toepassing van Assembly voor booten</li>
+<li>Van Assembly naar C++</li>
+</ul>
+</section>
     </div>
   </div>
 

@@ -271,11 +271,11 @@ Uitvoeren shell script is vergelijkbaar met interactieve shell: STDIN is file i.
 <!--
 - For loop voor herhaling: door array lopen of C style met iterator
 -->
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="bu">declare</span> -a <span class="va">ARRAY=(</span><span class="st">&#39;Christopher&#39;</span> <span class="st">&#39;David&#39;</span> <span class="st">&#39;Matt &#39;</span>Peter<span class="st">&#39; &#39;</span>Jodie<span class="st">&#39;)</span></a>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="bu">declare</span> -a <span class="va">ARR=(</span><span class="st">&#39;Christopher&#39;</span> <span class="st">&#39;David&#39;</span> <span class="st">&#39;Matt&#39;</span> <span class="st">&#39;Peter&#39;</span> <span class="st">&#39;Jodie&#39;</span><span class="va">)</span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">for word in $ARRAY; do</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  echo $word </span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">done</span></a></code></pre></div>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">for</span> <span class="ex">word</span> in <span class="va">$ARR</span><span class="kw">;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">  <span class="bu">echo</span> <span class="va">$word</span> </a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="kw">done</span></a></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">for</span> <span class="kw">((</span>x=1; x&lt;=10; x++<span class="kw">))</span>; <span class="kw">do</span> </a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">  <span class="bu">echo</span> <span class="va">$x</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">done</span></a></code></pre></div>
