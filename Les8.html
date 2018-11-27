@@ -107,6 +107,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <aside class="notes">
 <p>We hebben inmiddels de meeste taken van een OS gezien. Wat echter nog niet is besproken, is hoe we een OS moeten starten: hoe maken we van onze programmeercode een executable, en hoe zorgen we dat deze start als de computer wordt aangezet? Deze les gaan we daar naar kijken.</p>
 </aside>
+<!--
+Deze les: hoe starten we onze OS code?
+-->
 </section>
 <section id="where-to-start" class="slide level2">
 <h2>Where to start?</h2>
@@ -114,6 +117,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Zodra je de computer aan zet, wordt eerst een stuk (EEP)ROM vanaf het moederbord geladen. Dit is bij oudere computers de BIOS (Basic Input/Output System), maar tegenwoordig vaak UEFI (Unified Extensible Firmware Interface). Beide zullen bij het aanzetten van de PC de aanwezige hardware inventariseren en testen, en vervolgens op zoek gaan naar een OS. Hiertoe kan de gebruiker een boot-order instellen, welke de firmware van boven naar beneden afgaat. Deze zijn op device-niveau vastgesteld: een harde schijf of USB stick heeft een positie in deze rangorde, van partities is nog geen sprake. In het geval van de BIOS wordt bij de geselecteerde schijf (de eerste in de boot-order, of de volgende als de schijf niet bootable was) het Master Boot Record (MBR) gelezen. Hier staat aangegeven welke partities er aanwezig zijn, waar deze beginnen en eindigen, welke partitie de boot-partitie is, en code om de boot-sector (ook wel Volume Boot Record of VBR) van deze partitie te lezen. Bij UEFI wordt gebruik gemaakt van een speciaal gemarkeerde EFI boot-partitie, de ESP (EFI System Partition). Deze bevat een of meerdere EFI bootloaders, doorgaans een enkele per OS. De ESP is bevat voor backwards compatibility een boot-sector (zoals bij MBR), maar kan in de praktijk veel grotere binaries bevatten om complexe taken uit te voeren, zoals het booten van bijzondere filesystems of een netwerk.</p>
 </aside>
 <!--
+- BIOS en UEFI in ROM (Firmware), starten met PC
+- Eerst controle hardware (POST), dan zoeken naar bootable disk
+- Op bootable disk MBR (1e sector) met partities, verwijzing bootable partitie
+- 1e sector per partitie (of voor partitie) is partition boot sector
 -->
 <ul>
 <li>BIOS / UEFI</li>
@@ -128,15 +135,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>De boot-sector bevat instructies die nodig zijn om een programma op te starten. Doorgaans is dit programma het OS, maar als een embedded systeem een enkele applicatie moet draaien en geen OS functionaliteit nodig heeft kan deze ook in de plaats van het OS staan. Zodra de BIOS een boot-device geselecteerd heeft wordt de eerste sector (512 bytes) naar het geheugen geplaatst (bij IBM-compatible PCs naar het geheugenadres <code>0x7c00</code>). Deze sector bevat de instructies die nodig zijn om de volgende fase van het boot-proces te laden, en eindigt altijd op de hexadecimale code <code>0x55aa</code>: dit <em>boot sector signature</em> geeft aan dat de instructies als boot-instructie bedoeld zijn, en veilig kunnen worden uitgevoerd.</p>
 </aside>
 <!--
+- Boot sector = 512 bytes, vrij beperkt
+- Boot Sector signature: laatste bytes `0x55aa`
+- Sector komt in vast geheugenadres (`0x7c00`)
 -->
 <p><img data-src="images/bootsectors.png" style="width:40.0%" /></p>
 </section>
 <section id="nd-stage-bootloader" class="slide level2">
 <h2>2nd-stage bootloader</h2>
 <aside class="notes">
-<p>Omdat de eerste sector (van 512 bytes) ook nog eens informatie over de partitie-indeling van een schijf kan moeten bevatten, en daarmee erg weinig ruimte overblijft om een heel besturingssyteem mee te kunnen laden, wordt het boot-proces vaak in 2 trappen gedaan. De first-stage bootloader bevat alles dat nodig is om de second-stage bootloader te laden, die vervolgens in staat is om een OS te laden en de uitvoering ervan te starten. Tijdens de installatie van de Gentoo VM ben je al een van deze bootloaders tegengekomen: vermoedelijk was dat Grub, al zijn LiLo (Linux Loader) en Syslinux ook mogelijkheden. Ook op Windows wordt een second-stage bootloader gebruikt, doorgaans BOOTMGR of voor oudere verhttp://hackage.haskell.org/package/netwiresies NTLDR.</p>
+<p>Omdat de eerste sector (van 512 bytes) ook nog eens informatie over de partitie-indeling van een schijf kan moeten bevatten, en daarmee erg weinig ruimte overblijft om een heel besturingssyteem mee te kunnen laden, wordt het boot-proces vaak in 2 trappen gedaan. De first-stage bootloader bevat alles dat nodig is om de second-stage bootloader te laden, die vervolgens in staat is om een OS te laden en de uitvoering ervan te starten. Tijdens de installatie van de Gentoo VM ben je al een van deze bootloaders tegengekomen: vermoedelijk was dat Grub, al zijn LiLo (Linux Loader) en Syslinux ook mogelijkheden. Ook op Windows wordt een second-stage bootloader gebruikt, doorgaans BOOTMGR of voor oudere versies NTLDR.</p>
 </aside>
 <!--
+- 512 bytes is vrij weinig
+- 2 trappen: 512 bytes om 2nd stage bootloader te laden
+- Deze kan vervolgens 1 of meerdere OSs starten
+- Grub voor Linux, BOOTMGR voor Windows
 -->
 <p><img data-src="images/grub.jpg" style="width:40.0%" /> <img data-src="images/winboot.png" style="width:34.0%" /></p>
 </section>
@@ -146,19 +160,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Aan het einde van deze les gaan we zien wat er nodig is om een eigen first-stage bootloader operationeel te krijgen. Om dit te kunnen volgen missen we echter nog wat kennis over het compilen van code, dus hier zullen we eerst even naar kijken. Het eerste onderscheid dat we moeten maken, is dat tussen compilation van code en interpretation van scripts. Dit onderscheid bepaalt hoe een programma van de programmeur naar de eindgebruiker gaat. Python, waar je in het eerste semester kennis mee hebt gemaakt, is een voorbeeld van een interpreted language: de code wordt als een tekst-bestand verspreid, en de Python-interpreter is nodig om het script uit te voeren. Wat de interpreter doet, is regel voor regel door het script heen lopen, en deze on-the-fly naar machine-code vertalen. Dit is heel anders dan bijvoorbeeld C++, waar je een compiler gebruikt om de hele source in een keer naar machine-code te vertalen. Dit resulteert in een binair bestand, dat vervolgens in het geheugen van een computer kan worden geladen om deze uit te voeren. We zullen eerst nauwkeurig kijken naar compilation (en de andere stappen die hierbij komen kijken), waarna we ook de eigenschappen van interpretation en JIT (Just-In-Time) compilation kort zullen behandelen. Het is belangrijk om hierbij te onthouden dat hoewel de meeste talen <em>doorgaans</em> compiled of interpreted gebruit worden, dit geen noodzakelijke eigenschap van de taal zelf is: Python, bijvoorbeeld, kan zowel interpreted als JIT gebruikt worden. De programmeertaal dicteert de syntax: wat is een geldig programma en hoe wordt deze naar machine-code vertaald. Of dit in een keer van te voren, of on-the-fly gebeurt hangt vaak wel samen met de programmeertaal, maar dit is zeker niet een één-op-één-relatie.</p>
 </aside>
 <!--
+- Strategie niet afhankelijk van taal, maar vaak wel "standaard" per taal
+- Interpretatie: als python - source wordt on the fly vertaald
+- Compilen: als C++ - source wordt naar binary vertaald
+- JIT als Java - ertussenin, gedeeltelijke vertaling
 -->
 <p><img data-src="images/xkcd-compiling.png" style="width:40.0%" /></p>
 </section>
 <section id="compilation" class="slide level2">
 <h2>Compilation</h2>
-<p><img data-src="images/cpp-compilation.png" /></p>
-</section>
-<section id="compilation-1" class="slide level2">
-<h2>Compilation</h2>
 <aside class="notes">
 <p>Bij compilation wordt de source-code door de compiler vertaalt naar machine-code, met als resultaat een executable. Deze executable kan verspreid worden, zonder dat de source-code meegedeeld hoeft te worden. Bij open-source software is dit logischerwijs wel het geval, maar van veel closed-source software is de broncode een (soms zwaar verdedigd) bedrijfsgeheim. Het voordeel van compiled code is dat deze vele malen sneller is. Allereerst is het vertalen al gebeurd, wat een hoop tijd scheelt. Daarnaast kan compiled code verder geoptimaliseerd worden, waar doorgaans de meeste winst behaald wordt. Hier staat tegenover dat het ontwikkelen wel iets trager gaat: het compilen van een fors programma kan minuten tot uren duren, waardoor het lang duurt voor er feedback is of de nieuwe code werkt, waarna je voor een kleine aanpassing opnieuw moet compilen. De compiler zal de meeste syntax- en typefouten gelukkig snel vinden, waardoor het proces vroeg beëindigd kan worden, maar valide code die niet het juiste resultaat levert wordt vaak niet door de compiler gevonden. Een ander nadeel is dat de binary executables die een compiler genereert platform- en CPU specifiek zijn. Een programma dat op Linux is gecompileerd zal niet zonder meer werken op een Windows systeem. Hetzelfde geldt voor processor-architecturen: een programma dat is gecompileerd voor een Intel x86-64 CPU (gebruikelijk voor PCs en laptops) werkt niet op een ARM computer (waaronder de meeste tablets, smartphones en sommige netbooks). Hoewel er “compatibiliteitslagen” bestaan om bijvoorbeeld Windows-binaries op Linux te draaien, werkt dit lang niet altijd 100% en kan dit de performance behoorlijk beïnvloeden. In de praktijk betekent dit dat cross-platform software voor verschillende OS en CPU combinaties gecompileerd moet worden.</p>
 </aside>
 <!--
+- Voordelen: sneller product, geen source verspreiden
+- Nadelen: tragere development, binary per platform
+-->
+<p><img data-src="images/cpp-compilation.png" /></p>
+</section>
+<section id="compilation-1" class="slide level2">
+<h2>Compilation</h2>
+<!--
+- Voordelen: sneller product, geen source verspreiden
+- Nadelen: tragere development, binary per platform
+- GCC en LLVM belangrijkste open-source compilers
 -->
 <ul>
 <li>GCC, LLVM+Clang</li>
@@ -174,6 +199,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>De meeste programma’s bestaan uit verschillende source-bestanden, die elk individueel gecompileerd worden. Het resultaat is machinecode, maar nog niet een uitvoerbaar bestand. Iedere source-file levert een eigen <em>object</em>-file op, die de vertaalde machine-instructies van dat bestand bevat. Als hierin verwezen wordt naar subroutines uit een ander bestand, zal de compiler deze niet kunnen vinden. De compiler gaat er voor het gemak vanuit dat de subroutines in een ander bestand staan. Om uit verschillende object-files een uitvoerbaar bestand te maken is een <em>linker</em> nodig. Deze kijkt naar de verschillende object-files, en verifieert dat alle verwezen subroutines kloppen. Vervolgens wordt alle benodigde machine-code in een enkel uitvoerbaar bestand gezet, en zorgt de linker ervoor dat de adressen van alle subroutines kloppen. Het voordeel van deze manier van werken is (naast het feit dat de compiler en linker eenvoudiger te houden zijn als ze een enkele taak hebben) dat bij het opnieuw compileren alleen nieuwe object files gemaakt hoeven te worden voor de source-files waarin iets veranderd is. De ongeweizigde bestanden geven exact dezelfde object files, en de linker heeft er geen probleem mee als een deel van de object files al wat ouder is. Een belangrijk onderscheid dat tijdens het linken gemaakt wordt is het dynamic vs static linken van gebruikte subroutines. Bij static linken wordt de machine-code van de subroutine in de executable opgenomen, terwijl bij dynamic linken een verwijzing naar een gedeelde bibliotheek wordt verwezen.</p>
 </aside>
 <!--
+- Ieder bestand wordt apart gecompileerd → object files
+- Verwijzingen naar andere bestanden op goed vertrouwen
+- Linker maakt hier een geheel van
+- Static linking: subroutine-code direct in binary
+- Dynamic linking: verwijzing naar shared library
 -->
 <ul>
 <li>Eén object-file per source bestand</li>
@@ -188,6 +218,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Doorgaans wordt het linken automatisch bij het compilen meegenomen: bij het gebruik van de <code>-o</code> flag roept de compiler de linker aan om direct een executable binary te generen. Soms moet er echter handmatig gelinkt worden, en wordt <code>ld</code> handmatig aangeroepen. Hierbij kan een <em>linker script</em> worden meegegeven om te specificeren hoe de verschillende object-files gecombineerd moeten worden. Bij complexere projecten moeten vaak meerdere bestanden gecompileerd en aan elkaar gelinkt worden. Daarnaast is het soms nodig een preprocessor te draaien, of zijn er andere taken die telkens in de juiste volgorde moeten worden uitgevoerd. Dit handmatige werk wordt meestal met een script opgelost, de zogenaamde <em>Makefile</em>. Dit is een bestandsformaat dat speciaal gemaakt is om gestructureerd “recepten” op te bouwen om bijvoorbeeld code te compileren. Ook andere command-line tools die bestanden als input en output hebben kunnen met een makefile gecombineerd worden (deze slides, bijvoorbeeld, worden met behulp van een makefile omgezet van Markdown naar HTML en PDF). Ook taken als het installeren van de software (alle bestanden op de juiste plek in het bestandssysteem van de gebruiker zetten), het genereren van documentatie en het opruimen van de build-directory wordt vaak met een (apart recept binnen dezelfde) makefile gedaan. De recepten worden aangeroepen met het <code>make</code> commando, met als argument het gevraagde recept. Op de slide is een simpel voorbeeld van een makefile te zien, gevolgd door een meer algemene. In het eerste geval gebruiken we macros voor de compiler en de compile flags, die letterlijk vervangen kunnen worden. Het recept om <code>main</code> te maken is afhankelijk van <code>main.cc</code> en <code>functions.cc</code>, en als deze aanwezig zijn kan de executable gemaakt worden door het recept te volgen. Als de executable aanwezig is, en de afhankelijkheden zijn niet geweizigd, dan zal <code>make</code> ook niet opnieuw compilen. Deze makefile is echter vrij naief: we beheren de call naar de compiler handmatig, en alles wordt in één commando gedaan. Als een enkel bestand aangepast wordt, zal alles opnieuw gecompileerd worden. De tweede makefile is flink veralgemeniseerd. We definiëren een recept dat vertelt hoe een <code>.o</code> bestand van een <code>.cc</code> bestand gemaakt kan worden. De procent-tekens gelden als wildcards, waarbij De speciale variabele <code>$@</code> verwijst naar het doelbestand van het recept, <code>$&lt;</code> naar het bronbestand. Het recept is verder afhankelijk van de header-files, zodat een aanpassing in de header ook voldoende is om hercompilatie te triggeren. Een tweede recept, <code>main</code>, is afhankelijk van de object files en wordt gebruikt om <code>g++</code> te vragen deze te linken. In dit voorbeeld zal een aanpassing aan een enkel bestand ertoe leiden dat alleen dat object opnieuw gecompiled wordt, waarna de binary opnieuw gelinkt wordt.</p>
 </aside>
 <!--
+- Linken kan automatisch door compiler (`-o` flag) maar soms te complex
+- Sneller om apart te compilen en te linken: geen recompile als niet nodig
+- Meerdere commando's om alles up and running te krijgen: scripts?
+- Makefile speciaal script-formaat voor dit soort taken
+- Voorbeeld 1: specifiek, paar macros voor compiler en flags
+- Voorbeeld 2: erg algemeen, makkelijk uit te breiden en losse stappen
 -->
 <div class="sourceCode" id="cb1"><pre class="sourceCode makefile"><code class="sourceCode makefile"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="dt">CXX</span><span class="ch">=</span><span class="st">g++</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="dt">CXXFLAGS</span><span class="ch">=</span><span class="st">-I.</span></a>
@@ -211,6 +247,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>De binaries die we voor onze bootloader zullen maken zijn niet zomaar uitwisselbaar met binaries die we op ons eigen systeem zullen draaien: ze gebruiken een ander binair formaat. Bootable binaries zijn zo simpel mogelijk: ze bevatten informatie over wat waar in de binary te vinden is, en verder enkel data en code. Applicaties op een modern besturingssysteem zijn vaak complexer: het Windows <code>.exe</code> formaat en de Linux ELF (Executable and Linkable Format) binaries bevatten flink wat extra structuur. Het ELF formaat wordt daarnaast ook voor gedeelde bibliotheken (op Windows: <code>.dll</code>) en core dumps (een dump van het geheugen in het bestand, om mee te debuggen) gebruikt. Ieder ELF bestand begint met een header, waarin informatie over de binary te vinden is, zoals het platform waarvoor deze gecompileerd is, waar de verschillende segmenten zich bevinden, en uit welke bronbestanden het bestand opgebouwd is. Met het <code>readelf</code> commando is deze informatie uit te lezen (<code>readelf -a filename</code> geeft alle informatie weer). Op de slide de ELF header van een simpel hello world programma uit twee source files, om een beeld te geven van de informatie die bovenop de daadwerkelijke code in de executable bewaard wordt.</p>
 </aside>
 <!--
+- Resulterende binaries hebben meer structuur dan alleen een serie instructies. 
+- Memory segmenten (bekend van eerder) ook in binary aanwezig, plus metadata
+- `.exe` en `.dll` voor Windows, Executable and Linkable Format (ELF) voor Linux
+- Veel metadata te vinden in binary: scroll door voorbeeld `readelf` output voor idee
+- Header hoeft niet geheel ontleed te worden
 -->
 <pre><code>ELF Header:
   Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
@@ -489,19 +530,31 @@ Displaying notes found in: .note.ABI-tag
 <p>Tot nu toe hebben we bij compilation gezien dat de compiler code omzet in binary executables voor hetzelfde platform als waar de compiler op draait. Bij cross compilation is dit niet het geval: de compiler, draaiend op platform A, maakt executables voor platform B. Dit is bijvoorbeeld nodig bij embedded systemen, waar het doelplatform niet de capaciteit heeft om een compiler te draaien. Ook is cross compilation handig om voor meerder platformen te ontwikkelen, of om gebruik te maken van een server farm. Een platform is hier de combinatie van een processor-architectuur en een OS. In het compilen van OSs is cross-compilation een gegeven, tenzij het OS ver genoeg ontwikkeld is dat het zelf een compiler kan draaien. Bij cross-compilation komen extra uitdagingen kijken, omdat de meeste compilers ervan uit gaan dat binary tools en libraries voor het doel-platform op het build-platform aanwezig zijn. GCC heeft bijvoorbeeld de gecompileerde <em>binutils</em> nodig, die dus eerst gecompileerd moeten worden voor dezelfde target en in de PATH beschikbaar moeten zijn.</p>
 </aside>
 <!--
+- Compilation voor een ander platform = cross compilation
+- Bijvoorbeeld op Windows voor Linux of vice versa
+- Vaak ook andere processor-architectuur, bijvoorbeeld PC development voor mobile
+- Drie compilers aanwezig: build system compilet compiler die binaries voor target kan maken
+- Alle libraries en tools in target-formaat nodig, dus zowel voor host-architectuur als voor target-architectuur aanwezig
+- Hoofdpijn potentie als paden verkeerd staan.
 -->
 <p><img data-src="images/cross1.png" style="width:50.0%" /> <img data-src="images/cross2.png" style="width:50.0%" /></p>
 </section>
 <section id="interpretation" class="slide level2">
 <h2>Interpretation</h2>
-<p><img data-src="images/python-interpretation.png" /></p>
-</section>
-<section id="interpretation-1" class="slide level2">
-<h2>Interpretation</h2>
 <aside class="notes">
 <p>Tegenover compilation vinden we interpretation. Interpretation heeft globaal dezelfde voordelen als compilation nadelen heeft, en vice versa. Interpreted scripts zijn van nature redelijk cross-platform (de code zelf moet dit natuurlijk ook zijn, een Python script dat direct van Windows system-calls gebruikt maakt werkt niet op Linux) en makkelijk / snel te debuggen. Daar staat tegenover dat de scripts zelf een stuk minder snel uitvoeren, en dat het lastig is de source-code verborgen te houden. Voor dat laatste zijn er tools om je code zo onleesbaar mogelijk te maken, maar dit is nog altijd makkelijker ongedaan te maken dan het decompilen van een binary.</p>
 </aside>
 <!--
+- Voordelen / nadelen spiegelen die van compiling (volgende slide)
+- Denk aan Python (of Bash)
+-->
+<p><img data-src="images/python-interpretation.png" /></p>
+</section>
+<section id="interpretation-1" class="slide level2">
+<h2>Interpretation</h2>
+<!--
+- Voordelen / nadelen spiegelen die van compiling (volgende slide)
+- Denk aan Python (of Bash)
 -->
 <ul>
 <li>Voornamelijk script-talen</li>
@@ -513,14 +566,28 @@ Displaying notes found in: .note.ABI-tag
 </section>
 <section id="jit-compilation" class="slide level2">
 <h2>JIT Compilation</h2>
-<p><img data-src="images/java-jit.png" /></p>
-</section>
-<section id="jit-compilation-1" class="slide level2">
-<h2>JIT compilation</h2>
 <aside class="notes">
 <p>Om de voordelen van compilation en interpretation zoveel mogelijk te combineren wordt gebruik gemaakt van Just-In-Time (JIT) compilation. Hierbij wordt de code door een compiler vertaalt naar een <em>Intermediate Language</em> ofwel <em>bytecode</em>, die op een lichtgewicht virtuele machine draait. De code wordt als het ware “half” gecompiled, en het resultaat is cross-platform zolang de virtuele machine aanwezig is. JIT-compiled software is sneller en beter te optimaliseren dan interpreted code, maar nog altijd minder snel dan compiled code. Net als bij compilation moet tijdens het programmeren herhaaldelijk gecompileerd worden. Omdat de bytecode een soort van assembly voor een virtuele machine is, blijft ook de source code standaard verborgen. JIT wordt vooral geassocieerd met talen als Java (op de JVM, de Java Virtual Machine) en C# (op de .NET virtual machine), maar ook talen als Python ondersteunen hun eigen vorm van bytecode. Daarnaast is het voor veel scriptingtalen (zoals Python en Ruby) mogelijk om te compilen naar .NET of de JVM.</p>
 </aside>
 <!--
+- JVM en .NET belangrijkste voorbeelden
+- Halverwege tussen compilatie en interpretaie
+- Gedeeltelijke compilatie tot bytecode
+- Bytecode geoptimaliseerd maar niet platform specifiek
+- Virtual Machine / JIT compiler nodig om te draaien
+- Qua snelheid in het midden
+-->
+<p><img data-src="images/java-jit.png" /></p>
+</section>
+<section id="jit-compilation-1" class="slide level2">
+<h2>JIT compilation</h2>
+<!--
+- JVM en .NET belangrijkste voorbeelden
+- Halverwege tussen compilatie en interpretaie
+- Gedeeltelijke compilatie tot bytecode
+- Bytecode geoptimaliseerd maar niet platform specifiek
+- Virtual Machine / JIT compiler nodig om te draaien
+- Qua snelheid in het midden
 -->
 <ul>
 <li>Java Virtual Machine en .NET</li>
@@ -536,6 +603,11 @@ Displaying notes found in: .note.ABI-tag
 <p>Als laatste bekijken we ook nog even het principe van Assembly. Dit is niet zozeer een programmeertaal die naar machinecode vertaald hoeft te worden, maar een letterlijke 1-op-1 codering van de machinecode. Waar een loop in een programmeertaal naar een hele serie instructies met jumps vertaalt zal worden, worden deze in assembly uitgeschreven. Dit geeft complete controle over de resulterende machinecode, maar is erg ongebruiksvriendelijk. Om deze reden wordt assembly eigenlijk niet meer met de hand geprogrammeerd (compilers leveren nog wel vaak assembly als optionele tussenstap), maar hier zijn uitzonderingen op. Het programmeren van de bootloader is hier één van: omdat de juiste bits op de juiste adressen moeten staan: denk aan de offset <code>0x7c00</code> waar de BIOS naar bootable code zoekt, en de signature <code>0xaa55</code> die exact 510 bytes daarna moeten komen. Een compiler zal de code interpreteren en een zo efficient mogelijke binary proberen te maken, en is zich niet van deze regels bewust. Natuurlijk is het mogelijk een compiler te schrijven speciaal voor deze eigenaardigheden, maar dit is meer werk dan dat het bespaart: allereerst is de boot code heel beperkt (zoals we later zullen zien, past het op een paar slides) en kunnen we vrij snel verder in een makkelijkere taal zoals C++. Daarnaast is er weinig variatie in de boot-code voor een gegeven platform en kan de code met miscchien een kleine aanpassing vrijwel 1-op-1 worden overgenomen van een bestaande bootloader. In de volgende slides zullen we wat assembly-fragmenten voorbij zien komen. Deze zijn misschien een beetje afschrikwekkend, maar schrik hier niet van. In principe hoef je voor dit vak geen assembly te kunnen, de voorbeelden laten vooral zien hoe de eisen die we hebben gezien in code te vertalen zijn, en dat ook dit fundamentele deel van het systeem uiteindelijk ook maar programmeercode is die op afspraken met de hardware gebaseerd is. Om een bootbaar OS te ontwikkelen moeten de gegeven voorbeelden (op de juiste manier gecombineerd) volstaan om verder in C++ aan de slag te kunnen.</p>
 </aside>
 <!--
+- Bijna nooit meer nodig, maar wel voor totale controle, bijvoorbeeld voor boot-sector
+- C++ compiler optimaliseert: niet alles op de juiste plek
+- Mogelijk hiervoor een taal te ontwikkelen, maar overkill
+- Niet vaak nodig, meestal ruwweg dezelfde code
+- Zo snel mogelijk verder in C(++)
 -->
 <ul>
 <li>Erg low-level</li>
@@ -547,9 +619,13 @@ Displaying notes found in: .note.ABI-tag
 <section id="v1e-os-een-simpele-bootloader" class="slide level2">
 <h2>V1E-OS: een simpele bootloader</h2>
 <aside class="notes">
-
+<p>Op de slide zien we een voorbeeld van een stuk Assembly dat geboot kan worden en een boodschap print. Het schrijven of lezen van deze code is geen tentamenstof, maar het is wel van belang te weten wat het nut van deze code is. De code is met behulp van commentaar toegelicht. Op de volgende slide is de resulterende binaire code hexadecimaal te zien. Merk op dat de binary 512 bytes is (en opgevuld met null bytes om daar te komen) en dat de laatste bytes de boot signature zijn.</p>
 </aside>
 <!--
+- Loop kort door code heen, dit is alles wat er nodig is
+- Hoeven ze niet te kunnen
+- Belangrijk take-away point: ook hier geen black magic, alleen speciale code
+- Ook zij zouden dit kunnen maken
 -->
 <div class="sourceCode" id="cb4"><pre class="sourceCode asm"><code class="sourceCode fasm"><a class="sourceLine" id="cb4-1" data-line-number="1">bits <span class="dv">16</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="bu">org</span><span class="bn"> 0x7c00              </span><span class="co">; begin op dit adres</span></a>
@@ -571,6 +647,11 @@ Displaying notes found in: .note.ABI-tag
 </section>
 <section id="de-boot-sector-1" class="slide level2">
 <h2>De Boot-sector</h2>
+<!--
+- Zo ziet het geheel er na assembleren uit
+- Merk op: 512 bytes, `0x55aa` signature aan einde
+- Ingekort bij sterretje
+-->
 <div style="font-size:0.7em">
 <pre><code>00000000: be10 7cb4 0eac 08c0 7404 cd10 ebf7 faf4  ..|.....t.......
 00000010: 5631 452d 4f53 206c 6f61 6469 6e67 2e2e  V1E-OS loading..
@@ -583,9 +664,12 @@ Displaying notes found in: .note.ABI-tag
 <section id="bios-calls-interrupts" class="slide level2">
 <h2>BIOS-calls / Interrupts</h2>
 <aside class="notes">
-
+<p>Zoals software gebruik maakt van system calls om iets aan de kernel te vragen, moet het OS de hardware aankijken om bepaalde taken uit te voeren. Dit gebeurt met BIOS calls, ookwel interrupts. Deze worden aangeroepen met de <code>int</code> instructie. Deze krijgt een argument dat aangeeft welke categorie interrupt wordt aangeroepen. De specifieke functie wordt met behulp van het AH (en soms BH) register gecommuniceerd, en parameters en return-values staan ook in (functie-specifieke) registers.</p>
 </aside>
 <!--
+- Als system calls voor software, maar dan OS→hardware
+- `int` instructie met aanduiding voor categorie
+- rest via registers
 -->
 <ul>
 <li>Function code in AH / BH</li>
@@ -598,6 +682,9 @@ Displaying notes found in: .note.ABI-tag
 </section>
 <section id="registers" class="slide level2">
 <h2>Registers</h2>
+<!--
+Ter overzicht, herhaling van Les 4
+-->
 <figure>
 <img data-src="images/registers.png" alt="64 bits x86 registers" style="width:80.0%" /><figcaption>64 bits x86 registers</figcaption>
 </figure>
@@ -605,9 +692,12 @@ Displaying notes found in: .note.ABI-tag
 <section id="bits-mode" class="slide level2">
 <h2>32-bits mode</h2>
 <aside class="notes">
-<p>de GDT zullen we in de volgende slide naar kijken</p>
+<p>Om complexere code te kunnen draaien is de eerste stap het overschakelen naar 32- of 64-bits mode. De x86-64 processor architectuur start namelijk standaard nog steeds in 16-bits mode. Daarnaast zijn we aanvankelijk beperkt tot 1 MB geheugen, maar met de juiste interrupt kunnen we ons complete geheugen aanspreekbaar maken. Voor de overstap naar 32-bits moet een GDT (Global Descriptor Table) beschikbaar zijn waarin staat hoe het geheugen verdeeld is. Deze structuur bekijken we op de volgende slide.</p>
 </aside>
 <!--
+- Standaard 16 bits. 32 of 64 bits moet aangevraagd worden
+- Hiervoor GDT nodig, volgende slide
+- Tevens interrupt om meer geheugen aanspreekbaar te maken.
 -->
 <div class="sourceCode" id="cb6"><pre class="sourceCode asm"><code class="sourceCode fasm"><a class="sourceLine" id="cb6-1" data-line-number="1">bits <span class="dv">16</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="bu">org</span><span class="bn"> 0x7c00               </span><span class="co">; begin op dit adres</span></a>
@@ -634,6 +724,9 @@ Displaying notes found in: .note.ABI-tag
 <p>De Global Descriptor Table vertelt de CPU waar de verschillende geheugensegmenten te vinden zijn: de offsets waarop deze beginnen en de grootte van de segmenten. Deze wordt in de binary opgebouwd uit letterlijke bytewaardes. In assembly worden deze met data-commando’s gegeven: <code>db</code> voor data byte, <code>dw</code> voor data woord, etc. Doordat de tabel een vast formaat heeft kan de CPU deze data interpreteren om het geheugen klaar te maken voor een OS.</p>
 </aside>
 <!--
+- Tabel met offsets waar segmenten beginnen en hoe groot deze zijn
+- Binair opgebouwd, letterlijke bytewaardes
+- In assembly `db` data byte en `dw` data word etc
 -->
 <figure>
 <img data-src="images/gdt.png" alt="Formaat van een segment descriptor" style="width:80.0%" /><figcaption>Formaat van een segment descriptor</figcaption>
@@ -645,6 +738,7 @@ Displaying notes found in: .note.ABI-tag
 
 </aside>
 <!--
+Hier een voorbeeld tabel in een fragment assembly
 -->
 <div class="sourceCode" id="cb7"><pre class="sourceCode asm"><code class="sourceCode fasm"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">; offset 0x0</span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">.null descriptor:</a>
@@ -671,9 +765,12 @@ Displaying notes found in: .note.ABI-tag
 <section id="meer-dan-512-bytes" class="slide level2">
 <h2>Meer dan 512 bytes</h2>
 <aside class="notes">
-
+<p>De volgende beperking die we moeten oplossen is het feit dat we nog steeds in een enkele sector van 512 bytes zitten te werken. Met behulp van interrupts kunnen we de volgende sector(en) van de harde schijf opvragen. In dit voorbeeld wordt tweemaal padding met null-bytes gedaan, om ervoor te zorgen dat dit extra stuk geheugen ook daadwerkelijk gebruikt wordt.</p>
 </aside>
 <!--
+- Volgende stap: meer dan 1 sector
+- Interrupt voor harde schijf aanspreken
+- Twee keer padding zodat code ook echt in 2e sector gebruikt wordt
 -->
 <div class="sourceCode" id="cb8"><pre class="sourceCode asm"><code class="sourceCode fasm"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="bu">mov</span><span class="bn"> ah, 0x2         </span><span class="co">; functie: lees sectoren</span></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="bu">mov</span> <span class="kw">al</span>, <span class="dv">1</span>           <span class="co">; aantal sectoren</span></a>
@@ -693,9 +790,13 @@ Displaying notes found in: .note.ABI-tag
 <section id="klaar-voor-c" class="slide level2">
 <h2>Klaar voor C++</h2>
 <aside class="notes">
-
+<p>Inmiddels zijn we zo ver dat we in C++ verder kunnen. Nadat we in 32 bits mode draaien en voldoende geheugen kunnen bereiken kunnen we externe subroutines aanroepen, bijvoorbeeld <code>kmain</code> (die we later zullen zien). De assembler controlleert niet of deze functie daadwerkelijk bestaat, we moeten er zelf voor zorgen dat onze assembly code en de C++ goed aan elkaar gelinkt worden.</p>
 </aside>
 <!--
+- Hier aanroep externe C++ functie
+- Verder alles dat we hiervoor hebben gezien
+- Functie wordt niet gecontrolleerd, kan niet bestaan
+- Handmatig linken om juiste formaat binary te krijgen en code te combineren
 -->
 <div class="sourceCode" id="cb10"><pre class="sourceCode asm"><code class="sourceCode fasm"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="bu">mov</span><span class="bn"> ah, 0x2               </span><span class="co">; functie: lees sectoren</span></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="bu">mov</span> <span class="kw">al</span>, <span class="dv">6</span>                 <span class="co">; 6 sectoren = 3kb</span></a>
@@ -720,7 +821,7 @@ Displaying notes found in: .note.ABI-tag
 <section id="cross-compilen-en-linken" class="slide level2">
 <h2>Cross-compilen en Linken</h2>
 <aside class="notes">
-
+<p>Tot zover hebben we enkel met assembly gewerkt, die toch al platform-specifiek is. Nu we met C++ aan de gang gaan, zullen we moeten cross compilen. Met behulp van een cross-compiler kunnen we een object-file genereren in het juiste binaire formaat. Om deze te combineren met onze assembly kickstarter moeten we de binaire bestanden aan elkaar linken. Op de slide is een linker-script gezien dat ervoor zorgt dat we een bootable image krijgen.</p>
 </aside>
 <!--
 -->
@@ -753,6 +854,12 @@ SECTIONS {
 <p>Hoewel we inmiddels in C++ verder kunnen, en ons leven alweer een stuk makkelijker is dan met alleen assembly, is het nog lang niet zo eenvoudig als je gewend bent. Alle libraries waar je mee hebt leren werken zijn nog niet op ons nieuwe platform beschikbaar, en zullen in low-level C++ opnieuw geïmplementeerd moeten worden. De C Library (in Linux <em>glibc</em>), die samen met de kernel de meeste high-level functionaliteit levert, is nog niet aanspreekbaar: glibc heeft de kernel nodig om functionaliteit te bieden. Zelfs de system calls die we aan het begin van deze cursus gezien hebben, moeten nog worden opgebouwd. De kernel levert een lijst system-codes, die in dit low-level C++ (of in het geval van Linux: C) zijn geprogrammeerd, en hierbovenop wordt de C library gebouwd om een meer vriendelijke interface te leveren. De <code>kmain</code> functie die op de slides te zien is werkt welliswaar al met een loop in plaats van de handmatig jumps van assembly, maar het schrijven naar het scherm gebeurt nog altijd door handmatig waardes in geheugenadressen te schrijven. De variabele <code>vga</code> is een verwijzing naar het geheugenadres waar de inhoud van het scherm te vinden is, en met een loop schrijven we hier handmatig karakters en kleur-waardes naartoe. De naam <code>kmain</code> is arbitrair maar gebruikelijk. Bij normale userspace programma’s wordt <code>main</code> gebruikt als entrypoint, omdat dat is wat <code>glibc</code> verwacht. De kernel heeft deze luxe dus nog niet, en het entrypoint wordt vastgesteld in de bootloader. In ons laatste voorbeeld assembly werd <code>call kmain</code> gebruikt om de stap naar C++ te maken, maar iedere andere naam had ook gewerkt. Bij Linux is het entrypoint van de kernel <code>start_kernel()</code>. Van hieruit worden alle OS functionaliteiten gestart, waarna de kernel <code>init</code> als eerste proces start, dat met behulp van <code>fork</code> en <code>exec</code> alle andere processen in userspace start.</p>
 </aside>
 <!--
+- Wel C++, geen standard library (libc)
+- Libc heeft syscalls nodig om functionaliteit te leveren, die zitten in kernel
+- Kernel spreekt direct tot hardware, dus met interrupts
+- Voorbeeld: Loopen door geheugenadressen van scherminhoud om te printen
+- `kmain` is het startpunt omdat dat in stuk assembly vorige slide staat, kan alles zijn
+- Bij userspace software is dit `main`, omdat libc dit verwacht, maar die is hier dus niet
 -->
 <div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="at">extern</span> <span class="st">&quot;C&quot;</span> <span class="dt">void</span> kmain()</a>
 <a class="sourceLine" id="cb12-2" data-line-number="2">{ <span class="at">const</span> <span class="dt">short</span> color = <span class="bn">0x0F00</span>;</a>
