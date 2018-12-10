@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Embedded &amp; Operating Systems 9">
-  <title>Virtualisation</title>
+  <title>Virtualisation en Embedded Systemen</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -33,7 +33,7 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Virtualisation</h1>
+  <h1 class="title">Virtualisation en Embedded Systemen</h1>
   <p class="author">Embedded &amp; Operating Systems 9</p>
 </section>
 
@@ -48,45 +48,44 @@
 <section id="bytecode-virtual-machines" class="slide level2">
 <h2>Bytecode Virtual Machines</h2>
 <!--
-De JVM en .NET virtual machines behoren tot de laatste categorie: de machine die gevirtualiseerd wordt is niet een daadwerkelijke fysieke machine, maar een construct dat specifiek als virtuele machine ontworpen is. De machine dient als interpreter voor code die al gedeeltelijk gecompileerd is, met als voornaamste doel portability: als de VM op een systeem draait, kan alle software die op de VM draait gebruikt worden. 
-Ook WebAssembly, een low-level assembly achtige subset van JavaScript, kan als een bytecode virtual machine beschouwd worden. Code in C++ (of welke andere taal dan ook, zo lang er een compiler bestaat) kan tot WebAssembly gecompileerd worden, waarna een browser kan dienen als virtual machine / JIT compiler.
-Sommige talen nemen de intergratie met de bijbehorende VM nog een stapje verder. Pharo, een dialect van SmallTalk, wordt zowel ontwikkeld als uitgevoerd binnen de virtuele machine. De VM ondersteunt een grafische interface, waarbinnen code (zowel van de gebruiker als van het systeem zelf) geinspecteerd, aangepast en uitgevoerd kan worden.
+- Herhaling vorige les, bytecode gebaseerde talen = virtuele machine
+- Webassembly: asembly in javascript met browser als VM
+- Pharo als voorbeeld bytecode VM met geavanceerde interface
 -->
 <aside class="notes">
-
+<p>De JVM en .NET virtual machines behoren tot de laatste categorie: de machine die gevirtualiseerd wordt is niet een daadwerkelijke fysieke machine, maar een construct dat specifiek als virtuele machine ontworpen is. De machine dient als interpreter voor code die al gedeeltelijk gecompileerd is, met als voornaamste doel portability: als de VM op een systeem draait, kan alle software die op de VM draait gebruikt worden. Ook WebAssembly, een low-level assembly achtige subset van JavaScript, kan als een bytecode virtual machine beschouwd worden. Code in C++ (of welke andere taal dan ook, zo lang er een compiler bestaat) kan tot WebAssembly gecompileerd worden, waarna een browser kan dienen als virtual machine / JIT compiler. Sommige talen nemen de intergratie met de bijbehorende VM nog een stapje verder. Pharo, een dialect van SmallTalk, wordt zowel ontwikkeld als uitgevoerd binnen de virtuele machine. De VM ondersteunt een grafische interface, waarbinnen code (zowel van de gebruiker als van het systeem zelf) geinspecteerd, aangepast en uitgevoerd kan worden.</p>
 </aside>
+<p><img data-src="images/java-jit.png" /></p>
 </section>
 <section id="hardware-virtualisation" class="slide level2">
 <h2>Hardware Virtualisation</h2>
 <!--
-De meest klassieke vorm van virtual machines wordt doorgaans als _platform virtualisation_ of _hardware virtualisation_ aangeduid. De computer draait een besturingssysteem, met daarbinnen een applicatie, de _hypervisor_, die een fysieke computer nabootst. Vaak is dit een beperkte kopie van de _host computer_, de computer waarop de software draait. De _guest computer_ kan een kopie van hetzelfde besturingssysteem draaien, bijvoorbeeld om een afgeschermde omgeving te leveren, of een ander OS draaien, bijvoorbeeld Linux op Windows of vice-versa.
-Als de architectuur van de _guest computer_ afwijkt van die van de _host computer_ wordt dit doorgaans _emuleren_ genoemd. Een _emulator_ kan bijvoorbeeld een spelcomputer of mobiel platform nabootsen, zodat software hiervoor op de computer ontwikkeld en direct getest kan worden. Emulatoren worden ook ingezet om software voor verouderde hardware te kunnen blijven gebruiken.
+- VM simuleert hele fysieke computer; OS draait in VM, software draait binnen OS en weet niets van virtualisatie.
+- Zelfde OS of ander OS
+- Emulator voor andere virtuele processorarchitectuur
 -->
 <aside class="notes">
-
+<p>De meest klassieke vorm van virtual machines wordt doorgaans als <em>platform virtualisation</em> of <em>hardware virtualisation</em> aangeduid. De computer draait een besturingssysteem, met daarbinnen een applicatie, de <em>hypervisor</em>, die een fysieke computer nabootst. Vaak is dit een beperkte kopie van de <em>host computer</em>, de computer waarop de software draait. De <em>guest computer</em> kan een kopie van hetzelfde besturingssysteem draaien, bijvoorbeeld om een afgeschermde omgeving te leveren, of een ander OS draaien, bijvoorbeeld Linux op Windows of vice-versa. Als de architectuur van de <em>guest computer</em> afwijkt van die van de <em>host computer</em> wordt dit doorgaans <em>emuleren</em> genoemd. Een <em>emulator</em> kan bijvoorbeeld een spelcomputer of mobiel platform nabootsen, zodat software hiervoor op de computer ontwikkeld en direct getest kan worden. Emulatoren worden ook ingezet om software voor verouderde hardware te kunnen blijven gebruiken.</p>
 </aside>
+<p><img data-src="images/virtualisation.png" style="width:70.0%" /></p>
 </section>
 <section id="bare-metal-hypervisors" class="slide level2">
 <h2>Bare-Metal Hypervisors</h2>
 <!--
-Hoewel de meeste consumenten-hypervisors als applicatie binnen een OS draaien (zogenaamde _hosted hypervisors_, waarbij het OS de _host_ levert) is dit niet noodzakelijk. Bij bare-metal hypervisors draait de hypervisor direct op de hardware — in plaats van een OS. Binnen de hypervisor kunnen dan verschillende besturingssytemen draaien.
-Bij een hosted hypervisor is vaak sprake van een flinke performance-hit voor de guest OSs: de software binnen de guest is erg ver van de hardware verwijderd, waardoor er veel overhead is en vertaling plaatsvindt.
-Bij bare-metal hypervisors wordt is dit niet (of nauwelijks) het geval. Alle OSs die binnen een bare-metal hypervisor draaien zijn gelijkwaardig, en draaien zo dicht mogelijk op de hardware als mogelijk (met alleen een minimale hypervisor ertussen).
 -->
 <aside class="notes">
-
+<p>Hoewel de meeste consumenten-hypervisors als applicatie binnen een OS draaien (zogenaamde <em>hosted hypervisors</em>, waarbij het OS de <em>host</em> levert) is dit niet noodzakelijk. Bij bare-metal hypervisors draait de hypervisor direct op de hardware — in plaats van een OS. Binnen de hypervisor kunnen dan verschillende besturingssytemen draaien. Bij een hosted hypervisor is vaak sprake van een flinke performance-hit voor de guest OSs: de software binnen de guest is erg ver van de hardware verwijderd, waardoor er veel overhead is en vertaling plaatsvindt. Bij bare-metal hypervisors wordt is dit niet (of nauwelijks) het geval. Alle OSs die binnen een bare-metal hypervisor draaien zijn gelijkwaardig, en draaien zo dicht mogelijk op de hardware als mogelijk (met alleen een minimale hypervisor ertussen).</p>
 </aside>
+<p><img data-src="images/bare-metal.png" style="width:50.0%" /></p>
 </section>
 <section id="containers" class="slide level2">
 <h2>Containers</h2>
 <!--
-Bij hypervisor-virtualisatie wordt een compleet hardware-systeem gevirtualiseerd. Virtualisatie kan daarnaast ook op OS-level plaatsvinden. Het systeem draait dan een enkele kernel, maar hierop draaien meerdere geisoleerde userspaces: _containers_. Binnen Linux is Docker het meest gebruikte platform voor het draaien van containers.
-Voor een proces binnen een container lijkt het alsof deze zich op een normale computer bevindt. Wat het proces van het systeem kan zien is echter beperkt tot de inhoud van de container.
-Meestal wordt een container voor een enkel proces (server, compiler, etc.) gebruikt, dat binnen de container compleet geïsoleerd draait. De verschillende containers werken allemaal op dezelfde kernel, maar kunnen op userspace-niveau flink van elkaar afwijken. Het is prima mogelijk op een Ubuntu syteem een container te draaien die gebaseerd is op Fedora, of welke andere distro dan ook, zodat voor iedere applicatie de beste omgeving kan worden gekozen. Doorgaans wordt hiervoor een zo licht mogelijke disto gebruikt, zoals Alpine Linux. Daarnaast bestaan er distributies die speciaal ontwikkeld zijn om containers te hosten, waarbij de host zo licht mogelijk wordt gehouden en alle software binnen containers draait. Voorbeelden hiervan zijn CoreOS en RancherOS.
 -->
 <aside class="notes">
-
+<p>Bij hypervisor-virtualisatie wordt een compleet hardware-systeem gevirtualiseerd. Virtualisatie kan daarnaast ook op OS-level plaatsvinden. Het systeem draait dan een enkele kernel, maar hierop draaien meerdere geisoleerde userspaces: <em>containers</em>. Binnen Linux is Docker het meest gebruikte platform voor het draaien van containers. Voor een proces binnen een container lijkt het alsof deze zich op een normale computer bevindt. Wat het proces van het systeem kan zien is echter beperkt tot de inhoud van de container. Meestal wordt een container voor een enkel proces (server, compiler, etc.) gebruikt, dat binnen de container compleet geïsoleerd draait. De verschillende containers werken allemaal op dezelfde kernel, maar kunnen op userspace-niveau flink van elkaar afwijken. Het is prima mogelijk op een Ubuntu syteem een container te draaien die gebaseerd is op Fedora, of welke andere distro dan ook, zodat voor iedere applicatie de beste omgeving kan worden gekozen. Doorgaans wordt hiervoor een zo licht mogelijke disto gebruikt, zoals Alpine Linux. Daarnaast bestaan er distributies die speciaal ontwikkeld zijn om containers te hosten, waarbij de host zo licht mogelijk wordt gehouden en alle software binnen containers draait. Voorbeelden hiervan zijn CoreOS en RancherOS.</p>
 </aside>
+<p><img data-src="images/docker.png" style="width:50.0%" /></p>
 </section>
 <section id="wat-hebben-we-deze-les-geleerd" class="slide level2">
 <h2>Wat hebben we deze les geleerd?</h2>

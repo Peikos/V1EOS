@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="112.44791mm"
+   height="94.758644mm"
+   viewBox="0 0 112.44791 94.758644"
+   version="1.1"
+   id="svg7832"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="docker.svg"
+   inkscape:export-filename="/home/peikos/annex/hu/vakken/v1eos/dev18/git/Slides/images/docker.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
+  <defs
+     id="defs7826">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker6701"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path6699" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker6541"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path6539" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker5728"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path5726"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker5990"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path5988" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6309"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6307"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker7199"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7197"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.3011766"
+     inkscape:cx="162.65099"
+     inkscape:cy="194.44216"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1190"
+     inkscape:window-x="0"
+     inkscape:window-y="10"
+     inkscape:window-maximized="0"
+     inkscape:snap-global="false" />
+  <metadata
+     id="metadata7829">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(54.712048,-91.626633)">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4300"
+       width="112.44791"
+       height="94.758644"
+       x="-54.712048"
+       y="91.626633" />
+    <g
+       transform="translate(-51.80163,109.74539)"
+       id="g5351">
+      <g
+         id="g9018">
+        <rect
+           rx="2"
+           ry="2"
+           y="44.777794"
+           x="30.925022"
+           height="8.5922737"
+           width="52.078159"
+           id="rect5345"
+           style="opacity:1;fill:#f2f2f2;fill-opacity:1;stroke:#000000;stroke-width:0.46500003;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <text
+           id="text5349"
+           y="49.88673"
+           x="56.916611"
+           xml:space="preserve"
+           style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"><tspan
+             id="tspan5347"
+             y="49.88673"
+             x="56.916611"
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 55 Roman';-inkscape-font-specification:'Avenir LT 55 Roman, ';text-align:center;text-anchor:middle;stroke-width:1">Host OS (Linux)</tspan></text>
+      </g>
+    </g>
+    <rect
+       style="opacity:1;fill:#ffccaa;fill-opacity:1;stroke:#000000;stroke-width:0.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5361"
+       width="13.626041"
+       height="7.8052082"
+       x="65.213089"
+       y="153.39966" />
+    <text
+       id="text5367"
+       y="156.36775"
+       x="72.078659"
+       xml:space="preserve"
+       style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"><tspan
+         id="tspan5363"
+         y="156.36775"
+         x="72.078659"
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1">HyperCall</tspan><tspan
+         y="160.3365"
+         x="72.078659"
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+         id="tspan5365">Table</tspan></text>
+    <rect
+       y="153.39966"
+       x="80.029755"
+       height="7.8052082"
+       width="8.8635416"
+       id="rect5369"
+       style="opacity:1;fill:#afe9af;fill-opacity:1;stroke:#000000;stroke-width:0.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <text
+       style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"
+       xml:space="preserve"
+       x="84.485207"
+       y="157.89493"
+       id="text5373"><tspan
+         id="tspan5371"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+         sodipodi:role="line"
+         x="84.485207"
+         y="157.89493">Traps</tspan></text>
+    <g
+       id="g9106">
+      <rect
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#002255;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect8572"
+         width="23.479498"
+         height="29.626394"
+         x="-17.940111"
+         y="101.15512" />
+      <rect
+         transform="matrix(0.9961947,-0.08715574,0,1,0,0)"
+         y="102.5444"
+         x="-13.926271"
+         height="10.715625"
+         width="15.404451"
+         id="rect5638"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.66626889;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         id="text5642"
+         y="109.42673"
+         x="-6.2923908"
+         xml:space="preserve"
+         style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"><tspan
+           id="tspan5640"
+           y="109.42673"
+           x="-6.2923908"
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1">Proces</tspan></text>
+      <rect
+         style="opacity:1;fill:#afc6e9;fill-opacity:1;stroke:#000000;stroke-width:0.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5648"
+         width="19.522947"
+         height="8.8293314"
+         x="-16.3855"
+         y="120.20161" />
+      <text
+         style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"
+         xml:space="preserve"
+         x="-6.6511478"
+         y="123.311"
+         id="text5652"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+           sodipodi:role="line"
+           x="-6.6511478"
+           y="123.311"
+           id="tspan5650">Libraries</tspan><tspan
+           id="tspan8603"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+           sodipodi:role="line"
+           x="-6.6511483"
+           y="127.27975">Binaries</tspan></text>
+      <path
+         sodipodi:nodetypes="cc"
+         style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker6541)"
+         d="m -6.200357,113.85162 v 5.68853"
+         id="path5654"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path5724"
+         d="m -6.2003622,130.78494 v 13.09688"
+         style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker5728)"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       id="g9023"
+       transform="translate(0,-5.2916666)">
+      <path
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m -20.87647,170.52362 v 10.71562 h 52.07816 v -10.71562 z"
+         id="rect5389"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <text
+         style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"
+         xml:space="preserve"
+         x="5.0971546"
+         y="176.93146"
+         id="text5395"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+           sodipodi:role="line"
+           x="5.0971546"
+           y="176.93146"
+           id="tspan5393">Hardware</tspan></text>
+    </g>
+    <g
+       id="g9028"
+       transform="translate(0,10.583333)">
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path8767"
+         d="m -20.514463,133.48193 -0.724014,8.27552 h 52.07816 l 0.724014,-8.27552 z"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.66500002;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         id="text8771"
+         y="138.66956"
+         x="5.0971589"
+         xml:space="preserve"
+         style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"><tspan
+           id="tspan8769"
+           y="138.66956"
+           x="5.0971589"
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1">Docker</tspan></text>
+    </g>
+    <g
+       id="g9128"
+       transform="translate(26.458334)">
+      <rect
+         y="101.15512"
+         x="-17.940111"
+         height="29.626394"
+         width="23.479498"
+         id="rect9108"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#002255;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.66626889;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect9110"
+         width="15.404451"
+         height="10.715625"
+         x="-13.926271"
+         y="102.5444"
+         transform="matrix(0.9961947,-0.08715574,0,1,0,0)" />
+      <text
+         style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"
+         xml:space="preserve"
+         x="-6.2923908"
+         y="109.42673"
+         id="text9114"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+           sodipodi:role="line"
+           x="-6.2923908"
+           y="109.42673"
+           id="tspan9112">Proces</tspan></text>
+      <rect
+         y="120.20161"
+         x="-16.3855"
+         height="8.8293314"
+         width="19.522947"
+         id="rect9116"
+         style="opacity:1;fill:#afc6e9;fill-opacity:1;stroke:#000000;stroke-width:0.36500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         id="text9122"
+         y="123.311"
+         x="-6.6511478"
+         xml:space="preserve"
+         style="font-size:3.17499995px;text-align:center;text-anchor:middle;stroke-width:1"><tspan
+           id="tspan9118"
+           y="123.311"
+           x="-6.6511478"
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1">Libraries</tspan><tspan
+           y="127.27975"
+           x="-6.6511483"
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:1"
+           id="tspan9120">Binaries</tspan></text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path9124"
+         d="m -6.200357,113.85162 v 5.68853"
+         style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker6541)"
+         sodipodi:nodetypes="cc" />
+      <path
+         sodipodi:nodetypes="cc"
+         style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker5728)"
+         d="m -6.2003622,130.78494 v 13.09688"
+         id="path9126"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>
