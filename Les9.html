@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Embedded &amp; Operating Systems 9">
-  <title>Virtualisation en Embedded Systemen</title>
+  <title>Virtualisation en Microcontrollers</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -33,7 +33,7 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Virtualisation en Embedded Systemen</h1>
+  <h1 class="title">Virtualisation en Microcontrollers</h1>
   <p class="author">Embedded &amp; Operating Systems 9</p>
 </section>
 
@@ -42,7 +42,7 @@
 <!--
 -->
 <aside class="notes">
-<p>De vorige les hebben we al een beetje kennis gemaakt met virtualisatie, in de vorm van de JVM en .NET virtual machine. In deze les kijken we verder naar virtuele machines, en hoe deze in het OS geïntergreerd kunnen zijn. De overkoepelende eigenchap van virtual machines is dat deze een systeem emuleren in software. Dit kan een PC zijn die een andere PC in een venster draait (om meerdere OSs tegelijk te draaien), een ander type hardware (emulatie) of een type machine dat fysiek niet bestaat.</p>
+<p>De vorige les hebben we al een beetje kennis gemaakt met virtualisatie, in de vorm van de JVM en .NET virtual machine. In deze les kijken we verder naar virtuele machines, en hoe deze in het OS geïntergreerd kunnen zijn. De overkoepelende eigenchap van virtual machines is dat deze een systeem emuleren in software. Dit kan een PC zijn die een andere PC in een venster draait (om meerdere OSs tegelijk te draaien), een ander type hardware (emulatie) of een type machine dat fysiek niet bestaat. Daarnaast zullen we kijken naar microcontrollers: embedded systemen zonder OS. Het aansturen van de hardware is grotendeels hetzelfde, maar in dit geval combineert de embedded software deze taak met de daadwerkelijke functionaliteit die het device moet leveren.</p>
 </aside>
 </section>
 <section id="bytecode-virtual-machines" class="slide level2">
@@ -87,12 +87,72 @@
 </aside>
 <p><img data-src="images/docker.png" style="width:50.0%" /></p>
 </section>
+<section id="microcontrollers" class="slide level2">
+<h2>Microcontrollers</h2>
+<!--
+-->
+<aside class="notes">
+<p>Hoewel de focus tot nu toe gelegen heeft op OSs en applicaties die op een OS draaien (hosted applications), ligt de focus van de TI-er vaak op een ander domein: de microcontroller. Hier wordt net als bij (het programmeren van) een OS bare-metal gewerkt. De software heeft directe toegang tot de hardware, en er zijn niet zomaar abstracties aanwezig om het leven van de ontwikkelaar te vereenvoudigen. In de volgende slides zullen we zien hoe het programmeren van een microcontroller verschilt ten opzichte van OS development en het schrijven van hosted applicaties.</p>
+</aside>
+</section>
+<section id="development-pipeline" class="slide level2">
+<h2>Development Pipeline</h2>
+<!--
+-->
+<aside class="notes">
+<p>Het eerste verschil is de manier waarop de development pipeline in elkaar steekt. Omdat een bare-metal microcontroller geen OS heeft, draait hier geen tekst-editor of compiler op waardoor deze niet direct geprogrammeerd kan worden. In plaats hiervan moeten we gebruik maken van een development-systeem om de code te schrijven, en deze met een cross-compiler omzetten naar een binary voor de micro-controller. Dit binary-bestand kan dan in de microcontroller worden ingeladen door deze naar het EEPROM of Flash-geheugen te schrijven.</p>
+</aside>
+</section>
+<section id="geheugengebruik-van-applicaties-op-een-os" class="slide level2">
+<h2>Geheugengebruik van applicaties op een OS</h2>
+<!--
+-->
+<aside class="notes">
+<p>Een andere manier waarop een bare-metal microcontroller van een computer met OS verschilt is de manier waarop het geheugen wordt gebruikt. De computers waar we tot zover naar hebben gekeken maken gebruik van een combinatie van RAM geheugen en persistent storage (harde schijf of SSD). Alle code en bijbehorende data, zowel van het OS als van de applicaties, is ergens op de persistent storage te vinden. Bij het booten wordt de OS code hiervandaan naar het RAM gekopieerd, en bij het starten van een programma komt ook deze code ergens in het RAM te staan. Alle memory-segmenten die we hebben gezien binnen een proces (of het OS) zijn in de binary file aanwezig en worden 1-op-1 in het geheugen overgenomen.</p>
+</aside>
+</section>
+<section id="geheugengebruik-bij-microcontrollers" class="slide level2">
+<h2>Geheugengebruik bij microcontrollers</h2>
+<!--
+-->
+<aside class="notes">
+<p>Bij een bare-metal microcontroller werkt dit anders: alle code en data is bij het flashen in het ROM geheugen opgeslagen. Bij het uitvoeren wordt dit niet naar RAM geheugen verplaatst, maar wordt alles zoveel mogelijk direct uit het ROM gelezen. Variabele data, dus data die kan veranderen, heeft een initiële waarde in het ROM staan, maar wordt naar het RAM gekopieerd om de data aan te kunnen passen.</p>
+</aside>
+</section>
+<section id="peripherals" class="slide level2">
+<h2>Peripherals</h2>
+<!--
+-->
+<aside class="notes">
+<p>Ook is het bij een bare-metal microcontroller niet mogelijk op de BIOS te vertrouwen om bepaalde taken uit te voeren: de BIOS is op zichzelf al een complex stuk software (of beter gezegd, firmware) dat niet op een standaard microcontroller aanwezig zal zijn. Meer nog dan bij het schrijven van een OS worden peripherals (randapparatuur, alles dat zich buiten de CPU en het geheugen bevindt) aangestuurd door direct naar geheugenposities te schrijven en direct uit geheugenposities te lezen: alle peripherals zijn direct in de memory map aanwezig. In code voor operating systems gebeurt dit ook wel (zoals te zien in ons C++ voorbeeld vorige week, waarbij naar een geheugenrange geschreven werd om tekst te printen), maar bij microcontrollers is dit nog meer gebruikelijk.</p>
+</aside>
+</section>
+<section id="microcontroller-libraries" class="slide level2">
+<h2>Microcontroller Libraries</h2>
+<!--
+-->
+<aside class="notes">
+<p>Hoewel bare-metal programmeren op een microcontroller een hoop meer handwerk vereist, kunnen we nog steeds gebruik maken van de eerste tool die een programmeur voor handen heeft: compositie. Door een probleem in kleinere subproblemen op te delen kan herbruikbare code gemaakt worden, die in de vorm van libraries te delen is tussen verschillende projecten. Later in de opleiding zullen jullie met Hwlib te maken krijgen: een library die op de HU ontwikkeld is om het programmeren van microcontrollers toegankelijker te maken.</p>
+</aside>
+</section>
+<section id="library-operating-systems-en-unikernels" class="slide level2">
+<h2>Library Operating Systems en Unikernels</h2>
+<!--
+-->
+<aside class="notes">
+<p>Een tussenvorm tussen een bare-metal microcontroller en een operating system is een zogenaamd Library OS. Hierbij worden de gebruikelijke diensten die een OS levert aangeboden in de vorm van libraries. Dit maakt het mogelijk complexe functies te gebruiken alsof de applicatie op een OS draait, maar in werklelijkheid is deze functionaliteit in de applicatie opgenomen. Het resultaat is een binary die zowel de applicatie-code als (de relevante delen van) de OS code bevat: een zogenaamde unikernel. Een unikernel heeft een enkele adres-ruimte, dus geen onderscheid tussen kernel-space en user-space, en kan in het geheel op microcontrollers ingezet worden. Een voorbeeld van een library OS is IncludeOS.</p>
+</aside>
+<p><img data-src="images/includeos.png" /></p>
+</section>
 <section id="wat-hebben-we-deze-les-geleerd" class="slide level2">
 <h2>Wat hebben we deze les geleerd?</h2>
 <ul>
 <li>Bytecode-gebaseerde virtual machines</li>
 <li>Hosted en bare-metal hypervisors</li>
 <li>OS-level virtualisation met containers</li>
+<li>Verschillen in development pipeline voor microcontrollers</li>
+<li>Verschillen in geheugengebruik tussen OS en microcontrollers</li>
+<li>Libraries voor microcontrollers</li>
 </ul>
 </section>
     </div>
