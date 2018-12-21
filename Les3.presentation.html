@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Embedded &amp; Operating Systems 3">
-  <title>De Linux Command Line: Bash</title>
+  <title>Embedded &amp; Operating Systems 3 — De Linux Command Line: Bash</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -80,7 +79,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="reveal.js/css/theme/hu.css" id="theme">
   <!-- Printing and PDF exports -->
   <script>
     var link = document.createElement( 'link' );
@@ -97,38 +96,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide">
-  <h1 class="title">De Linux Command Line: Bash</h1>
-  <p class="author">Embedded &amp; Operating Systems 3</p>
-</section>
 
-<section id="introductie" class="slide level2">
-<h2>Introductie</h2>
+<section id="section" class="slide level2" data-background="course-logo.png">
+<h2></h2>
+<h1>
+De Linux Command Line: Bash
+</h1>
+<p>
+Embedded &amp; Operating Systems 3
+</p>
 <aside class="notes">
-<h4 id="conventie-c-g-staat-voor-control-g.">Conventie: <code>C-g</code> staat voor Control + G.</h4>
+<p>Deze les gaan we de Linux command line verkennen. We maken kennis met Bash, de meest gangbare shell voor Linux. Ook komen we een diversiteit aan programma’s tegen die we vanaf de command line kunnen gebruiken. Het is in Bash niet altijd duidelijk welk commando een “built-in” functie van Bash is, en welk command een programma is. Deze kennis is ook niet nodig om Bash te gebruiken, maar wel iets om in het achterhoofd te houden. Een conventie die we vanaf deze les aan zullen houden is dat toetsenbordcombinaties met Control niet meer uitgeschreven worden, maar afgekort. Control en G schrijven we als <code>C-g</code>.</p>
 </aside>
-<!--
-Deze les gaan we de Linux command line verkennen. We maken kennis met Bash, de meest gangbare shell voor Linux. Ook komen we een diversiteit aan programma's tegen die we vanaf de command line kunnen gebruiken. Het is in Bash niet altijd duidelijk welk commando een "built-in" functie van Bash is, en welk command een programma is. Deze kennis is ook niet nodig om Bash te gebruiken, maar wel iets om in het achterhoofd te houden.
-Een conventie die we vanaf deze les aan zullen houden is dat toetsenbordcombinaties met Control niet meer uitgeschreven worden, maar afgekort. Control en G schrijven we als `C-g`.
--->
+</section>
+<section id="inhoud" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li><strong>Je weg vinden op de command-line</strong></li>
+<li>IO en Pipes</li>
+<li>Processen op de command-line</li>
+<li>Werken met tekst</li>
+<li>Meer basiskennis</li>
+</ul>
 </section>
 <section id="navigatie" class="slide level2">
 <h2>Navigatie</h2>
-<!--
-Als je een nieuwe terminal start, heeft je shell standaard een working directory: het punt op het filesysteem waar je je bevindt. Bestanden die je maakt worden in deze map gezet, en bestanden die je zoekt kunnen relatief vanaf deze map benaderd worden. Standaard zul je beginnen in je _home_ directory, de map die je als gebruiker zelf beheert en waar je eigen bestanden (en instellingen) te vinden zijn. Het commando `cd` (change directory) wordt gebruikt om van map te wisselen, en `pwd` (notesent working directory) vertelt waar je je nu bevindt. Met `ls` (list) kun je de inhoud van de huidige map te zien krijgen.
-Een aantal paden zijn belangrijk om te weten: de bovenste directory, de root directory, wordt met een `/` (slash) aangeduid. Vanaf hier worden directory-namen door een `/` gescheiden om een pad uit te drukken. De home directory van de gebruiker `jon` bevindt zich bijvoorbeeld op `/home/jon` (de map `jon`, binnen de map `home`, binnen de root).
-`~` wordt gebruikt als synoniem voor de home directory van de huidige gebruiker. Voor Jon is `cd ~` dus hetzelfde als `cd /home/jon`.
-`.` verwijst naar de huidige map: `cd .` doet niets. Dit kan voor nu een beetje overbodig lijken, maar later zullen we zien hoe de `.` soms korter is dan de alternatieven. Daarnaast hebben we `..`, die naar de parent van de huidige directory verwijst. Vanaf Jon's home zal `cd ..` dus naar `/home` verwijzen. Deze kun je ook middenin een pad gebruiken, de map omhoog wordt dan gerekend vanaf waar in het pad deze wordt gebruikt. `cd /home/jon/Documents/../Music` is bijvoorbeeld hetzelfde als `cd /home/jon/Music`. `cd` zonder argument gaat terug naar de home directory, en `cd -` gaat terug naar de vorige directory.
--->
 <aside class="notes">
-<ul>
-<li>change directory</li>
-<li>notesent working directory (waar ben ik)</li>
-<li>listing (directory inhoud printen)</li>
-<li>root, home, huidige directory en parent</li>
-<li><code>cd -</code> is terug naar vorige</li>
-<li><code>cd</code> zonder argument is terug naar home</li>
-</ul>
+<p>Als je een nieuwe terminal start, heeft je shell standaard een working directory: het punt op het filesysteem waar je je bevindt. Bestanden die je maakt worden in deze map gezet, en bestanden die je zoekt kunnen relatief vanaf deze map benaderd worden. Standaard zul je beginnen in je <em>home</em> directory, de map die je als gebruiker zelf beheert en waar je eigen bestanden (en instellingen) te vinden zijn. Het commando <code>cd</code> (change directory) wordt gebruikt om van map te wisselen, en <code>pwd</code> (present working directory) vertelt waar je je nu bevindt. Met <code>ls</code> (list) kun je de inhoud van de huidige map te zien krijgen. Een aantal paden zijn belangrijk om te weten: de bovenste directory, de root directory, wordt met een <code>/</code> (slash) aangeduid. Vanaf hier worden directory-namen door een <code>/</code> gescheiden om een pad uit te drukken. De home directory van de gebruiker <code>jon</code> bevindt zich bijvoorbeeld op <code>/home/jon</code> (de map <code>jon</code>, binnen de map <code>home</code>, binnen de root). <code>~</code> wordt gebruikt als synoniem voor de home directory van de huidige gebruiker. Voor Jon is <code>cd ~</code> dus hetzelfde als <code>cd /home/jon</code>. <code>.</code> verwijst naar de huidige map: <code>cd .</code> doet niets. Dit kan voor nu een beetje overbodig lijken, maar later zullen we zien hoe de <code>.</code> soms korter is dan de alternatieven. Daarnaast hebben we <code>..</code>, die naar de parent van de huidige directory verwijst. Vanaf Jon’s home zal <code>cd ..</code> dus naar <code>/home</code> verwijzen. Deze kun je ook middenin een pad gebruiken, de map omhoog wordt dan gerekend vanaf waar in het pad deze wordt gebruikt. <code>cd /home/jon/Documents/../Music</code> is bijvoorbeeld hetzelfde als <code>cd /home/jon/Music</code>. <code>cd</code> zonder argument gaat terug naar de home directory, en <code>cd -</code> gaat terug naar de vorige directory.</p>
 </aside>
 <ul>
 <li><code>cd</code></li>
@@ -140,17 +134,8 @@ Een aantal paden zijn belangrijk om te weten: de bovenste directory, de root dir
 </section>
 <section id="bestandsmanupilatie" class="slide level2">
 <h2>Bestandsmanupilatie</h2>
-<!--
-De volgende commando's manupileren bestanden. Met `touch` wordt een bestand aangemaakt (als deze nog niet bestond) of wordt de "laatst aangepast" datum naar nu gezet. Het bestand wordt geweizigd, maar er verandert niets aan.
-Met `cp` kun je een bestand kopiëren, en met `mv` kun je het verplaatsen. `rm` verwijdert een bestand.
--->
 <aside class="notes">
-<ul>
-<li>touch is aanmaken / datum updaten</li>
-<li>copy (file)</li>
-<li>move (file)</li>
-<li>remove (file)</li>
-</ul>
+<p>De volgende commando’s manupileren bestanden. Met <code>touch</code> wordt een bestand aangemaakt (als deze nog niet bestond) of wordt de “laatst aangepast” datum naar nu gezet. Het bestand wordt geweizigd, maar er verandert niets aan. Met <code>cp</code> kun je een bestand kopiëren, en met <code>mv</code> kun je het verplaatsen. <code>rm</code> verwijdert een bestand.</p>
 </aside>
 <ul>
 <li><code>touch</code></li>
@@ -162,16 +147,8 @@ Met `cp` kun je een bestand kopiëren, en met `mv` kun je het verplaatsen. `rm` 
 <section id="directorymanupilatie" class="slide level2">
 <h2>Directorymanupilatie</h2>
 <aside class="notes">
-<ul>
-<li>make dir</li>
-<li>remove (empty) dir</li>
-<li>copy recursively / remove recursively</li>
-</ul>
+<p>De meeste commando’s voor bestanden werken niet direct op directories. <code>mv</code> mag, maar <code>cp</code> en <code>rm</code> werken niet. Voor het verwijderen van een <em>lege</em> map wordt <code>rmdir</code> gebruikt, maar dit mag niet als er een bestand in de map zit. Dit is omdat Linux je wil beschermen geen verkeerde handeling uit te voeren: als je aangeeft dat je een bestand wil verwijderen, maar je geeft een map op, dan is de kans groot dat je de verkeerde naam hebt meegegeven. Als je toch een map (met alle inhoud) wilt kopiëren of verwijderen, kun je <code>cp -r</code> en <code>rm -r</code> gebruiken. De toevoeging <code>-r</code> staat voor <em>recursief</em> (dat betekent in dit geval: met alles wat eronder hangt). Gebruik bijvoorbeeld <code>rm -r Music</code> als je de map Music met alle inhoud wil verwijderen. <code>-r</code> is het eerste voorbeeld van een flag.</p>
 </aside>
-<!--
-De meeste commando's voor bestanden werken niet direct op directories. `mv` mag, maar `cp` en `rm` werken niet. Voor het verwijderen van een *lege* map wordt `rmdir` gebruikt, maar dit mag niet als er een bestand in de map zit. Dit is omdat Linux je wil beschermen geen verkeerde handeling uit te voeren: als je aangeeft dat je een bestand wil verwijderen, maar je geeft een map op, dan is de kans groot dat je de verkeerde naam hebt meegegeven. 
-Als je toch een map (met alle inhoud) wilt kopiëren of verwijderen, kun je `cp -r` en `rm -r` gebruiken. De toevoeging `-r` staat voor _recursief_ (dat betekent in dit geval: met alles wat eronder hangt). Gebruik bijvoorbeeld `rm -r Music` als je de map Music met alle inhoud wil verwijderen. `-r` is het eerste voorbeeld van een flag.
--->
 <ul>
 <li><code>mkdir</code></li>
 <li><code>rmdir</code></li>
@@ -180,18 +157,8 @@ Als je toch een map (met alle inhoud) wilt kopiëren of verwijderen, kun je `cp 
 </section>
 <section id="flags-command-line-arguments" class="slide level2">
 <h2>Flags / Command Line Arguments</h2>
-<!--
-De meeste commando's accepteren command line argumenten. Allereerst zijn er verplichte argumenten. Waar `pwd` bijvoorbeeld geen argumenten nodig heeft, heeft `touch` enkel zin als meegegeven wordt welk bestand gemaakt of geüpdatet moet worden. `cp` heeft zelfs twee argumenten nodig: een bron en een doel. Soms kan een commando een een optioneel pad meekrijgen: `ls` werkt in de huidige working directory, `ls /home` leest de inhoud van `/home`. Al deze argumenten zijn positie-bepaald. Het eerste argument bij `cp` is altijd de bron, de tweede het doel.
-Naast deze positiegebonden argumenten hebben we ook flags, die met één of twee streepjes (dashes) kunnen beginnen. Flags komen doorgaans overeen met booleaanse waardes: wel of niet. Als de flag met één dash begint, dan is het doorgaans een enkele letter, en kun je deze combineren. `-r -f` is hetzelfde als `-rf`. Ook de volgorde maakt meestal niet uit. Flags met een dubbele dash bestaan uit meerdere letters en zijn niet samen te voegen.
-Tot slot kunnen deze flags soms een argument erbij nemen. Bij enkele letters volgt het argument meestal na een (optionele) spatie, bij de dubbele dash wordt meestal een `=` gebruikt om de waarde van de flag te scheiden.
--->
 <aside class="notes">
-<ul>
-<li>eenletter flags samenvoegen / volgorde onbelangrijk</li>
-<li>verplichte argumenten positiebepaald</li>
-<li>soms nog optionele argumenten</li>
-<li>key value flags</li>
-</ul>
+<p>De meeste commando’s accepteren command line argumenten. Allereerst zijn er verplichte argumenten. Waar <code>pwd</code> bijvoorbeeld geen argumenten nodig heeft, heeft <code>touch</code> enkel zin als meegegeven wordt welk bestand gemaakt of geüpdatet moet worden. <code>cp</code> heeft zelfs twee argumenten nodig: een bron en een doel. Soms kan een commando een een optioneel pad meekrijgen: <code>ls</code> werkt in de huidige working directory, <code>ls /home</code> leest de inhoud van <code>/home</code>. Al deze argumenten zijn positie-bepaald. Het eerste argument bij <code>cp</code> is altijd de bron, de tweede het doel. Naast deze positiegebonden argumenten hebben we ook flags, die met één of twee streepjes (dashes) kunnen beginnen. Flags komen doorgaans overeen met booleaanse waardes: wel of niet. Als de flag met één dash begint, dan is het doorgaans een enkele letter, en kun je deze combineren. <code>-r -f</code> is hetzelfde als <code>-rf</code>. Ook de volgorde maakt meestal niet uit. Flags met een dubbele dash bestaan uit meerdere letters en zijn niet samen te voegen. Tot slot kunnen deze flags soms een argument erbij nemen. Bij enkele letters volgt het argument meestal na een (optionele) spatie, bij de dubbele dash wordt meestal een <code>=</code> gebruikt om de waarde van de flag te scheiden.</p>
 </aside>
 <ul>
 <li>Eenletter flags (<code>-r</code>, <code>-f</code>, <code>-rf</code>)</li>
@@ -201,19 +168,20 @@ Tot slot kunnen deze flags soms een argument erbij nemen. Bij enkele letters vol
 <li>Flags met argument (<code>-w 3</code>, <code>--width=3</code>)</li>
 </ul>
 </section>
+<section id="inhoud-1" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Je weg vinden op de command-line</li>
+<li><strong>IO en Pipes</strong></li>
+<li>Processen op de command-line</li>
+<li>Werken met tekst</li>
+<li>Meer basiskennis</li>
+</ul>
+</section>
 <section id="find-less" class="slide level2">
 <h2><code>find | less</code></h2>
-<!--
-Om een tree te krijgen van de inhoud van een map en alle submappen kun je het commando `find` gebruiken. Dit geeft echter vrij veel uitvoer, het zou fijn zijn als we hier hapklare brokken van konden maken. 
-Het commando `less` kan gebruikt worden om een bestand te openen en er doorheen te kunnen scrollen. Kunnen we dit gebruiken om de uitvoer van `find` te pagineren?
-In Linux kun je twee commando's aan elkaar koppelen: uitvoer van het ene programma wordt als invoer voor het tweede gebruikt. Hiervoor gebruiken we het `|` symbool: de pipe. Denk aan een pijpleiding die de commando's met elkaar verbindt.
--->
 <aside class="notes">
-<ul>
-<li>find erg veel uitvoer</li>
-<li>less om bestand te pagineren</li>
-<li>combineren: pipes! (pipeline)</li>
-</ul>
+<p>Om een tree te krijgen van de inhoud van een map en alle submappen kun je het commando <code>find</code> gebruiken. Dit geeft echter vrij veel uitvoer, het zou fijn zijn als we hier hapklare brokken van konden maken. Het commando <code>less</code> kan gebruikt worden om een bestand te openen en er doorheen te kunnen scrollen. Kunnen we dit gebruiken om de uitvoer van <code>find</code> te pagineren? In Linux kun je twee commando’s aan elkaar koppelen: uitvoer van het ene programma wordt als invoer voor het tweede gebruikt. Hiervoor gebruiken we het <code>|</code> symbool: de pipe. Denk aan een pijpleiding die de commando’s met elkaar verbindt.</p>
 </aside>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="fu">find</span> /home/jon <span class="co"># Veel output</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="fu">less</span> file</a>
@@ -221,9 +189,9 @@ In Linux kun je twee commando's aan elkaar koppelen: uitvoer van het ene program
 </section>
 <section id="sys_pipe" class="slide level2">
 <h2><code>SYS_pipe</code></h2>
-<!--
-Op deze slide zien we een pipe zoals deze in de shell geïmplementeerd is. Hiervoor introduceren we een nieuwe syscall: `SYS_pipe`
--->
+<aside class="notes">
+<p>Op deze slide zien we een pipe zoals deze in de shell geïmplementeerd is. Hiervoor introduceren we een nieuwe syscall: <code>SYS_pipe</code></p>
+</aside>
 <ol type="1">
 <li>Shell maakt een pipe met <code>pipe()</code></li>
 <li>Shell <code>fork</code>t twee keer</li>
@@ -257,40 +225,15 @@ else
 <section id="stdin-en-stdout" class="slide level2">
 <h2><code>STDIN</code> en <code>STDOUT</code></h2>
 <aside class="notes">
-<ul>
-<li>file descriptors, geerfd van parent</li>
-<li>0 voor stdin, 1 voor stdout, 2 voor stderr</li>
-<li>gekoppeld aan bestand, of terminal (toetsenbord, uitvoer)</li>
-</ul>
+<p>Het sturen van de uitvoer noemen we het <em>redirecten</em> van <code>STDOUT</code>, en het lezen van de invoer is het <em>redirecten</em> van <code>STDIN</code>. Dit hoeft niet met een pipe te gebeuren, maar kan ook van/naar een bestand. <code>STDOUT</code> is een file descriptor (nummer 1) die in ieder proces aanwezig is, en die gebruikt wordt om alles naartoe te schrijven dat het programma uitvoert (denk aan <code>print</code>s). <code>STDIN</code> is ook een file descriptor (nummer 0), maar deze wordt gelezen voor invoer. Normaal is dit de gebruikersinvoer vanaf de command line, maar dit kan ook prima een bestand of pipe zijn. Daarnaast is er vaak een derde file descriptor, <code>STDERR</code> (nummer 2), voor foutmeldingen (ook dit is standaard de command line, maar het is hiermee dus mogelijk te splitsen tussen uitvoer en excepties). Waar <code>STDIN</code> en <code>STDOUT</code> precies aan verbonden zijn, is te vinden in de de environment informatie die bij een proces hoort. Standaard zijn dit voor processen die je in de shell start de invoer en de uitvoer van de terminal, en als je een child process start worden deze overgeërfd. Tijdens executie van het proces kunnen deze descriptors altijd ergens anders aan verbonden worden, maar de <code>STDIN</code> en <code>STDOUT</code> zijn altijd aanwezig. Bij processen die door de kernel gestart worden, zoals <code>init</code> is de <code>STDOUT</code> doorgaans aan het kernel log gekoppeld. <code>STDIN</code> kan aan een buffer of (als het proces geen input verwacht) aan een dummy file gekoppeld zijn.</p>
 </aside>
-<!--
-Het sturen van de uitvoer noemen we het _redirecten_ van `STDOUT`, en het lezen van de invoer is het _redirecten_ van `STDIN`. Dit hoeft niet met een pipe te gebeuren, maar kan ook van/naar een bestand. `STDOUT` is een file descriptor (nummer 1) die in ieder proces aanwezig is, en die gebruikt wordt om alles naartoe te schrijven dat het programma uitvoert (denk aan `print`s). `STDIN` is ook een file descriptor (nummer 0), maar deze wordt gelezen voor invoer. Normaal is dit de gebruikersinvoer vanaf de command line, maar dit kan ook prima een bestand of pipe zijn. Daarnaast is er vaak een derde file descriptor, `STDERR` (nummer 2), voor foutmeldingen (ook dit is standaard de command line, maar het is hiermee dus mogelijk te splitsen tussen uitvoer en excepties).
-Waar `STDIN` en `STDOUT` precies aan verbonden zijn, is te vinden in de de environment informatie die bij een proces hoort. Standaard zijn dit voor processen die je in de shell start de invoer en de uitvoer van de terminal, en als je een child process start worden deze overgeërfd. Tijdens executie van het proces kunnen deze descriptors altijd ergens anders aan verbonden worden, maar de `STDIN` en `STDOUT` zijn altijd aanwezig. Bij processen die door de kernel gestart worden, zoals `init` is de `STDOUT` doorgaans aan het kernel log gekoppeld. `STDIN` kan aan een buffer of (als het proces geen input verwacht) aan een dummy file gekoppeld zijn.
--->
 <p><img data-src="images/io.png" style="width:60.0%" /></p>
 </section>
 <section id="io-redirection" class="slide level2">
 <h2>IO Redirection</h2>
 <aside class="notes">
-<ul>
-<li>Overriden STDIN / STDOUT / STDERR</li>
-<li>&lt; file voor stdin (lezen)</li>
-<li><blockquote>
-<p>file voor stdout (schrijven)</p>
-</blockquote></li>
-<li>2&gt; file voor stderr (schrijven)</li>
-<li><blockquote>
-<blockquote>
-<p>en 2&gt;&gt; append</p>
-</blockquote>
-</blockquote></li>
-<li>&lt;&lt; EOF = lees tot regel met alleen EOF (heredoc)</li>
-</ul>
+<p>Net als dat we vanaf de shell twee commando’s aan elkaar kunnen pipen, kunnen we ook een file descriptor meegeven om als <code>STDIN</code>, <code>STDOUT</code> of <code>STDERR</code> te gebruiken. Dit kan respectievelijk met <code>&lt;</code>, <code>&gt;</code> en <code>2&gt;</code>. Je kunt bijvoorbeeld <code>find /home/jon &gt; filetree</code> gebruiken om de uitvoer van <code>find /home/jon</code> in het bestand <code>filetree</code> te schrijven. Als het bestand waarnaar je wilt uitvoeren al bestaat, wordt het overschreven, maar je kunt, <code>&gt;&gt;</code> en <code>2&gt;&gt;</code> gebruiken om in plaats daarvan achteraan het bestand toe te voegen. Tot slot kun je <code>&lt;&lt; MARKER</code> of <code>&lt;&lt;- MARKER</code> (een zogenaamde “heredoc”) gebruiken om <code>STDIN</code> vanaf de command line mee te geven, tot aan de eerste regel met enkel <code>MARKER</code>. Dit maakt het makkelijk meerdere regels tekst mee te geven. De toegevoegde waarde van de <code>-</code> is dat deze een tab aan het begin van een regel negeert en mogelijk leesbaarder is. Op zichzelf wordt <code>&lt;</code> niet zo veel gebruikt, omdat de meeste programma’s standaard een meegegeven bestandsnaam als <code>STDIN</code> interpreteren (dus <code>less &lt; file</code> is hetzelfde als <code>less file</code>), maar bij sommige programma’s kan dit nodig zijn. Een voorbeeld is <code>psql</code>, een database waarbij je een bestand met instructies mee kan geven met <code>psql databasename &lt; sqlfile</code>. Als je <code>&lt;</code> niet gebruikt en vanaf de command line invoert kun je <code>C-d</code> gebruiken om je invoer te beëindigen, in plaats van de explicete <code>MARKER</code> die je bij <code>&lt;&lt;</code> gebruikt. <code>wc</code> staat trouwens voor <em>word count</em>, waarbij <code>wc -l</code> het aantal regels telt, en <code>wc -c</code> het aantal karakters.</p>
 </aside>
-<!--
-Net als dat we vanaf de shell twee commando's aan elkaar kunnen pipen, kunnen we ook een file descriptor meegeven om als `STDIN`, `STDOUT` of `STDERR` te gebruiken. Dit kan respectievelijk met `<`, `>` en `2>`. Je kunt bijvoorbeeld `find /home/jon > filetree` gebruiken om de uitvoer van `find /home/jon` in het bestand `filetree` te schrijven. Als het bestand waarnaar je wilt uitvoeren al bestaat, wordt het overschreven, maar je kunt, `>>` en `2>>` gebruiken om in plaats daarvan achteraan het bestand toe te voegen. Tot slot kun je `<< MARKER` of `<<- MARKER` (een zogenaamde "heredoc") gebruiken om `STDIN` vanaf de command line mee te geven, tot aan de eerste regel met enkel `MARKER`. Dit maakt het makkelijk meerdere regels tekst mee te geven. De toegevoegde waarde van de `-` is dat deze een tab aan het begin van een regel negeert en mogelijk leesbaarder is. Op zichzelf wordt `<` niet zo veel gebruikt, omdat de meeste programma's standaard een meegegeven bestandsnaam als `STDIN` interpreteren (dus `less < file` is hetzelfde als `less file`), maar bij sommige programma's kan dit nodig zijn. Een voorbeeld is `psql`, een database waarbij je een bestand met instructies mee kan geven met `psql databasename < sqlfile`. Als je `<` niet gebruikt en vanaf de command line invoert kun je `C-d` gebruiken om je invoer te beëindigen, in plaats van de explicete `MARKER` die je bij `<<` gebruikt.
-`wc` staat trouwens voor _word count_, waarbij `wc -l` het aantal regels telt, en `wc -c` het aantal karakters.
--->
 <ul>
 <li><code>find /home/jon &gt; filetree 2&gt; errors.log</code></li>
 <li><code>wc -l filetree &gt;&gt; filetree</code></li>
@@ -300,9 +243,9 @@ Net als dat we vanaf de shell twee commando's aan elkaar kunnen pipen, kunnen we
 </section>
 <section id="io-redirection-1" class="slide level2">
 <h2>IO Redirection</h2>
-<!--
-Hier zien we hoe redirection er vanuit het shell proces uit ziet. `/dev/null` is een speciaal virtueel device, waar altijd naar geschreven kan worden. `/dev/null` gedraagt zich als een zwart gat: alles dat ernaar geschreven wordt verdwijnt. In dit geval onderdrukken we dus error messages door alle `STDERR` uitvoer naar de prullenbak te verwijzen.
--->
+<aside class="notes">
+<p>Hier zien we hoe redirection er vanuit het shell proces uit ziet. <code>/dev/null</code> is een speciaal virtueel device, waar altijd naar geschreven kan worden. <code>/dev/null</code> gedraagt zich als een zwart gat: alles dat ernaar geschreven wordt verdwijnt. In dit geval onderdrukken we dus error messages door alle <code>STDERR</code> uitvoer naar de prullenbak te verwijzen.</p>
+</aside>
 <p><code>command a1 a2 &lt; in &gt; out 2&gt; /dev/null</code></p>
 <ol type="1">
 <li>De shell <code>fork</code>t</li>
@@ -316,15 +259,8 @@ Hier zien we hoe redirection er vanuit het shell proces uit ziet. `/dev/null` is
 <section id="grep-cut-en-sort" class="slide level2">
 <h2><code>grep</code>, <code>cut</code> en <code>sort</code></h2>
 <aside class="notes">
-<ul>
-<li>grep voor filter: alle bestanden met 2018 in de naam</li>
-<li>cut voor afknippen karakter 0-14 (eigenaar vooraan), dan sorteren</li>
-<li>resultaat is ls gesorteerd op eigenaar (zonder eerste 14 karakters)</li>
-</ul>
+<p>Nu we het bestaan van pipes kennen, zijn hier nog wat commando’s die op zichzelf niet altijd even zinvol zijn, maar als deel van een pipeline goed werken. Om uit bestand (of uitvoer) regels te filteren die een bepaalde string bevatten kun je <code>grep</code> gebruiken. <code>sort</code> geeft de invoer gesorteerd terug, en <code>cut</code> snijdt per regel een substring uit. In het onderste voorbeeld wordt <code>ls -l</code> gebruikt (een directory listing met uitgebreide info). We gebruiken <code>cut -c14-</code> om karakter 14 tot eind te bewaren, waardoor de eigenaar van het bestand vooraan komt te staan. Met <code>sort</code> kunnen we hierop sorteren.</p>
 </aside>
-<!--
-Nu we het bestaan van pipes kennen, zijn hier nog wat commando's die op zichzelf niet altijd even zinvol zijn, maar als deel van een pipeline goed werken. Om uit bestand (of uitvoer) regels te filteren die een bepaalde string bevatten kun je `grep` gebruiken. `sort` geeft de invoer gesorteerd terug, en `cut` snijdt per regel een substring uit. In het onderste voorbeeld wordt `ls -l` gebruikt (een directory listing met uitgebreide info). We gebruiken `cut -c14-` om karakter 14 tot eind te bewaren, waardoor de eigenaar van het bestand vooraan komt te staan. Met `sort` kunnen we hierop sorteren.
--->
 <ul>
 <li><code>ls -l | grep 2018</code></li>
 <li><code>ls -l | cut -c14- | sort</code></li>
@@ -333,14 +269,8 @@ Nu we het bestaan van pipes kennen, zijn hier nog wat commando's die op zichzelf
 <section id="rtfm" class="slide level2">
 <h2>RTFM</h2>
 <aside class="notes">
-<ul>
-<li><code>--help</code> voor opties</li>
-<li><code>man</code> voor manpage met alle details</li>
-</ul>
+<p>Sommige commando’s, zoals bijvoorbeeld <code>cut</code>, hebben erg veel opties om de gewenste functionaliteit te selecteren. De meeste commando’s hebben een <code>-h</code> en/of <code>--help</code> optie om wat tips te geven over het gebruik. Voor het hele verhaal kun je <code>man</code> gebruiken, oftewel de manual.</p>
 </aside>
-<!--
-Sommige commando's, zoals bijvoorbeeld `cut`, hebben erg veel opties om de gewenste functionaliteit te selecteren. De meeste commando's hebben een `-h` en/of `--help` optie om wat tips te geven over het gebruik. Voor het hele verhaal kun je `man` gebruiken, oftewel de manual.
--->
 <p><img data-src="images/rtfm.png" style="width:20.0%" /></p>
 <ul>
 <li><code>cut --help</code></li>
@@ -350,32 +280,29 @@ Sommige commando's, zoals bijvoorbeeld `cut`, hebben erg veel opties om de gewen
 <section id="pipelines-en-command-lists" class="slide level2">
 <h2>Pipelines en Command-lists</h2>
 <aside class="notes">
-<ul>
-<li><code>foo | bar</code> is een pipeline</li>
-<li><code>foo ; bar</code> is een command list met 2 commands</li>
-<li>zelfs mogelijk te combineren: onderste is een command list met 2 pipelines</li>
-</ul>
+<p>Meerdere commands gescheiden door pipes vormen samen een pipeline. De commando’s worden parallel uitgevoerd. Je kunt ook meerdere commands na elkaar uit laten voeren, dit kan met de puntkomma en wordt een command-list genoemd. Het is zelfs mogelijk meerdere pipelines in een command list te zetten.</p>
 </aside>
-<!--
-Meerdere commands gescheiden door pipes vormen samen een pipeline. De commando's worden parallel uitgevoerd. Je kunt ook meerdere commands na elkaar uit laten voeren, dit kan met de puntkomma en wordt een command-list genoemd. Het is zelfs mogelijk meerdere pipelines in een command list te zetten.
--->
 <ul>
 <li><code>foo | bar</code></li>
 <li><code>foo ; bar</code></li>
 <li><code>foo | bar ; baz | quux</code></li>
 </ul>
 </section>
+<section id="inhoud-2" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Je weg vinden op de command-line</li>
+<li>IO en Pipes</li>
+<li><strong>Processen op de command-line</strong></li>
+<li>Werken met tekst</li>
+<li>Meer basiskennis</li>
+</ul>
+</section>
 <section id="exit-status" class="slide level2">
 <h2>Exit Status</h2>
 <aside class="notes">
-<ul>
-<li><code>foo || bar</code> is foo of bar, doe alleen bar als foo gefaald heeft (exit status != 0)</li>
-<li><code>foo &amp;&amp; bar</code> is foo en bar, doe alleen bar als foo gelukt is (exit status 0)</li>
-</ul>
+<p>Commands in een command list worden na elkaar uitgevoerd, ongeacht of er ergens iets mis gaat. Soms wil je het tweede command enkel uitvoeren als het eerste command geslaagd is, of juist alleen als er een fout is geweest. Zoals we weten heeft ieder command een exit status, <code>0</code> voor succes of iets anders voor een fout. Door <code>&amp;&amp;</code> tussen commands te zetten, in plaats van <code>;</code> wordt het tweede commando alleen uitgevoerd als het eerste geslaagd is. De dubbele pipe <code>||</code> werkt precies andersom: het tweede command wordt alleen uitgevoerd als de eerste mislukte. We noemen deze operators <em>en</em> en <em>of</em>. “Doe a en b” kan alleen maar als <em>a</em> gelukt is, zo niet zal de shell het meteen opgeven. “Doe a of b” levert de shell een alternatief, probeer eerst <em>a</em>, en als dat niet lukt, doe dan <em>b</em>.</p>
 </aside>
-<!--
-Commands in een command list worden na elkaar uitgevoerd, ongeacht of er ergens iets mis gaat. Soms wil je het tweede command enkel uitvoeren als het eerste command geslaagd is, of juist alleen als er een fout is geweest. Zoals we weten heeft ieder command een exit status, `0` voor succes of iets anders voor een fout. Door `&&` tussen commands te zetten, in plaats van `;` wordt het tweede commando alleen uitgevoerd als het eerste geslaagd is. De dubbele pipe `||` werkt precies andersom: het tweede command wordt alleen uitgevoerd als de eerste mislukte. We noemen deze operators _en_ en _of_. "Doe a en b" kan alleen maar als _a_ gelukt is, zo niet zal de shell het meteen opgeven. "Doe a of b" levert de shell een alternatief, probeer eerst _a_, en als dat niet lukt, doe dan _b_.
--->
 <ul>
 <li><code>foo || bar</code></li>
 <li><code>foo &amp;&amp; bar</code></li>
@@ -383,19 +310,8 @@ Commands in een command list worden na elkaar uitgevoerd, ongeacht of er ergens 
 </section>
 <section id="procesmanagement" class="slide level2">
 <h2>Procesmanagement</h2>
-<!--
-Als je wilt weten welke processen er op dit moment actief zijn kun je het commando `ps` gebruiken. Normaal geeft dit alleen een lijst met je eigen processen in terminals, maar met `ps -A` krijg je alle processen te zien. De standaarduitvoer geeft (afhankelijk van je distributie) in ieder geval de PID, terminal en het command. Vaak wordt ook de effectieve tijd die het proces gedraaid heeft meegegeven (effectieve tijd telt alleen de tijd dat het proces daadwerkelijk actief was). Daarnaast heeft `ps` nog heel veel opties om processen te selecteren en aan te geven welke informatie je wel en niet wil hebben, zie daarvoor de `man` pagina.
-`ps` geeft een eenmalige uitvoer van de processenlijst op dat moment; dit is handig als je dit met andere commands in een pipeline wil combineren. Soms wil je echter een dynamische lijst die zichzelf update, zoals het taakbeheer in Windows. Hier is het commando `top` voor, of de verbeterde versie `htop` (meestal niet standaard geïnstalleerd).
-Tot slot kan je een proces vanaf de command line beëindigen (op voorwaarde dat je zelf de eigenaar van het proces bent). Hiervoor gebruik je `kill` met de PID van het proces, of `killall` met de naam van het proces. De laatste heet killall, omdat het goed kan zijn dat je meerdere instanties van dezelfde executable open hebt staan. `killall firefox` sluit bijvoorbeeld alle Firefox vensters, niet een specifieke.
--->
 <aside class="notes">
-<ul>
-<li>ps lijst processen, -A alle processen systeem</li>
-<li>top = command line taakbeheer</li>
-<li>htop luxere variant</li>
-<li>kill om proces te stoppen met PID nummer</li>
-<li>killall gebaseerd op naam proces (mogelijk meerdere processen)</li>
-</ul>
+<p>Als je wilt weten welke processen er op dit moment actief zijn kun je het commando <code>ps</code> gebruiken. Normaal geeft dit alleen een lijst met je eigen processen in terminals, maar met <code>ps -A</code> krijg je alle processen te zien. De standaarduitvoer geeft (afhankelijk van je distributie) in ieder geval de PID, terminal en het command. Vaak wordt ook de effectieve tijd die het proces gedraaid heeft meegegeven (effectieve tijd telt alleen de tijd dat het proces daadwerkelijk actief was). Daarnaast heeft <code>ps</code> nog heel veel opties om processen te selecteren en aan te geven welke informatie je wel en niet wil hebben, zie daarvoor de <code>man</code> pagina. <code>ps</code> geeft een eenmalige uitvoer van de processenlijst op dat moment; dit is handig als je dit met andere commands in een pipeline wil combineren. Soms wil je echter een dynamische lijst die zichzelf update, zoals het taakbeheer in Windows. Hier is het commando <code>top</code> voor, of de verbeterde versie <code>htop</code> (meestal niet standaard geïnstalleerd). Tot slot kan je een proces vanaf de command line beëindigen (op voorwaarde dat je zelf de eigenaar van het proces bent). Hiervoor gebruik je <code>kill</code> met de PID van het proces, of <code>killall</code> met de naam van het proces. De laatste heet killall, omdat het goed kan zijn dat je meerdere instanties van dezelfde executable open hebt staan. <code>killall firefox</code> sluit bijvoorbeeld alle Firefox vensters, niet een specifieke.</p>
 </aside>
 <ul>
 <li><code>ps</code>, <code>ps -A</code></li>
@@ -405,17 +321,8 @@ Tot slot kan je een proces vanaf de command line beëindigen (op voorwaarde dat 
 </section>
 <section id="signals" class="slide level2">
 <h2>Signals</h2>
-<!--
-`kill` en `killall` zullen standaard een `SIGTERM` signaal naar een proces sturen: een vriendelijk doch dringend verzoek om op te houden te bestaan. Dit betekent dat het proces de gelegenheid heeft achter zich op te ruimen, de gebruiker te vragen of zij de weizigingen op wil slaan, of het verzoek te negeren. Er bestaan echter meerdere signalen die je kan sturen, de belangrijksten staan in de tabel op deze slide. Om bijvoorbeeld een `SIGKILL` signaal te versturen (om een proces direct en _with extreme prejudice_ om zeep te helpen) kan dit met `kill -SIGKILL`.
-`SIGSTOP` pauzeert een proces, dat met `SIGCONT` weer hervat kan worden. In de tussentijd is het proces bevroren, en zal het niet gescheduled worden. Een GUI applicatie zal wel een scherm behouden, maar nergens meer op reageren tot het een `SIGCONT` ontvangt.
-De tabel met beschikbare signalen is groot, en bevat ook signalen die normaal alleen voor intern gebruik zijn: `SIGSEGV` wordt bijvoorbeeld door de kernel gestuurd als een proces buiten zijn geheugenruimte opereert (een Segmentation Fault), en `SIGFPE` wordt onder andere door de CPU gestuurd naar een proces dat door 0 probeert te delen. De hele tabel is in de Linux documentatie of op internet te vinden. De getallen zijn de interne waardes die het OS herkent, de namen zijn enkel om het de gebruiker makkelijker te maken.
--->
 <aside class="notes">
-<ul>
-<li>kill en killall sturen signaal, standaard 15</li>
-<li>9 is de minder nette versie</li>
-<li>19 en 18 voor pauseren proces / hervatten</li>
-</ul>
+<p><code>kill</code> en <code>killall</code> zullen standaard een <code>SIGTERM</code> signaal naar een proces sturen: een vriendelijk doch dringend verzoek om op te houden te bestaan. Dit betekent dat het proces de gelegenheid heeft achter zich op te ruimen, de gebruiker te vragen of zij de weizigingen op wil slaan, of het verzoek te negeren. Er bestaan echter meerdere signalen die je kan sturen, de belangrijksten staan in de tabel op deze slide. Om bijvoorbeeld een <code>SIGKILL</code> signaal te versturen (om een proces direct en <em>with extreme prejudice</em> om zeep te helpen) kan dit met <code>kill -SIGKILL</code>. <code>SIGSTOP</code> pauzeert een proces, dat met <code>SIGCONT</code> weer hervat kan worden. In de tussentijd is het proces bevroren, en zal het niet gescheduled worden. Een GUI applicatie zal wel een scherm behouden, maar nergens meer op reageren tot het een <code>SIGCONT</code> ontvangt. De tabel met beschikbare signalen is groot, en bevat ook signalen die normaal alleen voor intern gebruik zijn: <code>SIGSEGV</code> wordt bijvoorbeeld door de kernel gestuurd als een proces buiten zijn geheugenruimte opereert (een Segmentation Fault), en <code>SIGFPE</code> wordt onder andere door de CPU gestuurd naar een proces dat door 0 probeert te delen. De hele tabel is in de Linux documentatie of op internet te vinden. De getallen zijn de interne waardes die het OS herkent, de namen zijn enkel om het de gebruiker makkelijker te maken.</p>
 </aside>
 <table>
 <tbody>
@@ -445,21 +352,8 @@ De tabel met beschikbare signalen is groot, en bevat ook signalen die normaal al
 <section id="fore--en-background-jobs" class="slide level2">
 <h2>Fore- en Background jobs</h2>
 <aside class="notes">
-<ul>
-<li>foreground job: shell wait netjes</li>
-<li>background job: shell meten beschikbaar</li>
-<li>starten background job met <code>&amp;</code></li>
-<li>control-z stuurt sigstop</li>
-<li>bg om als background job te hervatten, fg foreground</li>
-<li>jobs voor lijst kinderen shell</li>
-<li>disown om proces naar init te verplaatsen</li>
-</ul>
+<p>Doorgaans zal een shell bij het uitvoeren van een command een <code>fork()</code> en een <code>exec()</code> uitvoeren, waarna de parent <code>wait()</code> tot het kind klaar is. Met behulp van de enkele ampersand (<code>&amp;</code>) kunnen we een proces op de achtergrond starten: de shell wacht niet en geeft meteen een nieuw prompt aan de gebruiker. Het nieuwe proces is nog steeds een kind van de shell, en als de shell beëindigd wordt voor het kind klaar is wordt dit ook getermineerd. Met <code>C-z</code> kun je het huidige foreground proces (het proces waarop de shell aan het wachten is) een <code>SIGSTOP</code> sturen, waarna de shell weer op de gebruiker kan reageren. Met <code>fg</code> krijgt het proces een <code>SIGCONT</code> en hervat het de claim op de shell: het wordt naar de voorgrond gestuurd. Je kunt echter ook <code>bg</code> gebruiken om het proces op de achtergrond door te laten gaan, net alsof het met een <code>&amp;</code> gestart was. <code>jobs</code> geeft een lijst met actieve achtergrond processen. Als je een shell met actieve achtergrondprocessen probeert te beëindigen krijg je meestal een waarschuwing: als de terminal sluit stoppen de processen ook. Om dit te voorkomen kun je het proces met <code>disown</code> onterven: het is niet langer een kind van de shell waar het gestart is, maar wordt onder het <em>init</em> proces gehangen.</p>
 </aside>
-<!--
-Doorgaans zal een shell bij het uitvoeren van een command een `fork()` en een `exec()` uitvoeren, waarna de parent `wait()` tot het kind klaar is. Met behulp van de enkele ampersand (`&`) kunnen we een proces op de achtergrond starten: de shell wacht niet en geeft meteen een nieuw prompt aan de gebruiker. Het nieuwe proces is nog steeds een kind van de shell, en als de shell beëindigd wordt voor het kind klaar is wordt dit ook getermineerd.
-Met `C-z` kun je het huidige foreground proces (het proces waarop de shell aan het wachten is) een `SIGSTOP` sturen, waarna de shell weer op de gebruiker kan reageren. Met `fg` krijgt het proces een `SIGCONT` en hervat het de claim op de shell: het wordt naar de voorgrond gestuurd. Je kunt echter ook `bg` gebruiken om het proces op de achtergrond door te laten gaan, net alsof het met een `&` gestart was. `jobs` geeft een lijst met actieve achtergrond processen.
-Als je een shell met actieve achtergrondprocessen probeert te beëindigen krijg je meestal een waarschuwing: als de terminal sluit stoppen de processen ook. Om dit te voorkomen kun je het proces met `disown` onterven: het is niet langer een kind van de shell waar het gestart is, maar wordt onder het _init_ proces gehangen.
--->
 <ul>
 <li><code>command &amp;</code></li>
 <li><code>C-z</code></li>
@@ -468,22 +362,21 @@ Als je een shell met actieve achtergrondprocessen probeert te beëindigen krijg 
 <li><code>disown</code></li>
 </ul>
 </section>
+<section id="inhoud-3" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Je weg vinden op de command-line</li>
+<li>IO en Pipes</li>
+<li>Processen op de command-line</li>
+<li><strong>Werken met tekst</strong></li>
+<li>Meer basiskennis</li>
+</ul>
+</section>
 <section id="quotes-variabelen-en-echo" class="slide level2">
 <h2>Quotes, variabelen en <code>echo</code></h2>
 <aside class="notes">
-<ul>
-<li>lijstje karakters = speciale karakters, quoten met <code>\</code> om karakter te gebruiken</li>
-<li>spatie en enter ook quoten</li>
-<li>single quote strings: alles gequote</li>
-<li>double quote string: subset gequote</li>
-<li>variabelen met <code>$</code>, echo om waarde te printen</li>
-</ul>
+<p>We hebben inmiddels een aantal symbolen gezien met speciale betekenis in Bash. Wat nou als we deze karakters als karakter willen gebruiken, bijvoorbeeld omdat ze in een filename voorkomen? We kunnen de backslash gebruiken om een karakter te “escapen”: bash negeert de speciale betekenis. Ook kunnen we quotes gebruiken; binnen enkele quotes wordt elk speciaal karakter genegeerd en als karakter gelezen. Bij dubbele quotes geldt dit alleen voor <code>$ ` \ ! *</code> en <code>@</code>. Variabelen beginnen in Bash met een <code>$</code>. De variabele <code>$HOME</code> bevat bijvoorbeeld het pad van de home directory. Dubbele quotes escapen de meeste karakters, maar variabelen worden wel geëvalueerd. Het commando <code>echo</code> kan gebruikt worden om de waarde van een variabele te laten zien. <code>echo</code> geeft de invoer ongeweizigd terug, maar zal wel variabelen evalueren. <code>echo $HOME</code> (of <code>echo ~</code>) geeft bijvoorbeeld het pad van de home directory als uitvoer.</p>
 </aside>
-<!--
-We hebben inmiddels een aantal symbolen gezien met speciale betekenis in Bash. Wat nou als we deze karakters als karakter willen gebruiken, bijvoorbeeld omdat ze in een filename voorkomen? We kunnen de backslash gebruiken om een karakter te "escapen": bash negeert de speciale betekenis. Ook kunnen we quotes gebruiken; binnen enkele quotes wordt elk speciaal karakter genegeerd en als karakter gelezen. Bij dubbele quotes geldt dit alleen voor ``$ ` \ ! *`` en `@`.
-Variabelen beginnen in Bash met een `$`. De variabele `$HOME` bevat bijvoorbeeld het pad van de home directory. Dubbele quotes escapen de meeste karakters, maar variabelen worden wel geëvalueerd.
-Het commando `echo` kan gebruikt worden om de waarde van een variabele te laten zien. `echo` geeft de invoer ongeweizigd terug, maar zal wel variabelen evalueren. `echo $HOME` (of `echo ~`) geeft bijvoorbeeld het pad van de home directory als uitvoer.
--->
 <ul>
 <li><code># ' &quot; \ $ ` * ~ ? &lt; &gt; ( ) ! &amp; | ;</code></li>
 <li>spatie en enter</li>
@@ -496,17 +389,8 @@ Het commando `echo` kan gebruikt worden om de waarde van een variabele te laten 
 <section id="cat" class="slide level2">
 <h2><code>cat</code></h2>
 <aside class="notes">
-<ul>
-<li>cat print bestand of STDIN (in dat geval C-d nodig voor End of File)</li>
-<li>cat foo print inhoud bestand foo</li>
-<li>echo foo print string “foo”</li>
-<li>echo foo | cat : print string foo, stuur naar cat die het print</li>
-<li>echo foo | echo : niets, want echo negeert STDIN</li>
-</ul>
+<p>We hebben <code>less</code> gezien om een bestand te lezen. De uitvoer is echter interactief, wat het ongeschikt maakt om de uitvoer met een pipe door te sturen naar een ander programma. Hiervoor kunnen we <code>cat</code> gebruiken: dit leest een meegegeven bestand (of <code>STDIN</code>) en stuurt de inhoud naar <code>STDOUT</code>. Het lijkt hiermee een beetje op <code>echo</code>, maar er zijn belangrijke verschillen. <code>echo</code> zal zijn argument returnen, maar doet niets met <code>STDIN</code>. Probeer de commando’s op deze slide, en kijk wat het verschil is. Wat doet elke pipeline?</p>
 </aside>
-<!--
-We hebben `less` gezien om een bestand te lezen. De uitvoer is echter interactief, wat het ongeschikt maakt om de uitvoer met een pipe door te sturen naar een ander programma. Hiervoor kunnen we `cat` gebruiken: dit leest een meegegeven bestand (of `STDIN`) en stuurt de inhoud naar `STDOUT`. Het lijkt hiermee een beetje op `echo`, maar er zijn belangrijke verschillen. `echo` zal zijn argument returnen, maar doet niets met `STDIN`. Probeer de commando's op deze slide, en kijk wat het verschil is. Wat doet elke pipeline?
--->
 <ul>
 <li><code>cat</code> (<code>C-d</code> om te stoppen)</li>
 <li><code>cat foo</code></li>
@@ -515,21 +399,20 @@ We hebben `less` gezien om een bestand te lezen. De uitvoer is echter interactie
 <li><code>echo foo | echo</code></li>
 </ul>
 </section>
+<section id="inhoud-4" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Je weg vinden op de command-line</li>
+<li>IO en Pipes</li>
+<li>Processen op de command-line</li>
+<li>Werken met tekst</li>
+<li><strong>Meer basiskennis</strong></li>
+</ul>
+</section>
 <section id="root-rechten" class="slide level2">
 <h2>root-rechten</h2>
-<!--
-Het kan voorkomen dat je probeert een proces te doden of een bestand of map te lezen, en dat Linux dit nu toe laat. Je hebt te maken met een rechtenprobleem. Meestal is dit op te lossen door tijdelijk root (super-user of in Windows termen "administrator") rechten aan te vragen. Hiervoor zijn de commando's `su` en `sudo`. De eerste geeft je doorgaans superuser rechten door een nieuwe shell als de root-gebruiker te openen, al kun je met `su -c` een enkel commando als root uitvoeren. `sudo` laat je standaard een enkel commando uitvoeren, maar dit mag ook een shell zijn met `sudo bash`. Beide kun je ook gebruiken om als een andere gebruiker dan root te werken: `sudo -u jon` en `su jon` geven je de rechten van Jon.
-Het belangrijke verschil in de werking is dat `su` het wachtwoord van de doelgebruiker verwacht: het root-wachtwoord voor gewoon `su` of Jon's wachtwoord voor `su jon`. Bij `sudo` gebruik je je eigen wachtwoord, en wordt in een bestand gekeken of je het recht hebt om als de gekozen gebruiker te werken.
--->
 <aside class="notes">
-<ul>
-<li>su = super user, sudo = super user do</li>
-<li><code>su</code> voor root shell (root password)</li>
-<li><code>sudo</code> voor command als root (eigen password, indien rechten)</li>
-<li><code>su -c</code> is als sudo maar met root password</li>
-<li><code>sudo bash</code> opent shell zoals <code>su</code>, maar met eigen password</li>
-<li><code>su USER</code> of <code>sudo -u USER</code> -&gt; niet root maar gespecificeerde user</li>
-</ul>
+<p>Het kan voorkomen dat je probeert een proces te doden of een bestand of map te lezen, en dat Linux dit nu toe laat. Je hebt te maken met een rechtenprobleem. Meestal is dit op te lossen door tijdelijk root (super-user of in Windows termen “administrator”) rechten aan te vragen. Hiervoor zijn de commando’s <code>su</code> en <code>sudo</code>. De eerste geeft je doorgaans superuser rechten door een nieuwe shell als de root-gebruiker te openen, al kun je met <code>su -c</code> een enkel commando als root uitvoeren. <code>sudo</code> laat je standaard een enkel commando uitvoeren, maar dit mag ook een shell zijn met <code>sudo bash</code>. Beide kun je ook gebruiken om als een andere gebruiker dan root te werken: <code>sudo -u jon</code> en <code>su jon</code> geven je de rechten van Jon. Het belangrijke verschil in de werking is dat <code>su</code> het wachtwoord van de doelgebruiker verwacht: het root-wachtwoord voor gewoon <code>su</code> of Jon’s wachtwoord voor <code>su jon</code>. Bij <code>sudo</code> gebruik je je eigen wachtwoord, en wordt in een bestand gekeken of je het recht hebt om als de gekozen gebruiker te werken.</p>
 </aside>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -548,26 +431,8 @@ Het belangrijke verschil in de werking is dat `su` het wachtwoord van de doelgeb
 </section>
 <section id="lifehacks" class="slide level2">
 <h2>Lifehacks</h2>
-<!--
-Lange commando' of bestandsnamen kan Bash voor je aanvullen. Dit gebeurt met de Tab toets en heet tab-completion.
-``*`` en ``?`` kunnen in een bestandsnaam gebruikt worden als soort van wildcards. ``*`` zal zoveel characters matchen als nodig is (inclusief 0): ``File*.png`` matcht bijvoorbeeld ``File.png``, maar ook ``FileFooBarUnicornLasers.png``. ``?`` werkt op eenzelfde manier, maar zal altijd exact één karakter matchen.
-Als je veel tussen dezelfde mappen heen en weer beweegt en `cd -` niet meer voldoende is kun je `pushd` als alternatief voor `cd` gebruiken om meteen je huidige werkmap op een stack te zetten, en `popd` gebruiken om terug te keren. Het commando `dirs` toont de opgebouwde directory stack.
-Met de pijltjes naar boven en beneden kan je door je command-history lopen. Het vorige command nogmaals uitvoeren kan door een keer op pijltje naar boven te drukken, en dan op enter. `C-p` en `C-n` staan respectievelijk voor previous en next, en kunnen in plaats van boven en beneden gebruikt worden. `C-r` staat je toe te zoeken in je command history, en met `history` kan je de history bekijken en eventueel entries verwijderen.
-Om een programma te stoppen kun je `C-c` gebruiken, en in sommige gevallen `C-d`. Die laatste stopt bijvoorbeeld je huidige shell. Waar `C-c` als een letterlijk stop commando geïnterpreteerd wordt, is `C-d` een end-of-file (EOF) karakter. Omdat je shell de interactie met de gebruiker als de `STDIN` file ziet, kun je deze met een EOF beëindigen en stopt de shell. `C-z` stuurt een `SIGSTOP` en is ook handig om programma's te onderbreken.
-Tot slot nog een paar toetsenbordcombinaties die als alternatief gebruikt kunnen worden voor toetsen die mogelijk verder weg zitten: `C-a` is Home en `C-e` is End. `C-j` komt overeen met Enter. `C-l` komt niet met een toets overeen, maar met het commando `clear`, voor als je de terminal leeg wil maken.
--->
 <aside class="notes">
-<ul>
-<li>tab completion vult aan als maar een mogelijkheid, minder typen</li>
-<li><ul>
-<li>kan naar alles expanden om bestandsnaam te matchen, ? naar precies 1 symbool</li>
-</ul></li>
-<li>popd, pushd = directory stack, dirs shows stack</li>
-<li>pijltje naar boven = vorig commando, control p / n (previous / next) voor minder rsi</li>
-<li>C-r om te zoeken in command history, history om lijst te zien / manipuleren</li>
-<li>C-c = kill huidig proces, terug naar shell. C-d = einde input. C-z is SIGSTOP</li>
-<li>C-a = home, C-e = end, C-j = enter en C-l is scherm leegmaken (clear) -&gt; minder RSI</li>
-</ul>
+<p>Lange commando’ of bestandsnamen kan Bash voor je aanvullen. Dit gebeurt met de Tab toets en heet tab-completion. <code>*</code> en <code>?</code> kunnen in een bestandsnaam gebruikt worden als soort van wildcards. <code>*</code> zal zoveel characters matchen als nodig is (inclusief 0): <code>File*.png</code> matcht bijvoorbeeld <code>File.png</code>, maar ook <code>FileFooBarUnicornLasers.png</code>. <code>?</code> werkt op eenzelfde manier, maar zal altijd exact één karakter matchen. Als je veel tussen dezelfde mappen heen en weer beweegt en <code>cd -</code> niet meer voldoende is kun je <code>pushd</code> als alternatief voor <code>cd</code> gebruiken om meteen je huidige werkmap op een stack te zetten, en <code>popd</code> gebruiken om terug te keren. Het commando <code>dirs</code> toont de opgebouwde directory stack. Met de pijltjes naar boven en beneden kan je door je command-history lopen. Het vorige command nogmaals uitvoeren kan door een keer op pijltje naar boven te drukken, en dan op enter. <code>C-p</code> en <code>C-n</code> staan respectievelijk voor previous en next, en kunnen in plaats van boven en beneden gebruikt worden. <code>C-r</code> staat je toe te zoeken in je command history, en met <code>history</code> kan je de history bekijken en eventueel entries verwijderen. Om een programma te stoppen kun je <code>C-c</code> gebruiken, en in sommige gevallen <code>C-d</code>. Die laatste stopt bijvoorbeeld je huidige shell. Waar <code>C-c</code> als een letterlijk stop commando geïnterpreteerd wordt, is <code>C-d</code> een end-of-file (EOF) karakter. Omdat je shell de interactie met de gebruiker als de <code>STDIN</code> file ziet, kun je deze met een EOF beëindigen en stopt de shell. <code>C-z</code> stuurt een <code>SIGSTOP</code> en is ook handig om programma’s te onderbreken. Tot slot nog een paar toetsenbordcombinaties die als alternatief gebruikt kunnen worden voor toetsen die mogelijk verder weg zitten: <code>C-a</code> is Home en <code>C-e</code> is End. <code>C-j</code> komt overeen met Enter. <code>C-l</code> komt niet met een toets overeen, maar met het commando <code>clear</code>, voor als je de terminal leeg wil maken.</p>
 </aside>
 <ul>
 <li>Tab completion</li>
@@ -602,10 +467,14 @@ Tot slot nog een paar toetsenbordcombinaties die als alternatief gebruikt kunnen
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
         // Push each slide change to the browser history
         history: true,
         // Transition style
         transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
 
         // Optional reveal.js plugins
         dependencies: [

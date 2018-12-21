@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Embedded &amp; Operating Systems 7">
-  <title>Building Linux: Gentoo VM</title>
+  <title>Embedded &amp; Operating Systems 7 — Building Linux: Gentoo VM</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -15,7 +14,7 @@
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="reveal.js/css/theme/hu.css" id="theme">
   <!-- Printing and PDF exports -->
   <script>
     var link = document.createElement( 'link' );
@@ -32,13 +31,15 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide">
-  <h1 class="title">Building Linux: Gentoo VM</h1>
-  <p class="author">Embedded &amp; Operating Systems 7</p>
-</section>
 
-<section id="introductie" class="slide level2">
-<h2>Introductie</h2>
+<section id="section" class="slide level2" data-background="course-logo.png">
+<h2></h2>
+<h1>
+Building Linux: Gentoo VM
+</h1>
+<p>
+Embedded &amp; Operating Systems 7
+</p>
 </section>
 <section id="deze-les" class="slide level2">
 <h2>Deze les</h2>
@@ -75,10 +76,14 @@
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
         // Push each slide change to the browser history
         history: true,
         // Transition style
         transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
 
         // Optional reveal.js plugins
         dependencies: [

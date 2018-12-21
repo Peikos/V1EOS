@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Embedded &amp; Operating Systems 5">
-  <title>Bash Scripting</title>
+  <title>Embedded &amp; Operating Systems 5 — Bash Scripting</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -80,7 +79,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="reveal.js/css/theme/hu.css" id="theme">
   <!-- Printing and PDF exports -->
   <script>
     var link = document.createElement( 'link' );
@@ -97,33 +96,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide">
-  <h1 class="title">Bash Scripting</h1>
-  <p class="author">Embedded &amp; Operating Systems 5</p>
-</section>
 
-<section id="introductie" class="slide level2">
-<h2>Introductie</h2>
-<!--
-Uitvoeren shell script is vergelijkbaar met interactieve shell: STDIN is file i.p.v. user interaction.
--->
+<section id="section" class="slide level2" data-background="course-logo.png">
+<h2></h2>
+<h1>
+Bash Scripting
+</h1>
+<p>
+Embedded &amp; Operating Systems 5
+</p>
 <aside class="notes">
-<p>Vorige week hebben we gezien hoe we ons kunnen redden op de Bash command line. Vandaag zullen we nog een aantal meer geavanceerde opties zien, maar zullen we vooral de focus verleggen. Waar we de shell vorige les interactief gebruikt, gaan we nu aan de gang met shellscripts: voorgeprogrammeerde programma’s om te doorlopen. In plaats van dat <code>STDIN</code> direct door ons als gebruiker gevuld wordt, wordt hiervoor een bestand ingelezen. Dit verschil maakt voor de shell in principe niets uit, in beide gevallen is er een lijst met commando’s. In het geval van een interactieve moet er zo af en toe gewacht worden op de gebruiker, terwijl bij een script op de harde schijf of het geheugen gewacht moet worden.</p>
+<p>Uitvoeren shell script is vergelijkbaar met interactieve shell: STDIN is file i.p.v. user interaction.</p>
 </aside>
+</section>
+<section id="inhoud" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li><strong>Bash-bestanden</strong></li>
+<li>Control flow en arrays</li>
+<li>Functies</li>
+<li>Expansie en substitutie</li>
+<li>Troubleshooting</li>
+</ul>
 </section>
 <section id="shebang-en-chmod" class="slide level2">
 <h2>Shebang en <code>chmod</code></h2>
-<!--
-- `bash script` werkt altijd
-- Bestand moet uitvoerbaar zijn voor `./script`
-- `chmod +x` zet executable bit voor bestand
-- Maar hoe ziet linux verschil text file en bash script (of python)?
-- Eerste regel bevat `#!` plus pad interpreter (bash, python, ...)
-- `file` laat zien hoe Linux bestand herkent
-- `env` zoekt pad zelf op, moderner en werkt met nonstandaard locaties
--->
 <aside class="notes">
-<p>Als we een serie Bash commands in een bestand onder elkaar zetten, hebben we in principe al een simpel script dat we met <code>bash scriptfile</code> kunnen uitvoeren. Een scriptfile mag elke extensie hebben, vaak wordt de <code>.sh</code> uitgang gebruikt. Ook komt het vaak voor dat er geen extensie gebruikt wordt, om als bona fide programma over te komen. Dat laatste heeft vooral zin als we het programma direct met de naam (e.g. <code>scriptfile</code>) aan kunnen roepen. Gelukkig is dat makkelijk te doen, al moeten we hier wel twee stappen voor uitvoeren: we moeten Linux vertellen wat voor code het bestand bevat, en dat het uitgevoerd mag worden. Dat eerste doen we met het commando <code>chmod +x scriptfile</code>. We zullen later verder naar <code>chmod</code> kijken, zodra het rechtensysteem aan bod komt, maar voor nu kunnen we dit lezen als “voeg de eXecutable bit to voer het bestand <code>scriptfile</code>”. Daarnaast moet Linux kunnen zien dat het bestand Bash code bevat, en niet Python of C++ of nog iets anders. Het moet weten welke <em>interpreter</em> gebruikt moet worden. In Windows wordt doorgaans de extensie gebruikt om een bestandtype te herkennen, maar omdat in Linux de koppeling tussen bestand en bestandsnaam wat losser is (zoals we in Les 7 zullen zien) kijkt Linux liever naar de inhoud van het bestand. Op basis van de eerste paar bytes zijn de meeste bestandtypes te herkennen. Je kunt dit uitproberen met de tool <code>file</code>, die vertelt wat voor bestandstype Linux denkt dat bij het bestand hoort. Scriptfiles zijn bestanden met tekstdata die te herkennen zijn aan een verwijzing naar de juiste interpreter op de eerste regel: deze moet met <code>#!</code> beginnen, gevolgd door het pad naar de gewenste interpreter. Als je script met <code>#!/bin/bash</code> begint, zal <code>file</code> (en daarmee Linux) het correct als een Bash script identificeren. Als we beide stappen hebben doorlopen, uitvoerbaar maken en de shebang toevoegen, kunnen we het bestand uitvoeren met <code>./scriptfile</code> – toch alweer iets korter dan <code>bash scriptfile</code>. <strong>Noot:</strong> In plaats van <code>#!/bin/bash</code> wordt tegenwoordig liever <code>#!/usr/bin/env bash</code> gebruikt (al kom je de oudere vorm nog vaker tegen). Bij de nieuwe variant wordt het programma <code>env</code> gebruikt om de juiste interpreter ergens in het <code>PATH</code> (meer daarover op de volgende slide) te vinden. Programma’s staan niet bij alle Linux distributies op dezelfde plek, en soms is een programma niet op systeemniveau maar binnen de home directory van een gebruiker geïnstalleerd. Door <code>env</code> te gebruiken kan bash gevonden worden zo lang je <code>bash</code> op een command line kan aanroepen.</p>
+<ul>
+<li><code>bash script</code> werkt altijd</li>
+<li>Bestand moet uitvoerbaar zijn voor <code>./script</code></li>
+<li><code>chmod +x</code> zet executable bit voor bestand</li>
+<li>Maar hoe ziet linux verschil text file en bash script (of python)?</li>
+<li>Eerste regel bevat <code>#!</code> plus pad interpreter (bash, python, …)</li>
+<li><code>file</code> laat zien hoe Linux bestand herkent</li>
+<li><code>env</code> zoekt pad zelf op, moderner en werkt met nonstandaard locaties</li>
+</ul>
 </aside>
 <ul>
 <li><code>bash scriptfile</code></li>
@@ -137,18 +144,17 @@ Uitvoeren shell script is vergelijkbaar met interactieve shell: STDIN is file i.
 <section id="path-en-which" class="slide level2">
 <h2><code>PATH</code> en <code>which</code></h2>
 <aside class="notes">
-<p>Hoewel <code>./scriptname</code> al wat beter is dan <code>bash scriptname</code>, is het nog steeds opvallend anders dan de meeste andere commands. Dit heeft te maken met de <code>$PATH</code> variabele. Deze variabele bevat een lijst met mappen, en alleen programma’s of scripts in één van deze mappen kunnen zonder pad worden uitgevoerd. Zo niet, dan moet iedere aanroep met <code>./</code>, <code>../</code>, <code>/</code>, of <code>~/</code> beginnen. De waarde van <code>$PATH</code> is met <code>echo $PATH</code> te lezen, of met <code>env</code> (die alle environment variabelen print). Als we ons script in een directory zetten die in het <code>$PATH</code> voorkomt, zal het van overal aan te roepen zijn. Ook kunnen we en map aan ons pad toevoegen. Om bijvoorbeeld de map <code>~/bin</code> toe te voegen, gebruik je <code>PATH=~/bin:$PATH</code>. De <code>:</code> is een scheidingsteken dat we gebruiken om de toegevoegde map met het oude <code>$PATH</code> te combineren. We zetten de map vooraan, wat betekent dat dit de eerste map is waar de shell gaat zoeken. We kunnen bijvoorbeeld een eigen versie van <code>mv</code> maken, die ergens een logbestand bijhoudt; als we deze nu in <code>~/bin</code> zetten dan verwijst het commando <code>mv</code> naar <code>~/bin/mv</code> en niet meer naar <code>/bin/mv</code>. Tot slot kunnen we de variabele alleen voor een subprocess aanpassen door <code>env PATH=~/bin</code> voor een commando te zetten, bijvoorbeeld <code>env PATH=~/bin bash</code> om een nieuwe Bash instantie te openen met enkel <code>~/bin</code> in het <code>$PATH</code>.</p>
+<ul>
+<li>Nog steeds niet script als commando</li>
+<li>Linux zoekt niet in huidige map voor commands</li>
+<li>Veiliger: was als bestand ‘cp’ met virus gedownload wordt?</li>
+<li><code>$PATH</code> bevat mappen waar Linux zoekt (in volgorde)</li>
+<li>Script in juiste map, of map aan <code>$PATH</code> toevoegen</li>
+<li><code>echo $PATH</code></li>
+<li>Aanvullen met <code>:$PATH</code>, concat toevoeging met oude PATH</li>
+<li><code>env PATH=~/bin command</code> voor eenmalig PATH bij command</li>
+</ul>
 </aside>
-<!--
-- Nog steeds niet script als commando
-- Linux zoekt niet in huidige map voor commands
-- Veiliger: was als bestand 'cp' met virus gedownload wordt?
-- `$PATH` bevat mappen waar Linux zoekt (in volgorde)
-- Script in juiste map, of map aan `$PATH` toevoegen
-- `echo $PATH`
-- Aanvullen met `:$PATH`, concat toevoeging met oude PATH
-- `env PATH=~/bin command` voor eenmalig PATH bij command
--->
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="va">PATH=</span>~/bin:<span class="va">$PATH</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="bu">export</span> <span class="va">PATH=</span>~/bin:<span class="va">$PATH</span></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="fu">env</span> PATH=~/bin command</a></code></pre></div>
@@ -156,16 +162,15 @@ Uitvoeren shell script is vergelijkbaar met interactieve shell: STDIN is file i.
 <section id="bashrc" class="slide level2">
 <h2><code>.bashrc</code></h2>
 <aside class="notes">
-<p>De wijziging aan <code>$PATH</code> die we gedaan hebben geldt alleen voor het huidige proces. Een andere shell zal de aanpassing niet overnemen, zelfs niet als we die vanaf de shell met het nieuwe <code>$PATH</code> aanroepen. Door <code>export PATH=~/bin:$PATH</code> te gebruiken zal de variabele wel doorgegeven worden aan subprocessen. Een onfhankelijk geopende shell weet nog steeds niet van ons nieuwe <code>$PATH</code> af, hiervoor moeten we de <code>export PATH=~/bin:$PATH</code> in elke nieuwe shell draaien. Hiervoor is het bestand <code>~/.bashrc</code>. De code in dit bestand wordt in iedere nieuwe Bash shell uitgevoerd. Door onze aanpassingen daar neer te zetten, hebben die voor elke (nieuwe) shell effect. Naast <code>export</code>s van variabelen wordt <code>.bashrc</code> ook veel gebruikt voor het <code>alias</code> commando. Hiermee kun je eenvoudig nieuwe commando’s aanmaken, zo lang deze gebaseerd zijn op bestaande commando’s. We zullen straks zien hoe we ook complexere functies kunnen toevoegen, maar in veel simpele gevallen is een <code>alias</code> voldoende. Je kunt een alias voor een bestaand commando maken, zoals <code>sl</code> voor <code>ls</code> als je dit vaak verkeerd typt. Daarnaast kun je een bestaand commando hiermee standaard opties geven. Naast <code>.bashrc</code> hebben we <code>.bash_profile</code>. Beide vervullen eenzelfde taak, maar <code>.bash_profile</code> wordt voor login shells gebruikt (in de praktijk alleen als je in een kernel level virtual terminal), <code>.bashrc</code> voor non-login shells. Dit kun je gebruiken om bijvoorbeeld extra informatie te printen bij een login-shell die je niet in iedere nieuwe terminal nodig hebt. Meestal wordt <code>.bash_profile</code> ingesteld om ook <code>.bashrc</code> te laden, zodat deze alle algemene informatie (voor alle shells) bevat en <code>.bash_profile</code> gebruikt kan worden voor specifieke code voor login shells. Hiervoor gebruiken we het code-voorbeeld op de slide. Aan het einde van deze les zou je de code ook moeten kunnen begrijpen.</p>
+<ul>
+<li>Aanpassingen zoals PATH alleen in huidige shell</li>
+<li>Beter in bashrc of bash_profile zetten</li>
+<li>bashrc voor niet login shells, bash_profile voor login shells (t.b.v. extra info bij login)</li>
+<li>Mogelijk bashrc in bash_profile te laden</li>
+<li>Ook vaak in bashrc: <code>alias</code> om een alias aan te maken</li>
+<li>e.g. typefouten, standaard opties, veelgebruikte lange commando’s</li>
+</ul>
 </aside>
-<!--
-- Aanpassingen zoals PATH alleen in huidige shell
-- Beter in bashrc of bash_profile zetten
-- bashrc voor niet login shells, bash_profile voor login shells (t.b.v. extra info bij login)
-- Mogelijk bashrc in bash_profile te laden
-- Ook vaak in bashrc: `alias` om een alias aan te maken
-- e.g. typefouten, standaard opties, veelgebruikte lange commando's
--->
 <ul>
 <li><code>alias sl='ls'</code></li>
 <li><code>alias ls='ls -la'</code></li>
@@ -181,29 +186,37 @@ Uitvoeren shell script is vergelijkbaar met interactieve shell: STDIN is file i.
 <section id="bash-bestanden-laden-zonder-subshell" class="slide level2">
 <h2>Bash bestanden laden zonder subshell</h2>
 <aside class="notes">
-<p>De <code>.bash_profile</code> en <code>.bashrc</code> worden standaard bij het opstarten door Bash gelezen. In dit geval wordt alle code in de (net aangemaakte maar) bestaande shell uitgevoerd. Dit is anders dan wanneer je een Bash script aanroept, hiervoor wordt namelijk een nieuw Bash proces aangemaakt. Dit betekent ook dat als je een script hebt waar variabelen in worden ingesteld, deze alleen in de subshell worden uitgevoerd en weer verdwenen zijn zodra het script beëindigd is. Als het zetten van variabelen de taak van het script is, is dit niet wat je wilt. Gelukkig kun je ook bestaande code uitvoeren in de huidige shell. Dit gebeurt met <code>. filename</code> of <code>source filename</code> (<code>source</code> is een alias voor <code>.</code>). Scripts die bedoeld zijn om te <code>source</code>n en niet in een subshell uitgevoerd mogen worden kunnen de shebang <code>#!/bin/false</code> krijgen: Bash probeert de code met <code>false</code> uit te voeren, een programma dat zichzelf altijd direct met een non-zero return value beëindigd (en dus een fout simuleert). Het script wordt dus niet uitgevoerd, en de gebruiker krijgt een melding dat er iets niet naar behoren is gegaan.</p>
+<ul>
+<li><code>./.bashrc</code> maakt nieuwe shell, voert uit en keert terug; aanpassingen blijven achter in subshell</li>
+<li>in plaats daarvan source of “punt” om in huidige shell te laden</li>
+<li><code>#!/bin/false</code> voorkomt dat script per ongeluk verkeerd wordt uitgevoerd: stopt meteen met foutmelding</li>
+</ul>
 </aside>
-<!--
-- `./.bashrc` maakt nieuwe shell, voert uit en keert terug; aanpassingen blijven achter in subshell
--  in plaats daarvan source of "punt" om in huidige shell te laden
-- `#!/bin/false` voorkomt dat script per ongeluk verkeerd wordt uitgevoerd: stopt meteen met foutmelding
--->
 <ul>
 <li><code>. .bashrc</code></li>
 <li><code>source .bashrc</code></li>
 <li><code>#!/bin/false</code></li>
 </ul>
 </section>
+<section id="inhoud-1" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Bash-bestanden</li>
+<li><strong>Control flow en arrays</strong></li>
+<li>Functies</li>
+<li>Expansie en substitutie</li>
+<li>Troubleshooting</li>
+</ul>
+</section>
 <section id="if" class="slide level2">
 <h2>If</h2>
 <aside class="notes">
-<p>Nu we weten hoe we een shell script schrijven en kunnen uitvoeren, is het tijd om naar wat code te gaan kijken. We kunnen natuurlijk wat commando’s achter elkaar zetten en het gezegend vinden, maar als we echt wat willen programmeren dan moeten we keuzes kunnen maken. We hebben al gezien hoe we <code>&amp;&amp;</code> en <code>||</code> kunnen gebruiken om de exit status van een proces te gebruiken om te bepalen om wel of niet de volgende instructie uit te voeren (als A dan B) maar complexere keuzes zijn minder eenvoudig (als A dan B anders C). Hiervoor hebben we in Bash een <code>if-then-else</code> constructie. Deze heeft de vorm <code>if commandoA; then commandoB; else commandoC; fi</code>. De puntkomma is in Bash equivalent aan een nieuwe regel, je kunt dit dus ook op meerdere regels doen zonder de puntkomma’s nodig te hebben. Het format op de slides kom je vaak tegen, maar is niet de enige manier. Het inspringen is niet noodzakelijk, maar wel leesbaar. Het eerste commando, <code>commandoA</code> bepaalt welk pad gekozen wordt. Net als bij <code>&amp;&amp;</code> en <code>||</code> gebeurt dit op basis van de exit-code: <code>0</code> is <code>true</code>, elk ander getal is <code>false</code> (dit is dus precies anders dan in de meeste talen, waaronder Python). <code>then</code> en <code>else</code> geven aan waar de volgende code-blokken beginnen, en <code>fi</code> (<code>if</code> achterstevoren) beëindigd het <code>if</code>-statement.</p>
+<ul>
+<li><code>&amp;&amp;</code> en <code>||</code> voor keuzes, maar kan makkelijker</li>
+<li>if then else</li>
+<li>gebaseerd op return value <code>if</code> gedeelte (kunnen meerdere commands zijn)</li>
+</ul>
 </aside>
-<!--
-- `&&` en `||` voor keuzes, maar kan makkelijker
-- if then else
-- gebaseerd op return value `if` gedeelte (kunnen meerdere commands zijn)
--->
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Download een bestand</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">if</span> <span class="fu">wget</span> http://test.me/audio.mp3<span class="kw">;</span> <span class="kw">then</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">  <span class="co"># Speel een audiobestand</span></a>
@@ -215,14 +228,13 @@ Uitvoeren shell script is vergelijkbaar met interactieve shell: STDIN is file i.
 <section id="test" class="slide level2">
 <h2>Test</h2>
 <aside class="notes">
-<p>Vaak willen we testen of een bestand bestaat: bij een CSV bestand willen we bijvoorbeeld een nieuwe rij toevoegen, maar als het nog niet bestaat moeten we het maken met de header row. Hiervoor hebben we het <code>test</code> commando beschikbaar. Met <code>test -e</code> testen we of iets bestaat, met <code>test -f</code> of het ook nog een bestand is (en geen map) en met <code>test -d</code> of het een directory is. Daarnaast zijn er nog vele andere opties om bestanden te testen, hiervoor moet je de <code>man</code>-page raadplegen. Het <code>test</code> commando kan ook gebruikt worden met strings (<code>test -n $STRING</code> test of een string niet leeg is, <code>test $A = $B</code> test of twee strings gelijk zijn, …) en getallen (<code>test $A -eq $B</code> test of de getallen gelijk zijn, …) — ook hiervoor moet je in de <code>man</code>-page zijn. Tot slot kun je in één aanroep naar <code>test</code> meerdere expressies combineren. <code>test &lt;TEST1&gt; -a &lt;TEST2&gt;</code> is de <em>and</em> en <code>test &lt;TEST1&gt; -o &lt;TEST2&gt;</code> is de <em>or</em>. Je kunt een uitroepteken gebruiken voor <em>not</em>, en haakjes om testen te combineren. Een alternatief voor <code>test</code> is de blokhaakjes-notatie. Onderwater gebeurt hetzelfde, maar de code kan iets beter leesbaar zijn. <code>[</code> is een shorthand voor <code>test</code>, met de extra voorwaarde dat het laatste argument <code>]</code> is. Zowel bij <code>test</code> als bij <code>[..]</code> geldt dat je op moet letten met de spatiëring. Iedere operator is een commando of argument, dus moet door een spatie gescheiden zijn. <code>[-d '/tmp']</code> werkt niet, dit moet <code>[ -d '/tmp' ]</code> zijn. Hetzelfde geldt bijvoorbeeld voor het uitroepteken. De haakjes zijn een command op zich, geen onderdeel van de <code>if</code>-syntax. Bij twijfel: zorg dat overal een spatie tussen staat.</p>
+<ul>
+<li>test of blokhaaksyntax te gebruiken om te testen of bestanden / directories bestaan, etc</li>
+<li>return value 0 als audio.mp3 bestaat, dus <code>then</code>, zo niet: <code>else</code></li>
+<li>blokhaak openen is synoniem voor test, maar heeft als laatste argument sluithaak nodig</li>
+<li>spaties noodzakelijk!</li>
+</ul>
 </aside>
-<!--
-- test of blokhaaksyntax te gebruiken om te testen of bestanden / directories bestaan, etc
-- return value 0 als audio.mp3 bestaat, dus `then`, zo niet: `else`
-- blokhaak openen is synoniem voor test, maar heeft als laatste argument sluithaak nodig
-- spaties noodzakelijk!
--->
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">if</span> <span class="bu">test</span> -e audio.mp3<span class="kw">;</span> <span class="kw">then</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="co"># Speel een audiobestand</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">  <span class="ex">mpg123</span> audio.mp3</a>
@@ -239,15 +251,14 @@ Uitvoeren shell script is vergelijkbaar met interactieve shell: STDIN is file i.
 <section id="case" class="slide level2">
 <h2>Case</h2>
 <aside class="notes">
-<p>Meerdere keuzes zijn ook mogelijk: de <code>case</code>-constructie vergelijkt een variabele met meerdere opties. Neem bijvoorbeeld een <code>.bashrc</code>-bestand dat op meerdere systemen gebruikt wordt. Sommige code is algemeen, andere is misschien wat meer systeem-specifiek. We kunnen in dit geval de <code>case</code> constructie gebruiken om op de <code>$HOSTNAME</code> variabele te splitsen (deze bevat de hostname, die per systeem anders zou moeten zijn). De code op de slide bevat specifieke code voor de Raspberry Pi (genaamd <em>Pi</em>), de laptop (genaamd <em>Voyager</em>) en de pc (genaamd <em>Defiant</em>). De constructie begint met <code>case $VARIABELE in</code>, gevolgd door een aantal opties. Iedere optie begint met de te matchen string, gevolgd door een sluit-haakje: <code>Pi)</code>. De regels hierna worden alleen op de Pi uitgevoerd, tot aan de dubbele puntkomma <code>;;</code>. Je kunt <code>*)</code> gebruiken voor de <code>else</code>, en de hele constructie wordt met <code>esac</code> beëindigd (<code>case</code> achterstevoren).</p>
+<ul>
+<li>Meerdere keuzes: <code>case</code></li>
+<li>Voorbeeld: configuratiebestand op hostname</li>
+<li>Vergelijkt HOSTNAME met Pi, Voyager etc</li>
+<li>voert code uit na match, tot <code>;;</code></li>
+<li><code>*)</code> als else</li>
+</ul>
 </aside>
-<!--
-- Meerdere keuzes: `case`
-- Voorbeeld: configuratiebestand op hostname
-- Vergelijkt HOSTNAME met Pi, Voyager etc
-- voert code uit na match, tot `;;`
-- `*)` als else
--->
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">case</span> <span class="va">$HOSTNAME</span><span class="kw"> in</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">  Pi<span class="kw">)</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">  <span class="co"># Code voor de Raspberry Pi</span></a>
@@ -266,11 +277,10 @@ Uitvoeren shell script is vergelijkbaar met interactieve shell: STDIN is file i.
 <section id="for" class="slide level2">
 <h2>For</h2>
 <aside class="notes">
-<p>Naast keuzes willen we ook kunnen loopen: code een aantal keer uitvoeren, of herhalen tot een bepaald punt bereikt is. Hiervoor kennen we de <code>for</code> en <code>while</code> (en <code>until</code>) loops. De <code>for</code>-loop heeft weer twee varianten. Met de eerste variant wordt over een array gelopen, bijvoorbeeld om elk element te printen. Daarnaast ondersteunt Bash de C-style <code>for</code> loop, waarbij een variabele aangemaakt wordt die iedere keer opgehoogd wordt tot een bepaalde waarde wordt bereikt.</p>
+<ul>
+<li>For loop voor herhaling: door array lopen of C style met iterator</li>
+</ul>
 </aside>
-<!--
-- For loop voor herhaling: door array lopen of C style met iterator
--->
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="bu">declare</span> -a <span class="va">ARR=(</span><span class="st">&#39;Christopher&#39;</span> <span class="st">&#39;David&#39;</span> <span class="st">&#39;Matt&#39;</span> <span class="st">&#39;Peter&#39;</span> <span class="st">&#39;Jodie&#39;</span><span class="va">)</span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">for</span> <span class="ex">word</span> in <span class="va">$ARR</span><span class="kw">;</span> <span class="kw">do</span></a>
@@ -283,15 +293,14 @@ Uitvoeren shell script is vergelijkbaar met interactieve shell: STDIN is file i.
 <section id="arrays" class="slide level2">
 <h2>Arrays</h2>
 <aside class="notes">
-<p>In de vorige slides zagen we een array (ook wel lijst). Een lijst kan worden aangemaakt met <code>declare -a ARRAY</code>. Lege arrays worden aangemaakt met lege haakjes <code>()</code>. Een waarde binnen de array kan worden aangepast met <code>ARRAY[INDEX] = Foo</code>, waarbij we <code>INDEX</code> natuurlijk 0 is voor het eerste element. Om een waarde op te zoeken gebruiken we <code>${ARRAY[0]}</code>; de accolades worden gebruikt om aan te geven dat we de eerste waarde van <code>ARRAY</code> willen opzoeken, niet een variabele genaamd <code>ARRAY</code> met nog wat tekst erachteraan: <code>echo $ARRAY[0]</code> geeft (met de Array van hierboven) <code>Christopher[0]</code> terug. <code>$ARRAY</code> evalueert naar het eerste element in de lijst, en <code>[0]</code> wordt als deel van de argumenten van <code>echo</code> beschouwd. <code>$ARRAY</code> is dus hetzelfde als <code>${ARRAY[0]}</code>, en <code>ARRAY=John</code> vervangt niet de hele array door John, maar alleen het eerste element. Je kunt in Bash ook arrays maken die niet met een integer, maar met een string geïndexeerd zijn (vergelijkbaar met de dict in Python). Dit heet een associative array, en wordt aangemaakt met <code>declare -A ARRAY</code>. Als je <code>$ARRAY</code> vraagt voor een associative array krijg je het element met index <code>&quot;0&quot;</code> als dit bestaat (anders een lege string). Tot slot kun je arrays uitbreiden met <code>+=</code>, zoals op de slide voorgedaan voor associative arrays.</p>
+<ul>
+<li><code>declare</code> voor maken arrays, kleine letter a is indexed, hoofdletter is dict achtig</li>
+<li>array zonder zonder index/key -&gt; 0 of “0” (geen warning)</li>
+<li><code>+=</code> voor toevoegen</li>
+<li>Bij keys in Associative array altijd accolades gebruiken, anders niet als deel van var naam gezien</li>
+<li>echo zonder haken → <code>Jim[0]</code> omdat <code>$ARRAY</code> zelf ook al <code>Jim</code> is.</li>
+</ul>
 </aside>
-<!--
-- `declare` voor maken arrays, kleine letter a is indexed, hoofdletter is dict achtig
-- array zonder zonder index/key -> 0 of "0" (geen warning)
-- `+=` voor toevoegen
-- Bij keys in Associative array altijd accolades gebruiken, anders niet als deel van var naam gezien
-- echo zonder haken → `Jim[0]` omdat `$ARRAY` zelf ook al `Jim` is.
--->
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="bu">declare</span> -A <span class="va">ARRAY=([A]=</span>Jim <span class="va">[B]=</span>John <span class="va">[C]=</span>Rachel <span class="va">[D]=</span>Jean-Luc<span class="va">)</span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="va">ARRAY=</span>Jim</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="bu">echo</span> <span class="va">${ARRAY[0]}</span> <span class="co"># Jim</span></a>
@@ -299,11 +308,8 @@ Uitvoeren shell script is vergelijkbaar met interactieve shell: STDIN is file i.
 </section>
 <section id="accolades-bij-variabelen" class="slide level2">
 <h2>Accolades bij variabelen</h2>
-<!--
-Ook bij normale variabelen zijn accolades soms nodig, zoals wanneer er geen spatie achter de variabele mag komen.
--->
 <aside class="notes">
-<p>De accolades die we nodig hadden om elementen uit de array te halen zijn niet specifiek voor arrays: deze mogen overal gebruikt worden wanneer er onduidelijkheid kan zijn of een teken bij de variabele-naam hoort of niet. Meestal kan een spatie gebruikt worden om het einde van de variabelenaam aan te geven, maar deze wordt dan ook geprint; als dit niet wenselijk is bieden de accolades uitkomst.</p>
+<p>Ook bij normale variabelen zijn accolades soms nodig, zoals wanneer er geen spatie achter de variabele mag komen.</p>
 </aside>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="va">FOO=</span><span class="st">&quot;foo&quot;</span></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="bu">echo</span> <span class="va">$FOOd</span> <span class="co"># lege output</span></a>
@@ -313,13 +319,12 @@ Ook bij normale variabelen zijn accolades soms nodig, zoals wanneer er geen spat
 <section id="while" class="slide level2">
 <h2>While</h2>
 <aside class="notes">
-<p>Naast de <code>for</code>-loop ondersteunt Bash ook <code>while</code>- en <code>until</code> loops. Het verschil is dat bij <code>while</code> de loop herhaalt zo lang de stopconditie waar is, terwijl <code>until</code> doorgaat zo lang de stopconditie (nog) niet waar is. Net als met het <code>if</code>-statement is de keuze gebaseerd op de return value van het command (of de command list) voor het <code>do</code>-statement. Daarnaast ondersteunen loops <code>break</code> (stop de loop) en <code>continue</code> (begin direct aan de volgende ronde door de loop), al wordt het aangeraden deze alleen te gebruiken wanneer strikt noodzakelijk omdat dit de leesbaarheid van de code niet helpt. Beide commands hebben een optioneel argument voor het werken met genestte loops: <code>break 2</code> stopt de binnenste twee loops, en gaat daarbuiten verder. De return-value van de loop zelf is die van het laatste commando dat is uitgevoerd na <code>do</code>, of <code>0</code> als er niets is uitgevoerd.</p>
+<ul>
+<li>While: zo lang de eerste command list waar is, herhaal beide</li>
+<li>Until: totdat de eerste command list waar is, herhaal beide</li>
+<li>In beide gevallen: exit code voor true/false</li>
+</ul>
 </aside>
-<!--
-- While: zo lang de eerste command list waar is, herhaal beide
-- Until: totdat de eerste command list waar is, herhaal beide
-- In beide gevallen: exit code voor true/false
--->
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">while</span> <span class="op">&lt;</span><span class="ex">commands</span><span class="op">&gt;</span><span class="kw">;</span> <span class="kw">do</span> </a>
 <a class="sourceLine" id="cb11-2" data-line-number="2">  <span class="op">&lt;</span><span class="ex">commands</span><span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb11-3" data-line-number="3"><span class="kw">done</span></a>
@@ -328,16 +333,25 @@ Ook bij normale variabelen zijn accolades soms nodig, zoals wanneer er geen spat
 <a class="sourceLine" id="cb11-6" data-line-number="6">  <span class="op">&lt;</span><span class="ex">commands</span><span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb11-7" data-line-number="7"><span class="kw">done</span></a></code></pre></div>
 </section>
+<section id="inhoud-2" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Bash-bestanden</li>
+<li>Control flow en arrays</li>
+<li><strong>Functies</strong></li>
+<li>Expansie en substitutie</li>
+<li>Troubleshooting</li>
+</ul>
+</section>
 <section id="samengestelde-commandos" class="slide level2">
 <h2>Samengestelde commando’s</h2>
 <aside class="notes">
-<p>Vorige week hebben we kennis gemaakt met de command-list. Om van een command-list weer één object te maken, kunnen we twee vormen gebruiken: gewone haakjes en accolades. Bij accolades moet het sluithaakje op een eigen regel staan (of voorafgegaan worden door een <code>;</code>); voor gewone haakjes is dit niet zo. Het verschil is waar de commands worden uitgevoerd: commands tussen accolades gebeuren binnen de huidige shell, terwijl bij haakjes een subshell geopend wordt: een apart proces. Dit houdt in dat wijzigingen aan de environment (bijvoorbeeld variabelen) de subshell niet overleven.</p>
+<ul>
+<li>haakjes: command list in subshell</li>
+<li>accolades: wel groeperen tot samengesteld commando, zelfde shell</li>
+<li>van belang voor variabelen die in command list worden ingesteld</li>
+</ul>
 </aside>
-<!--
-- haakjes: command list in subshell
-- accolades: wel groeperen tot samengesteld commando, zelfde shell
-- van belang voor variabelen die in command list worden ingesteld
--->
 <ul>
 <li><code>( foo; bar &amp;&amp; baz )</code></li>
 <li><code>{ foo; bar &amp;&amp; baz; }</code></li>
@@ -354,13 +368,12 @@ Ook bij normale variabelen zijn accolades soms nodig, zoals wanneer er geen spat
 <section id="functions" class="slide level2">
 <h2>Functions</h2>
 <aside class="notes">
-<p>Nu we de control structures kennen rest ons nog één belangrijke constructie om echte code te schrijven: de functie. De syntax hiervoor in Bash is <code>&lt;naam&gt; () &lt;samengesteld commando&gt; &lt;io redirections&gt;</code>. Samengesteld commands die we tot nu toe hebben gezien zijn een command-list tussen accolades of haakjes (zie de vorige slide) of een <code>for</code>, <code>select</code>, <code>if</code>, <code>while</code> of <code>until</code> constructie. Naast de “standaard” syntax kom je ook vaak vormen met het codewoord <code>function</code> tegen, al dan niet met de haakjes. Op de slide staan alle mogelijke combinaties. De haakjes zijn altijd leeg, argumenten worden bij het aanroepen van de functie in variabelen <code>$1</code>, <code>$2</code>, etc. Dit werkt hetzelfde als voor scriptbestanden. <code>$0</code> bevat in dat geval de naam van het script, of als die er niet is de naam van de shell. Na de body van de functie kunnen we nog IO redirections toepassen om de uitvoer bijvoorbeeld naar een bestand te schrijven. Deze redirections worden uitgevoerd als de functie wordt aangeroepen (bij het definiëren van de functie gebeurt niets). Je kunt hier ook functie-argumenten in gebruiken om een filename te maken.</p>
+<ul>
+<li><code>&lt;naam&gt; () &lt;samengesteld commando&gt; &lt;eventuele IO redirects&gt;</code></li>
+<li>function prefix mogelijk, ipv of naast haakjes</li>
+<li>Argumenten via <code>$1</code>, niets binnen haakjes</li>
+</ul>
 </aside>
-<!--
-- `<naam> () <samengesteld commando> <eventuele IO redirects>`
-- function prefix mogelijk, ipv of naast haakjes
-- Argumenten via `$1`, niets binnen haakjes
--->
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="fu">filetype_count()</span> <span class="kw">{</span> <span class="fu">find</span> -name <span class="st">&quot;*.</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">wc</span> -l<span class="kw">;</span> <span class="kw">}</span></a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="ex">filetype_count</span> <span class="st">&quot;jpg&quot;</span> <span class="co"># 31167</span></a>
 <a class="sourceLine" id="cb13-3" data-line-number="3"></a>
@@ -373,19 +386,28 @@ Ook bij normale variabelen zijn accolades soms nodig, zoals wanneer er geen spat
 <a class="sourceLine" id="cb13-10" data-line-number="10"><span class="kw">function</span><span class="fu"> filetype_count</span> <span class="kw">{</span> <span class="fu">find</span> -name <span class="st">&quot;*.</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">wc</span> -l<span class="kw">;</span> <span class="kw">}</span></a>
 <a class="sourceLine" id="cb13-11" data-line-number="11"><span class="fu">filetype_count()</span> <span class="kw">{</span> <span class="fu">find</span> -name <span class="st">&quot;*.</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">wc</span> -l<span class="kw">;</span> <span class="kw">}</span></a></code></pre></div>
 </section>
+<section id="inhoud-3" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Bash-bestanden</li>
+<li>Control flow en arrays</li>
+<li>Functies</li>
+<li><strong>Expansie en substitutie</strong></li>
+<li>Troubleshooting</li>
+</ul>
+</section>
 <section id="pathname-expansion" class="slide level2">
 <h2>Pathname expansion</h2>
 <aside class="notes">
-<p>Omdat Linux alles als een file ziet, zullen we vaak met bestandsnamen te maken hebben. We hebben de vorige les kennis gemaakt met globs (<code>*</code> en <code>?</code>), oftewel pathname-expansion. De <code>*</code> matcht iedere string, <code>?</code> een enkel karakter (niet meer, niet minder). In sommige gevallen wil je een karakter matchen met <code>?</code>, maar dit eigenlijk beperken tot een bepaalde set mogelijkheden. Hiervoor kun je de blokhaken gebruiken, met daarbinnen alle opties (of een range). <code>file[0-9]</code> zal <code>file0</code> matchen, <code>file1</code>, etc. tot <code>file9</code>. Daarnaast kun je accolades en komma’s gebruiken om met een set specifieke strings filenames te maken. De output van <code>echo file{1,2,3,4,5}</code> is <em>file1 file2 file3 file4 file5</em>. Ook hier kan je ranges gebruiken: het voorbeeld had ook als <code>echo file</code> mogelijkheden. Hiervoor kun je de blokhaken gebruiken, met daarbinnen alle opties (of een range). <code>file[0-9]</code> zal <code>file0</code> matchen, <code>file1</code>, etc. tot <code>file9</code>. Daarnaast kun je accolades en komma’s gebruiken om met een set specifieke strings filenames te maken. De output van <code>echo file{1,2,3,4,5}</code> is <em>file1 file2 file3 file4 file5</em>. Ook hier kan je ranges gebruiken: het voorbeeld had ook als <code>echo file{1..5}</code> gegeven kunnen worden.</p>
+<ul>
+<li>matcht file met elke uitgang</li>
+<li>matcht filea.zip, file1.zip, fileP.zip, etc</li>
+<li>matcht alleen file0.zip tot file9.zip</li>
+<li>matcht alleen fileN.zip en fileZ.zip</li>
+<li>expand naar een de string “file.zip file.7z file.tbz file.rar}”</li>
+<li>ranges ook toegestaan: <code>{1-5}</code></li>
+</ul>
 </aside>
-<!--
-- matcht file met elke uitgang
-- matcht filea.zip, file1.zip, fileP.zip, etc
-- matcht alleen file0.zip tot file9.zip
-- matcht alleen fileN.zip en fileZ.zip
-- expand naar een de string "file.zip file.7z file.tbz file.rar}"
-- ranges ook toegestaan: `{1-5}`
--->
 <ul>
 <li><code>file.*</code></li>
 <li><code>file?.zip</code></li>
@@ -397,15 +419,14 @@ Ook bij normale variabelen zijn accolades soms nodig, zoals wanneer er geen spat
 <section id="command-substitution" class="slide level2">
 <h2>Command Substitution</h2>
 <aside class="notes">
-<p>Soms is het handig de uitvoer van een commando in een variabele te kunnen zetten, of als argument voor een ander commando te gebruiken. In veel gevallen is dit met pipes op te lossen, maar dat is niet altijd het geval. Gelukkig heeft Bash command substitution: een commando verpakt in <code>$( .. )</code> of <code>`..`</code> wordt door Bash uitgevoerd, waarna de uitvoer in de plaats van het commando komt. Beide notities zijn bruikbaar, al moet je met de haakjes-notatie uitkijken dat er geen verwarring ontstaat met haakjes die een andere betekenis hebben. De haakjes-notatie heeft wel als voordeel dat deze zich makkelijker laat nesten: met backticks moeten de binnenste backticks met een <code>\</code> gequote worden. De spaties bij de haakjes-notatie zijn niet verplicht, en vooral om de constructie <code>$((COMMAND))</code> te voorkomen teneinde het command in een subshell uit te voeren: de dubbele haakjes zijn namelijk ergens anders voor gereserveerd. In dit geval meot je dus <code>$( (COMMAND) )</code> gebruiken.</p>
+<ul>
+<li>voer command uit en ga verder alsof de output er stond</li>
+<li>zet datum in <code>$DATE</code></li>
+<li>print de datum (datum naar echo dat input doorgeeft als output, naar nog een echo)</li>
+<li>zelfde met backticks (let op de escaping)</li>
+<li>dubbele haken (voor subshell binnen <code>$(..)</code>) moet met extra spaties, anders arithmetic expansion (volgende slide)</li>
+</ul>
 </aside>
-<!--
-- voer command uit en ga verder alsof de output er stond
-- zet datum in `$DATE`
-- print de datum (datum naar echo dat input doorgeeft als output, naar nog een echo)
-- zelfde met backticks (let op de escaping)
-- dubbele haken (voor subshell binnen `$(..)`) moet met extra spaties, anders arithmetic expansion (volgende slide)
--->
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="va">$(</span> <span class="ex">COMMANDS</span> <span class="va">)</span></a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw">`</span><span class="ex">COMMANDS</span><span class="kw">`</span></a>
 <a class="sourceLine" id="cb14-3" data-line-number="3"></a>
@@ -418,14 +439,13 @@ Ook bij normale variabelen zijn accolades soms nodig, zoals wanneer er geen spat
 <section id="arithmetic-expansion-en-evaluation" class="slide level2">
 <h2>Arithmetic Expansion en Evaluation</h2>
 <aside class="notes">
-<p>De reden dat we geen dubbele haakjes kunnen gebruiken bij command substitution is dat deze notatie gebruikt wordt voor arithmetic expansion (oftewel: rekenen). Arithmetic expansion geeft je de mogelijkheid een som op te geven, waarvan het antwoord op de plaats van de som komt te staan. De notatie hiervoor is <code>$((..))</code>. Naast expansions hebben we ook arithmetic evaluations. Deze gebruiken we voor expressies waar het antwoord geen getal is, maar een <em>true</em> of <em>false</em>. Deze kunnen we gebruiken in bijvoorbeeld een <code>if</code>-statement of een <code>while</code>- of <code>until</code>-loop. De notatie is <code>((..))</code>. De meeste gebruikelijke rekenkundige operatoren, vergelijkingen en zelfs bitwise OR, AND en shifts zijn ondersteund; de gehele lijst is te vinden in de <code>man</code>-page van Bash.</p>
+<ul>
+<li>Met dollar: reken uit tussen de haken</li>
+<li>Meeste operatoren (inclusief bitwise or, and, shifts) mogelijk</li>
+<li>Zonder dollar: gelijkheid, groter dan etc naar boolean voor if/while</li>
+<li>Zie <code>man bash</code> voor mogelijke operatoren</li>
+</ul>
 </aside>
-<!--
-- Met dollar: reken uit tussen de haken
-- Meeste operatoren (inclusief bitwise or, and, shifts) mogelijk
-- Zonder dollar: gelijkheid, groter dan etc naar boolean voor if/while
-- Zie `man bash` voor mogelijke operatoren
--->
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="bu">echo</span> <span class="va">$((</span>6*7<span class="va">))</span> <span class="co"># 42</span></a>
 <a class="sourceLine" id="cb15-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb15-3" data-line-number="3"><span class="bu">read</span> -p <span class="st">&quot;Geef een getal: &quot;</span> <span class="va">getal</span></a>
@@ -440,15 +460,14 @@ Ook bij normale variabelen zijn accolades soms nodig, zoals wanneer er geen spat
 <section id="lezen-van-de-command-line" class="slide level2">
 <h2>Lezen van de command-line</h2>
 <aside class="notes">
-<p>Het commando <code>read</code> kan gebruikt worden om te lezen van de command-line (of, met <code>-u</code> uit een file). Standaard wordt een hele regel ingelezen, zodat je met een <code>while</code>-loop een hele file in kan lezen. Het resultaat wordt opgeslagen in variabelen waarvan de naam als argument moet worden meegegeven. <code>read foo</code> slaat de hele input op in <code>$foo</code>. Als er meerdere variabelen mee worden gegeven wordt het eerste woord in de eerste variabele opgeslagen, het tweede woord in de tweede, etc. De laatste variabele krijgt de rest van de input als er teveel woorden ingevoerd zijn. Als je geen variabelenaam meegeeft dan wordt <code>$REPLY</code> gebruikt. Standaardopties voor <code>read</code> zijn <code>-p &lt;PROMPT&gt;</code> om eerst een prompt te printen, <code>-n &lt;NUMMER&gt;</code> om een gegeven aantal karakters te lezen, <code>-a &lt;ARRAY&gt;</code> om een array te gebruiken in plaats van normale variabelen, <code>-t &lt;TIMEOUT&gt;</code> voor een maximale wachttijd, en <code>-s</code> voor secure input (bash laat niet zien wat/dat er getypt wordt, zoals bij <code>sudo</code> het password-prompt).</p>
+<ul>
+<li>lees command line en zet in $var</li>
+<li>lees command line en zet woord 1 in $foo, woord 2 in $bar en rest in $baz</li>
+<li>lees alles naar een array $ARRAY</li>
+<li>lees 1 karakter in raw mode (-&gt; lees een enkele toetsaanslag)</li>
+<li>lees binnen 15 sec een password (onzichtbaar typen) met een prompt</li>
+</ul>
 </aside>
-<!--
-- lees command line en zet in $var
-- lees command line en zet woord 1 in $foo, woord 2 in $bar en rest in $baz
-- lees alles naar een array $ARRAY
-- lees 1 karakter in raw mode (-> lees een enkele toetsaanslag)
-- lees binnen 15 sec een password (onzichtbaar typen) met een prompt
--->
 <ul>
 <li><code>read var</code></li>
 <li><code>read foo bar baz</code></li>
@@ -460,17 +479,16 @@ Ook bij normale variabelen zijn accolades soms nodig, zoals wanneer er geen spat
 <section id="process-substitution" class="slide level2">
 <h2>Process Substitution</h2>
 <aside class="notes">
-<p>Een laatste notatie die je in scripts tegen kan komen is die van process substitution. Hier wordt een pipe tussen twee processen vervangen door tijdelijk bestand, zodat een subshell voorkomen kan worden (en dus variabelen niet “kwijtraken” zodra de subshell verdwijnt). De syntax hiervoor is <code>&lt;(COMMAND)</code>, waarbij de uitvoer van <code>COMMAND</code> in een tijdelijk bestand gezet wordt,dat automatisch verwijderd wordt zodra de inhoud niet meer nodig is.</p>
+<ul>
+<li>alternatief voor pipes</li>
+<li>werkt via files in <code>/dev/fd</code></li>
+<li>file aangemaakt en automatisch verwijderd</li>
+<li>student hoeft niet toe te passen, wel te herkennen</li>
+<li>voorkomt de subshell die met een pipe gemaakt wordt</li>
+<li>hierdoor raken geen variabelen kwijt in de subshell</li>
+<li>zeldzaam</li>
+</ul>
 </aside>
-<!--
-- alternatief voor pipes
-- werkt via files in `/dev/fd`
-- file aangemaakt en automatisch verwijderd
-- student hoeft niet toe te passen, wel te herkennen
-- voorkomt de subshell die met een pipe gemaakt wordt
-- hierdoor raken geen variabelen kwijt in de subshell
-- zeldzaam
--->
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="fu">uname</span> <span class="kw">|</span> <span class="fu">cat</span>    # Linux</a>
 <a class="sourceLine" id="cb16-2" data-line-number="2"><span class="fu">cat</span> <span class="op">&lt;(</span><span class="fu">uname</span><span class="op">)</span>   # Linux</a>
 <a class="sourceLine" id="cb16-3" data-line-number="3"></a>
@@ -479,13 +497,20 @@ Ook bij normale variabelen zijn accolades soms nodig, zoals wanneer er geen spat
 <a class="sourceLine" id="cb16-6" data-line-number="6"><span class="fu">cat</span> <span class="op">&lt;</span> <span class="op">&lt;(</span><span class="fu">find</span><span class="op">)</span>  # Linux</a>
 <a class="sourceLine" id="cb16-7" data-line-number="7"><span class="bu">echo</span> <span class="op">&lt;</span> <span class="op">&lt;(</span><span class="fu">find</span><span class="op">)</span> <span class="co"># </span></a></code></pre></div>
 </section>
+<section id="inhoud-4" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Bash-bestanden</li>
+<li>Control flow en arrays</li>
+<li>Functies</li>
+<li>Expansie en substitutie</li>
+<li><strong>Troubleshooting</strong></li>
+</ul>
+</section>
 <section id="precedentie" class="slide level2">
 <h2>Precedentie</h2>
-<!--
-Van boven naar beneden belangrijkst naar minst
--->
 <aside class="notes">
-<p>We hebben er inmiddels een hele tour van de Bash-shell opzitten. We hebben commando’s gezien, die programma’s kunnen zijn (e.g. <code>time</code>) of built-ins (e.g. <code>cd</code>). Daarnaast hebben we scripts en functies… Wat nou als we een functie <code>cd</code> maken, welke <code>cd</code> kiest Bash dan? De keuze die Bash zal maken is bepaald door de precedentie van de verschillende soorten commands. Functies gaan altijd voor, dus bij het invoeren van een command kijkt Bash eerst of er een functie gedefiniëerd is. Zo niet, dan wordt naar built-ins gekeken. Als die er ook niet is, dan wordt het <code>$PATH</code> doorzocht. De eerste map waar een script of programma met dezelfde naam als het gevraagde commando te vinden is, wordt gekozen.</p>
+<p>Van boven naar beneden belangrijkst naar minst</p>
 </aside>
 <ul>
 <li>Function</li>
@@ -495,16 +520,17 @@ Van boven naar beneden belangrijkst naar minst
 </section>
 <section id="profiling" class="slide level2">
 <h2>Profiling</h2>
-<!--
-- zien hoe snel je script draait
-- of een command daarin
-- totale tijd (op de klok)
-- tijd proces daadwerkelijk aan de beurt
-  - in user space
-  - in syscalls / kernel space
--->
 <aside class="notes">
-<p>Soms wil je weten hoe lang je script gedraaid heeft, of hoe lang een commando binnen je script duurt. Linux heeft hiervoor het <code>time</code> commando. Deze geeft drie tijden terug: hoe lang het duurde tot het proces daadwerkelijk klaar was, hoeveel tijd het proces aan de beurt is geweest in user mode, en hoe lang de kernel voor het proces bezig is geweest.</p>
+<ul>
+<li>zien hoe snel je script draait</li>
+<li>of een command daarin</li>
+<li>totale tijd (op de klok)</li>
+<li>tijd proces daadwerkelijk aan de beurt
+<ul>
+<li>in user space</li>
+<li>in syscalls / kernel space</li>
+</ul></li>
+</ul>
 </aside>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="bu">time</span> ./myScript</a>
 <a class="sourceLine" id="cb17-2" data-line-number="2"><span class="co"># real    0m4.743s</span></a>
@@ -531,10 +557,14 @@ Van boven naar beneden belangrijkst naar minst
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
         // Push each slide change to the browser history
         history: true,
         // Transition style
         transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
 
         // Optional reveal.js plugins
         dependencies: [

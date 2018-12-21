@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Embedded &amp; Operating Systems 9">
-  <title>Virtualisation en Microcontrollers</title>
+  <title>Embedded &amp; Operating Systems 9 — Virtualisation en Microcontrollers</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -80,7 +79,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="reveal.js/css/theme/hu.css" id="theme">
   <!-- Printing and PDF exports -->
   <script>
     var link = document.createElement( 'link' );
@@ -97,94 +96,119 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide">
-  <h1 class="title">Virtualisation en Microcontrollers</h1>
-  <p class="author">Embedded &amp; Operating Systems 9</p>
-</section>
 
-<section id="introductie" class="slide level2">
-<h2>Introductie</h2>
-<!--
--->
+<section id="section" class="slide level2" data-background="course-logo.png">
+<h2></h2>
+<h1>
+Virtualisation en Microcontrollers
+</h1>
+<p>
+Embedded &amp; Operating Systems 9
+</p>
 <aside class="notes">
-<p>De vorige les hebben we al een beetje kennis gemaakt met virtualisatie, in de vorm van de JVM en .NET virtual machine. In deze les kijken we verder naar virtuele machines, en hoe deze in het OS geïntergreerd kunnen zijn. De overkoepelende eigenchap van virtual machines is dat deze een systeem emuleren in software. Dit kan een PC zijn die een andere PC in een venster draait (om meerdere OSs tegelijk te draaien), een ander type hardware (emulatie) of een type machine dat fysiek niet bestaat. Daarnaast zullen we kijken naar microcontrollers: embedded systemen zonder OS. Het aansturen van de hardware is grotendeels hetzelfde, maar in dit geval combineert de embedded software deze taak met de daadwerkelijke functionaliteit die het device moet leveren.</p>
+
 </aside>
+</section>
+<section id="inhoud" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li><strong>Types virtuele machines</strong></li>
+<li>Virtualisatie op OS-level</li>
+<li>OS vs microcontroller programming</li>
+<li>Bibliotheken voor MC programmeren</li>
+</ul>
 </section>
 <section id="bytecode-virtual-machines" class="slide level2">
 <h2>Bytecode Virtual Machines</h2>
-<!--
-- Herhaling vorige les, bytecode gebaseerde talen = virtuele machine
-- Webassembly: asembly in javascript met browser als VM
-- Pharo als voorbeeld bytecode VM met geavanceerde interface
--->
 <aside class="notes">
-<p>De JVM en .NET virtual machines behoren tot de laatste categorie: de machine die gevirtualiseerd wordt is niet een daadwerkelijke fysieke machine, maar een construct dat specifiek als virtuele machine ontworpen is. De machine dient als interpreter voor code die al gedeeltelijk gecompileerd is, met als voornaamste doel portability: als de VM op een systeem draait, kan alle software die op de VM draait gebruikt worden. Ook WebAssembly, een low-level assembly achtige subset van JavaScript, kan als een bytecode virtual machine beschouwd worden. Code in C++ (of welke andere taal dan ook, zo lang er een compiler bestaat) kan tot WebAssembly gecompileerd worden, waarna een browser kan dienen als virtual machine / JIT compiler. Sommige talen nemen de intergratie met de bijbehorende VM nog een stapje verder. Pharo, een dialect van SmallTalk, wordt zowel ontwikkeld als uitgevoerd binnen de virtuele machine. De VM ondersteunt een grafische interface, waarbinnen code (zowel van de gebruiker als van het systeem zelf) geinspecteerd, aangepast en uitgevoerd kan worden.</p>
+<ul>
+<li>Herhaling vorige les, bytecode gebaseerde talen = virtuele machine</li>
+<li>Webassembly: asembly in javascript met browser als VM</li>
+<li>Pharo als voorbeeld bytecode VM met geavanceerde interface</li>
+</ul>
 </aside>
 <p><img data-src="images/java-jit.png" /></p>
 </section>
 <section id="hardware-virtualisation" class="slide level2">
 <h2>Hardware Virtualisation</h2>
-<!--
-- VM simuleert hele fysieke computer; OS draait in VM, software draait binnen OS en weet niets van virtualisatie.
-- Zelfde OS of ander OS
-- Emulator voor andere virtuele processorarchitectuur
--->
 <aside class="notes">
-<p>De meest klassieke vorm van virtual machines wordt doorgaans als <em>platform virtualisation</em> of <em>hardware virtualisation</em> aangeduid. De computer draait een besturingssysteem, met daarbinnen een applicatie, de <em>hypervisor</em>, die een fysieke computer nabootst. Vaak is dit een beperkte kopie van de <em>host computer</em>, de computer waarop de software draait. De <em>guest computer</em> kan een kopie van hetzelfde besturingssysteem draaien, bijvoorbeeld om een afgeschermde omgeving te leveren, of een ander OS draaien, bijvoorbeeld Linux op Windows of vice-versa. Als de architectuur van de <em>guest computer</em> afwijkt van die van de <em>host computer</em> wordt dit doorgaans <em>emuleren</em> genoemd. Een <em>emulator</em> kan bijvoorbeeld een spelcomputer of mobiel platform nabootsen, zodat software hiervoor op de computer ontwikkeld en direct getest kan worden. Emulatoren worden ook ingezet om software voor verouderde hardware te kunnen blijven gebruiken.</p>
+<ul>
+<li>VM simuleert hele fysieke computer; OS draait in VM, software draait binnen OS en weet niets van virtualisatie.</li>
+<li>Zelfde OS of ander OS</li>
+<li>Emulator voor andere virtuele processorarchitectuur</li>
+</ul>
 </aside>
 <p><img data-src="images/virtualisation.png" style="width:70.0%" /></p>
 </section>
 <section id="bare-metal-hypervisors" class="slide level2">
 <h2>Bare-Metal Hypervisors</h2>
-<!--
--->
 <aside class="notes">
-<p>Hoewel de meeste consumenten-hypervisors als applicatie binnen een OS draaien (zogenaamde <em>hosted hypervisors</em>, waarbij het OS de <em>host</em> levert) is dit niet noodzakelijk. Bij bare-metal hypervisors draait de hypervisor direct op de hardware — in plaats van een OS. Binnen de hypervisor kunnen dan verschillende besturingssytemen draaien. Bij een hosted hypervisor is vaak sprake van een flinke performance-hit voor de guest OSs: de software binnen de guest is erg ver van de hardware verwijderd, waardoor er veel overhead is en vertaling plaatsvindt. Bij bare-metal hypervisors wordt is dit niet (of nauwelijks) het geval. Alle OSs die binnen een bare-metal hypervisor draaien zijn gelijkwaardig, en draaien zo dicht mogelijk op de hardware als mogelijk (met alleen een minimale hypervisor ertussen).</p>
+
 </aside>
 <p><img data-src="images/bare-metal.png" style="width:50.0%" /></p>
 </section>
+<section id="inhoud-1" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Types virtuele machines</li>
+<li><strong>Virtualisatie op OS-level</strong></li>
+<li>OS vs microcontroller programming</li>
+<li>Bibliotheken voor MC programmeren</li>
+</ul>
+</section>
 <section id="containers" class="slide level2">
 <h2>Containers</h2>
-<!--
--->
 <aside class="notes">
-<p>Bij hypervisor-virtualisatie wordt een compleet hardware-systeem gevirtualiseerd. Virtualisatie kan daarnaast ook op OS-level plaatsvinden. Het systeem draait dan een enkele kernel, maar hierop draaien meerdere geisoleerde userspaces: <em>containers</em>. Binnen Linux is Docker het meest gebruikte platform voor het draaien van containers. Voor een proces binnen een container lijkt het alsof deze zich op een normale computer bevindt. Wat het proces van het systeem kan zien is echter beperkt tot de inhoud van de container. Meestal wordt een container voor een enkel proces (server, compiler, etc.) gebruikt, dat binnen de container compleet geïsoleerd draait. De verschillende containers werken allemaal op dezelfde kernel, maar kunnen op userspace-niveau flink van elkaar afwijken. Het is prima mogelijk op een Ubuntu syteem een container te draaien die gebaseerd is op Fedora, of welke andere distro dan ook, zodat voor iedere applicatie de beste omgeving kan worden gekozen. Doorgaans wordt hiervoor een zo licht mogelijke disto gebruikt, zoals Alpine Linux. Daarnaast bestaan er distributies die speciaal ontwikkeld zijn om containers te hosten, waarbij de host zo licht mogelijk wordt gehouden en alle software binnen containers draait. Voorbeelden hiervan zijn CoreOS en RancherOS.</p>
+
 </aside>
-<p><img data-src="images/docker.png" style="width:50.0%" /></p>
+<p><img data-src="images/containers.png" style="width:50.0%" /></p>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<aside class="notes">
+<ul>
+<li>Ingewikkelde toolchain / ontwikkelomgeving als enkele container aanbieden</li>
+<li>Lagere instap dan zelf opzetten</li>
+<li>Dockerfiles en images uitwisselen via Docker repository</li>
+<li>Container kan single-run proces bevatten of achtergrondsproces (daemon)</li>
+</ul>
+</aside>
+<p><img data-src="images/docker.png" style="width:30.0%" /></p>
+</section>
+<section id="inhoud-2" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Types virtuele machines</li>
+<li>Virtualisatie op OS-level</li>
+<li><strong>OS vs microcontroller programming</strong></li>
+<li>Bibliotheken voor MC programmeren</li>
+</ul>
 </section>
 <section id="microcontrollers" class="slide level2">
 <h2>Microcontrollers</h2>
-<!--
--->
 <aside class="notes">
-<p>Hoewel de focus tot nu toe gelegen heeft op OSs en applicaties die op een OS draaien (hosted applications), ligt de focus van de TI-er vaak op een ander domein: de microcontroller. Hier wordt net als bij (het programmeren van) een OS bare-metal gewerkt. De software heeft directe toegang tot de hardware, en er zijn niet zomaar abstracties aanwezig om het leven van de ontwikkelaar te vereenvoudigen. In de volgende slides zullen we zien hoe het programmeren van een microcontroller verschilt ten opzichte van OS development en het schrijven van hosted applicaties.</p>
+
 </aside>
 <p><img data-src="images/Arduino-Due.jpg" style="width:50.0%" /></p>
 </section>
 <section id="development-pipeline" class="slide level2">
 <h2>Development Pipeline</h2>
-<!--
--->
 <aside class="notes">
-<p>Het eerste verschil is de manier waarop de development pipeline in elkaar steekt. Omdat een bare-metal microcontroller geen OS heeft, draait hier geen tekst-editor of compiler op waardoor deze niet direct geprogrammeerd kan worden. In plaats hiervan moeten we gebruik maken van een development-systeem om de code te schrijven, en deze met een cross-compiler omzetten naar een binary voor de micro-controller. Dit binary-bestand kan dan in de microcontroller worden ingeladen door deze naar het EEPROM of Flash-geheugen te schrijven.</p>
+
 </aside>
 <p><img data-src="images/microcontroller-compilation.png" /></p>
 </section>
 <section id="geheugengebruik-bij-microcontrollers" class="slide level2">
 <h2>Geheugengebruik bij microcontrollers</h2>
-<!--
--->
 <aside class="notes">
-<p>Een andere manier waarop een bare-metal microcontroller van een computer met OS verschilt is de manier waarop het geheugen wordt gebruikt. De computers waar we tot zover naar hebben gekeken maken gebruik van een combinatie van RAM geheugen en persistent storage (harde schijf of SSD). Alle code en bijbehorende data, zowel van het OS als van de applicaties, is ergens op de persistent storage te vinden. Bij het booten wordt de OS code hiervandaan naar het RAM gekopieerd, en bij het starten van een programma komt ook deze code ergens in het RAM te staan. Alle memory-segmenten die we hebben gezien binnen een proces (of het OS) zijn in de binary file aanwezig en worden 1-op-1 in het geheugen overgenomen. Bij een bare-metal microcontroller werkt dit anders: alle code en data is bij het flashen in het ROM geheugen opgeslagen. Bij het uitvoeren wordt dit niet naar RAM geheugen verplaatst, maar wordt alles zoveel mogelijk direct uit het ROM gelezen. Variabele data, dus data die kan veranderen, heeft een initiële waarde in het ROM staan, maar wordt naar het RAM gekopieerd om de data aan te kunnen passen. Op de slide zien we een voorbeeld van een memory-map van een microcontroller: de Arduino Due. In latere vakken komt het programmeren van microcontrollers in C++ aan bod, waarbij de Arduino Due gebruikt zal worden. Zoals op de afbeelding is te zien, wordt al het geheugen in een enkele map geplaatst, ongeacht wat voor geheugen het is. Ook externe devices (peripherals) zijn in de memory-map vertegenwoordigd. De totale memorymap van de Arduino Due is 4GB (het maximaal adresseerbare geheugen met 32 bits en 1 byte per adres), maar dat betekent niet dat de Arduino Due ook zoveel geheugen heeft. Een deel van de adressen is niet standaard in gebruik, of verwijst naar devices die geen deel uitmaken van wat we normaal het “geheugen” zouden noemen.</p>
+
 </aside>
 <p><img data-src="images/arduino-mem.png" style="width:40.0%" /></p>
 </section>
 <section id="peripherals" class="slide level2">
 <h2>Peripherals</h2>
-<!--
--->
 <aside class="notes">
-<p>Ook is het bij een bare-metal microcontroller niet mogelijk op de BIOS te vertrouwen om bepaalde taken uit te voeren: de BIOS is op zichzelf al een complex stuk software (of beter gezegd, firmware) dat niet op een standaard microcontroller aanwezig zal zijn. Meer nog dan bij het schrijven van een OS worden peripherals (randapparatuur, alles dat zich buiten de CPU en het geheugen bevindt) aangestuurd door direct naar geheugenposities te schrijven en direct uit geheugenposities te lezen: alle peripherals zijn direct in de memory map aanwezig. In code voor operating systems gebeurt dit ook wel (zoals te zien in ons C++ voorbeeld vorige week, waarbij naar een geheugenrange geschreven werd om tekst te printen), maar bij microcontrollers is dit nog meer gebruikelijk.</p>
+
 </aside>
 <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">// Maak een GPIO pin high op een Arduino Uno</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">PORTB |= <span class="bn">0x01</span> &lt;&lt; <span class="dv">12</span>;</a>
@@ -200,12 +224,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb1-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb1-13" data-line-number="13">make_pin_high();</a></code></pre></div>
 </section>
+<section id="inhoud-3" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Types virtuele machines</li>
+<li>Virtualisatie op OS-level</li>
+<li>OS vs microcontroller programming</li>
+<li><strong>Bibliotheken voor MC programmeren</strong></li>
+</ul>
+</section>
 <section id="microcontroller-libraries-hardware-abstraction-layer" class="slide level2">
 <h2>Microcontroller Libraries: Hardware Abstraction Layer</h2>
-<!--
--->
 <aside class="notes">
-<p>Hoewel bare-metal programmeren op een microcontroller een hoop meer handwerk vereist, kunnen we nog steeds gebruik maken van de eerste tool die een programmeur voor handen heeft: compositie. Door een probleem in kleinere subproblemen op te delen kan herbruikbare code gemaakt worden, die in de vorm van libraries te delen is tussen verschillende projecten. Hiermee wordt een abstractielaag toegevoegd tussen de hardware en de applicatie: de Hardware Abstraction Layer (HAL). Later in de opleiding zullen jullie met Hwlib te maken krijgen: een HAL-library die op de HU ontwikkeld is om het programmeren van microcontrollers toegankelijker te maken. Ook de BIOS is niet veel anders dan een hardware abstraction layer.</p>
+
 </aside>
 <ul>
 <li>RPi.GPIO</li>
@@ -216,10 +247,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="library-operating-systems-en-unikernels" class="slide level2">
 <h2>Library Operating Systems en Unikernels</h2>
-<!--
--->
 <aside class="notes">
-<p>Een tussenvorm tussen een bare-metal microcontroller en een operating system is een zogenaamd Library OS. Hierbij worden de gebruikelijke diensten die een OS levert aangeboden in de vorm van libraries. Dit maakt het mogelijk complexe functies te gebruiken alsof de applicatie op een OS draait, maar in werklelijkheid is deze functionaliteit in de applicatie opgenomen. Het resultaat is een binary die zowel de applicatie-code als (de relevante delen van) de OS code bevat: een zogenaamde unikernel. Een unikernel heeft een enkele adres-ruimte, dus geen onderscheid tussen kernel-space en user-space, en kan in het geheel op microcontrollers ingezet worden. Een voorbeeld van een library OS is IncludeOS.</p>
+
 </aside>
 <p><img data-src="images/includeos.png" /></p>
 </section>
@@ -245,10 +274,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
         // Push each slide change to the browser history
         history: true,
         // Transition style
         transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
 
         // Optional reveal.js plugins
         dependencies: [

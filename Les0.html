@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Embedded &amp; Operating Systems 0">
-  <title>Wat is een OS?</title>
+  <title>Embedded &amp; Operating Systems 0 — Wat is een OS?</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -80,7 +79,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="reveal.js/css/theme/hu.css" id="theme">
   <!-- Printing and PDF exports -->
   <script>
     var link = document.createElement( 'link' );
@@ -97,33 +96,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide">
-  <h1 class="title">Wat is een OS?</h1>
-  <p class="author">Embedded &amp; Operating Systems 0</p>
-</section>
 
-<section id="introductie" class="slide level2">
-<h2>Introductie</h2>
-<!--
-- Wat is een OS?
-- Voorbeelden OSs
-- Verschillen
-
-#### Belangrijk: slides op canvas, druk op 'S' voor uitgebreid commentaar!
--->
+<section id="section" class="slide level2" data-background="course-logo.png">
+<h2></h2>
+<h1>
+Wat is een OS?
+</h1>
+<p>
+Embedded &amp; Operating Systems 0
+</p>
 <aside class="notes">
-<p>Bij de eerste les ligt de focus op de volgende punten - Wat is een Operating System (en wat is het niet) - Wat zijn de voornaamste OSs - Waar zitten de belangrijkste verschillen tussen verschillende OSs Details over de interne werking (met name UNIX) komt in latere lessen aan bod. Het begrip SysCall wordt al wel gebruikt om het verschil tussen de OSs in te vatten.</p>
+<ul>
+<li>Wat is een OS?</li>
+<li>Voorbeelden OSs</li>
+<li>Verschillen</li>
+</ul>
+<h4 id="belangrijk-slides-op-canvas-druk-op-s-voor-uitgebreid-commentaar">Belangrijk: slides op canvas, druk op ‘S’ voor uitgebreid commentaar!</h4>
 </aside>
+</section>
+<section id="inhoud" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li><strong>Terugblik blok 1</strong></li>
+<li>Operating Systems</li>
+<li>Taken Operating System</li>
+<li>Hardware-aansturing</li>
+<li>Geheugenmodel van een taak</li>
+</ul>
 </section>
 <section id="waar-waren-we-gebleven" class="slide level2">
 <h2>Waar waren we gebleven?</h2>
-<!--
-Eindresultaat CSN: 
-- simpele 8 bit computer
-- assembly
--->
 <aside class="notes">
-<p>Een korte terugblik op het eindresultaat van het CS gedeelte van CSN. We hebben een simpele computer, die we met een eigen assembly-dialect kunnen programmeren.</p>
+<p>Eindresultaat CSN: - simpele 8 bit computer - assembly</p>
 </aside>
 <figure>
 <img data-src="images/CPU-io-fix-carry6.png" alt="De CPU" style="width:75.0%" /><figcaption>De CPU</figcaption>
@@ -131,12 +135,8 @@ Eindresultaat CSN:
 </section>
 <section id="instructies" class="slide level2">
 <h2>Instructies</h2>
-<!--
-Assembly / Machine code
-CPU specifiek
--->
 <aside class="notes">
-<p>Hoe programmeren we de computer? Machine-code / Assembly, maar CPU specifiek.</p>
+<p>Assembly / Machine code CPU specifiek</p>
 </aside>
 <div style="font-size: 12px">
 <table>
@@ -222,11 +222,8 @@ CPU specifiek
 </section>
 <section id="python" class="slide level2">
 <h2>Python</h2>
-<!--
-Ons doel: high level ondersteunen
--->
 <aside class="notes">
-<p>Vanaf de andere kant hebben we high-level code, zoals Python. Dit werkt op meerdere systemen (architectures) en is daarnaast ook minder “langdradig”.</p>
+<p>Ons doel: high level ondersteunen</p>
 </aside>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1">infile <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;input.txt&#39;</span>, <span class="st">&#39;r&#39;</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">outfile <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;output.txt&#39;</span>, <span class="st">&#39;w&#39;</span>)</a>
@@ -235,14 +232,18 @@ Ons doel: high level ondersteunen
 <a class="sourceLine" id="cb1-5" data-line-number="5">outfile.close()</a>
 <a class="sourceLine" id="cb1-6" data-line-number="6">infile.close()</a></code></pre></div>
 </section>
-<section id="operating-systems" class="slide level2">
-<h2>Operating Systems</h2>
+<section id="inhoud-1" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Terugblik blok 1</li>
+<li><strong>Operating Systems</strong></li>
+<li>Taken Operating System</li>
+<li>Hardware-aansturing</li>
+<li>Geheugenmodel van een taak</li>
+</ul>
 </section>
 <section id="het-operating-system-os" class="slide level2">
 <h2>Het Operating System (OS)</h2>
-<aside class="notes">
-<p>Om deze twee werelden bij elkaar te brengen is een systeem nodig dat enerzijds met de specifeke hardware overweg kan, en anderzijds eenzelfde basis biedt voor software (ongeacht wat de onderliggende hardware is). Dit is het Operating System, dat als laag tussen de applicaties en de hardware zit. Het OS zelf bestaat weer uit twee lagen, de kernel die direct met de hardware communiceert en de rest van het OS. Het verschil zit hem in het feit dat de kernel in kernel mode draait, en de rest van het OS net als de andere software in userland. Hier komen we later op terug. Voor nu heeft het OS raakvlakken: - De specifieke hardware, die door het OS aangestuurd wordt - Software, waarvoor het OS een generieke basis levert</p>
-</aside>
 <figure>
 <img data-src="images/os-layers-1.png" alt="Basismodel Operating Systems" style="width:50.0%" /><figcaption>Basismodel Operating Systems</figcaption>
 </figure>
@@ -250,18 +251,17 @@ Ons doel: high level ondersteunen
 <section id="desktop-operating-systems" class="slide level2">
 <h2>Desktop Operating Systems</h2>
 <aside class="notes">
-<p>Waar denken de studenten aan bij een besturingssysteem? Op de slide de grootste drie besturingssystemen voor de desktop/laptop, maar er is meer dat we als besturingssysteem zien. Op de volgende slide ook iOS en Android.</p>
+<p>Waar denken de studenten aan bij een besturingssysteem?</p>
 </aside>
 <p><img data-src="images/ubuntu.jpg" alt="Linux" style="width:40.0%" /> <img data-src="images/windows10.jpg" alt="Windows" style="width:40.0%" /> <img data-src="images/macosx.jpg" alt="MacOS" style="width:40.0%" /></p>
 </section>
 <section id="mobiele-operating-systems" class="slide level2">
 <h2>Mobiele Operating Systems</h2>
-<!--
-- Linux / Android
-- Mac / iOS
--->
 <aside class="notes">
-<p>Noem bij de mobiele OSs nog even dat iOS vooral een mobiele versie is van MacOS (en als Operating System dus in grote mate identiek is — de verschillen zitten hem in de aankleding, wat niet bij het OS hoort) en Android op Linux gebaseerd is. Wijs de studenten ook op dat hoewel het OS aan de bovenkant (vanuit de software gezien) hetzelfde is voor iOS/MacOS en Android/Linux, de systemen wel op heel andere hardware draaien.</p>
+<ul>
+<li>Linux / Android</li>
+<li>Mac / iOS</li>
+</ul>
 </aside>
 <figure>
 <img data-src="images/mobile.jpg" alt="Smartphone OS: iOS en Android" style="width:60.0%" /><figcaption>Smartphone OS: iOS en Android</figcaption>
@@ -269,21 +269,25 @@ Ons doel: high level ondersteunen
 </section>
 <section id="de-gui" class="slide level2">
 <h2><del>De GUI</del></h2>
-<!--
-GUI != OS
--->
 <aside class="notes">
-<p>Belangrijk punt (ook al even naar gehint bij de vorige slide) is dat de grafische omgeving niet deel van het besturingssysteem is, maar een applicatie die daarbovenop draait. Bij Linux is dit verschil duidelijker (je kan zelf kiezen welke interface je gebruikt), terwijl de interface van Windows en Mac vrijwel onlosmakelijk met het besturingssysteem geassocieerd is. Het feit dat je de software als pakket koopt en het geheel in de marketing een besturinssysteem genoemd wordt, betekent <strong>niet</strong> dat deze schil technisch deel van het OS is.</p>
+<p>GUI != OS</p>
 </aside>
 <figure>
 <img data-src="images/terminal.png" alt="Niet per sé een Grafische User Interface (GUI)" style="width:50.0%" /><figcaption>Niet per sé een Grafische User Interface (GUI)</figcaption>
 </figure>
 </section>
+<section id="inhoud-2" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Terugblik blok 1</li>
+<li>Operating Systems</li>
+<li><strong>Taken Operating System</strong></li>
+<li>Hardware-aansturing</li>
+<li>Geheugenmodel van een taak</li>
+</ul>
+</section>
 <section id="taken-operating-system" class="slide level2">
 <h2>Taken Operating System</h2>
-<aside class="notes">
-<p>Aansturen gaat d.m.v. syscalls en staat ten dienst van user processes. Deze worden over een aantal slides behandeld.</p>
-</aside>
 <ul>
 <li>Abstractie van de hardware t.b.v. user processes</li>
 <li>Aansturen randapparatuur / IO</li>
@@ -294,20 +298,24 @@ GUI != OS
 </section>
 <section id="bare-metal" class="slide level2">
 <h2>Bare Metal</h2>
-<aside class="notes">
-<p>Niet alle computersystemen gebruiken een OS. Een systeem dat zelf direct met de hardware communiceert noemen we bare metal. Een operating system en bare metal-software hebben beide te maken met de directe hardware, en gebruiken veelal dezelfde principes om hiermee om te gaan. Het voornaamste verschil is dat het OS zelf geen taak heeft, behalve het ondersteunen van de applicaties die erop gedraaid worden. Bare-metal software heeft wel een eigen taak, en is dus te beschouwen als de combinatie van een heel simpel OS en een enkele applicatie in één. Meestal hebben we het over microcontrollers als we het over bare-metal systemen hebben die zelf geen OS zijn. Natuurlijk zijn er meer verschillen waar je rekening mee moet houden als je bare-metal (aan OSs of microcontrollers) programmeert, hier zullen we later in de cursus bij stilstaan.</p>
-</aside>
 <ul>
 <li>Een systeem zonder OS heet een microcontroller</li>
 <li>Voor specifieke taak geprogrammeerd</li>
 <li>Zelfde principes gaan op, maar specifiek toegepast i.p.v. generiek</li>
 </ul>
 </section>
+<section id="inhoud-3" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Terugblik blok 1</li>
+<li>Operating Systems</li>
+<li>Taken Operating System</li>
+<li><strong>Hardware-aansturing</strong></li>
+<li>Geheugenmodel van een taak</li>
+</ul>
+</section>
 <section id="abstractie" class="slide level2">
 <h2>Abstractie</h2>
-<aside class="notes">
-<p>De meerwaarde van het OS is dat je, in plaats van dat je software specifiek schrijft voor een bepaalde hardware-configuratie, schrijft voor een generiek OS. Nog steeds andere code nodig voor e.g. Linux vs Windows, maar dit betekent 1-3 platforms ondersteunen i.p.v. elke mogelijke hardwarecombinatie. Verdere abstractie is mogelijk (in Python maakt het nauwelijks uit of je voor Windows of Linux of Mac programmeert) maar dat is weer een laag bovenop het OS.</p>
-</aside>
 <ul>
 <li>OS levert abstractie van de hardware</li>
 <li>Software praat niet direct tegen CPU en devices maar tegen OS</li>
@@ -316,9 +324,6 @@ GUI != OS
 </section>
 <section id="user-mode-vs-kernel-mode" class="slide level2">
 <h2>User mode vs Kernel Mode</h2>
-<aside class="notes">
-<p>Een processor draait in verschillende modes, elk met eigen priviliges. Hiertussen wordt dynamisch gewisseld. We onderscheiden hier twee modes: de kernel mode met alle privileges, en de user mode die niet direct tegen de hardware kan praten. User mode processen hebben daarmee ook geen toegang tot het hele geheugen (alleen eigen gedeelte). OS (of specifieker de kernel) draait in kernel mode, en kan wel overal bij.</p>
-</aside>
 <ul>
 <li>Processor draait in 2 (of meer) modes
 <ul>
@@ -329,9 +334,6 @@ GUI != OS
 </section>
 <section id="kernel-models" class="slide level2">
 <h2>Kernel Models</h2>
-<aside class="notes">
-<p>Daarmee meteen nog een belangrijk onderscheid tussen verschillende kernels: monolitisch vs microkernels. Monolitische kernels draaien alle traditionele OS taken in kernel mode, en zijn dus als een monoliet (grote steen uit één stuk). Microkernels draaien alleen het broodnodige in de kernel, en besteden alle het andere zoveel mogelijk uit aan user mode processen. Microkernels zouden veiliger zijn (al is dit een open debat) maar betalen hier wel voor met lagere peformance door meer switchen te moeten switchen tussen beide modes.</p>
-</aside>
 <ul>
 <li>Monolithic (e.g. Linux, Windows)
 <ul>
@@ -346,9 +348,6 @@ GUI != OS
 </section>
 <section id="syscalls" class="slide level2">
 <h2>SysCalls</h2>
-<aside class="notes">
-<p>Als een proces iets gedaan wil krijgen, heeft het voor veel taken niet de juiste privileges. Het is daarmee dus op het OS aangewezen. Een proces kan (en zal, met grote regelmaat) de kernel vragen om bijvoorbeeld (file) IO te doen, subprocessen aan te maken, extra geheugen te reserveren, etc. Dit gebeurt door middel van system calls (SysCalls). Dit zijn functies die vanuit de software worden aangeroepen, en de processor onderbreken. De code van het OS wordt geladen, en zal in kernel mode de gevraagde taak uitvoeren. Hierna kan de software verder gaan waar het is gebleven. Ieder proces (later meer details over processen) heeft een eigen kopie van de SysCall table met de nummers en adressen van de system calls. Dit zorgt ervoor dat SysCalls zo snel mogelijk kunnen worden afgehandeld.</p>
-</aside>
 <ul>
 <li>Functies die OS vragen om iets te doen</li>
 <li>Onderbreken user mode software</li>
@@ -358,9 +357,6 @@ GUI != OS
 </section>
 <section id="syscalls-1" class="slide level2">
 <h2>SysCalls</h2>
-<aside class="notes">
-<p>De SysCalls in een Linux systeem zijn heel anders dan die op Windows. Dit heeft ermee te maken dat de besturingssystemen een heel andere filosofie hanteren. In Linux is het bijvoorbeeld gebruikelijk om simpele command-line tools aan elkaar te koppelen; hier zijn eigen SysCalls voor, die in Windows niet aanwezig waren (inmiddels is dit concept ook door Windows geleend). Ook kunnen SysCalls met dezelfde functie net even anders werken. Dit is de reden dat Windows-software niet zonder meer op Linux werkt (en vice-versa). POSIX en SUS zijn standaarden waar Unix-achtige systemen (en in het geval van POSIX zelfs recente Windows versies) aan voldoen, om het makkelijker te maken software op meerdere platforms te laten draaien.</p>
-</aside>
 <ul>
 <li>Ieder OS heeft eigen set SysCalls
 <ul>
@@ -371,17 +367,26 @@ GUI != OS
 <li>Single UNIX Specification (SUS)</li>
 </ul>
 </section>
+<section id="inhoud-4" class="slide level2" data-background="course-logo.png">
+<h2>Inhoud</h2>
+<ul>
+<li>Terugblik blok 1</li>
+<li>Operating Systems</li>
+<li>Taken Operating System</li>
+<li>Hardware-aansturing</li>
+<li><strong>Geheugenmodel van een taak</strong></li>
+</ul>
+</section>
 <section id="een-enkele-taak" class="slide level2">
 <h2>Een enkele taak</h2>
-<!--
-- text = code (read only)
-- data = init static vars
-- bss = uninit static vars
-- heap / stack -> volgende slides
-- syscall tabel
--->
 <aside class="notes">
-<p>Hoewel we het inmiddels een paar keer over processen hebben gehad, leggen we voor nu de nadruk nog even op een computer met een enkele taak. Later zullen we zien hoe een computer meerdere processen kan afwisselen (of met meerdere cores, tegelijk kan draaien). Het geheugen is opgedeeld in een aantal segmenten. De eerste sectie is Text en bevat de instructies van het proces. Dit gedeelte van het geheugen is read-only. Na de instructies volgen de Data en BSS segmenten. Data bevat alle globale en statische variabelen met een initiele waarde. Deze worden buiten functies gedefinieerd of zijn als static (onveranderbaar) gemarkeerd. BSS (historisch: Block Started by Symbol) bevat de statische variabelen die wel defined, maar niet geïnitialiseerd zijn. Na de BSS volgen de heap en de stack, die in de volgende slides besproken worden. Beide kunnen hun formaat dynamisch aanpassen. De stack en heap beginnen leeg en groeien naar elkaar toe. Tot slot hebben we een stuk kernel space; deze bevat de code van de SysCalls en een index: een tabel met voor elke SysCall het nummer van de call en het geheugenadres waar de bijbehorende code te vinden is. Doorgaans hebben SysCalls ook een naam, maar deze wordt door de computer intern niet gebruikt.</p>
+<ul>
+<li>text = code (read only)</li>
+<li>data = init static vars</li>
+<li>bss = uninit static vars</li>
+<li>heap / stack -&gt; volgende slides</li>
+<li>syscall tabel</li>
+</ul>
 </aside>
 <figure>
 <img data-src="images/Process.png" alt="Geheugenmodel Proces" style="width:30.0%" /><figcaption>Geheugenmodel Proces</figcaption>
@@ -389,21 +394,17 @@ GUI != OS
 </section>
 <section id="intermezzo-stacks" class="slide level2">
 <h2>Intermezzo: Stacks</h2>
-<aside class="notes">
-<p>Eerst zullen we even inzoomen op de Stack, en om deze te begrijpen moeten we eerst weten wat <strong>een</strong> stack is. Een stack (stapel) is een datastructuur waar dynamisch informatie aan toegevoegd of uitgehaald kan worden. De stack werkt volgens het <strong>Last in, first out</strong> principe, en wordt daarom ook wel de LIFO genoemd. De stack begint leeg, waarna hier data aan kan worden toegevoegd. Nieuwe data wordt bovenop de stack gezet (dit heet een <strong>push</strong>), en alleen het bovenste element van de stack is zichtbaar. Als het bovenste element gelezen wordt, wordt het meteen van de stack verwijderd (dit een heet <strong>pop</strong>).</p>
-</aside>
 <figure>
 <img data-src="images/Stack%20Structure.png" alt="Stack (LIFO)" style="width:100.0%" /><figcaption>Stack (LIFO)</figcaption>
 </figure>
 </section>
-<section id="de-stack" class="slide level2">
+<section id="de-stack" class="slide level2" data-transition="none">
 <h2>De Stack</h2>
-<!--
-- function calls
-- syscalls
--->
 <aside class="notes">
-<p>Ook in het geheugen wordt gebruik gemaakt van een stack. De stack heeft als voordeel dat je altijd de meest recente informatie bovenaan hebt. De stack wordt gebruikt om function calls mogelijk te maken. Als een functie wordt aangeroepen, wordt een frame aangemaakt. Dit frame bevat de parameters van de functieaanroep, het adres van waaraf de functie werd aangeroepen (return address) en het formaat van het frame (zodat bekend is welke bytes per <em>pop</em> gelezen moeten worden). Als een functiecall klaar is dan keert de computer terug naar de instructie direct na de functieaanroep. Deze is te vinden doordat het return adres in het frame op de stack staat opgeslagen. Zodra de computer het return adres nodig heeft wordt het frame gepopt, en wordt de stack meteen een frame kleiner.</p>
+<ul>
+<li>function calls</li>
+<li>syscalls</li>
+</ul>
 </aside>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -422,14 +423,13 @@ GUI != OS
 </div>
 </div>
 </section>
-<section id="de-stack-1" class="slide level2">
+<section id="de-stack-1" class="slide level2" data-transition="none">
 <h2>De Stack</h2>
-<!--
-- function calls
-- syscalls
--->
 <aside class="notes">
-<p>Ook in het geheugen wordt gebruik gemaakt van een stack. De stack heeft als voordeel dat je altijd de meest recente informatie bovenaan hebt. De stack wordt gebruikt om function calls mogelijk te maken. Als een functie wordt aangeroepen, wordt een frame aangemaakt. Dit frame bevat de parameters van de functieaanroep, het adres van waaraf de functie werd aangeroepen (return address) en het formaat van het frame (zodat bekend is welke bytes per <em>pop</em> gelezen moeten worden). Als een functiecall klaar is dan keert de computer terug naar de instructie direct na de functieaanroep. Deze is te vinden doordat het return adres in het frame op de stack staat opgeslagen. Zodra de computer het return adres nodig heeft wordt het frame gepopt, en wordt de stack meteen een frame kleiner.</p>
+<ul>
+<li>function calls</li>
+<li>syscalls</li>
+</ul>
 </aside>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -448,14 +448,13 @@ GUI != OS
 </div>
 </div>
 </section>
-<section id="de-stack-2" class="slide level2">
+<section id="de-stack-2" class="slide level2" data-transition="none">
 <h2>De Stack</h2>
-<!--
-- function calls
-- syscalls
--->
 <aside class="notes">
-<p>Ook in het geheugen wordt gebruik gemaakt van een stack. De stack heeft als voordeel dat je altijd de meest recente informatie bovenaan hebt. De stack wordt gebruikt om function calls mogelijk te maken. Als een functie wordt aangeroepen, wordt een frame aangemaakt. Dit frame bevat de parameters van de functieaanroep, het adres van waaraf de functie werd aangeroepen (return address) en het formaat van het frame (zodat bekend is welke bytes per <em>pop</em> gelezen moeten worden). Als een functiecall klaar is dan keert de computer terug naar de instructie direct na de functieaanroep. Deze is te vinden doordat het return adres in het frame op de stack staat opgeslagen. Zodra de computer het return adres nodig heeft wordt het frame gepopt, en wordt de stack meteen een frame kleiner.</p>
+<ul>
+<li>function calls</li>
+<li>syscalls</li>
+</ul>
 </aside>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -474,25 +473,21 @@ GUI != OS
 </div>
 </div>
 </section>
-<section id="section" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
-<!--
-stack vol (inf recursie) -> stack overflow
--->
 <aside class="notes">
-<p>De stack heeft een maximale grootte. Bij simpele systemen kan dit komen door een beperkte hoeveelheid geheugen, in complexere systemen met meerdere processen is er een maximum vastgesteld. Als dit maximum bereikt wordt, spreken we van een stack overflow, en wordt de executie van het programma onderbroken. Het maximumformaat van de stack is doorgaans vrij groot, een stack overflow wordt dan ook meestal door een programmeerfout veroorzaakt. Het meest simepele voorbeeld is een functie die zichzelf herhaaldelijk aanroept (recursie). Recursie is in principe geen probleem (en in sommige gevallen zelfs de meest nette oplossing) maar als een functie altijd zichzelf aan blijft roepen (en niet na een beperkt aantal keren returnt) dan hebben we een oneindige loop waarbij de stack snel volgezet wordt. Bij een beperktere recursie wordt ook een stack opgebouwd, maar op een gegeven moment zal de laatste aanroep returnen, waarna de aanroep daarvoor returnt, etc. en de stack ook weer wordt afgebroken.</p>
+<p>stack vol (inf recursie) -&gt; stack overflow</p>
 </aside>
 <p><img data-src="images/stack-overflow.png" style="width:70.0%" /></p>
 </section>
 <section id="de-heap" class="slide level2">
 <h2>De Heap</h2>
-<!--
-- alle dynamische data
-- alloceren
-- dealloceren / vrijgeven
--->
 <aside class="notes">
-<p>Waar BSS en Data voor statische data gebruikt wordt, is de heap voor dynamische data: data waarvan tijdens het programmeren en compilen nog niet bekend is hoeveel ruimte ervoor nodig is. De heap wordt tijdens het uitvoeren van de code expliciet toebedeeld (gealloceerd).</p>
+<ul>
+<li>alle dynamische data</li>
+<li>alloceren</li>
+<li>dealloceren / vrijgeven</li>
+</ul>
 </aside>
 <ul>
 <li>Dynamische alloceerbaar</li>
@@ -502,9 +497,6 @@ stack vol (inf recursie) -> stack overflow
 </section>
 <section id="memory-allocation" class="slide level2">
 <h2>Memory Allocation</h2>
-<aside class="notes">
-<p>Met behulp van <code>malloc</code> en <code>free</code> geeft de software aan hoeveel geheugenadressen in de adresruimte gekoppeld moet worden aan daadwerkelijk geheugen, zodat de software deze kan gebruiken. Bij het gebruik van <code>malloc</code> moet worden aangegeven hoeveel ruimte nodig is, maar dit kan dynamisch berekend worden op basis van bijvoorbeeld input. Waar dit geheugen komt te staan wordt door het OS bepaald, maar het zal altijd een aaneengesloten stuk geheugen zijn. Geheugen moet altijd teruggegeven worden om te voorkomen dat er memory leaks onstaan, en het is niet toegestaan geheugen aan te spreken die niet gealloceerd is (dit leidt tot een “segmentation fault”). Onder water wordt gebruik gemaakt van system calls waaronder <code>mmap</code>, <code>brk</code> en <code>munmap</code>. De aanroep naar <code>malloc</code> gebruikt bijvoorbeeld intern ergens een aanroep in de trant van <code>syscall(SYS_brk, 128*128*3)</code> om het besturingssysteem te vragen de ruimte vrij te maken. <code>SYS_brk</code> is een constante met de waarde <code>12</code>, het nummer van de system call.</p>
-</aside>
 <div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">// reserveer ruimte voor 128x128 pixels met 3 bytes per pixel</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="dt">int</span> *img_data = malloc(<span class="dv">128</span>*<span class="dv">128</span>*<span class="dv">3</span>);</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"></a>
@@ -538,10 +530,14 @@ stack vol (inf recursie) -> stack overflow
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
         // Push each slide change to the browser history
         history: true,
         // Transition style
         transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
 
         // Optional reveal.js plugins
         dependencies: [
