@@ -32,7 +32,7 @@
     <div class="slides">
 
 
-<section id="section" class="slide level2" data-background="course-logo.png">
+<section id="section" class="slide level2" data-background="images/title_background.png">
 <h2></h2>
 <h1>
 Case Study: Linux
@@ -40,9 +40,12 @@ Case Study: Linux
 <p>
 Embedded &amp; Operating Systems 1
 </p>
+<aside class="notes">
+<p>Hoewel we in deze lessen de nadruk ligt op de algemene theorie achter operating systems, zullen we vaak naar specifieke voorbeelden kijken om te zien hoe alles nou echt in elkaar zit. Voor deze lessen maken we gebruik van Linux, een vrij en gratis OS gebaseerd op Unix. Daarnaast maken we ook kennis met dit besturingssysteem in de rol van programmeur / gebruiker. Per week zal één les met name de focus hebben op de algemene theorie, en zal in de andere les Linux meer centraal staan, waarbij we gaan leren werken met dit OS.</p>
+</aside>
 <p><img data-src="images/tux.png" style="width:20.0%" /></p>
 </section>
-<section id="inhoud" class="slide level2" data-background="course-logo.png">
+<section id="inhoud" class="slide level2" data-background="images/title_background.png">
 <h2>Inhoud</h2>
 <ul>
 <li><strong>Historie</strong></li>
@@ -55,7 +58,7 @@ Embedded &amp; Operating Systems 1
 <section id="stukje-historie" class="slide level2">
 <h2>Stukje historie</h2>
 <aside class="notes">
-<p>Dit deel kan langer / korter afhankelijk aandacht</p>
+<p>Linux is een afstammeling van de Unix traditie van besturingssystemen, die teruggaat tot Multics dat in de jaren 60 als time sharing OS voor de Multics GE-645 (foto) werd ontwikkeld door MIT, AT&amp;T Bell Labs en General Electric. Zoals te zien waren computers toen nog grote gedrochten, en was van de personal computer nog geen sprake. Een mainframe, zoals dit type computer heette, werd door hele bedrijven of afdelingen gedeeld. Programmeurs schreven code, waarna ze moesten wachten op hun beurt om de code te draaien. Als er een fout in zat, kon de programmeur opnieuw beginnen en een nieuwe beurt afwachten. Later werd het langzaam mogelijk met meerdere terminals (werkstations) de computer tegelijk te gebruiken. In deze context werd de grondslag voor Unix gelegd.</p>
 </aside>
 <figure>
 <img data-src="images/ge645.jpg" alt="In den beginne was de mainframe" style="width:50.0%" /><figcaption>In den beginne was de mainframe</figcaption>
@@ -63,17 +66,20 @@ Embedded &amp; Operating Systems 1
 </section>
 <section id="unix" class="slide level2">
 <h2>Unix</h2>
+<aside class="notes">
+<p>De ontwikkeling van Multics schoot niet op, waardoor Bell Labs besloot haar onderzoekers terug te trekken. Een deel daarvan, met name Ken Thompson, Dennis Ritchie en Brian Kernighan, ging bij Bell Labs verder met hun werk, maar op een kleinere schaal. Het resultaat hiervan is Unix. Unix had een eigen filosofie, waarbij alles als een file gezien werd (ook, bijvoorbeeld, devices). Hierdoor werd het makkelijker programma’s aan elkaar te koppelen, met “bestanden” als koppelstukken. Dit leidde tot een filosofie van kleine, algemene programma’s die oneindig in te zetten en te combineren waren.</p>
+</aside>
 <figure>
 <img data-src="images/thompson_ritchie.jpg" alt="Thompson en Ritchie" style="width:40.0%" /><figcaption>Thompson en Ritchie</figcaption>
 </figure>
 <div style="font-size: 16px">
-<p><em>What we wanted to noteserve was not just a good environment in which to do programming, but a system around which a fellowship could form. We knew from experience that the essence of communal computing, as supplied by remote-access, time-shared machines, is not just to type programs into a terminal instead of a keypunch, but to encourage close communication.</em></p>
+<p><em>What we wanted to preserve was not just a good environment in which to do programming, but a system around which a fellowship could form. We knew from experience that the essence of communal computing, as supplied by remote-access, time-shared machines, is not just to type programs into a terminal instead of a keypunch, but to encourage close communication.</em></p>
 </div>
 </section>
 <section id="minix" class="slide level2">
 <h2>Minix</h2>
 <aside class="notes">
-<p>Boek is aanwezig in lab</p>
+<p>De volgende stap richting Linux was Minix, geschreven door Andrew S. Tanenbaum. Minix was een erg versimpelde Unix afgeleidde die vooral educatief bedoeld was. De hele source-code, gecombineerd met de theorie waarop deze gebaseerd was, was als boek te koop (in het Turing Lab ligt een exemplaar). Hoewel de source-code beschikbaar was, was het niet toegestaan deze te verbeteren of te verspreiden. Daarnaast was de code vanuit educatief perspectief erg goed, maar praktisch gezien vooral al snel verouderd.</p>
 </aside>
 <figure>
 <img data-src="images/minix.jpg" alt="Operating Systems / The Minix Book" style="width:20.0%" /><figcaption>Operating Systems / The Minix Book</figcaption>
@@ -81,6 +87,9 @@ Embedded &amp; Operating Systems 1
 </section>
 <section id="linux" class="slide level2">
 <h2>Linux</h2>
+<aside class="notes">
+<p>Linus Torvalds was een student informatica bij de Universiteit van Helsinki. Gebaseerd op het boek van Tanenbaum begon hij in 1991 met zijn eigen OS Kernel. Toen dit een beetje vorm begon te krijgen heeft hij dit op usenet beschikbaar gesteld voor wie er iets mee wilde.</p>
+</aside>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div style="text-align: left; font-size: 16px">
@@ -101,7 +110,7 @@ Embedded &amp; Operating Systems 1
 <section id="gnulinux" class="slide level2">
 <h2>GNU/Linux</h2>
 <aside class="notes">
-<p>GNU/Hurd</p>
+<p>Ondertussen was Richard M. Stallman bezig met een eigen gratis (en vooral: open source) Unix vervanger: GNU (GNU’s Not Unix). Dit was grotendeels compleet, alleen de kernel die hij ontwikkelde wilde geen kritieke massa krijgen. Omdat Linus bij zijn ontwikkeling gebruik had gemaakt van het werk dat voor GNU verzet was, was het een logische stap de twee projecten te combineren tot GNU/Linux. Hoewel we meestal gewoon Linux zeggen, is GNU/Linux de geprefereerde naam voor het hele OS. Naast GNU heeft Stallman voor meerdere belangrijke open-source projecten gezorgd, waaronder de editor Emacs; deze wordt door gebruikers als een soort religie ervaren, the Church of Emacs (compleet met holy war tegen de andere grote Linux-editor Vim). Stallman wordt daarbij doorgaans als St. IGNUcius aangeduid.</p>
 </aside>
 <div class="columns">
 <div class="column" style="width:70%;">
@@ -117,11 +126,14 @@ Embedded &amp; Operating Systems 1
 </section>
 <section id="open-source" class="slide level2">
 <h2>Open Source</h2>
+<aside class="notes">
+<p>GNU en Linux vallen beide onder de GNU Public Licence, een open source licentie. Dit houdt in dat de source code vrij beschikbaar is, mag worden aangepast en mag worden doorgegeven. Er is een grote diversiteit aan open source licenties in gebruik, en nog meer licenties die ruwweg dezelfde ideeën bevatten maar net niet aan de eisen voldoen om “open source” te mogen heten. Een deel van de open source licenties, waaronder de GPL, heeft een clausule die stelt dat hoewel je de code mag aanpassen, dat de resultaten daarvan ook onder dezelfde licentie moeten vallen. Andere open source licenties hebben deze eis niet. Merk op dat er geen verbod is op het verkopen van GPL software (of diensten daaromheen) of andere commerciële toepassingen (al zijn er licenties die dat wel hebben), zolang de source maar vrijelijk beschikbaar blijft. Later in deze les zullen we een aantal commerciële / betaalde toepassingen van Linux tegenkomen.</p>
+</aside>
 <figure>
 <img data-src="images/gpl.jpg" alt="GNU Public Licence" style="width:80.0%" /><figcaption>GNU Public Licence</figcaption>
 </figure>
 </section>
-<section id="inhoud-1" class="slide level2" data-background="course-logo.png">
+<section id="inhoud-1" class="slide level2" data-background="images/title_background.png">
 <h2>Inhoud</h2>
 <ul>
 <li>Historie</li>
@@ -134,21 +146,21 @@ Embedded &amp; Operating Systems 1
 <section id="keuzes" class="slide level2">
 <h2>Keuzes</h2>
 <aside class="notes">
-<p>korte inleiding: veel keuze systeem zelf samenstellen</p>
+<p>Een van de grote redenen van de populariteit van Linux onder IT’ers is de keuzevrijheid die het platform biedt. Omdat alle onderdelen los van elkaar bestaan en niet (zoals bij Windows en Mac) als één compleet pakket geleverd hoeven te worden heb je erg veel invloed op hoe je besturingssysteem werkt. Daarnaast zorgt het open source model (wat ook voor de meeste pakketten geldt die je bovenop Linux gebruikt) ervoor dat er veel keuzemogelijkheid is in de configuratie van de meeste software. Als een gebruiker een optie mist in software die zij gebruikt, kan ze dit (in theorie) zelf toevoegen en teruggeven aan de community, waardoor de toevoeging mogelijk in de volgende versie van het softwarepakket zal worden opgenomen. Windows (en in mindere mate Mac) wordt vaak vergeleken met een auto waarbij je de motorkap niet open mag maken. Het werkt gewoon, maar het is niet mogelijk of toegestaan zelf je handen vuil te maken. Linux (en andere open source systemen) gaan hier dus tegenin.</p>
 </aside>
+<p><img data-src="images/choices.jpg" style="width:80.0%" /></p>
 </section>
 <section id="grafische-omgeving" class="slide level2">
 <h2>Grafische Omgeving</h2>
+<aside class="notes">
+<p>Een eerste keuze die je doorgaans maakt bij het installeren van Linux is de grafische omgeving. In les 0 hebben we al gezien dat de grafische omgeving geen deel van het OS is. Hier zien we een aantal desktop environments en window managers. Desktop environments leveren een complete user experience, zoals de grafische shells bij Windows en Mac. Window managers beperken zich tot het beheren van schermen (waar staat een scherm, hoe groot is het, overlapt het met andere schermen).</p>
+</aside>
 <p><img data-src="images/gnome.jpg" alt="Gnome" style="width:30.0%" /> <img data-src="images/kde.png" alt="KDE" style="width:30.0%" /> <img data-src="images/lxde.jpg" alt="LXDE" style="width:30.0%" /> <img data-src="images/xfce.png" alt="Xfce" style="width:30.0%" /> <img data-src="images/openbox.jpg" alt="OpenBox" style="width:30.0%" /> <img data-src="images/xmonad.png" alt="xmonad" style="width:30.0%" /></p>
 </section>
 <section id="x11" class="slide level2">
 <h2>X11</h2>
 <aside class="notes">
-<ul>
-<li>Display server</li>
-<li>Alles applicaties zijn clients</li>
-<li>DS communiceert via kernel met KVM</li>
-</ul>
+<p>Deze desktop environments en window managers draaien op hun beurt weer bovenop een windowing system, doorgaans X11 (al is Wayland bezig om hier verandering in te brengen). Het windowing system levert een display server, en iedere applicatie met GUI wordt als een client gezien. Een client is in deze context een stuk software dat van een server afhankelijk is voor (een deel van) diens functionaliteiten — in dit geval voor tekenen van de interface op het beeldscherm. Ook de Window Manager (WM), panels en andere componenten van de Desktop Environment (DE) vallen hieronder. De display server krijgt input via de kernel en zorgt ervoor dat de totale inhoud van het beeldscherm bepaald wordt, die dan weer via de kernel naar de grafische kaart wordt gestuurd. X11 is overigens zonder WM of DE te gebruiken, maar dit is wel een vrij kale bedoening.</p>
 </aside>
 <figure>
 <img data-src="images/x11.png" alt="X11 zonder WM" style="width:60.0%" /><figcaption>X11 zonder WM</figcaption>
@@ -157,7 +169,7 @@ Embedded &amp; Operating Systems 1
 <section id="keuzestress" class="slide level2">
 <h2>Keuzestress</h2>
 <aside class="notes">
-<p>korte uitleg functies: - window manager: title bar, buttons - tiling wm: geen overlappende schermen, minimalistisch - composite: blur, transparantie, effecten - display manager: grafische login - desktop omgeving: alles samen op elkaar afgestemd</p>
+<p>Dus, wat hebben we allemaal nodig om een grafische omgeving te creëren? Naast het windowing system zul je een window manager willen draaien. Deze zijn ruwweg in twee categoriën te verdelen: “normale” window managers met overlappende schermen en een desktop, en “tiling” window managers die de schermen zo indeelt dat het beeld gevuld is en geen enkel scherm overlapt. De laatste categorie is doorgaans wat meer minimalistisch. Naast de window manager kan je een composite manager gebruiken (voor fancy effecten zoals transparante vensters en schaduwen) en één of meerdere bars toevoegen (zoals de taakbalk van Windows of de dock van MacOS). De desktop environment combineert een WM met bars en andere functionaliteiten (al kun je ook een desktop omgeving gebruiken met bijvoorbeeld een andere WM, de combinaties zijn eindeloos). Tot slot heb je doorgaans een display manager nodig; deze levert een login scherm en maakt een sessie als de gebruiker is ingelogd. De display manager is niet per sé noodzakelijk om X11 te gebruiken, het is ook mogelijk eerst in te loggen (via de command line) en later een X sessie te starten.</p>
 </aside>
 <ul>
 <li>Windowing Systems (X11, Wayland)</li>
@@ -171,7 +183,7 @@ Embedded &amp; Operating Systems 1
 <li>Display Managers (KDM, GDM, LXDM, LightDM, slim, …)</li>
 </ul>
 </section>
-<section id="inhoud-2" class="slide level2" data-background="course-logo.png">
+<section id="inhoud-2" class="slide level2" data-background="images/title_background.png">
 <h2>Inhoud</h2>
 <ul>
 <li>Historie</li>
@@ -184,11 +196,7 @@ Embedded &amp; Operating Systems 1
 <section id="terminals" class="slide level2">
 <h2>Terminals</h2>
 <aside class="notes">
-<ul>
-<li>Terminals als printer, scherm mainframe</li>
-<li>Kernel level virtual terminal: Control Alt F1 etc</li>
-<li>Terminal emulator: terminal in X</li>
-</ul>
+<p>Naast een grafische omgeving zul je als power user op Linux veel tijd doorbrengen in de terminal: het tekst-scherm waar je commando’s in typt en resultaten te zien krijgt. Dit kan een zogenaamde kernel-level virtuele terminal zijn (virtueel, in tegenstelling tot de fysieke terminals van de oude mainframes) zoals tijdens het opstarten op vol scherm voorbij komt, maar meestal wil je een terminal binnen X11 tot je beschikking hebben. Ook hier is weer een opeenstapeling van applicaties die je naar eigen keuze kan combineren. De zogenaamde “terminal emulator” levert het venster en tekent de terminal daarbinnen, maar doet verder niets met de interactie die je met de terminal zelf hebt: alles dat je intypt wordt naar de shell verstuurd, daar behandeld, en het resultaat wordt weer door je terminal emulator getekend. Emuleren betekent nadoen (deze term zullen we vaker tegenkomen), en een terminal emulator doet een ouderwetse Unix-terminal na. De terminal zelf is in principe een dom ding, en dat is bewust: de virtuele terminal is gebaseerd op de terminal van een mainframe, wat in essentie niet meer was dan een toetsenbord en primitief scherm (of in het begin zelfs een soort printer), en de terminal emulator is daar weer een afgeleidde van. Een kernel-level virtuele terminal bestaat niet als GUI applicatie binnnen X11, maar wordt door de kernel zelf geleverd en is te bereiken met Control-Alt-[F1-F6]. Doorgaans brengt Control-Alt-F7 je weer terug naar de grafische omgeving (ook een soort terminal, maar met GUI in plaats van text-based interface). Het is overigens ook mogelijk binnen de andere virtuele terminals een grafische omgeving op te starten. Bij sommige distributies zijn er meer dan zes kernel-level terminals beschikbaar, en schuift de GUI op naar f8 of verder — F7 is niet “speciaal” voor de GUI.</p>
 </aside>
 <ul>
 <li>Kernel Level Virtual Terminal</li>
@@ -205,10 +213,7 @@ Embedded &amp; Operating Systems 1
 <section id="shells" class="slide level2">
 <h2>Shells</h2>
 <aside class="notes">
-<ul>
-<li>Shell: interpreteren commando’s</li>
-<li>Les 3/5: Bash</li>
-</ul>
+<p>Het echte werk gebeurt binnen de shell: dit stukje software levert een command prompt en reageert op je input door programma’s of built-in functies te gebruiken. Denk aan de interactieve python sessie: dit is ook een soort van shell, alleen levert deze andere functionaliteit en is deze niet voor algemeen gebruik gemaakt.</p>
 </aside>
 <ul>
 <li>Sh</li>
@@ -219,9 +224,19 @@ Embedded &amp; Operating Systems 1
 <li>Debian Almquist Shell (Dash)</li>
 <li>…</li>
 </ul>
+<pre><code>user@pi:~$ uname -sr
+Linux 4.17.19
+user@pi:~$ python
+Python 3.6.6 (default, Jun 27 2018, 05:47:41)
+[GCC 7.3.0] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; _</code></pre>
 </section>
 <section id="extra-terminal-multiplexers" class="slide level2">
 <h2>Extra: Terminal Multiplexers</h2>
+<aside class="notes">
+<p>Tussen de terminal emulator en de shell kun je nog een laag toevoegen: de terminal multiplexer. Deze staat je toe je terminal te splitsen, tabs aan te maken binnen de terminal (soms levert de emulator dit ook, dan heb je 2 niveaus van tabs) en de sessie los te koppelen en deze bijvoorbeeld in een ander venster weer aan te koppelen. Dat laatste is bijvoorbeeld zinvol als je via een SSH (SSH is wat je gebruikt om met Putty op je Pi in te loggen: een soort remote desktop, maar dan in de terminal) verbinding van een afstand op je computer inlogt: zodra je verbinding verbroken wordt is de sessie beëindigd. Met een terminal multiplexer wordt deze losgekoppeld, en kan je in een volgende SSH verbinding (of in een terminal emulator) verder waar je gebleven was.</p>
+</aside>
 <ul>
 <li>Meerdere shells (tabs, sessies) binnen één terminal</li>
 <li>Meerdere shells naast / onder elkaar (splits)</li>
@@ -233,18 +248,14 @@ Embedded &amp; Operating Systems 1
 <section id="terminals-1" class="slide level2">
 <h2>Terminals</h2>
 <aside class="notes">
-<ul>
-<li>demo eerst tabs in emulator</li>
-<li>later tmux tabs en splits</li>
-<li>elk tab/split is eigen shell</li>
-</ul>
+<p>In de screencast hieronder zie je de verschillende lagen. Eerst wordt binnen de terminal emulator een nieuw tabblad aangemaakt. Later wordt <code>tmux</code> (een terminal multiplexer) gebruikt om tabs en splits te realiseren. Ieder tabblad en iedere split heeft een eigen shell, was te zien is bij het <code>ps -a</code> commando: dit geeft een lijst processen en op welke terminal deze vanuit het systeem gezien draaien. Tot slot starten we verschillende shells in elkaar (een shell is immers ook gewoon een programma). Het enige verschil dat zo te zien is, is het commando-prompt, maar natuurlijk zijn er meer verschillen tussen de verschillende shells. Voor alle beschreven lagen (terminal emulator, multiplexer en shell) bestaan binnen de Linux wereld verschillende keuzes, die elk weer naar wens te customiseren zijn.</p>
 </aside>
 <video controls="1">
 <source src="images/terms.webm" data-external="1" type="video/webm">
 </source>
 </video>
 </section>
-<section id="inhoud-3" class="slide level2" data-background="course-logo.png">
+<section id="inhoud-3" class="slide level2" data-background="images/title_background.png">
 <h2>Inhoud</h2>
 <ul>
 <li>Historie</li>
@@ -257,7 +268,7 @@ Embedded &amp; Operating Systems 1
 <section id="distros" class="slide level2">
 <h2>Distro’s</h2>
 <aside class="notes">
-<p>Distro = bundel software, ready-to-go als Windows / MacOS</p>
+<p>Naast de grafische omgeving en de terminals zijn voor bijna ieder stuk software in Linux verschillende alternatieven beschikbaar. Omdat het wat omslachtig is die keuze voor elk deel afzonderlijk te maken, en alles zelf te installeren, wordt Linux meestal gebruikt in de vorm van distributies of distro’s. Een distributie is een verzameling software, die (meestal met een vriendelijke installer) in een keer geïnstalleerd kan worden. De maker van de distributie maakt de keuzes welke software standaard geïnstalleerd is (of biedt meerdere keuzes aan). De gebruiker kan hierna nog zelf software installeren om het systeem aan de wensen aan te passen, maar er is vast een basis. Ook zorgt dit systeem ervoor dat je met periodieke updates aan je distributie je hele systeem up-to-date kan houden. Een distro vergelijkt zich dus meer met Windows of MacOS als compleet software pakket.</p>
 </aside>
 <figure>
 <img data-src="images/distros.png" alt="Enkele grote distro’s" style="width:75.0%" /><figcaption>Enkele grote distro’s</figcaption>
@@ -266,15 +277,12 @@ Embedded &amp; Operating Systems 1
 <section id="package-managers" class="slide level2">
 <h2>Package Managers</h2>
 <aside class="notes">
-<ul>
-<li>Installeren software</li>
-<li>Bijhouden afhankelijkheden</li>
-</ul>
+<p>De meeste distro’s worden geleverd met een package manager: een systeem dat bijhoudt welke software (en welke versies) geïnstalleerd zijn, en die je kan gebruiken om zelf software aan je installatie toe te voegen of te verwijderen. De package manager houdt in de gaten of je alle benodigdheden hebt geïnstalleerd, en zal indien nodig extra software installeren om een werkend systeem op te leveren. In Debian-afgeleidden heet de package manager <code>apt</code>, en kun je software via de command line installeren. Andere distributies gebruiken afgeleiden van <code>rpm</code> zoals <code>yum</code>, of een eigen package manager. In het voorbeeld wordt <code>htop</code> geinstalleerd, een soort Windows taakbeheer voor de Linux command-line.</p>
 </aside>
 <p><embed data-src="images/apt.webm" style="width:75.0%" /> <video controls="1"> <source src="images/apt.webm"
           data-external="1" type="video/webm"> </source> </video></p>
 </section>
-<section id="inhoud-4" class="slide level2" data-background="course-logo.png">
+<section id="inhoud-4" class="slide level2" data-background="images/title_background.png">
 <h2>Inhoud</h2>
 <ul>
 <li>Historie</li>
@@ -287,7 +295,7 @@ Embedded &amp; Operating Systems 1
 <section id="raspbian-op-de-pi" class="slide level2">
 <h2>Raspbian op de Pi</h2>
 <aside class="notes">
-<p>Bekend van CSN / PTW</p>
+<p>Bekend van CSN, dit draait op de Raspberry Pi. Raspbian is een R-Pi versie van de populaire distributie Debian.</p>
 </aside>
 <figure>
 <img data-src="images/raspbian.png" alt="Raspbian" style="width:50.0%" /><figcaption>Raspbian</figcaption>
@@ -296,10 +304,7 @@ Embedded &amp; Operating Systems 1
 <section id="lubuntu-vm" class="slide level2">
 <h2>(L)Ubuntu VM</h2>
 <aside class="notes">
-<ul>
-<li>VM beschikbaar, link op canvas</li>
-<li>practica getest op deze VM</li>
-</ul>
+<p>Voor dit vak is een VirtualBox VM beschikbaar met LUbuntu Linux (link op Canvas). Je kan deze gebruiken voor de practica, maar als je zelf een Linux systeem of VM hebt mag dit natuurlijk ook. De VM is te gebruiken als fallback, de opdrachten zijn op dit systeem getest. Je kan de image naar eigen wensen aanpassen. Let erop dat het sneller is om Linux direct op een computer of laptop te draaien: door het virtualiseren (gebruik van een VM) wordt alles een stuk langzamer. Ook is er bij de VM gekozen voor een vrij basic werkomgeving, ook weer vanwege de performance in de VM. De omgeving is dezelfde als die op de Raspberry Pi standaard geinstalleerd staat — die is namelijk ook niet zo snel. Voel je vrij het systeem naar je wensen aan te passen, maar hou er rekening mee dat alles binnen de VM wat trager werkt als je de meest flitsende werkomgeving installeert — dan kun je beter Linux op een fysieke computer draaien.</p>
 </aside>
 <figure>
 <img data-src="images/lubuntu.jpg" alt="Lubuntu" style="width:75.0%" /><figcaption>Lubuntu</figcaption>
@@ -308,15 +313,15 @@ Embedded &amp; Operating Systems 1
 <section id="gentoo-les-9" class="slide level2">
 <h2>Gentoo (Les 9)</h2>
 <aside class="notes">
-<ul>
-<li>moeilijke distro</li>
-<li>installeren in VM is een huiswerkopdracht</li>
-</ul>
+<p>In opdracht 3 zullen we zelf een tweede Linux VM installeren: Gentoo. Gentoo is wat minder toegankelijk dan de meeste distro’s: in plaats van een mooie installer moet je zelf de bestanden op de juiste plek zetten en software compileren. Dit maakt het wel een goede oefening om kennis te maken met hoe een Linux systeem in elkaar zit. Gentoo heeft de naam erg moeilijk te zijn (en dat is niet geheel onterecht), met eigenlijk alleen Linux From Scratch als overtreffende trap.</p>
 </aside>
 <p><img data-src="images/iceberg.png" style="width:30.0%" /></p>
 </section>
 <section id="andere-open-source-unix-opties" class="slide level2">
 <h2>Andere open-source Unix opties</h2>
+<aside class="notes">
+<p>We hebben nu een hele verzameling gezien van keuzes die je kan maken om een Linux systeem te configureren. Ook Linux is deel van een groter ecosysteem, en niet de enige keuze als je een open-source Unix systeem wil. Alle Unix-achtige systemen hebben een hoge mate van compatibiliteit, waardoor software die hierboven beschreven is vaak ook voor andere, minder gebruikte Unix-varianten beschikbaar is. Andere Unices leggen de focus bijvoorbeeld op veiligheid, en er zijn versies van Unix die commercieel geproduceerd worden (MacOS heeft bijvoorbeeld als basis de open-source Darwin-kernel).</p>
+</aside>
 <ul>
 <li>BSD (FreeBSD, OpenBSD, …)</li>
 <li>GNU Hurd</li>
