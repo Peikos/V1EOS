@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="328.05222mm"
+   height="96.320877mm"
+   viewBox="0 0 328.05221 96.320877"
+   version="1.1"
+   id="svg3970"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="Memory Stack Reader.svg"
+   inkscape:export-filename="/home/peikos/Work/V1EOS/Slides/images/Memory Stack.png"
+   inkscape:export-xdpi="149.86"
+   inkscape:export-ydpi="149.86">
+  <defs
+     id="defs3964">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1943"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1941" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1939"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1937" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4809"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path4807"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker4695"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4693"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path2363"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="569.95834"
+     inkscape:cy="162.68904"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g1881"
+     showgrid="false"
+     inkscape:window-width="1870"
+     inkscape:window-height="1125"
+     inkscape:window-x="1945"
+     inkscape:window-y="50"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata3967">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(42.754013,-147.82542)">
+    <rect
+       y="147.82542"
+       x="-42.754013"
+       height="96.320877"
+       width="328.05222"
+       id="rect5180"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       id="g1827"
+       transform="translate(-7.9375105)">
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="rect3950"
+         d="M 93.660805,167.6758 H 148.86757 V 156.89924 H 93.660805 Z"
+         style="opacity:1;fill:#888888;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text3954"
+         y="163.07703"
+         x="121.26478"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="163.07703"
+           x="121.26478"
+           id="tspan3952"
+           sodipodi:role="line"><tspan
+   id="tspan4612"
+   style="font-style:italic">main</tspan> frame</tspan></text>
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="rect3956"
+         d="m 93.660805,-174.60399 h 55.206765 v 5.48488 H 93.660805 Z"
+         style="opacity:1;fill:#888888;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         transform="scale(1,-1)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="121.26478"
+         y="172.65106"
+         id="text3960"><tspan
+           sodipodi:role="line"
+           id="tspan3958"
+           x="121.26478"
+           y="172.65106"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"><tspan
+   id="tspan4610"
+   style="font-style:italic">printWelcome</tspan> frame</tspan></text>
+      <rect
+         transform="scale(1,-1)"
+         style="opacity:1;fill:#000000;fill-opacity:0.92222218;stroke:none;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect3962"
+         width="55.20676"
+         height="0.72530311"
+         x="93.660805"
+         y="-154.9758" />
+      <g
+         id="g3948"
+         transform="matrix(0.50565897,0,0,1.2244098,65.463011,180.24436)"
+         style="stroke-width:1.27088952">
+        <rect
+           style="opacity:1;fill:none;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.33625615;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect3946"
+           width="127"
+           height="72.382439"
+           x="46.869045"
+           y="-23.334822" />
+      </g>
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="rect4614"
+         d="m 93.660805,-184.65818 h 55.206765 v 8.65989 H 93.660805 Z"
+         style="opacity:1;fill:#888888;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         transform="scale(1,-1)" />
+      <text
+         id="text4620"
+         y="181.11777"
+         x="121.26478"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="181.11777"
+           x="121.26478"
+           id="tspan4618"
+           sodipodi:role="line"><tspan
+   style="font-style:italic"
+   id="tspan4616">printChar</tspan> frame</tspan></text>
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="rect4622"
+         d="m 93.660805,-195.77069 h 55.206765 v 9.71821 H 93.660805 Z"
+         style="opacity:1;fill:#1a1a1a;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         transform="scale(1,-1)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="121.26478"
+         y="191.70111"
+         id="text4628"><tspan
+           sodipodi:role="line"
+           id="tspan4626"
+           x="121.26478"
+           y="191.70111"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">syscall frame</tspan></text>
+      <g
+         transform="translate(68.628418,128.1782)"
+         id="g898">
+        <text
+           transform="rotate(-90)"
+           id="text869"
+           y="17.334723"
+           x="-81.410439"
+           style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';stroke-width:0.26458332"
+             y="17.334723"
+             x="-81.410439"
+             id="tspan867"
+             sodipodi:role="line">Stack Space</tspan></text>
+        <path
+           inkscape:connector-curvature="0"
+           id="path4657"
+           d="M 16.151061,52.559554 V 25.298062"
+           style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker4695)"
+           d="M 16.151061,82.991938 V 110.25343"
+           id="path4691"
+           inkscape:connector-curvature="0" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4805"
+           d="m 94.63187,69.311083 -10.788067,-3e-6"
+           style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker4809)" />
+      </g>
+      <text
+         id="text5155"
+         y="200.16774"
+         x="158.05511"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:start;text-anchor:start;stroke-width:0.26458332"
+           y="200.16774"
+           x="158.05511"
+           id="tspan5153"
+           sodipodi:role="line">Stack Pointer (SP)</tspan></text>
+    </g>
+    <g
+       id="g1881"
+       transform="translate(-121.70835)">
+      <path
+         style="opacity:1;fill:#888888;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 93.660805,167.6758 H 148.86757 V 156.89924 H 93.660805 Z"
+         id="path1829"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="121.26478"
+         y="163.07703"
+         id="text1835"><tspan
+           sodipodi:role="line"
+           id="tspan1833"
+           x="121.26478"
+           y="163.07703"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"><tspan
+   style="font-style:italic"
+   id="tspan1831">main</tspan> frame</tspan></text>
+      <path
+         transform="scale(1,-1)"
+         style="opacity:1;fill:#888888;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 93.660805,-174.60399 h 55.206765 v 5.48488 H 93.660805 Z"
+         id="path1837"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <text
+         id="text1843"
+         y="172.65106"
+         x="121.26478"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="172.65106"
+           x="121.26478"
+           id="tspan1841"
+           sodipodi:role="line"><tspan
+   style="font-style:italic"
+   id="tspan1839">printWelcome</tspan> frame</tspan></text>
+      <rect
+         y="-154.9758"
+         x="93.660805"
+         height="0.72530311"
+         width="55.20676"
+         id="rect1845"
+         style="opacity:1;fill:#000000;fill-opacity:0.92222218;stroke:none;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         transform="scale(1,-1)" />
+      <g
+         style="stroke-width:1.27088952"
+         transform="matrix(0.50565897,0,0,1.2244098,65.463011,180.24436)"
+         id="g1849">
+        <rect
+           y="-23.334822"
+           x="46.869045"
+           height="72.382439"
+           width="127"
+           id="rect1847"
+           style="opacity:1;fill:none;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.33625615;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      </g>
+      <path
+         transform="scale(1,-1)"
+         style="opacity:1;fill:#888888;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 93.660805,-184.65818 h 55.206765 v 8.65989 H 93.660805 Z"
+         id="path1851"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="121.26478"
+         y="181.11777"
+         id="text1857"><tspan
+           sodipodi:role="line"
+           id="tspan1855"
+           x="121.26478"
+           y="181.11777"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"><tspan
+   id="tspan1853"
+   style="font-style:italic">printChar</tspan> frame</tspan></text>
+      <g
+         id="g1875"
+         transform="translate(68.628418,128.1782)">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="-81.410439"
+           y="17.334723"
+           id="text1867"
+           transform="rotate(-90)"><tspan
+             sodipodi:role="line"
+             id="tspan1865"
+             x="-81.410439"
+             y="17.334723"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';stroke-width:0.26458332">Stack Space</tspan></text>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+           d="M 16.151061,52.559554 V 25.298062"
+           id="path1869"
+           inkscape:connector-curvature="0" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path1871"
+           d="M 16.151061,82.991938 V 110.25343"
+           style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker4695)" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1939)"
+           d="m 94.63187,58.198582 -10.788067,-3e-6"
+           id="path1873"
+           inkscape:connector-curvature="0" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="158.05511"
+         y="189.05524"
+         id="text1879"><tspan
+           sodipodi:role="line"
+           id="tspan1877"
+           x="158.05511"
+           y="189.05524"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:start;text-anchor:start;stroke-width:0.26458332">Stack Pointer (SP)</tspan></text>
+    </g>
+    <g
+       transform="translate(105.83332)"
+       id="g1935">
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path1883"
+         d="M 93.660805,167.6758 H 148.86757 V 156.89924 H 93.660805 Z"
+         style="opacity:1;fill:#888888;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text1889"
+         y="163.07703"
+         x="121.26478"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="163.07703"
+           x="121.26478"
+           id="tspan1887"
+           sodipodi:role="line"><tspan
+   id="tspan1885"
+   style="font-style:italic">main</tspan> frame</tspan></text>
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path1891"
+         d="m 93.660805,-174.60399 h 55.206765 v 5.48488 H 93.660805 Z"
+         style="opacity:1;fill:#888888;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         transform="scale(1,-1)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="121.26478"
+         y="172.65106"
+         id="text1897"><tspan
+           sodipodi:role="line"
+           id="tspan1895"
+           x="121.26478"
+           y="172.65106"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"><tspan
+   id="tspan1893"
+   style="font-style:italic">printWelcome</tspan> frame</tspan></text>
+      <rect
+         transform="scale(1,-1)"
+         style="opacity:1;fill:#000000;fill-opacity:0.92222218;stroke:none;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1899"
+         width="55.20676"
+         height="0.72530311"
+         x="93.660805"
+         y="-154.9758" />
+      <g
+         id="g1903"
+         transform="matrix(0.50565897,0,0,1.2244098,65.463011,180.24436)"
+         style="stroke-width:1.27088952">
+        <rect
+           style="opacity:1;fill:none;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.33625615;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect1901"
+           width="127"
+           height="72.382439"
+           x="46.869045"
+           y="-23.334822" />
+      </g>
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path1905"
+         d="m 93.660805,-184.65818 h 55.206765 v 8.65989 H 93.660805 Z"
+         style="opacity:1;fill:#888888;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         transform="scale(1,-1)" />
+      <text
+         id="text1911"
+         y="181.11777"
+         x="121.26478"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           y="181.11777"
+           x="121.26478"
+           id="tspan1909"
+           sodipodi:role="line"><tspan
+   style="font-style:italic"
+   id="tspan1907">printChar</tspan> frame</tspan></text>
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path1913"
+         d="m 93.660805,-195.77069 h 55.206765 v 9.71821 H 93.660805 Z"
+         style="opacity:1;fill:#333333;fill-opacity:0.28235294;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         transform="scale(1,-1)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="121.26478"
+         y="191.70111"
+         id="text1917"><tspan
+           sodipodi:role="line"
+           id="tspan1915"
+           x="121.26478"
+           y="191.70111"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:center;text-anchor:middle;stroke-width:0.26458332">syscall frame</tspan></text>
+      <g
+         transform="translate(68.628418,128.1782)"
+         id="g1929">
+        <text
+           transform="rotate(-90)"
+           id="text1921"
+           y="17.334723"
+           x="-81.410439"
+           style="font-style:normal;font-weight:normal;font-size:5.05838156px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';stroke-width:0.26458332"
+             y="17.334723"
+             x="-81.410439"
+             id="tspan1919"
+             sodipodi:role="line">Stack Space</tspan></text>
+        <path
+           inkscape:connector-curvature="0"
+           id="path1923"
+           d="M 16.151061,52.559554 V 25.298062"
+           style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker4695)"
+           d="M 16.151061,82.991938 V 110.25343"
+           id="path1925"
+           inkscape:connector-curvature="0" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path1927"
+           d="m 94.63187,58.198582 -10.788067,-3e-6"
+           style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1943)" />
+      </g>
+      <text
+         id="text1933"
+         y="189.05524"
+         x="158.05511"
+         style="font-style:normal;font-weight:normal;font-size:2.41444874px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir LT 45 Book';-inkscape-font-specification:'Avenir LT 45 Book, ';text-align:start;text-anchor:start;stroke-width:0.26458332"
+           y="189.05524"
+           x="158.05511"
+           id="tspan1931"
+           sodipodi:role="line">Stack Pointer (SP)</tspan></text>
+    </g>
+  </g>
+</svg>
