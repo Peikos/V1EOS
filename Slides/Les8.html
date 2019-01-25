@@ -134,14 +134,14 @@ Embedded &amp; Operating Systems 8
 <aside class="notes">
 <p>De boot-sector bevat instructies die nodig zijn om een programma op te starten. Doorgaans is dit programma het OS, maar als een eenvoudig systeem een enkele applicatie moet draaien en geen OS functionaliteit nodig heeft kan deze ook in de plaats van het OS staan. Zodra de BIOS een boot-device geselecteerd heeft wordt de eerste sector (512 bytes) naar het geheugen geplaatst (bij IBM-compatible PCs naar het geheugenadres <code>0x7c00</code>). Deze sector bevat de instructies die nodig zijn om de volgende fase van het boot-proces te laden, en eindigt altijd op de hexadecimale code <code>0x55aa</code>: dit <em>boot sector signature</em> geeft aan dat de instructies als boot-instructie bedoeld zijn, en veilig kunnen worden uitgevoerd. De boot-sector is doorgaans helemaal aan het begin van de harde schijf te vinden, zoals te zien op de afbeelding. Voor de SSD ziet dit er natuurlijk anders uit, maar ook hier vormt de boot-sector het begin van de schijfruimte.</p>
 </aside>
-<p><img data-src="images/bootsectors.png" style="width:40.0%" /></p>
+<p><img data-src="../Images/bootsectors.png" style="width:40.0%" /></p>
 </section>
 <section id="nd-stage-bootloader" class="slide level2">
 <h2>2nd-stage bootloader</h2>
 <aside class="notes">
 <p>Omdat de eerste sector (van 512 bytes) ook nog eens informatie over de partitie-indeling van een schijf kan moeten bevatten, en daarmee erg weinig ruimte overblijft om een heel besturingssyteem mee te kunnen laden, wordt het boot-proces vaak in 2 trappen gedaan. De first-stage bootloader bevat alles dat nodig is om de second-stage bootloader te laden, die vervolgens in staat is om een OS te laden en de uitvoering ervan te starten. Tijdens de installatie van de Gentoo VM ben je al een van deze bootloaders tegengekomen: vermoedelijk was dat Grub, al zijn LiLo (Linux Loader) en Syslinux ook mogelijkheden. Ook op Windows wordt een second-stage bootloader gebruikt, doorgaans BOOTMGR of voor oudere versies NTLDR.</p>
 </aside>
-<p><img data-src="images/grub.jpg" style="width:40.0%" /> <img data-src="images/winboot.png" style="width:34.0%" /></p>
+<p><img data-src="../Images/grub.jpg" style="width:40.0%" /> <img data-src="../Images/winboot.png" style="width:34.0%" /></p>
 </section>
 <section id="inhoud-1" class="slide level2" data-background="images/title_background.png">
 <h2>Inhoud</h2>
@@ -156,14 +156,14 @@ Embedded &amp; Operating Systems 8
 <aside class="notes">
 <p>Aan het einde van deze les gaan we zien wat er nodig is om een eigen first-stage bootloader operationeel te krijgen. Om dit te kunnen volgen missen we echter nog wat kennis over het compilen van code, dus hier zullen we eerst even naar kijken. Het eerste onderscheid dat we moeten maken, is dat tussen compilation van code en interpretation van scripts. Dit onderscheid bepaalt hoe een programma van de programmeur naar de eindgebruiker gaat. Python, waar je in het eerste semester kennis mee hebt gemaakt, is een voorbeeld van een interpreted language: de code wordt als een tekst-bestand verspreid, en de Python-interpreter is nodig om het script uit te voeren. Wat de interpreter doet, is regel voor regel door het script heen lopen, en deze on-the-fly naar machine-code vertalen. Dit is heel anders dan bijvoorbeeld C++, waar je een compiler gebruikt om de hele source in een keer naar machine-code te vertalen. Dit resulteert in een binair bestand, dat vervolgens in het geheugen van een computer kan worden geladen om deze uit te voeren. We zullen eerst nauwkeurig kijken naar compilation (en de andere stappen die hierbij komen kijken), waarna we ook de eigenschappen van interpretation en JIT (Just-In-Time) compilation kort zullen behandelen. Het is belangrijk om hierbij te onthouden dat hoewel de meeste talen <em>doorgaans</em> compiled of interpreted gebruit worden, dit geen noodzakelijke eigenschap van de taal zelf is: Python, bijvoorbeeld, kan zowel interpreted als JIT gebruikt worden. De programmeertaal dicteert de syntax: wat is een geldig programma en hoe wordt deze naar machine-code vertaald. Of dit in een keer van te voren, of on-the-fly gebeurt hangt vaak wel samen met de programmeertaal, maar dit is zeker niet een één-op-één-relatie.</p>
 </aside>
-<p><img data-src="images/xkcd-compiling.png" style="width:40.0%" /></p>
+<p><img data-src="../Images/xkcd-compiling.png" style="width:40.0%" /></p>
 </section>
 <section id="compilation" class="slide level2">
 <h2>Compilation</h2>
 <aside class="notes">
 <p>Bij compilation wordt de source-code door de compiler vertaalt naar machine-code, met als resultaat een executable. Deze executable kan verspreid worden, zonder dat de source-code meegedeeld hoeft te worden. Bij open-source software is dit logischerwijs wel het geval, maar van veel closed-source software is de broncode een (soms zwaar verdedigd) bedrijfsgeheim. Het voordeel van compiled code is dat deze vele malen sneller is. Allereerst is het vertalen al gebeurd, wat een hoop tijd scheelt. Daarnaast kan compiled code verder geoptimaliseerd worden, waar doorgaans de meeste winst behaald wordt. Hier staat tegenover dat het ontwikkelen wel iets trager gaat: het compilen van een fors programma kan minuten tot uren duren, waardoor het lang duurt voor er feedback is of de nieuwe code werkt, waarna je voor een kleine aanpassing opnieuw moet compilen. De compiler zal de meeste syntax- en typefouten gelukkig snel vinden, waardoor het proces vroeg beëindigd kan worden, maar valide code die niet het juiste resultaat levert wordt vaak niet door de compiler gevonden. Een ander nadeel is dat de binary executables die een compiler genereert platform- en CPU specifiek zijn. Een programma dat op Linux is gecompileerd zal niet zonder meer werken op een Windows systeem. Hetzelfde geldt voor processor-architecturen: een programma dat is gecompileerd voor een Intel x86-64 CPU (gebruikelijk voor PCs en laptops) werkt niet op een ARM computer (waaronder de meeste tablets, smartphones en sommige netbooks). Hoewel er “compatibiliteitslagen” bestaan om bijvoorbeeld Windows-binaries op Linux te draaien, werkt dit lang niet altijd 100% en kan dit de performance behoorlijk beïnvloeden. In de praktijk betekent dit dat cross-platform software voor verschillende OS en CPU combinaties gecompileerd moet worden.</p>
 </aside>
-<p><img data-src="images/cpp-compilation.png" /></p>
+<p><img data-src="../Images/cpp-compilation.png" /></p>
 </section>
 <section id="compilation-1" class="slide level2">
 <h2>Compilation</h2>
@@ -180,7 +180,7 @@ Embedded &amp; Operating Systems 8
 <aside class="notes">
 <p>Tijdens het compileer-proces kan de compiler je code proberen te optimaliseren. Bij C++ zijn hier bijvoorbeeld meerdere flags voor die je aan de compiler meegeeft: <code>-O</code> voert de meest gangbare optimalisatie-technieken uit. Met de flag <code>-O2</code> kun je nog wat aggressiever optimaliseren, en <code>-O3</code> gaat nog verder. Optimaliseren kost tijd tijdens het compilatie-proces, en kan in uitzonderlijke gevallen problemen in het leven roepen. Daarnaast wordt de uiteindelijke lijst instructies moeilijker te interpreteren. Op https://godbolt.org kun je experimenteren met verschillende optimalisatie-flags. Je C++-code wordt hier live naar assembly vertaald (als tussenstap naar hexadecimale machine-code) zodat je kan zien wat er gebeurt. Bij compiler-options kun je flags zoals <code>-O</code> invullen.</p>
 </aside>
-<p><img data-src="images/optimise.jpg" style="width:50.0%" /></p>
+<p><img data-src="../Images/optimise.jpg" style="width:50.0%" /></p>
 </section>
 <section id="linking" class="slide level2">
 <h2>Linking</h2>
@@ -196,7 +196,7 @@ Embedded &amp; Operating Systems 8
 </section>
 <section id="linking-1" class="slide level2">
 <h2>Linking</h2>
-<p><img data-src="images/cpp-compilation.png" /></p>
+<p><img data-src="../Images/cpp-compilation.png" /></p>
 </section>
 <section id="makefiles" class="slide level2">
 <h2>Makefiles</h2>
@@ -500,14 +500,14 @@ Displaying notes found in: .note.ABI-tag
 <aside class="notes">
 <p>Tot nu toe hebben we bij compilation gezien dat de compiler code omzet in binary executables voor hetzelfde platform als waar de compiler op draait. Bij cross compilation is dit niet het geval: de compiler, draaiend op platform A, maakt executables voor platform B. Dit is bijvoorbeeld nodig bij microcontrollers, waar het doelplatform niet de capaciteit heeft om een compiler te draaien. Ook is cross compilation handig om voor meerder platformen te ontwikkelen, of om gebruik te maken van een server farm. Een platform is hier de combinatie van een processor-architectuur en een OS. In het compilen van OSs is cross-compilation een gegeven, tenzij het OS ver genoeg ontwikkeld is dat het zelf een compiler kan draaien. Bij cross-compilation komen extra uitdagingen kijken, omdat de meeste compilers ervan uit gaan dat binary tools en libraries voor het doel-platform op het build-platform aanwezig zijn. GCC heeft bijvoorbeeld de gecompileerde <em>binutils</em> nodig, die dus eerst gecompileerd moeten worden voor dezelfde target en in de PATH beschikbaar moeten zijn. In het vak CPSE1 zullen jullie zelf met cross-compilation moeten werken: van de computer naar de Arduino.</p>
 </aside>
-<p><img data-src="images/cross1.png" style="width:50.0%" /> <img data-src="images/cross2.png" style="width:50.0%" /></p>
+<p><img data-src="../Images/cross1.png" style="width:50.0%" /> <img data-src="../Images/cross2.png" style="width:50.0%" /></p>
 </section>
 <section id="interpretation" class="slide level2">
 <h2>Interpretation</h2>
 <aside class="notes">
 <p>Tegenover compilation vinden we interpretation. Interpretation heeft globaal dezelfde voordelen als compilation nadelen heeft, en vice versa. Interpreted scripts zijn van nature redelijk cross-platform (de code zelf moet dit natuurlijk ook zijn, een Python script dat direct van Windows system-calls gebruikt maakt werkt niet op Linux) en makkelijk / snel te debuggen. Daar staat tegenover dat de scripts zelf een stuk minder snel uitvoeren, en dat het lastig is de source-code verborgen te houden. Voor dat laatste zijn er tools om je code zo onleesbaar mogelijk te maken, maar dit is nog altijd makkelijker ongedaan te maken dan het decompilen van een binary.</p>
 </aside>
-<p><img data-src="images/python-interpretation.png" /></p>
+<p><img data-src="../Images/python-interpretation.png" /></p>
 </section>
 <section id="interpretation-1" class="slide level2">
 <h2>Interpretation</h2>
@@ -524,7 +524,7 @@ Displaying notes found in: .note.ABI-tag
 <aside class="notes">
 <p>Om de voordelen van compilation en interpretation zoveel mogelijk te combineren kan gebruik worden gemaakt van Just-In-Time (JIT) compilation. Hierbij wordt de code door een compiler vertaald naar een <em>Intermediate Language</em> ofwel <em>bytecode</em>, die op een lichtgewicht virtuele machine draait. De code wordt als het ware “half” gecompiled, en het resultaat is cross-platform zolang de virtuele machine aanwezig is. Bytecode is vergelijkbaar met assembly: een complex programma is vertaald naar simpele instructies die een-voor-een afgehandeld kunnen worden. Het voornaamste verschil is dat de bytecode niet specifiek voor een CPU is, maar voor een virtuele machine. JIT-compiled software is sneller en beter te optimaliseren dan interpreted code, maar nog altijd minder snel dan compiled code. Net als bij compilation moet tijdens het programmeren herhaaldelijk gecompileerd worden. Omdat de bytecode een soort van assembly voor een virtuele machine is, blijft ook de source code standaard verborgen. JIT wordt vooral geassocieerd met talen als Java (op de JVM, de Java Virtual Machine) en C# (op de .NET virtual machine), maar ook talen als Python ondersteunen hun eigen vorm van bytecode. Daarnaast is het voor veel scriptingtalen (zoals Python en Ruby) mogelijk om te compilen naar .NET of de JVM.</p>
 </aside>
-<p><img data-src="images/java-jit.png" /></p>
+<p><img data-src="../Images/java-jit.png" /></p>
 </section>
 <section id="jit-compilation-1" class="slide level2">
 <h2>JIT compilation</h2>
@@ -607,7 +607,7 @@ Displaying notes found in: .note.ABI-tag
 <section id="registers" class="slide level2">
 <h2>Registers</h2>
 <figure>
-<img data-src="images/registers.png" alt="64 bits x86 registers" style="width:80.0%" /><figcaption>64 bits x86 registers</figcaption>
+<img data-src="../Images/registers.png" alt="64 bits x86 registers" style="width:80.0%" /><figcaption>64 bits x86 registers</figcaption>
 </figure>
 </section>
 <section id="bits-mode" class="slide level2">
@@ -640,7 +640,7 @@ Displaying notes found in: .note.ABI-tag
 <p>De Global Descriptor Table vertelt de CPU waar de verschillende geheugensegmenten te vinden zijn: de offsets waarop deze beginnen en de grootte van de segmenten. De MMU (les 4) gebruikt deze tabel om het geheugen op de juiste manier onder te verdelen. De GDT tabel wordt in de binary opgebouwd uit letterlijke bytewaardes. In assembly worden deze met data-commando’s gegeven: <code>db</code> voor data byte, <code>dw</code> voor data woord, etc. Doordat de tabel een vast formaat heeft weet de CPU wat waar staat en kan de MMU deze data gebruiken om het geheugen klaar te maken voor een OS.</p>
 </aside>
 <figure>
-<img data-src="images/gdt.png" alt="Formaat van een segment descriptor" style="width:80.0%" /><figcaption>Formaat van een segment descriptor</figcaption>
+<img data-src="../Images/gdt.png" alt="Formaat van een segment descriptor" style="width:80.0%" /><figcaption>Formaat van een segment descriptor</figcaption>
 </figure>
 </section>
 <section id="code-voor-de-gdt" class="slide level2">
@@ -811,11 +811,28 @@ SECTIONS {
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         // Transition style for full page slide backgrounds
         backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true }
         ]
       });

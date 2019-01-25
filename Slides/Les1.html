@@ -43,7 +43,7 @@ Embedded &amp; Operating Systems 1
 <aside class="notes">
 <p>Hoewel we in deze lessen de nadruk ligt op de algemene theorie achter operating systems, zullen we vaak naar specifieke voorbeelden kijken om te zien hoe alles nou echt in elkaar zit. Voor deze lessen maken we gebruik van Linux, een vrij en gratis OS gebaseerd op Unix. Daarnaast maken we ook kennis met dit besturingssysteem in de rol van programmeur / gebruiker. Per week zal één les met name de focus hebben op de algemene theorie, en zal in de andere les Linux meer centraal staan, waarbij we gaan leren werken met dit OS.</p>
 </aside>
-<p><img data-src="images/tux.png" style="width:20.0%" /></p>
+<p><img data-src="../Images/tux.png" style="width:20.0%" /></p>
 </section>
 <section id="inhoud" class="slide level2" data-background="images/title_background.png">
 <h2>Inhoud</h2>
@@ -61,7 +61,7 @@ Embedded &amp; Operating Systems 1
 <p>Linux is een afstammeling van de Unix traditie van besturingssystemen, die teruggaat tot Multics dat in de jaren 60 als time sharing OS voor de Multics GE-645 (foto) werd ontwikkeld door MIT, AT&amp;T Bell Labs en General Electric. Zoals te zien waren computers toen nog grote gedrochten, en was van de personal computer nog geen sprake. Een mainframe, zoals dit type computer heette, werd door hele bedrijven of afdelingen gedeeld. Programmeurs schreven code, waarna ze moesten wachten op hun beurt om de code te draaien. Als er een fout in zat, kon de programmeur opnieuw beginnen en een nieuwe beurt afwachten. Later werd het langzaam mogelijk met meerdere terminals (werkstations) de computer tegelijk te gebruiken. In deze context werd de grondslag voor Unix gelegd.</p>
 </aside>
 <figure>
-<img data-src="images/ge645.jpg" alt="In den beginne was de mainframe" style="width:50.0%" /><figcaption>In den beginne was de mainframe</figcaption>
+<img data-src="../Images/ge645.jpg" alt="In den beginne was de mainframe" style="width:50.0%" /><figcaption>In den beginne was de mainframe</figcaption>
 </figure>
 </section>
 <section id="unix" class="slide level2">
@@ -70,7 +70,7 @@ Embedded &amp; Operating Systems 1
 <p>De ontwikkeling van Multics schoot niet op, waardoor Bell Labs besloot haar onderzoekers terug te trekken. Een deel daarvan, met name Ken Thompson, Dennis Ritchie en Brian Kernighan, ging bij Bell Labs verder met hun werk, maar op een kleinere schaal. Het resultaat hiervan is Unix. Unix had een eigen filosofie, waarbij alles als een file gezien werd (ook, bijvoorbeeld, devices). Hierdoor werd het makkelijker programma’s aan elkaar te koppelen, met “bestanden” als koppelstukken. Dit leidde tot een filosofie van kleine, algemene programma’s die oneindig in te zetten en te combineren waren.</p>
 </aside>
 <figure>
-<img data-src="images/thompson_ritchie.jpg" alt="Thompson en Ritchie" style="width:40.0%" /><figcaption>Thompson en Ritchie</figcaption>
+<img data-src="../Images/thompson_ritchie.jpg" alt="Thompson en Ritchie" style="width:40.0%" /><figcaption>Thompson en Ritchie</figcaption>
 </figure>
 <div style="font-size: 16px">
 <p><em>What we wanted to preserve was not just a good environment in which to do programming, but a system around which a fellowship could form. We knew from experience that the essence of communal computing, as supplied by remote-access, time-shared machines, is not just to type programs into a terminal instead of a keypunch, but to encourage close communication.</em></p>
@@ -82,7 +82,7 @@ Embedded &amp; Operating Systems 1
 <p>De volgende stap richting Linux was Minix, geschreven door Andrew S. Tanenbaum. Minix was een erg versimpelde Unix afgeleidde die vooral educatief bedoeld was. De hele source-code, gecombineerd met de theorie waarop deze gebaseerd was, was als boek te koop (in het Turing Lab ligt een exemplaar). Hoewel de source-code beschikbaar was, was het niet toegestaan deze te verbeteren of te verspreiden. Daarnaast was de code vanuit educatief perspectief erg goed, maar praktisch gezien vooral al snel verouderd.</p>
 </aside>
 <figure>
-<img data-src="images/minix.jpg" alt="Operating Systems / The Minix Book" style="width:20.0%" /><figcaption>Operating Systems / The Minix Book</figcaption>
+<img data-src="../Images/minix.jpg" alt="Operating Systems / The Minix Book" style="width:20.0%" /><figcaption>Operating Systems / The Minix Book</figcaption>
 </figure>
 </section>
 <section id="linux" class="slide level2">
@@ -102,7 +102,7 @@ Embedded &amp; Operating Systems 1
 </div>
 </div><div class="column" style="width:40%;">
 <figure>
-<img data-src="images/linus.jpg" alt="Linus Torvalds" style="width:100.0%" /><figcaption>Linus Torvalds</figcaption>
+<img data-src="../Images/linus.jpg" alt="Linus Torvalds" style="width:100.0%" /><figcaption>Linus Torvalds</figcaption>
 </figure>
 </div>
 </div>
@@ -115,11 +115,11 @@ Embedded &amp; Operating Systems 1
 <div class="columns">
 <div class="column" style="width:70%;">
 <figure>
-<img data-src="images/rms.jpg" alt="Richard Stallman (St. IGNUcius)" style="width:80.0%" /><figcaption>Richard Stallman (St. IGNUcius)</figcaption>
+<img data-src="../Images/rms.jpg" alt="Richard Stallman (St. IGNUcius)" style="width:80.0%" /><figcaption>Richard Stallman (St. IGNUcius)</figcaption>
 </figure>
 </div><div class="column" style="width:30%;">
 <figure>
-<img data-src="images/gnu.png" alt="GNU is Not Unix" style="width:100.0%" /><figcaption>GNU is Not Unix</figcaption>
+<img data-src="../Images/gnu.png" alt="GNU is Not Unix" style="width:100.0%" /><figcaption>GNU is Not Unix</figcaption>
 </figure>
 </div>
 </div>
@@ -130,7 +130,7 @@ Embedded &amp; Operating Systems 1
 <p>GNU en Linux vallen beide onder de GNU Public Licence, een open source licentie. Dit houdt in dat de source code vrij beschikbaar is, mag worden aangepast en mag worden doorgegeven. Er is een grote diversiteit aan open source licenties in gebruik, en nog meer licenties die ruwweg dezelfde ideeën bevatten maar net niet aan de eisen voldoen om “open source” te mogen heten. Een deel van de open source licenties, waaronder de GPL, heeft een clausule die stelt dat hoewel je de code mag aanpassen, dat de resultaten daarvan ook onder dezelfde licentie moeten vallen. Andere open source licenties hebben deze eis niet. Merk op dat er geen verbod is op het verkopen van GPL software (of diensten daaromheen) of andere commerciële toepassingen (al zijn er licenties die dat wel hebben), zolang de source maar vrijelijk beschikbaar blijft. Later in deze les zullen we een aantal commerciële / betaalde toepassingen van Linux tegenkomen.</p>
 </aside>
 <figure>
-<img data-src="images/gpl.jpg" alt="GNU Public Licence" style="width:80.0%" /><figcaption>GNU Public Licence</figcaption>
+<img data-src="../Images/gpl.jpg" alt="GNU Public Licence" style="width:80.0%" /><figcaption>GNU Public Licence</figcaption>
 </figure>
 </section>
 <section id="inhoud-1" class="slide level2" data-background="images/title_background.png">
@@ -148,14 +148,14 @@ Embedded &amp; Operating Systems 1
 <aside class="notes">
 <p>Een van de grote redenen van de populariteit van Linux onder IT’ers is de keuzevrijheid die het platform biedt. Omdat alle onderdelen los van elkaar bestaan en niet (zoals bij Windows en Mac) als één compleet pakket geleverd hoeven te worden heb je erg veel invloed op hoe je besturingssysteem werkt. Daarnaast zorgt het open source model (wat ook voor de meeste pakketten geldt die je bovenop Linux gebruikt) ervoor dat er veel keuzemogelijkheid is in de configuratie van de meeste software. Als een gebruiker een optie mist in software die zij gebruikt, kan ze dit (in theorie) zelf toevoegen en teruggeven aan de community, waardoor de toevoeging mogelijk in de volgende versie van het softwarepakket zal worden opgenomen. Windows (en in mindere mate Mac) wordt vaak vergeleken met een auto waarbij je de motorkap niet open mag maken. Het werkt gewoon, maar het is niet mogelijk of toegestaan zelf je handen vuil te maken. Linux (en andere open source systemen) gaan hier dus tegenin.</p>
 </aside>
-<p><img data-src="images/choices.jpg" style="width:80.0%" /></p>
+<p><img data-src="../Images/choices.jpg" style="width:80.0%" /></p>
 </section>
 <section id="grafische-omgeving" class="slide level2">
 <h2>Grafische Omgeving</h2>
 <aside class="notes">
 <p>Een eerste keuze die je doorgaans maakt bij het installeren van Linux is de grafische omgeving. In les 0 hebben we al gezien dat de grafische omgeving geen deel van het OS is. Hier zien we een aantal desktop environments en window managers. Desktop environments leveren een complete user experience, zoals de grafische shells bij Windows en Mac. Window managers beperken zich tot het beheren van schermen (waar staat een scherm, hoe groot is het, overlapt het met andere schermen).</p>
 </aside>
-<p><img data-src="images/gnome.jpg" alt="Gnome" style="width:30.0%" /> <img data-src="images/kde.png" alt="KDE" style="width:30.0%" /> <img data-src="images/lxde.jpg" alt="LXDE" style="width:30.0%" /> <img data-src="images/xfce.png" alt="Xfce" style="width:30.0%" /> <img data-src="images/openbox.jpg" alt="OpenBox" style="width:30.0%" /> <img data-src="images/xmonad.png" alt="xmonad" style="width:30.0%" /></p>
+<p><img data-src="../Images/gnome.jpg" alt="Gnome" style="width:30.0%" /> <img data-src="../Images/kde.png" alt="KDE" style="width:30.0%" /> <img data-src="../Images/lxde.jpg" alt="LXDE" style="width:30.0%" /> <img data-src="../Images/xfce.png" alt="Xfce" style="width:30.0%" /> <img data-src="../Images/openbox.jpg" alt="OpenBox" style="width:30.0%" /> <img data-src="../Images/xmonad.png" alt="xmonad" style="width:30.0%" /></p>
 </section>
 <section id="x11" class="slide level2">
 <h2>X11</h2>
@@ -163,7 +163,7 @@ Embedded &amp; Operating Systems 1
 <p>Deze desktop environments en window managers draaien op hun beurt weer bovenop een windowing system, doorgaans X11 (al is Wayland bezig om hier verandering in te brengen). Het windowing system levert een display server, en iedere applicatie met GUI wordt als een client gezien. Een client is in deze context een stuk software dat van een server afhankelijk is voor (een deel van) diens functionaliteiten — in dit geval voor tekenen van de interface op het beeldscherm. Ook de Window Manager (WM), panels en andere componenten van de Desktop Environment (DE) vallen hieronder. De display server krijgt input via de kernel en zorgt ervoor dat de totale inhoud van het beeldscherm bepaald wordt, die dan weer via de kernel naar de grafische kaart wordt gestuurd. X11 is overigens zonder WM of DE te gebruiken, maar dit is wel een vrij kale bedoening.</p>
 </aside>
 <figure>
-<img data-src="images/x11.png" alt="X11 zonder WM" style="width:60.0%" /><figcaption>X11 zonder WM</figcaption>
+<img data-src="../Images/x11.png" alt="X11 zonder WM" style="width:60.0%" /><figcaption>X11 zonder WM</figcaption>
 </figure>
 </section>
 <section id="keuzestress" class="slide level2">
@@ -251,7 +251,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <p>In de screencast hieronder zie je de verschillende lagen. Eerst wordt binnen de terminal emulator een nieuw tabblad aangemaakt. Later wordt <code>tmux</code> (een terminal multiplexer) gebruikt om tabs en splits te realiseren. Ieder tabblad en iedere split heeft een eigen shell, was te zien is bij het <code>ps -a</code> commando: dit geeft een lijst processen en op welke terminal deze vanuit het systeem gezien draaien. Tot slot starten we verschillende shells in elkaar (een shell is immers ook gewoon een programma). Het enige verschil dat zo te zien is, is het commando-prompt, maar natuurlijk zijn er meer verschillen tussen de verschillende shells. Voor alle beschreven lagen (terminal emulator, multiplexer en shell) bestaan binnen de Linux wereld verschillende keuzes, die elk weer naar wens te customiseren zijn.</p>
 </aside>
 <video controls="1">
-<source src="images/terms.webm" data-external="1" type="video/webm">
+<source src="../Images/terms.webm" data-external="1" type="video/webm">
 </source>
 </video>
 </section>
@@ -271,7 +271,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <p>Naast de grafische omgeving en de terminals zijn voor bijna ieder stuk software in Linux verschillende alternatieven beschikbaar. Omdat het wat omslachtig is die keuze voor elk deel afzonderlijk te maken, en alles zelf te installeren, wordt Linux meestal gebruikt in de vorm van distributies of distro’s. Een distributie is een verzameling software, die (meestal met een vriendelijke installer) in een keer geïnstalleerd kan worden. De maker van de distributie maakt de keuzes welke software standaard geïnstalleerd is (of biedt meerdere keuzes aan). De gebruiker kan hierna nog zelf software installeren om het systeem aan de wensen aan te passen, maar er is vast een basis. Ook zorgt dit systeem ervoor dat je met periodieke updates aan je distributie je hele systeem up-to-date kan houden. Een distro vergelijkt zich dus meer met Windows of MacOS als compleet software pakket.</p>
 </aside>
 <figure>
-<img data-src="images/distros.png" alt="Enkele grote distro’s" style="width:75.0%" /><figcaption>Enkele grote distro’s</figcaption>
+<img data-src="../Images/distros.png" alt="Enkele grote distro’s" style="width:75.0%" /><figcaption>Enkele grote distro’s</figcaption>
 </figure>
 </section>
 <section id="package-managers" class="slide level2">
@@ -279,7 +279,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <aside class="notes">
 <p>De meeste distro’s worden geleverd met een package manager: een systeem dat bijhoudt welke software (en welke versies) geïnstalleerd zijn, en die je kan gebruiken om zelf software aan je installatie toe te voegen of te verwijderen. De package manager houdt in de gaten of je alle benodigdheden hebt geïnstalleerd, en zal indien nodig extra software installeren om een werkend systeem op te leveren. In Debian-afgeleidden heet de package manager <code>apt</code>, en kun je software via de command line installeren. Andere distributies gebruiken afgeleiden van <code>rpm</code> zoals <code>yum</code>, of een eigen package manager. In het voorbeeld wordt <code>htop</code> geinstalleerd, een soort Windows taakbeheer voor de Linux command-line.</p>
 </aside>
-<p><embed data-src="images/apt.webm" style="width:75.0%" /> <video controls="1"> <source src="images/apt.webm"
+<p><embed data-src="../Images/apt.webm" style="width:75.0%" /> <video controls="1"> <source src="../Images/apt.webm"
           data-external="1" type="video/webm"> </source> </video></p>
 </section>
 <section id="inhoud-4" class="slide level2" data-background="images/title_background.png">
@@ -298,7 +298,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <p>Bekend van CSN, dit draait op de Raspberry Pi. Raspbian is een R-Pi versie van de populaire distributie Debian.</p>
 </aside>
 <figure>
-<img data-src="images/raspbian.png" alt="Raspbian" style="width:50.0%" /><figcaption>Raspbian</figcaption>
+<img data-src="../Images/raspbian.png" alt="Raspbian" style="width:50.0%" /><figcaption>Raspbian</figcaption>
 </figure>
 </section>
 <section id="lubuntu-vm" class="slide level2">
@@ -307,7 +307,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <p>Voor dit vak is een VirtualBox VM beschikbaar met LUbuntu Linux (link op Canvas). Je kan deze gebruiken voor de practica, maar als je zelf een Linux systeem of VM hebt mag dit natuurlijk ook. De VM is te gebruiken als fallback, de opdrachten zijn op dit systeem getest. Je kan de image naar eigen wensen aanpassen. Let erop dat het sneller is om Linux direct op een computer of laptop te draaien: door het virtualiseren (gebruik van een VM) wordt alles een stuk langzamer. Ook is er bij de VM gekozen voor een vrij basic werkomgeving, ook weer vanwege de performance in de VM. De omgeving is dezelfde als die op de Raspberry Pi standaard geinstalleerd staat — die is namelijk ook niet zo snel. Voel je vrij het systeem naar je wensen aan te passen, maar hou er rekening mee dat alles binnen de VM wat trager werkt als je de meest flitsende werkomgeving installeert — dan kun je beter Linux op een fysieke computer draaien.</p>
 </aside>
 <figure>
-<img data-src="images/lubuntu.jpg" alt="Lubuntu" style="width:75.0%" /><figcaption>Lubuntu</figcaption>
+<img data-src="../Images/lubuntu.jpg" alt="Lubuntu" style="width:75.0%" /><figcaption>Lubuntu</figcaption>
 </figure>
 </section>
 <section id="gentoo-les-9" class="slide level2">
@@ -315,7 +315,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <aside class="notes">
 <p>In opdracht 3 zullen we zelf een tweede Linux VM installeren: Gentoo. Gentoo is wat minder toegankelijk dan de meeste distro’s: in plaats van een mooie installer moet je zelf de bestanden op de juiste plek zetten en software compileren. Dit maakt het wel een goede oefening om kennis te maken met hoe een Linux systeem in elkaar zit. Gentoo heeft de naam erg moeilijk te zijn (en dat is niet geheel onterecht), met eigenlijk alleen Linux From Scratch als overtreffende trap.</p>
 </aside>
-<p><img data-src="images/iceberg.png" style="width:30.0%" /></p>
+<p><img data-src="../Images/iceberg.png" style="width:30.0%" /></p>
 </section>
 <section id="andere-open-source-unix-opties" class="slide level2">
 <h2>Andere open-source Unix opties</h2>
@@ -359,11 +359,28 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         // Transition style for full page slide backgrounds
         backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true }
         ]
       });

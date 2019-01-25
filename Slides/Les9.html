@@ -123,26 +123,26 @@ Embedded &amp; Operating Systems 9
 <aside class="notes">
 <p>De JVM en .NET virtual machines behoren tot de laatste categorie: de machine die gevirtualiseerd wordt is niet een daadwerkelijke fysieke machine, maar een construct dat specifiek als virtuele machine ontworpen is. De machine dient als interpreter voor code die al gedeeltelijk gecompileerd is, met als voornaamste doel portability: als de VM op een systeem draait, kan alle software die op de VM draait gebruikt worden. Ook WebAssembly, een low-level assembly achtige subset van JavaScript, kan als een bytecode virtual machine beschouwd worden. Code in C++ (of welke andere taal dan ook, zo lang er een compiler bestaat) kan tot WebAssembly gecompileerd worden, waarna een browser kan dienen als virtual machine / JIT compiler. Sommige talen nemen de intergratie met de bijbehorende VM nog een stapje verder. Pharo, een dialect van SmallTalk, wordt zowel ontwikkeld als uitgevoerd binnen de virtuele machine. De VM ondersteunt een grafische interface, waarbinnen code (zowel van de gebruiker als van het systeem zelf) geinspecteerd, aangepast en uitgevoerd kan worden.</p>
 </aside>
-<p><img data-src="images/java-jit.png" /></p>
+<p><img data-src="../Images/java-jit.png" /></p>
 </section>
 <section id="hardware-virtualisation" class="slide level2">
 <h2>Hardware Virtualisation</h2>
 <aside class="notes">
 <p>De meest klassieke vorm van virtual machines wordt doorgaans als <em>platform virtualisation</em> of <em>hardware virtualisation</em> aangeduid. De computer draait een besturingssysteem, met daarbinnen een applicatie, de <em>hypervisor</em>, die een fysieke computer nabootst. Vaak is dit een beperkte kopie van de <em>host computer</em>, de computer waarop de software draait. De <em>guest computer</em> kan een kopie van hetzelfde besturingssysteem draaien, bijvoorbeeld om een afgeschermde omgeving te leveren, of een ander OS draaien, bijvoorbeeld Linux op Windows of vice-versa. Als de architectuur van de <em>guest computer</em> afwijkt van die van de <em>host computer</em> wordt dit doorgaans <em>emuleren</em> genoemd. Een <em>emulator</em> kan bijvoorbeeld een spelcomputer of mobiel platform nabootsen, zodat software hiervoor op de computer ontwikkeld en direct getest kan worden. Emulatoren worden ook ingezet om software voor verouderde hardware te kunnen blijven gebruiken, zoals bijvoorbeeld een Gameboy Advance emulator op je computer of smartphone.</p>
 </aside>
-<p><img data-src="images/virtualisation.png" style="width:70.0%" /></p>
+<p><img data-src="../Images/virtualisation.png" style="width:70.0%" /></p>
 </section>
 <section id="bare-metal-hypervisors" class="slide level2">
 <h2>Bare-Metal Hypervisors</h2>
 <aside class="notes">
 <p>Hoewel de meeste consumenten-hypervisors als applicatie binnen een OS draaien (zogenaamde <em>hosted hypervisors</em>, waarbij het OS de <em>host</em> levert) is dit niet noodzakelijk. Bij bare-metal hypervisors draait de hypervisor direct op de hardware — in plaats van een OS. Binnen de hypervisor kunnen dan verschillende besturingssytemen draaien. Bij een hosted hypervisor is vaak sprake van een flinke performance-hit voor de guest OSs: de software binnen de guest is erg ver van de hardware verwijderd, waardoor er veel overhead is en vertaling plaatsvindt. Bij bare-metal hypervisors wordt is dit niet (of nauwelijks) het geval. Alle OSs die binnen een bare-metal hypervisor draaien zijn gelijkwaardig, en draaien zo dicht mogelijk op de hardware als mogelijk (met alleen een minimale hypervisor ertussen). Een open-source voorbeeld van een bare-metal hypervisor is Xen: dit kan op de plaats van het OS geïnstalleerd worden, waarbinnen je vervolgens Linux en Windows naast elkaar kan draaien. De afname in performance is voor elk OS gelijk, en veel kleiner dan die zou zijn binnen een traditionele VM. Zo kun je bijvoorbeeld Linux voor werk of studie gebruiken, en daarnaast een Windows installatie om op te gamen.</p>
 </aside>
-<p><img data-src="images/bare-metal.png" style="width:50.0%" /></p>
+<p><img data-src="../Images/bare-metal.png" style="width:50.0%" /></p>
 </section>
 <section id="bare-metal-hypervisors-1" class="slide level2">
 <h2>Bare-Metal Hypervisors</h2>
 <figure>
-<img data-src="images/xen.png" alt="Xen, een bare-metal hypervisor" style="width:50.0%" /><figcaption>Xen, een bare-metal hypervisor</figcaption>
+<img data-src="../Images/xen.png" alt="Xen, een bare-metal hypervisor" style="width:50.0%" /><figcaption>Xen, een bare-metal hypervisor</figcaption>
 </figure>
 </section>
 <section id="inhoud-1" class="slide level2" data-background="images/title_background.png">
@@ -159,14 +159,14 @@ Embedded &amp; Operating Systems 9
 <aside class="notes">
 <p>Bij hypervisor-virtualisatie wordt een compleet hardware-systeem gevirtualiseerd. Virtualisatie kan daarnaast ook op OS-level plaatsvinden. Het systeem draait dan een enkele kernel, maar hierop draaien meerdere geisoleerde userspaces: <em>containers</em>. Binnen Linux is Docker het meest gebruikte platform voor het draaien van containers. Voor een proces binnen een container lijkt het alsof deze zich op een normale computer bevindt. Wat het proces van het systeem kan zien is echter beperkt tot de inhoud van de container. Meestal wordt een container voor een enkel proces (server, compiler, etc.) gebruikt, dat binnen de container compleet geïsoleerd draait. De verschillende containers werken allemaal op dezelfde kernel, maar kunnen op userspace-niveau flink van elkaar afwijken. Dit vergroot de veiligheid aanzienlijk: verschillende processen zijn zich niet eens van elkaars bestaan bewust, en kunnen dus ook geen kwaadaardige acties op elkaar proberen uit te voeren. Het is daarbij prima mogelijk op een Ubuntu syteem een container te draaien die gebaseerd is op Fedora, of welke andere distro dan ook, zodat voor iedere applicatie de beste omgeving kan worden gekozen. Doorgaans wordt hiervoor een zo licht mogelijke disto gebruikt, zoals Alpine Linux. Daarnaast bestaan er distributies die speciaal ontwikkeld zijn om containers te hosten, waarbij de host zo licht mogelijk wordt gehouden en alle software binnen containers draait. Voorbeelden hiervan zijn CoreOS en RancherOS.</p>
 </aside>
-<p><img data-src="images/containers.png" style="width:50.0%" /></p>
+<p><img data-src="../Images/containers.png" style="width:50.0%" /></p>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
 <aside class="notes">
 <p>Het eerder genoemde Docker is een goed stuk gereedschap in de toolkit van ieder (technisch) informaticus. Voor programmeurs kun je met Docker een out-of-the-box-werkende ontwikkel-omgeving leveren: dependencies kunnen in een container aan worden geboden, en geven geen conflicten met reeds geïnstalleerde bibliotheken of programma’s. De stappen die nodig zijn om de ontwikkelomgeving op te zetten worden gespecificeerd in een <code>Dockerfile</code>, die gebruikt kan worden om een image te realiseren. Dit image kan een daemon-proces bevatten (een proces dat op de achtergrond draait) of een enkele taak uitvoeren en zichzelf afsluiten: denk hierbij bijvoorbeeld aan het (cross)-compilen van een project. Docker files en images kunnen worden geüpload naar een Docker repository, waarvandaan anderen je image kunnen downloaden. Door een Dockerfile te leveren en een openbaar repository te leveren kun je drempel om bij te dragen aan of gebruik te maken van een project behoorlijk verlagen. Andersom kan je werk besparen niet zelf een ontwikkelomgeving op te zetten (mogelijk op een niet-ondersteunde distro of OS) maar van een Docker image gebruik te maken. Docker-containers met daarin een daemon worden veelal gebruikt in de server-wereld: op het moment dat de docker-image werkt op het test-systeem, dan zal deze zonder moeite op een server te deployen moeten zijn.</p>
 </aside>
-<p><img data-src="images/docker.png" style="width:30.0%" /></p>
+<p><img data-src="../Images/docker.png" style="width:30.0%" /></p>
 </section>
 <section id="inhoud-2" class="slide level2" data-background="images/title_background.png">
 <h2>Inhoud</h2>
@@ -182,21 +182,21 @@ Embedded &amp; Operating Systems 9
 <aside class="notes">
 <p>Hoewel de focus tot nu toe gelegen heeft op OSs en applicaties die op een OS draaien (hosted applications), ligt de focus van de TI-er vaak op een ander domein: de microcontroller. Hier wordt net als bij (het programmeren van) een OS bare-metal gewerkt. De software heeft directe toegang tot de hardware, en er zijn niet zomaar abstracties aanwezig om het leven van de ontwikkelaar te vereenvoudigen. In de volgende slides zullen we zien hoe het programmeren van een microcontroller verschilt ten opzichte van OS development en het schrijven van hosted applicaties.</p>
 </aside>
-<p><img data-src="images/Arduino-Due.jpg" style="width:50.0%" /></p>
+<p><img data-src="../Images/Arduino-Due.jpg" style="width:50.0%" /></p>
 </section>
 <section id="development-pipeline" class="slide level2">
 <h2>Development Pipeline</h2>
 <aside class="notes">
 <p>Het eerste verschil is de manier waarop de development pipeline in elkaar steekt. Omdat een bare-metal microcontroller geen OS heeft, draait hier geen tekst-editor of compiler op waardoor deze niet direct geprogrammeerd kan worden. In plaats hiervan moeten we gebruik maken van een development-systeem om de code te schrijven, en deze met een cross-compiler omzetten naar een binary voor de micro-controller. Dit binary-bestand kan dan in de microcontroller worden ingeladen door deze naar het EEPROM of Flash-geheugen te schrijven.</p>
 </aside>
-<p><img data-src="images/microcontroller-compilation.png" /></p>
+<p><img data-src="../Images/microcontroller-compilation.png" /></p>
 </section>
 <section id="geheugengebruik-bij-microcontrollers" class="slide level2">
 <h2>Geheugengebruik bij microcontrollers</h2>
 <aside class="notes">
 <p>Een andere manier waarop een bare-metal microcontroller van een computer met OS verschilt is de manier waarop het geheugen wordt gebruikt. De computers waar we tot zover naar hebben gekeken maken gebruik van een combinatie van RAM geheugen en persistent storage (harde schijf of SSD). Alle code en bijbehorende data, zowel van het OS als van de applicaties, is ergens op de persistent storage te vinden. Bij het booten wordt de OS code hiervandaan naar het RAM gekopieerd, en bij het starten van een programma komt ook deze code ergens in het RAM te staan. Alle memory-segmenten die we hebben gezien binnen een proces (of het OS) zijn in de binary file aanwezig en worden 1-op-1 in het geheugen overgenomen. Bij een bare-metal microcontroller werkt dit anders: alle code en data is bij het flashen in het ROM geheugen opgeslagen. Bij het uitvoeren wordt dit niet naar RAM geheugen verplaatst, maar wordt alles zoveel mogelijk direct uit het ROM gelezen. Variabele data, dus data die kan veranderen, heeft een initiële waarde in het ROM staan, maar wordt naar het RAM gekopieerd om de data aan te kunnen passen. Op de slide zien we een voorbeeld van een memory-map van een microcontroller: de Arduino Due. In latere vakken komt het programmeren van microcontrollers in C++ aan bod, waarbij de Arduino Due gebruikt zal worden. Zoals op de afbeelding is te zien, wordt al het geheugen in een enkele map geplaatst, ongeacht wat voor geheugen het is. Ook externe devices (peripherals) zijn in de memory-map vertegenwoordigd. De totale memorymap van de Arduino Due is 4GB (het maximaal adresseerbare geheugen met 32 bits en 1 byte per adres), maar dat betekent niet dat de Arduino Due ook zoveel geheugen heeft. Een deel van de adressen is niet standaard in gebruik, of verwijst naar devices die geen deel uitmaken van wat we normaal het “geheugen” zouden noemen.</p>
 </aside>
-<p><img data-src="images/arduino-mem.png" style="width:40.0%" /></p>
+<p><img data-src="../Images/arduino-mem.png" style="width:40.0%" /></p>
 </section>
 <section id="peripherals" class="slide level2">
 <h2>Peripherals</h2>
@@ -243,7 +243,7 @@ Embedded &amp; Operating Systems 9
 <aside class="notes">
 <p>Een tussenvorm tussen een bare-metal microcontroller en een operating system is een zogenaamd Library OS. Hierbij worden de gebruikelijke diensten die een OS levert aangeboden in de vorm van libraries. Dit maakt het mogelijk complexe functies te gebruiken alsof de applicatie op een OS draait, maar in werklelijkheid is deze functionaliteit in de applicatie opgenomen. Het resultaat is een binary die zowel de applicatie-code als (de relevante delen van) de OS code bevat: een zogenaamde unikernel. Een unikernel heeft een enkele adres-ruimte, dus geen onderscheid tussen kernel-space en user-space, en kan in het geheel op microcontrollers ingezet worden. Een voorbeeld van een library OS is IncludeOS.</p>
 </aside>
-<p><img data-src="images/includeos.png" /></p>
+<p><img data-src="../Images/includeos.png" /></p>
 </section>
 <section id="wat-hebben-we-deze-les-geleerd" class="slide level2">
 <h2>Wat hebben we deze les geleerd?</h2>
@@ -275,11 +275,28 @@ Embedded &amp; Operating Systems 9
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         // Transition style for full page slide backgrounds
         backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true }
         ]
       });

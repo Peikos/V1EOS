@@ -125,7 +125,7 @@ Embedded &amp; Operating Systems 0
 <p>Op de slide staat een korte terugblik op het eindresultaat van het CS gedeelte van CSN. We hebben een simpele computer, die we met een eigen assembly-dialect kunnen programmeren.</p>
 </aside>
 <figure>
-<img data-src="images/CPU-io-fix-carry6.png" alt="De CPU" style="width:75.0%" /><figcaption>De CPU</figcaption>
+<img data-src="../Images/CPU-io-fix-carry6.png" alt="De CPU" style="width:75.0%" /><figcaption>De CPU</figcaption>
 </figure>
 </section>
 <section id="instructies" class="slide level2">
@@ -243,7 +243,7 @@ Embedded &amp; Operating Systems 0
 <p>Om deze twee werelden bij elkaar te brengen is een systeem nodig dat enerzijds met de specifeke hardware overweg kan, en anderzijds eenzelfde basis biedt voor software (ongeacht wat de onderliggende hardware is). Dit is het Operating System, dat als laag tussen de applicaties en de hardware zit. Zonder dit OS moet je als programmeur zelf alle details van de computer-hardware managen, waardoor je telkens weer veel (foutgevoelige) code nodig hebt om simpele taken te kunnen programmeren. Denk hierbij aan het opslaan van data, het afwisselen van meerdere taken, of het weergeven van een interface op het scherm. Software zoals een web-browser of office-suite zijn zonder de abstractie van een OS vrijwel onmogelijk te programmeren, en als het al lukt specifiek voor één systeem gemaakt. Met het OS is er een basis waar complexe software op gemaakt kan worden, en in deze cursus maken we kennis met de principes van OS-ontwikkeling — dit is waar de TI-er zich binnen ICT onderscheidt. Het OS bestaat uit twee lagen: de kernel die direct met de hardware communiceert en de rest van het OS. Het verschil zit hem in het feit dat de kernel in kernel mode draait, en de rest van het OS net als de andere software in userland. Dit is een verschil in welke instructies de CPU wel en niet mag uitvoeren; hier komen we later op terug. Voor nu heeft het OS twee raakvlakken: - De specifieke hardware, die door het OS aangestuurd wordt - Software, waarvoor het OS een generieke basis levert</p>
 </aside>
 <figure>
-<img data-src="images/os-layers-1.png" alt="Basismodel Operating Systems" style="width:50.0%" /><figcaption>Basismodel Operating Systems</figcaption>
+<img data-src="../Images/os-layers-1.png" alt="Basismodel Operating Systems" style="width:50.0%" /><figcaption>Basismodel Operating Systems</figcaption>
 </figure>
 </section>
 <section id="desktop-operating-systems" class="slide level2">
@@ -251,7 +251,7 @@ Embedded &amp; Operating Systems 0
 <aside class="notes">
 <p>Waar denk je aan bij een besturingssysteem? Op de slide de grootste drie besturingssystemen voor de desktop/laptop, maar er is meer dat we als besturingssysteem zien. Op de volgende slide ook iOS en Android.</p>
 </aside>
-<p><img data-src="images/ubuntu.jpg" alt="Linux" style="width:40.0%" /> <img data-src="images/windows10.jpg" alt="Windows" style="width:40.0%" /> <img data-src="images/macosx.jpg" alt="MacOS" style="width:40.0%" /></p>
+<p><img data-src="../Images/ubuntu.jpg" alt="Linux" style="width:40.0%" /> <img data-src="../Images/windows10.jpg" alt="Windows" style="width:40.0%" /> <img data-src="../Images/macosx.jpg" alt="MacOS" style="width:40.0%" /></p>
 </section>
 <section id="mobiele-operating-systems" class="slide level2">
 <h2>Mobiele Operating Systems</h2>
@@ -259,7 +259,7 @@ Embedded &amp; Operating Systems 0
 <p>Noem bij de mobiele OSs nog even dat iOS vooral een mobiele versie is van MacOS (en als Operating System dus in grote mate identiek is — de verschillen zitten hem in de aankleding, wat niet bij het OS hoort) en Android op Linux gebaseerd is. Wijs de studenten ook op dat hoewel het OS aan de bovenkant (vanuit de software gezien) hetzelfde is voor iOS/MacOS en Android/Linux, de systemen wel op heel andere hardware draaien.</p>
 </aside>
 <figure>
-<img data-src="images/mobile.jpg" alt="Smartphone OS: iOS en Android" style="width:60.0%" /><figcaption>Smartphone OS: iOS en Android</figcaption>
+<img data-src="../Images/mobile.jpg" alt="Smartphone OS: iOS en Android" style="width:60.0%" /><figcaption>Smartphone OS: iOS en Android</figcaption>
 </figure>
 </section>
 <section id="de-gui" class="slide level2">
@@ -268,7 +268,7 @@ Embedded &amp; Operating Systems 0
 <p>Belangrijk punt (ook al even naar gehint bij de vorige slide) is dat de grafische omgeving niet deel van het besturingssysteem is, maar een applicatie die daarbovenop draait. Bij Linux is dit verschil duidelijker (je kan zelf kiezen welke interface je gebruikt), terwijl de interface van Windows en Mac vrijwel onlosmakelijk met het besturingssysteem geassocieerd is. Het feit dat je de software als pakket koopt en het geheel in de marketing een besturinssysteem genoemd wordt, betekent <strong>niet</strong> dat deze schil technisch deel van het OS is.</p>
 </aside>
 <figure>
-<img data-src="images/terminal.png" alt="Niet per sé een Grafische User Interface (GUI)" style="width:50.0%" /><figcaption>Niet per sé een Grafische User Interface (GUI)</figcaption>
+<img data-src="../Images/terminal.png" alt="Niet per sé een Grafische User Interface (GUI)" style="width:50.0%" /><figcaption>Niet per sé een Grafische User Interface (GUI)</figcaption>
 </figure>
 </section>
 <section id="inhoud-2" class="slide level2" data-background="images/title_background.png">
@@ -396,7 +396,7 @@ Embedded &amp; Operating Systems 0
 <p>Hoewel we het inmiddels een paar keer over processen hebben gehad, leggen we voor nu de nadruk nog even op een computer met een enkele taak. Later zullen we zien hoe een computer meerdere processen kan afwisselen (of met meerdere cores, tegelijk kan draaien). Het geheugen is opgedeeld in een aantal segmenten. De eerste sectie is Text en bevat de instructies van het proces. Dit gedeelte van het geheugen is na het inladen van het proces read-only: als alle code is geladen mag deze in het kader van de veiligheid niet meer veranderd worden. Na de instructies volgen de Data en BSS segmenten. Data bevat alle globale en statische variabelen met een initiele waarde. Deze worden buiten functies gedefinieerd of zijn als static (onveranderbaar) gemarkeerd. BSS (historisch: Block Started by Symbol) bevat de statische variabelen die wel defined, maar niet geïnitialiseerd zijn. Na de BSS volgen de heap en de stack, die in de volgende slides besproken worden. Beide kunnen hun formaat dynamisch aanpassen. De stack en heap beginnen leeg en groeien naar elkaar toe. Tot slot hebben we een stuk kernel space; deze bevat de code van de SysCalls en een index: een tabel met voor elke SysCall het nummer van de call en het geheugenadres waar de bijbehorende code te vinden is. Doorgaans hebben SysCalls ook een naam, maar deze wordt door de computer intern niet gebruikt. Bij het gebruik van een high-level programmeertaal zoals Python heb je als programmeur vaak geen directe invloed op wat waar in het geheugen komt: dit wordt door de Python-interpreter gemanaged.</p>
 </aside>
 <figure>
-<img data-src="images/Process.png" alt="Geheugenmodel Proces" style="width:30.0%" /><figcaption>Geheugenmodel Proces</figcaption>
+<img data-src="../Images/Process.png" alt="Geheugenmodel Proces" style="width:30.0%" /><figcaption>Geheugenmodel Proces</figcaption>
 </figure>
 </section>
 <section id="intermezzo-stacks" class="slide level2">
@@ -405,7 +405,7 @@ Embedded &amp; Operating Systems 0
 <p>Eerst zullen we even inzoomen op de Stack, en om deze te begrijpen moeten we eerst weten wat <strong>een</strong> stack is. Een stack (stapel) is een datastructuur waar dynamisch informatie aan toegevoegd of uitgehaald kan worden. De stack werkt volgens het <strong>Last in, first out</strong> principe, en wordt daarom ook wel de LIFO genoemd. De stack begint leeg, waarna hier data aan kan worden toegevoegd. Nieuwe data wordt bovenop de stack gezet (dit heet een <strong>push</strong>), en alleen het bovenste element van de stack is zichtbaar. Als het bovenste element gelezen wordt, wordt het meteen van de stack verwijderd (dit een heet <strong>pop</strong>).</p>
 </aside>
 <figure>
-<img data-src="images/Stack%20Structure.png" alt="Stack (LIFO)" style="width:100.0%" /><figcaption>Stack (LIFO)</figcaption>
+<img data-src="../Images/Stack%20Structure.png" alt="Stack (LIFO)" style="width:100.0%" /><figcaption>Stack (LIFO)</figcaption>
 </figure>
 </section>
 <section id="de-stack" class="slide level2" data-transition="none">
@@ -416,7 +416,7 @@ Embedded &amp; Operating Systems 0
 <div class="columns">
 <div class="column" style="width:60%;">
 <figure>
-<img data-src="images/Memory%20Stack%20A.png" alt="De Stack" style="width:100.0%" /><figcaption>De Stack</figcaption>
+<img data-src="../Images/Memory%20Stack%20A.png" alt="De Stack" style="width:100.0%" /><figcaption>De Stack</figcaption>
 </figure>
 </div><div class="column" style="width:40%;">
 <p><br />
@@ -438,7 +438,7 @@ Embedded &amp; Operating Systems 0
 <div class="columns">
 <div class="column" style="width:60%;">
 <figure>
-<img data-src="images/Memory%20Stack%20B.png" alt="De Stack" style="width:100.0%" /><figcaption>De Stack</figcaption>
+<img data-src="../Images/Memory%20Stack%20B.png" alt="De Stack" style="width:100.0%" /><figcaption>De Stack</figcaption>
 </figure>
 </div><div class="column" style="width:40%;">
 <p><br />
@@ -460,7 +460,7 @@ Embedded &amp; Operating Systems 0
 <div class="columns">
 <div class="column" style="width:60%;">
 <figure>
-<img data-src="images/Memory%20Stack%20C.png" alt="De Stack" style="width:100.0%" /><figcaption>De Stack</figcaption>
+<img data-src="../Images/Memory%20Stack%20C.png" alt="De Stack" style="width:100.0%" /><figcaption>De Stack</figcaption>
 </figure>
 </div><div class="column" style="width:40%;">
 <p><br />
@@ -479,7 +479,7 @@ Embedded &amp; Operating Systems 0
 <aside class="notes">
 <p>De stack heeft een maximale grootte. Bij simpele systemen kan dit komen door een beperkte hoeveelheid geheugen, in complexere systemen met meerdere processen is er een maximum vastgesteld. Als dit maximum bereikt wordt, spreken we van een stack overflow, en wordt de executie van het programma onderbroken (met andere woorden: een crash!). Het maximumformaat van de stack is doorgaans vrij groot, een stack overflow wordt dan ook meestal door een programmeerfout veroorzaakt. Het meest simepele voorbeeld is een functie die zichzelf herhaaldelijk aanroept (recursie). Recursie is in principe geen probleem (en in sommige gevallen zelfs de meest nette oplossing) maar als een functie altijd zichzelf aan blijft roepen (en niet na een beperkt aantal keren returnt) dan hebben we een oneindige loop waarbij de stack snel volgezet wordt. Bij een beperktere recursie wordt ook een stack opgebouwd, maar op een gegeven moment zal de laatste aanroep returnen, waarna de aanroep daarvoor returnt, etc. en de stack ook weer wordt afgebroken.</p>
 </aside>
-<p><img data-src="images/stack-overflow.png" style="width:70.0%" /></p>
+<p><img data-src="../Images/stack-overflow.png" style="width:70.0%" /></p>
 </section>
 <section id="de-heap" class="slide level2">
 <h2>De Heap</h2>
@@ -556,11 +556,28 @@ Embedded &amp; Operating Systems 0
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         // Transition style for full page slide backgrounds
         backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true }
         ]
       });

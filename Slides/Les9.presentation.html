@@ -127,7 +127,7 @@ Embedded &amp; Operating Systems 9
 <li>Pharo als voorbeeld bytecode VM met geavanceerde interface</li>
 </ul>
 </aside>
-<p><img data-src="images/java-jit.png" /></p>
+<p><img data-src="../Images/java-jit.png" /></p>
 </section>
 <section id="hardware-virtualisation" class="slide level2">
 <h2>Hardware Virtualisation</h2>
@@ -138,19 +138,19 @@ Embedded &amp; Operating Systems 9
 <li>Emulator voor andere virtuele processorarchitectuur</li>
 </ul>
 </aside>
-<p><img data-src="images/virtualisation.png" style="width:70.0%" /></p>
+<p><img data-src="../Images/virtualisation.png" style="width:70.0%" /></p>
 </section>
 <section id="bare-metal-hypervisors" class="slide level2">
 <h2>Bare-Metal Hypervisors</h2>
 <aside class="notes">
 
 </aside>
-<p><img data-src="images/bare-metal.png" style="width:50.0%" /></p>
+<p><img data-src="../Images/bare-metal.png" style="width:50.0%" /></p>
 </section>
 <section id="bare-metal-hypervisors-1" class="slide level2">
 <h2>Bare-Metal Hypervisors</h2>
 <figure>
-<img data-src="images/xen.png" alt="Xen, een bare-metal hypervisor" style="width:50.0%" /><figcaption>Xen, een bare-metal hypervisor</figcaption>
+<img data-src="../Images/xen.png" alt="Xen, een bare-metal hypervisor" style="width:50.0%" /><figcaption>Xen, een bare-metal hypervisor</figcaption>
 </figure>
 </section>
 <section id="inhoud-1" class="slide level2" data-background="images/title_background.png">
@@ -167,7 +167,7 @@ Embedded &amp; Operating Systems 9
 <aside class="notes">
 
 </aside>
-<p><img data-src="images/containers.png" style="width:50.0%" /></p>
+<p><img data-src="../Images/containers.png" style="width:50.0%" /></p>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
@@ -179,7 +179,7 @@ Embedded &amp; Operating Systems 9
 <li>Container kan single-run proces bevatten of achtergrondsproces (daemon)</li>
 </ul>
 </aside>
-<p><img data-src="images/docker.png" style="width:30.0%" /></p>
+<p><img data-src="../Images/docker.png" style="width:30.0%" /></p>
 </section>
 <section id="inhoud-2" class="slide level2" data-background="images/title_background.png">
 <h2>Inhoud</h2>
@@ -195,21 +195,21 @@ Embedded &amp; Operating Systems 9
 <aside class="notes">
 
 </aside>
-<p><img data-src="images/Arduino-Due.jpg" style="width:50.0%" /></p>
+<p><img data-src="../Images/Arduino-Due.jpg" style="width:50.0%" /></p>
 </section>
 <section id="development-pipeline" class="slide level2">
 <h2>Development Pipeline</h2>
 <aside class="notes">
 
 </aside>
-<p><img data-src="images/microcontroller-compilation.png" /></p>
+<p><img data-src="../Images/microcontroller-compilation.png" /></p>
 </section>
 <section id="geheugengebruik-bij-microcontrollers" class="slide level2">
 <h2>Geheugengebruik bij microcontrollers</h2>
 <aside class="notes">
 
 </aside>
-<p><img data-src="images/arduino-mem.png" style="width:40.0%" /></p>
+<p><img data-src="../Images/arduino-mem.png" style="width:40.0%" /></p>
 </section>
 <section id="peripherals" class="slide level2">
 <h2>Peripherals</h2>
@@ -256,7 +256,7 @@ Embedded &amp; Operating Systems 9
 <aside class="notes">
 
 </aside>
-<p><img data-src="images/includeos.png" /></p>
+<p><img data-src="../Images/includeos.png" /></p>
 </section>
 <section id="wat-hebben-we-deze-les-geleerd" class="slide level2">
 <h2>Wat hebben we deze les geleerd?</h2>
@@ -288,11 +288,28 @@ Embedded &amp; Operating Systems 9
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         // Transition style for full page slide backgrounds
         backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true }
         ]
       });

@@ -50,7 +50,7 @@ Embedded &amp; Operating Systems 7
 </section>
 <section id="gentoo-vs.fedora" class="slide level2">
 <h2>Gentoo vs. Fedora</h2>
-<p><img data-src="images/fedora.jpg" alt="Fedora installatie" style="width:40.0%" /> <img data-src="images/terminal.png" alt="Gentoo installatie" style="width:40.0%" /></p>
+<p><img data-src="../Images/fedora.jpg" alt="Fedora installatie" style="width:40.0%" /> <img data-src="../Images/terminal.png" alt="Gentoo installatie" style="width:40.0%" /></p>
 </section>
 <section id="gentoo-installeren" class="slide level2">
 <h2>Gentoo Installeren</h2>
@@ -84,11 +84,28 @@ Embedded &amp; Operating Systems 7
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         // Transition style for full page slide backgrounds
         backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true }
         ]
       });

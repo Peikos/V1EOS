@@ -143,7 +143,7 @@ Embedded &amp; Operating Systems 8
 <li>Sector komt in vast geheugenadres (<code>0x7c00</code>)</li>
 </ul>
 </aside>
-<p><img data-src="images/bootsectors.png" style="width:40.0%" /></p>
+<p><img data-src="../Images/bootsectors.png" style="width:40.0%" /></p>
 </section>
 <section id="nd-stage-bootloader" class="slide level2">
 <h2>2nd-stage bootloader</h2>
@@ -155,7 +155,7 @@ Embedded &amp; Operating Systems 8
 <li>Grub voor Linux, BOOTMGR voor Windows</li>
 </ul>
 </aside>
-<p><img data-src="images/grub.jpg" style="width:40.0%" /> <img data-src="images/winboot.png" style="width:34.0%" /></p>
+<p><img data-src="../Images/grub.jpg" style="width:40.0%" /> <img data-src="../Images/winboot.png" style="width:34.0%" /></p>
 </section>
 <section id="inhoud-1" class="slide level2" data-background="images/title_background.png">
 <h2>Inhoud</h2>
@@ -175,7 +175,7 @@ Embedded &amp; Operating Systems 8
 <li>JIT als Java - ertussenin, gedeeltelijke vertaling</li>
 </ul>
 </aside>
-<p><img data-src="images/xkcd-compiling.png" style="width:40.0%" /></p>
+<p><img data-src="../Images/xkcd-compiling.png" style="width:40.0%" /></p>
 </section>
 <section id="compilation" class="slide level2">
 <h2>Compilation</h2>
@@ -185,7 +185,7 @@ Embedded &amp; Operating Systems 8
 <li>Nadelen: tragere development, binary per platform</li>
 </ul>
 </aside>
-<p><img data-src="images/cpp-compilation.png" /></p>
+<p><img data-src="../Images/cpp-compilation.png" /></p>
 </section>
 <section id="compilation-1" class="slide level2">
 <h2>Compilation</h2>
@@ -209,7 +209,7 @@ Embedded &amp; Operating Systems 8
 <aside class="notes">
 <p>https://godbolt.org/ Code sample: TODO?</p>
 </aside>
-<p><img data-src="images/optimise.jpg" style="width:50.0%" /></p>
+<p><img data-src="../Images/optimise.jpg" style="width:50.0%" /></p>
 </section>
 <section id="linking" class="slide level2">
 <h2>Linking</h2>
@@ -231,7 +231,7 @@ Embedded &amp; Operating Systems 8
 </section>
 <section id="linking-1" class="slide level2">
 <h2>Linking</h2>
-<p><img data-src="images/cpp-compilation.png" /></p>
+<p><img data-src="../Images/cpp-compilation.png" /></p>
 </section>
 <section id="makefiles" class="slide level2">
 <h2>Makefiles</h2>
@@ -556,7 +556,7 @@ Displaying notes found in: .note.ABI-tag
 <li>In het vak CPSE1 cross compilen voor Arduino</li>
 </ul>
 </aside>
-<p><img data-src="images/cross1.png" style="width:50.0%" /> <img data-src="images/cross2.png" style="width:50.0%" /></p>
+<p><img data-src="../Images/cross1.png" style="width:50.0%" /> <img data-src="../Images/cross2.png" style="width:50.0%" /></p>
 </section>
 <section id="interpretation" class="slide level2">
 <h2>Interpretation</h2>
@@ -566,7 +566,7 @@ Displaying notes found in: .note.ABI-tag
 <li>Denk aan Python (of Bash)</li>
 </ul>
 </aside>
-<p><img data-src="images/python-interpretation.png" /></p>
+<p><img data-src="../Images/python-interpretation.png" /></p>
 </section>
 <section id="interpretation-1" class="slide level2">
 <h2>Interpretation</h2>
@@ -596,7 +596,7 @@ Displaying notes found in: .note.ABI-tag
 <li>Qua snelheid in het midden</li>
 </ul>
 </aside>
-<p><img data-src="images/java-jit.png" /></p>
+<p><img data-src="../Images/java-jit.png" /></p>
 </section>
 <section id="jit-compilation-1" class="slide level2">
 <h2>JIT compilation</h2>
@@ -714,7 +714,7 @@ Displaying notes found in: .note.ABI-tag
 <p>Ter overzicht, herhaling van Les 4</p>
 </aside>
 <figure>
-<img data-src="images/registers.png" alt="64 bits x86 registers" style="width:80.0%" /><figcaption>64 bits x86 registers</figcaption>
+<img data-src="../Images/registers.png" alt="64 bits x86 registers" style="width:80.0%" /><figcaption>64 bits x86 registers</figcaption>
 </figure>
 </section>
 <section id="bits-mode" class="slide level2">
@@ -755,7 +755,7 @@ Displaying notes found in: .note.ABI-tag
 </ul>
 </aside>
 <figure>
-<img data-src="images/gdt.png" alt="Formaat van een segment descriptor" style="width:80.0%" /><figcaption>Formaat van een segment descriptor</figcaption>
+<img data-src="../Images/gdt.png" alt="Formaat van een segment descriptor" style="width:80.0%" /><figcaption>Formaat van een segment descriptor</figcaption>
 </figure>
 </section>
 <section id="code-voor-de-gdt" class="slide level2">
@@ -942,11 +942,28 @@ SECTIONS {
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         // Transition style for full page slide backgrounds
         backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true }
         ]
       });

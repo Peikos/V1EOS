@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Embedded Devices — Embedded &amp; Operating Systems 10</title>
+  <title>Proeftentamen — Embedded &amp; Operating Systems 10</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -38,11 +38,25 @@
 Embedded &amp; Operating Systems 10
 </h1>
 <p>
-Embedded Devices
+Proeftentamen
 </p>
 </section>
 <section id="introductie" class="slide level2">
 <h2>Introductie</h2>
+</section>
+<section id="toetsing" class="slide level2">
+<h2>Toetsing</h2>
+<ul>
+<li>Linux: zwaartepunt in opdrachten</li>
+<li>Theorie: tentamenstof</li>
+</ul>
+</section>
+<section id="proeftentamen" class="slide level2">
+<h2>Proeftentamen</h2>
+<ul>
+<li>45 minuten (half tentamen)</li>
+<li>Testvision</li>
+</ul>
 </section>
     </div>
   </div>
@@ -63,11 +77,28 @@ Embedded Devices
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         // Transition style for full page slide backgrounds
         backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true }
         ]
       });

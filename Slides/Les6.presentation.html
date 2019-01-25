@@ -149,7 +149,7 @@ Embedded &amp; Operating Systems 6
 <li>Fake entries voor long filenames</li>
 </ul>
 </aside>
-<p><img data-src="images/fat.png" style="width:80.0%" /></p>
+<p><img data-src="../Images/fat.png" style="width:80.0%" /></p>
 </section>
 <section id="ntfs" class="slide level2">
 <h2>NTFS</h2>
@@ -183,7 +183,7 @@ Embedded &amp; Operating Systems 6
 <li>bitmaps</li>
 </ul>
 </aside>
-<p><img data-src="images/inodes.png" style="width:60.0%" /></p>
+<p><img data-src="../Images/inodes.png" style="width:60.0%" /></p>
 </section>
 <section id="inhoud-1" class="slide level2" data-background="images/title_background.png">
 <h2>Inhoud</h2>
@@ -223,7 +223,7 @@ Embedded &amp; Operating Systems 6
 </aside>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="fu">sudo</span> mount /dev/sda2 /home</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="fu">sudo</span> umount /home <span class="co"># of sudo umount /dev/sda2</span></a></code></pre></div>
-<p><img data-src="images/mount.png" style="width:35.0%" /></p>
+<p><img data-src="../Images/mount.png" style="width:35.0%" /></p>
 </section>
 <section id="inodes-inzien-met-ls--i" class="slide level2">
 <h2>inodes inzien met <code>ls -i</code></h2>
@@ -284,7 +284,7 @@ Embedded &amp; Operating Systems 6
 <li>LV heeft een FS en Mount-Point</li>
 </ul>
 </aside>
-<p><img data-src="images/lvm.png" style="width:90.0%" /></p>
+<p><img data-src="../Images/lvm.png" style="width:90.0%" /></p>
 </section>
 <section id="the-next-generation" class="slide level2">
 <h2>The Next Generation</h2>
@@ -414,7 +414,7 @@ Embedded &amp; Operating Systems 6
 <li>Userspace: FUSE draait in Kernel maar handler program in US</li>
 </ul>
 </aside>
-<p><img data-src="images/vfs-fuse.png" style="width:50.0%" /></p>
+<p><img data-src="../Images/vfs-fuse.png" style="width:50.0%" /></p>
 </section>
 <section id="inhoud-3" class="slide level2" data-background="images/title_background.png">
 <h2>Inhoud</h2>
@@ -430,7 +430,7 @@ Embedded &amp; Operating Systems 6
 <aside class="notes">
 
 </aside>
-<p><img data-src="images/root.jpg" /></p>
+<p><img data-src="../Images/root.jpg" /></p>
 </section>
 <section id="rechten" class="slide level2">
 <h2>Rechten</h2>
@@ -443,7 +443,7 @@ Embedded &amp; Operating Systems 6
 <li>Deze bits alleen zinvol als geassocieerde <code>x</code> gezet</li>
 </ul>
 </aside>
-<p><img data-src="images/permissions.png" style="width:80.0%" /></p>
+<p><img data-src="../Images/permissions.png" style="width:80.0%" /></p>
 </section>
 <section id="eigenaar-groep-en-rechten-aanpassen" class="slide level2">
 <h2>Eigenaar, groep en rechten aanpassen</h2>
@@ -469,7 +469,7 @@ Embedded &amp; Operating Systems 6
 <li><code>chmod o+t</code></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/chmod777.jpg" style="width:80.0%" /></p>
+<p><img data-src="../Images/chmod777.jpg" style="width:80.0%" /></p>
 </div>
 </div>
 </section>
@@ -504,11 +504,28 @@ Embedded &amp; Operating Systems 6
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         // Transition style for full page slide backgrounds
         backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true }
         ]
       });

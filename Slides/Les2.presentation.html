@@ -124,7 +124,7 @@ Embedded &amp; Operating Systems 2
 </ul>
 </aside>
 <figure>
-<img data-src="images/Process.png" alt="Geheugenmodel Proces" style="width:30.0%" /><figcaption>Geheugenmodel Proces</figcaption>
+<img data-src="../Images/Process.png" alt="Geheugenmodel Proces" style="width:30.0%" /><figcaption>Geheugenmodel Proces</figcaption>
 </figure>
 </section>
 <section id="processen-op-één-core" class="slide level2">
@@ -136,7 +136,7 @@ Embedded &amp; Operating Systems 2
 </ul>
 </aside>
 <figure>
-<img data-src="images/Processes.png" alt="Meerdere Processen" style="width:60.0%" /><figcaption>Meerdere Processen</figcaption>
+<img data-src="../Images/Processes.png" alt="Meerdere Processen" style="width:60.0%" /><figcaption>Meerdere Processen</figcaption>
 </figure>
 </section>
 <section id="meerdere-cores" class="slide level2">
@@ -145,7 +145,7 @@ Embedded &amp; Operating Systems 2
 <p>Nooit 1 proces tegelijk op 2 cores!</p>
 </aside>
 <figure>
-<img data-src="images/2cores.png" alt="Drie Processen, Twee Cores" style="width:80.0%" /><figcaption>Drie Processen, Twee Cores</figcaption>
+<img data-src="../Images/2cores.png" alt="Drie Processen, Twee Cores" style="width:80.0%" /><figcaption>Drie Processen, Twee Cores</figcaption>
 </figure>
 </section>
 <section id="process-state" class="slide level2">
@@ -157,7 +157,7 @@ Embedded &amp; Operating Systems 2
 </ul>
 </aside>
 <figure>
-<img data-src="images/states.png" alt="Process State Diagram" style="width:80.0%" /><figcaption>Process State Diagram</figcaption>
+<img data-src="../Images/states.png" alt="Process State Diagram" style="width:80.0%" /><figcaption>Process State Diagram</figcaption>
 </figure>
 </section>
 <section id="process-files" class="slide level2">
@@ -191,7 +191,7 @@ Embedded &amp; Operating Systems 2
 <div class="columns">
 <div class="column" style="width:50%;">
 <figure>
-<img data-src="images/Threads.png" alt="Multithreaded Process" style="width:50.0%" /><figcaption>Multithreaded Process</figcaption>
+<img data-src="../Images/Threads.png" alt="Multithreaded Process" style="width:50.0%" /><figcaption>Multithreaded Process</figcaption>
 </figure>
 </div><div class="column" style="width:50%;">
 <ul>
@@ -222,7 +222,7 @@ Embedded &amp; Operating Systems 2
 <li>verwijzingen geheugen</li>
 </ul>
 </aside>
-<p><img data-src="images/Context%20Switch.png" style="width:80.0%" /></p>
+<p><img data-src="../Images/Context%20Switch.png" style="width:80.0%" /></p>
 </section>
 <section id="scheduling" class="slide level2">
 <h2>Scheduling</h2>
@@ -231,7 +231,7 @@ Embedded &amp; Operating Systems 2
 <li>voordelen en nadelen van cooperative vs pre-emptive</li>
 </ul>
 </aside>
-<p><img data-src="images/2cores.png" style="width:80.0%" /></p>
+<p><img data-src="../Images/2cores.png" style="width:80.0%" /></p>
 <h4 id="strategiën">Strategiën</h4>
 <ul>
 <li>Cooperative Multitasking</li>
@@ -304,7 +304,7 @@ Embedded &amp; Operating Systems 2
 <li>Overschreven</li>
 </ul>
 </aside>
-<p><img data-src="images/overwrite.png" style="width:80.0%" /></p>
+<p><img data-src="../Images/overwrite.png" style="width:80.0%" /></p>
 </section>
 <section id="shared-memory-1" class="slide level2">
 <h2>Shared Memory</h2>
@@ -314,14 +314,14 @@ Embedded &amp; Operating Systems 2
 <li>Starvation, Deadlocks</li>
 </ul>
 </aside>
-<p><img data-src="images/skeleton.jpg" style="width:30.0%" /></p>
+<p><img data-src="../Images/skeleton.jpg" style="width:30.0%" /></p>
 </section>
 <section id="alternatief-message-passing" class="slide level2">
 <h2>Alternatief: Message Passing</h2>
 <aside class="notes">
 <p>Beide processen communiceren met printer manager</p>
 </aside>
-<p><img data-src="images/messages.png" style="width:80.0%" /></p>
+<p><img data-src="../Images/messages.png" style="width:80.0%" /></p>
 </section>
 <section id="inter-process-communication-1" class="slide level2">
 <h2>Inter Process Communication</h2>
@@ -346,7 +346,7 @@ Embedded &amp; Operating Systems 2
 <aside class="notes">
 <p>Parent = init proces (PID 1)</p>
 </aside>
-<p><img data-src="images/processtree.png" style="width:60.0%" /></p>
+<p><img data-src="../Images/processtree.png" style="width:60.0%" /></p>
 </section>
 <section id="sys_fork" class="slide level2">
 <h2><code>SYS_fork</code></h2>
@@ -399,7 +399,7 @@ Embedded &amp; Operating Systems 2
 <section id="states-revisited" class="slide level2">
 <h2>States (revisited)</h2>
 <figure>
-<img data-src="images/states2.png" alt="Process State Diagram" style="width:60.0%" /><figcaption>Process State Diagram</figcaption>
+<img data-src="../Images/states2.png" alt="Process State Diagram" style="width:60.0%" /><figcaption>Process State Diagram</figcaption>
 </figure>
 </section>
 <section id="wat-hebben-we-deze-les-geleerd" class="slide level2">
@@ -433,11 +433,28 @@ Embedded &amp; Operating Systems 2
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         // Transition style for full page slide backgrounds
         backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true }
         ]
       });

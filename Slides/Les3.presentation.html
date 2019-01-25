@@ -198,7 +198,7 @@ Embedded &amp; Operating Systems 3
 <li><code>man</code> voor manpage met alle details Live demo!</li>
 </ul>
 </aside>
-<p><img data-src="images/rtfm.png" style="width:20.0%" /></p>
+<p><img data-src="../Images/rtfm.png" style="width:20.0%" /></p>
 <ul>
 <li><code>rm --help</code></li>
 <li><code>man rm</code></li>
@@ -268,7 +268,7 @@ else
 <li>gekoppeld aan bestand, of terminal (toetsenbord, uitvoer)</li>
 </ul>
 </aside>
-<p><img data-src="images/io.png" style="width:60.0%" /></p>
+<p><img data-src="../Images/io.png" style="width:60.0%" /></p>
 </section>
 <section id="io-redirection" class="slide level2">
 <h2>IO Redirection</h2>
@@ -507,7 +507,7 @@ else
 </aside>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="images/sudo.png" style="width:70.0%" /></p>
+<p><img data-src="../Images/sudo.png" style="width:70.0%" /></p>
 </div><div class="column" style="width:50%;">
 <ul>
 <li><code>su</code></li>
@@ -576,11 +576,28 @@ else
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         // Transition style for full page slide backgrounds
         backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true }
         ]
       });
