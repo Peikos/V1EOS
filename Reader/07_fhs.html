@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="keywords" content="EOS" />
+  <title>De Linux FHS</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="canvas.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">De Linux FHS</h1>
+</header>
+<p>We weten nu hoe een filesystem eruit ziet, maar hoe worden de directories ingedeeld? Onder Windows is er een vrij standaard indeling met mappen als <em>Program Files</em> en <em>Users</em> maar hoe zit dat onder Linux?</p>
+<h1 id="de-fhs">De FHS</h1>
+<p>De indeling van een Linux bestandssysteem is in grote mate gestandaardiseerd. Waar dit in Windows van natuure het geval is (iedere versie van Windows wordt immers door hetzelfde bedrijf uitgebracht), is het voor Linux wenselijk dat verschillende distro-makers dezelfde structuur hanteren. Hiervoor is een standaard indeling afgesproken, waarbij de belangrijkste mappen de volgende zijn:</p>
+<ul>
+<li><code>bin</code> - binaries (executables)</li>
+<li><code>boot</code> - boot informatie</li>
+<li><code>dev</code> - devices (virtueel)</li>
+<li><code>etc</code> - system-level configuratie</li>
+<li><code>home</code> - user-level</li>
+<li><code>lib</code> - libraies</li>
+<li><code>media</code> - opvolger van <code>mnt</code></li>
+<li><code>mnt</code> - designated mount-point</li>
+<li><code>proc</code> - processen en systeem-informatie (virtueel)</li>
+<li><code>root</code> - home-directory van de systeembeheerder</li>
+<li><code>run</code> - run-time variabele data</li>
+<li><code>sbin</code> - binaries voor alleen root</li>
+<li><code>sys</code> - info over devices, drivers en kernel-features (virtueel)</li>
+<li><code>tmp</code> - tijdelijke map, wordt bij reboot geleegd</li>
+<li><code>usr</code> - secondary hierarchy, bevat mappen voor multi-user</li>
+<li><code>var</code> - variabele data, logs, tijdelijke bestanden</li>
+</ul>
+<h2 id="dev"><code>/dev</code></h2>
+<p>In Linux (en Unix in het algemeen) wordt alles als bestand gezien; dit geldt ook voor fysieke devices. Dergelijke <em>device files</em> of <em>special files</em> werken als interface naar een device driver, en zijn te vinden in de map <code>/dev</code>. Bij de uitleg over het mounten van filesystems hebben we daar al een voorbeeld van gezien: de partitie die we willen mounten wordt aangeduid met bijvoorbeeld <code>/dev/sda1</code>: de eerste partitie op de eerste (SATA) harde schijf. Met <code>/dev/sda</code> kan de schijf als geheel aangeduid worden, bijvoorbeeld om de partitie-structuur aan te passen. Ook bij de afbeelding over LVM hebben we entries in <code>/dev</code> gezien voor Logical Volumes. Device files hoeven geen fysiek device te representeren: ook virtuele devices hebben een bestand. Deze devices worden <em>pseudo-devices</em> of <em>pseudo-device-files</em> genoemd, waarbij pseudo een prefix uit het Grieks is dat “niet echt” betekent (denk bijvoorbeeld aan “pseudonym”: schuilnaam). Pseudo-devices worden bijvoorbeeld gebruikt door terminal emulators om een terminal op je desktop te krijgen. Bij het openen van een terminal wordt een paar aangemaakt van een pseudo-terminal master en een pseudo-terminal slave. Dit doet de terminal emulator door het pseudo-device <code>/dev/ptmx</code> te openen, dat altijd een file-descriptor voor een master teruggeeft en een slave aanmaakt in <code>/dev/pts</code>. Pseudo terminal slaves zijn pseudo-devices die doen alsof ze een daadwerkelijke hardware-terminal zijn. Deze zijn elk gekoppeld aan een pseudo-terminal master, ook een virtueel device. Voor iedere terminal op je desktop is dus een dergelijk paar aanwezig. De master en slave zijn met elkaar verbonden, waarbij data die naar de master gestuurd wordt als input voor de slave gebruikt wordt, en andersom. De terminal emulator gebruikt de master om de slave aan te sturen, waarbij de slave het daadwerkelijke werk verricht. Pseudo-terminal slaves (<code>/dev/pts/*</code>) hebben elk een entry in de <code>/dev</code>-directory. Hetzelfde geldt voor virtual consoles (<code>/dev/ttyN</code>) die in de kernel geïmplementeerd zijn en je kan berijken met control, alt en een functietoets. F7 is daarbij op de meeste Linux-systemen de grafische omgeving. <code>/dev/tty</code> zonder nummer verwijst naar de terminal die het huidige proces beheert. Met behulp van <code>cat</code> en <code>echo</code> kunnen we dit bestand lezen en schrijven: <code>cat /dev/tty</code> geeft alle invoer terug (tot je cat beëindigt met <code>C-c</code> of <code>C-d</code>), en <code>echo foo &gt; /dev/tty</code> print informatie naar de huidige terminal (net als gewoon <code>echo</code> zou doen). Als je de device-file van een terminal weet (hier kom je achter met het <code>tty</code> commando) kun je ook naar een andere terminal <code>echo</code>en, of de invoer met <code>cat</code> afvangen (al leidt dit vooral tot ongedefinieerd gedrag).</p>
+<h3 id="pseudo-devices">Pseudo Devices</h3>
+<p>De <code>/dev</code>-directory bevat een aantal files die vooral handig zijn om als invoer of uitvoer van processen te dienen. Het bestand <code>/dev/null</code> kan altijd naar geschreven worden, en de data die erin terecht komt verdwijnt. Dit is bijvoobeeld handig om de <code>STDOUT</code> of <code>STDERR</code> van een proces naartoe te schrijven als deze niet nodig is. <code>/dev/zero</code> en <code>/dev/random</code> zijn data generators: <code>zero</code> geeft een constante stroom <code>NULL</code>-karakters (ASCII waarde 0), en <code>/dev/random</code> genereert random data. Beide kunnen bijvoorbeeld gebruikt worden met <code>dd</code> (byte level kopiëren van data) om een file of partitie leeg te maken of met random data te vullen. In dit geval gebruiken we <code>/dev/urandom</code> in plaats van <code>random</code>, dit is een variant die sneller maar minder secuur is. Voor het vernietigen van data op een harde schijf volstaat <code>urandom</code>, maar voor het genereren van wachtwoorden is <code>random</code> beter: deze wacht tot voldoende random data beschikbaar is, ook als hiervoor geblocked moet worden.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="fu">find</span> . -name <span class="st">&quot;*.svg&quot;</span> <span class="op">2&gt;</span> /dev/null           # verberg error messages</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="fu">dd</span> count=512 if=/dev/zero of=zerofile       # vul een file voor 512 blocks met NULL-karakters</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="fu">dd</span> count=512 if=/dev/urandom of=randomfile  # vul een file voor 512 blocks met random data</a></code></pre></div>
+<h2 id="proc-en-sys"><code>/proc</code> en <code>/sys</code></h2>
+<p>Naast devices heeft ook ieder proces zijn eigen file in Linux. In les 2 hebben we deze al voorbij zien komen: per proces is binnen <code>/proc</code> een directory aanwezig waarin alle informatie over dit proces te vinden is. Daarnaast bevat <code>/proc</code> ook andere virtuele bestanden, zoals <code>/proc/cpuinfo</code> en <code>/proc/meminfo</code> met informatie over de CPU en geheugen van de computer. Vroeger werd <code>/proc</code> voor nog meer gebruikt virtuele bestanden gebruikt, waaronder informatie over de ACPI (Advanced Configuration and Power Interface) zoals de toestand van de batterij van een laptop. Deze informatie is tegenwoordig naar <code>/sys</code> verplaatst, die verschillende kernel-level datastructuren beschikbaar maakt. In deze map is diverse systeem- en hardware-informatie op een gestructureerde manier te vinden. Ook kun je in sommige gevallen naar een bestand in <code>/sys</code> schrijven om het systeem te verzoeken iets te doen, zoals met het voorbeeld hieronder dat gebruikt kan worden als je een nieuwe harde schijf aan een systeem toevoegt en het systeem deze niet automatisch detecteert. Beide mappen (en <code>/dev</code>) zijn niet op de schijf, maar in het RAM aanwezig.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="bu">echo</span> <span class="va">$((</span> <span class="va">$(</span><span class="fu">cat</span> /sys/class/power_supply/BAT0/charge_now <span class="va">)</span> <span class="dt">\ </span>         # Bereken batterij-percentage m.b.v. virtuele bestanden in /sys</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">       / <span class="va">$(</span><span class="fu">cat</span> /sys/class/power_supply/BAT0/charge_full<span class="va">)</span> <span class="dt">\ </span>         # Hier wordt gebruik gemaakt van arithmetic expansion</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">       * 100 <span class="va">))</span>%</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co"># Forceer rescan harde schijven door data in /sys te schrijven</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="bu">echo</span> <span class="st">&quot;- - -&quot;</span> <span class="op">&gt;</span> /sys/class/scsi_host/host0/scan</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="ex">fdisk</span> -l                                                            # Lijst na scan</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="fu">tail</span> -f /var/log/message                                            # Bekijk kernel messages</a></code></pre></div>
+<h2 id="virtual-filesystems-en-fuse">Virtual Filesystems en FUSE</h2>
+<p>Naast de standaardmappen die we zojuist hebben gezien, wordt in Linux vaker gebruik gemaakt van virtuele filesystems. Een goed voorbeeld hiervan is Filesystems in Userspace (FUSE), waarbij het mogelijk is in user space bestandssystemen aan te koppelen. Dit wordt gebruikt voor “vreemde” bestandssystemen zoals NTFS, maar ook om dingen die geen bestandssysteem zijn wel als bestandssysteem te benaderen. Voorbeelden hiervan zijn WikipediaFS, GMailFS en ytfs (YouTube filesystem).</p>
+<div id="fig:vfs-fuse">
+<figure>
+<img src="https://peikos.net/V1EOS/Images/vfs-fuse.png" alt="Figuur: Virtual Filesystem Architectuur" style="width:50.0%" /><figcaption>Figuur: Virtual Filesystem Architectuur</figcaption>
+</figure>
+</div>
+<h1 id="gebruikers-en-rechten">Gebruikers en rechten</h1>
+<div style="float:right; max-width:25vw; padding: 10px;">
+<p><img style="max-width: 30vh;" src="https://peikos.net/V1EOS/Images/root.jpg"></p>
+</div>
+<p>Ieder bestand op een Linux systeem heeft een eigenaar, een groep en een verzameling rechten. De root-gebruiker is de systeembeheerder en heeft overal toegang toe. Groepen zijn labels die een gebruiker wel of niet kan hebben; als een gebruiker het label <code>wheel</code> heeft, dan maakt deze gebruiker deel uit van deze groep. De <code>wheel</code> groep is gereserveerd voor gebruikers die root-rechten kunnen aanvragen. Voor veel specifieke rechten zijn groepen, zoals het direct aanspreken van USB-apparaten, het gebruiken van audio en zelfs het spelen van games. De meeste systemen zijn tegenwoordig Single-user, waarbij de hoofdgebruiker in de meeste (zo niet alle) groepen zit. De groepen (en in mindere mate, gebruikers) stammen nog uit de tijd van de mainframes, maar worden nog veel gebruikt om achtergrond-processen beperkte rechten te geven. Iedere gebruiker heeft een standaard-groep, die meestal dezelfde naam heeft als de gebruiker.</p>
+<p>Voor de andere gebruikers geldt echter het rechten-systeem. Een bestand kan leesbaar, schrijfbaar en uitvoerbaar zijn, en deze eigenschappen worden op drie niveaus bijgehouden: wat de eigenaar mag, wat gebruikers in de juiste groep mogen, en wat de rest van de wereld mag. Ieder bestand op een Linux systeem heeft een eigenaar, een groep en een verzameling rechten. Een bestand kan leesbaar, schrijfbaar en uitvoerbaar zijn, en deze eigenschappen worden op drie niveaus bijgehouden: wat de eigenaar mag, wat gebruikers in de juiste groep mogen, en wat de rest van de wereld mag. De root-gebruiker mag altijd alles met ieder bestand. De rechten van een bestand worden bijgehouden met octale getallen, waarbij een bit op een bepaalde positie <code>1</code> is als de gebruiker/groep/wereld het recht heeft, en <code>0</code> als dat niet zo is. In Figuur <a href="#permissions">Permission Bits</a> is de volgorde van de bits te zien. Ieder octaal getal (groep van 3 bits) staat voor een niveau (user, group, others), en de bits binnen het getal staan voor de rechten. De eerste bit in ieder niveau is <code>Read</code>: voor een bestand betekent dit dat de inhoud van het bestand gelezen mag worden, voor een directory dat de bestandslijst mag worden opgevraagd. De tweede bit in ieder niveau is <code>Write</code>: voor een bestand betekent dit dat het bestand mag worden gewijzigd of verwijderd, voor een directory dat bestanden en subdirectories mogen worden aangemaakt. De laatste bit in ieder niveau is <code>eXecute</code>: voor een bestand betekent dit dat het uitgevoerd mag worden (bijvoorbeeld bij scripts), bij directories dat de map als werkmap gebruikt mag worden en je ernaar kunt <code>cd</code>en. Deze bits worden doorgaans als getal (e.g. <code>755</code>) of symbolisch (e.g. <code>-rwxr-xr-x</code>) weergegeven. Ieder bestand heeft naast deze drie rechten-niveaus ook nog een drietal andere bits: <code>Setuid</code>, <code>Setgid</code> en <code>sTicky</code>. De <code>setuid</code>-bit heeft alleen maar zin als de user execute bit gezet is: in dit geval kan het programma of script door iedereen worden uitgevoerd, en wordt dit als de eigenaar van de executable gedaan. Een voorbeeld is het <code>passwd</code> commando, dat waarmee een gebruiker haar wachtwoord kan aanpassen. Hiervoor moet in een bestand geschreven worden dat alleen door root te gebruiken is; dankzij de <code>setuid</code> bit krijgt de gebruiker bij het uitvoeren van dit programma de rechten van root, zodat het bestand kan worden aangepast. Het is van belang dat hier zorgvuldig mee wordt omgegaan. De <code>setgid</code>-bit werkt hetzelfde, maar dan voor de group in plaats van de user. Deze bit heeft enkel zin als het bestand voor de group uitvoerbaar is. In tegenstelling tot <code>setuid</code> heeft deze bit ook invloed op mappen: een gebruiker die een bestand in de map met <code>setgid</code>-bit aanmaakt, doet dit niet met haar standaard-group, maar met de group van de map. De <code>sticky</code>-bit, tot slot, werkt enkel op directories. Als deze gezet is, zijn alle bestanden binnen de map alleen door de eigenaar aan te passen. Standaard is de inhoud van de bestanden veilig, maar kan iemand met de juiste rechten wel bestanden uit een map verwijderen (zelfs zonder rechten voor het bestand zelf). Meestal wordt dit voorkomen door de rechten van de map ook te beperken, maar voor sommige mappen is dit niet wenselijk. <code>/tmp</code> moet bijvoorbeeld voor iedere gebruiker te schrijven zijn. In de symbolische notatie (<code>-rwxrwxrwx</code>) wordt <code>setuid</code> aangeduid met een <code>s</code> op de plaats van de <code>x</code> bij de gebruiker. Omdat deze bit geen zin heeft als het bestand niet user-executable is, impliceert de <code>s</code> dat ook de <code>x</code> gezet is. In het geval dat <code>setuid</code> wel gezet is, maar <code>x</code> bij de gebruiker niet wordt een <code>S</code> getoond als waarschuwing. <code>setgid</code> heeft dezelfde notatie, maar nu bij de group <code>x</code>, en <code>sTicky</code> gebruikt de <code>t</code> bij de <code>x</code> van others. Numeriek worden <code>setuid</code>, <code>setgid</code> en <code>sticky</code> gecombineerd tot een vierde octale getal, dat vooraan wordt geplaatst. De bitwaardes zijn respectievelijk 4, 2 en 1.</p>
+<div id="fig:permissions">
+<figure>
+<img src="https://peikos.net/V1EOS/Images/permissions.png" alt="Figuur: Permission Bits" style="width:40.0%" /><figcaption>Figuur: Permission Bits</figcaption>
+</figure>
+</div>
+<h2 id="eigenaar-groep-en-rechten-aanpassen">Eigenaar, groep en rechten aanpassen</h2>
+<div style="float:right; max-width:25vw; padding: 10px;">
+<p><img style="max-width: 30vh;" src="https://peikos.net/V1EOS/Images/chmod777.jpg"></p>
+</div>
+<p>Om de eigenaar van een bestand aan te passen, kun je <code>chown</code> gebruiken: <code>chown user file</code>. Met behulp van de <code>-R</code> flag kun je dit recursief op een map en alles daaronder toepassen. <code>chgrp</code> doet hetzelfde voor groepen, en als je beide wilt veranderen kan dit met <code>chown user:group file</code>. De rechten van een bestand aanpassen gaat met <code>chmod</code>. Doorgaans wordt hiervoor de numerieke notatie gebruikt, maar je kunt ook een short-hand als <code>u+x</code> gebruiken om voor de gebruiker de <code>eXecutable</code> bit te toe te kennen. <code>u</code>, <code>g</code> en <code>o</code> staan hierbij respectievelijk voor de user, groep en others. Deze eerste letter is optioneel, als deze niet is gegeven worden de rechten zowel voor user als group als others gezet. De <code>+</code> wordt gebruikt om rechten toe te kennen, de <code>-</code> om rechten te ontnemen. De laatste letter is doorgaans <code>r</code>, <code>w</code> of <code>x</code>, maar kan ook <code>s</code> of <code>t</code> zijn om <code>setuid</code>, <code>setgid</code> en <code>sticky</code> aan te passen. Om <code>setgid</code> voor een bestand te zetten gebruik je dus bijvoorbeeld <code>chmod g+s file</code>, en voor het <code>sticky</code> maken van een map <code>chmod o+t</code>.</p>
+<ul>
+<li><code>chown user:group file</code> (user en group met een command)</li>
+<li><code>chmod -R group directory</code> (recursief)</li>
+<li><code>chmod 755 file</code> (numerieke waarde)</li>
+<li><code>chmod u+x</code> (zet execute voor user)</li>
+<li><code>chmod +x</code> (zet execute voor user, group en others)</li>
+<li><code>chmod o+t</code> (zet sticky bit)</li>
+</ul>
+</body>
+</html>

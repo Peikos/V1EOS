@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="keywords" content="EOS" />
+  <title>Filesystems</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="canvas.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Filesystems</h1>
+</header>
+<p>Deze les gaan we kijken naar harde schijven. We weten dat we deze kunnen gebruiken om data voor langere tijd (zelfs na het uitzetten van de computer) te kunnen bewaren, maar hoe gaat dit in z’n werk? Een harde schijf (of tegenwoordig meestal SSD) is een dom apparaat, dat geen weet heeft van bestanden of mappen. Toch ziet het er voor de gebruiker zo uit, dankzij het OS en het filesystem (bestandsysteem). Daarnaast zullen we kijken naar de standaard mappenstructuur in Linux, en alles dat daarbij komt kijken.</p>
+<h1 id="filesystems">Filesystems</h1>
+<p>Vanuit de CPU gezien is de harde schijf niet veel meer dan een IO device: het zit op de IO bus, en er kan data naartoe of vanaf. De disk slaat deze data op met behulp van magnetisme (let op: we hebben het hier niet over SSDs; die zijn in les 4 aan bod gekomen) en is daarmee non-volatile. De manier waarop de disk informatie bewaart is gebaseerd op disks, tracks en sectors. Een harde schijf bestaat doorgaans uit meerdere daadwerkelijke schijven met elk twee kanten. Elke kant heeft een eigen head, een klein stukje electronica dat data kan lezen of schrijven. Een schijfoppervlak is onderverdeeld in tracks: dunne ringen waar de kop naartoe bewogen kan worden. Elke ring bevat tot slot meerdere sectoren, waar de daadwerkelijke data aan gekoppeld is. Het is alleen mogelijk hele blocks (de inhoud van een sector, vaak enkele kilobytes) te lezen of te schrijven. Deze worden in hun geheel naar het geheugen gekopieerd als er iets met de data moet worden gedaan. Om te lezen en te schrijven moet de hardeschijf-controller dus een read-write bit krijgen, plus getallen die de head, track en sector aanduiden. Dit is een heel andere wereld dan de nette geheugenadressen die de computer gewend is, en nog verder verwijderd dan de bekende mappenstructuur die je denkt op de harde schijf te hebben. De laag hiertussen noemen we het filesystem.</p>
+<p>Er bestaan verschillende filesystems, elk met eigen voor- en nadelen. Een aantal concepten komt echter bij alle filesystems terug: data wordt verpakt in files (bestanden), en deze files worden ingedeeld in directories (ook wel mappen of folders). Elke file of directory heeft een naam (soms meerdere namen), en door deze paden aan elkaar te plakken hebben we paden waarmee we een bestand kunnen terugvinden. Veel filesystems (met name op Linux en andere unices) ondersteunen daarnaast ook verschillende vormen van links. Conceptueel is een link een snelkoppeling (zoals in Windows), maar waar een snelkoppelling een bestand is met een verwijzing naar een bestand of programmma, is een link op filesystem-niveau geïmplementeerd. Links zorgen ervoor dat één bestand meerdere namen kan hebben.</p>
+<h2 id="fat">FAT</h2>
+<p>FAT (File Allocation Table) is een van de oudste en meest eenvoudige filesystems. Origineel is FAT ontwikkeld voor floppy disks, maar doordat het bestandssysteem door vroege versies van Windows gebruikt werd heeft het de floppy met flink wat jaren overleefd (zij het met de nodige aanpassingen om het systeem te moderniseren). De basis van FAT is een datastructuur die de File Allocation Table heet. De schijf is opgedeeld in <em>clusters</em> van een vast formaat, en ieder bestand heeft de vorm van een <em>chain</em> of <em>linked list</em> van clusters. Dit betekent dat ieder cluster naast data ook een verwijzing bevat naar het volgende cluster: waar het bestand verder gaat. Een bestand wordt afgesloten met een <em>EOF</em> (end of file) marker in plaats van een verwijzing naar een volgend cluster. In eerste instantie worden clusters meestal netjes achter elkaar gezet, maar dit hoeft niet. Als een bestaand bestand wordt uitgebreid kan het zijn dat de ruimte erna niet meer vrij is. Door het gebruik van verwijzingen kan op een vrij deel van de schijf verder geschreven worden, en hoeft enkel een verwijzing aangebracht te worden waar het bestand verder gaat. Het gevolg hiervan is wel dat bestanden na verloop van tijd over de hele schijf verspreid staan, wat een vertraging met zich mee brengt omdat de harde schijf veel over moet springen. Dit fenomeen wordt <em>fragmentatie</em> genoemd. Naast de gewone clusters met data bevat FAT ook een aantal speciale clusters voor metadata (FAT ID, formaat, …), directories en clusters die als beschadigd zijn gemarkeerd (en dus niet meer worden gebruikt). Directory tables bevatten per bestand een directory entry. Hierin staat de filenaam, die traditioneel uit 8 karakters + 3 karakters extensie (<code>filenaam.txt</code>) bestaat. Naast de bestandsnaam worden attributes bewaard, zoals of een bestand verborgen of alleen-lezen is, en zijn er bytes gereserveerd voor tijd/datum van de laatste aanpassing en de grootte van het bestand. Tot slot bevat een entry een verwijzing naar het eerste cluster waar de data van het bestand te vinden is. In recentere versies worden langere bestandsnamen ook ondersteund, maar ieder bestand heeft ook nog steeds zogenaamde <em>8+3</em> bestandsnaam die intern gebruikt wordt: het bestand <code>bestandmetlangenaam.txt</code> heeft intern een naam als <code>bestan~1.txt</code>. De lange bestandsnaam wordt vervolgens in een of meerdere “fake entries” opgeslagen.</p>
+<div id="fig:fat">
+<figure>
+<img src="https://peikos.net/V1EOS/Images/fat.png" alt="Figuur: Opbouw van het FAT filesystem" style="width:40.0%" /><figcaption>Figuur: Opbouw van het FAT filesystem</figcaption>
+</figure>
+</div>
+<h2 id="ntfs">NTFS</h2>
+<p>FAT was aanvankelijk 8-bits en ontwikkeld voor gebruik op floppies, en hoewel Microsoft verschillende verbeterde versies heeft uitgebracht (FAT12, FAT16, FAT32, ExFAT) is het bestandssysteem op een gegeven moment ingeruild voor het nieuwere NTFS (New Technology FileSystem). NTFS biedt beter ondersteuning voor metadata, heeft van nature langere bestandsnamen en ondersteunt bestand groter dan <span class="math inline">\(2^32\)</span> bytes (4 GiB), de bovengrens van FAT32. Delen van de werking van NTFS zijn echter niet vrijgegeven, waardoor het bestandssysteem eigenlijk alleen op Windows gebruikt wordt. Mac en Linux kunnen het systeem lezen, maar in de meeste gevallen niet schrijven. FAT-afstammelingen en het voor CD-ROMS ontwikkelde UDF (Universal Disk Format) zijn nog steeds de standaard voor uitwisselbare media die op meerdere besturingssystemen gebruikt moeten worden.</p>
+<h2 id="inodes">inodes</h2>
+<p>Unices gebruiken een ander model voor het structureren van filesystems: het hele filesystem is in twee delen opgedeeld: inodes en data. Een inode is een datastructuur die alle metadata van een bestand bevat: rechten, eigenaar en groep (meer hierover later), formaat, een aantal timestamps en het aantal links naar de file. Wat een inode niet bevat is de bestandsnaam / het pad. Deze wordt in een directory bewaard: een tabel van bestandsnamen en bijbehorende de bijbehorende inode. Meerdere bestandsnamen kunnen naar dezelfde inode verwijzen (dit noemen we hardlinks) en de gebruiker kan naar wens links toevoegen en verwijderen. Zodra een inode nergens meer gelinkt wordt, kan deze worden verwijderd (vandaar dat het aantal links wordt bijgehouden). Het maken van een link kan met het programma <code>ln</code>, dat hetzelfde werkt als <code>cp</code>, maar zonder de data daadwerkelijk te kopiëren: een extra verwijzing is genoeg. Links verwijderen gaat met <code>rm</code>: zo lang er meer links naar een bestand zijn wordt het niet verwijderd, maar alleen de verwijzing. Een inode bevat de verwijzingen naar de daadwerkelijke data-blocks die bij het bestand horen. Een inode in de meeste moderne filesystems bevat 15 pointers (verwijzingen), waarvan de eerste 12 direct naar een block met data verwijzen. De volgende pointer is “singly indirect”, en verwijst indien nodig naar een block vol pointers. De volgende pointer is “doubly indirect”, en verwijst naar een block vol met singly linked pointers. De laatste pointer is “triply indirect”, nog een laag dieper dus. Iedere laag pointers geeft een exponentiële groei aan het aantal koppelbare data blocks. Desalniettemin is het aantal pointers beperkt, en daarmee ook de maximale bestandsgrootte. Wat dit is hangt af van de versie van het bestandssysteem en de grootte van de datablocks, maar voor Ext4 (de laatste versie) met 4KiB blocks is dit 16 TiB — ruim voldoende dus. Een directory entry kan ook naar een subdirectory verwijzen: directories zijn ook gewoon inodes, die met een directory-table verbonden zijn in plaats van bestands-data. De mappen <code>.</code> en <code>..</code> die we eerder hebben gezien zijn de eerste entries die in iedere directory aanwezig zijn. Tot slot kan een directory entry niet naar een inode verwijzen, maar naar een pad op de harde schijf; dit noemen we een soft-link. Omdat een soft-link niet naar een bestand maar naar een pad verwijst, en het bestand waarnaar gelinkt wordt niet van de link afweet, kan een soft-link verwijzen naar een pad dat niet meer bestaat: het bronbestand is verwijderd of verplaatst. Dit noemen we een dode link, en is een nadeel van soft-links ten opzichte van hard links. In sommige gevallen is het juist wenselijk naar de locatie te linken in plaats van het bestand. Als een bestand vervangen wordt door een nieuwere versie maar op dezelfde plek staat, zal een soft-link ook automatisch naar het nieuwe bestand verwijzen. Het verschilt per situatie welke link dus het beste is. Een Unix partitie is opgebouwd uit een superblock met informatie over de partitie, een inode en zone bitmap met voor iedere inode / zone een bitje dat aangeeft of de inode/zone nog vrij is. Daarna komen de inodes en zones zelf. De aantallen inodes en datazones staan bij het formateren vast, en kunnen niet aangepast worden.</p>
+<div id="fig:inodes">
+<figure>
+<img src="https://peikos.net/V1EOS/Images/inodes.png" alt="Figuur: Opbouw filesystem met inodes" style="width:60.0%" /><figcaption>Figuur: Opbouw filesystem met inodes</figcaption>
+</figure>
+</div>
+<h1 id="partities">Partities</h1>
+<p>Vaak is het wenselijk een harde schijf onder te verdelen in meerdere logische units. Deze onderverdeling noemen we partities, en worden door het OS als aparte schijven behandeld die toevallig op hetzelfde fysieke medium staan. Hierdoor is het dus mogelijk meerdere bestandsystemen met verschillen filesystems naast elkaar te gebruiken. Met name in Linux is het partitioneren van de harde schijf erg gebruikelijk: <code>boot</code> staat bijvoorbeeld vaak op een aparte partitie, met een ander filesystem. Omdat de BIOS meestal niet met complexe bestandssystemen om kan gaan is dit een van de opties om het systeem te starten. De boot-partitie bevat de informatie die nodig is om de rest van de schijf te lezen. Daarnaast wordt vaak een speciale partitie voor swap-ruimte gereserveerd. Meerdere partities komen ook vaak voor bij externe harde schijven, waarbij een kleine partitie wordt gebruikt om software te leveren die de rest van de schijf (beter) bruikbaar maakt. De partitieindeling staat aan het begin van de schijf opgeslagen. Bij oudere systemen gebeurt dit in het zogenaamde Master Boot Record (MBR), maar tegenwoordig wordt vaak het modernere GUID Partition Table (GPT) gebruikt. MBR heeft een maximum van 4 primary partitions (waarvan je er een kunt op offeren om een paar extra logical partitions toe te kunnen voegen). Naast dit gebrek aan flexibiliteit gebruikt MBR ook nog 32-bits om de startpunten van partities mee aan te kunnen geven, waardoor disks groter dan 2.2 TB niet volledig te gebruiken zijn. Bij dergelijke grote disks verlies je ook flexibiliteit in de verdeling van je ruimte, omdat dit maximum alleen met een optimale indeling te behalen valt. GPT is ontwikkeld om deze tekortkomingen op te lossen. GPT maakt gebruik van zogenaamde GUIDs om partities mee te labelen: een lange random string die uniek is op een harde schijf. De string is zelfs dermate lang dat de kans dat een andere schijf wel eenzelfde GUID heeft, te verwaarlozen is. Dankzij deze identifiers kun je zoveel partities maken als je wilt, zonder logical partitions nodig te hebben. Het OS kan het aantal partities nog wel beperken, zoals 128 als bovengrens voor Windows. Daarnaast heeft GPT een veel groter maximum qua diskgrootte: ergens in de orde van tientallen zettabyte (<span class="math inline">\(10^21\)</span> bytes; een terabyte is <span class="math inline">\(10^12\)</span> bytes).</p>
+<h2 id="mounting">Mounting</h2>
+<p>Waar Windows voor iedere schijf of partitie een eigen root heeft (<code>C:\</code>, <code>D:\</code>, …) wordt bij Linux altijd een root voor het hele systeem gehanteerd. Extra schijven of partities worden <em>gemount</em>, wat betekent dat een (doorgaans) lege map wordt gebruikt om de inhoud van de extra partitie onder te zetten. Bestanden en directories die in de root-map van partitie 2 stonden, staan nu in de map die als “mount-point” gebruikt is, en alle paden relatief vanaf de root van partitie 2 zijn nu relatief vanaf het mountpoint op partitie 1 te benaderen. Als de map in kwestie niet leeg was, is de inhoud onbenaderbaar totdat de mount ongedaan gemaakt is. Omdat “unmount” erg veel typen is, is het commando hiervoor <code>umount</code>. Hardlinks kunnen alleen binnen een partitie gebruikt worden, en niet over een mount-point heen. Iedere partitie heeft immers dezelfde inode-nummers voor andere bestanden in gebruik, en het is niet mogelijk aan te geven welke partitie een link naar zou moeten verwijzen. Soft-links daarentegen werken wel over partities heen, al worden dit dode links als de partitie waar het verwezen bestand op staat niet gemount is. Als de partitie later alsnog wordt gemount, werken de links weer.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="fu">sudo</span> mount /dev/sda2 /home</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="fu">sudo</span> umount /home <span class="co"># of sudo umount /dev/sda2</span></a></code></pre></div>
+<div id="fig:mount">
+<figure>
+<img src="https://peikos.net/V1EOS/Images/mount.png" alt="Figuur: Mounten van een partitie" style="width:35.0%" /><figcaption>Figuur: Mounten van een partitie</figcaption>
+</figure>
+</div>
+<h2 id="inodes-inzien-met-ls--i">inodes inzien met <code>ls -i</code></h2>
+<p>Met de <code>-i</code> flag kun je <code>ls</code> vragen de inode-nummers te printen. Hieronder is de <code>ls -ila</code> van een root-partitie te zien. De inode-nummers staan in de eerste kolom. De root partitie heeft op de meeste systemen inode <code>2</code>. Omdat root geen parent heeft, verwijst <code>..</code> naar de root-map zelf, en is dus ook <code>2</code>. inodes <code>0</code> en <code>1</code> worden gebruikt voor partitieinformatie, maar soms ook toegekend voor virtuele mappen. In de listing valt op dat <code>boot</code> ook inode <code>2</code> heeft. Dit komt omdat deze gemount is, en dus de root van een eigen partitie.</p>
+<pre><code>      2 drwxr-xr-x   1 root root   112 Sep  7 14:27 ./
+      2 drwxr-xr-x   1 root root   112 Sep  7 14:27 ../
+ 509707 drwxr-xr-x   1 root root     4 Oct  3 14:37 bin/
+ 510435 drwxr-xr-x   4 root root  4096 Jan  1  1970 boot/
+   1025 drwxr-xr-x  20 root root  3720 Oct 18 18:17 dev/
+    258 drwxr-xr-x   1 root root  1118 Oct 19 12:44 etc/
+      2 drwxr-xr-x   1 root root    20 Aug  7 10:34 home/
+2259030 drwxr-xr-x   1 root root    12 Sep  7 14:27 media/
+ 510827 drwxr-xr-x   1 root root     0 Aug  6 15:43 mnt/
+      1 dr-xr-xr-x 292 root root     0 Oct  3 14:37 proc/
+ 509700 drwx------   1 root root   198 Oct 19 12:44 root/
+   3085 drwxr-xr-x  21 root root   680 Oct  5 18:42 run/
+      1 dr-xr-xr-x  13 root root     0 Oct  3 14:37 sys/
+ 510245 drwxrwxrwt   1 root root 16318 Oct 19 17:19 tmp/
+ 509874 drwxr-xr-x   1 root root     6 Aug  6 15:33 usr/
+ 509710 drwxr-xr-x   1 root root    82 Oct  3 14:37 var/</code></pre>
+<h2 id="raid-en-lvm">RAID en LVM</h2>
+<p>RAID (Redundant Array of Independent Disks) is een opslag-virtualisatie technologie die met name in de serverwereld gebruikt wordt. De koppeling tussen fysieke media en logische partities wordt hierbij verder losgelaten: een partitie kan zich op meerdere schijven bevinden, zowel parallel (alle data is op elke schijf aanwezig) als serieel (data staat over schijven verdeeld). Parallelle data-opslag zorgt voor redundancy: een schijf kan falen, maar er is altijd een tweede of derde schijf met dezelfde data. Seriële data-opslag combineert schijven tot een groter geheel. Beide methoden geven ook een snelheidswinsts: omdat delen van een bestand op andere schijven staan kunnen deze tegelijk worden gelezen. Voor RAID bestaan verschillende levels, waarbij parallel en serieel vaak worden gecombineerd: RAID 0 gebruikt <em>striping</em> (seriële segmentering van data over schijven), RAID 1 gebruikt <em>data mirroring</em> (parallel). Hogere RAID-levels gebruiken verschillende technieken om data-integriteit te bevorderen. Verschillende RAID-levels kunnen worden gecombineerd, zoals RAID 0+1 en RAID 1+0 (beide combineren RAID 0 en 1, maar in een andere volgorde). RAID kan op software-niveau geïmplementeerd worden, maar is meestal hardware-matig in servers aanwezig. RAID en LVM functioneren als een soort van laag onder het bestandssysteem: vanuit het bestandssysteem lijkt het alsof er op een normale harde schijf (of partitie) gewerkt wordt, terwijl hier eigenlijk nog een extra laag tussen zit. Daadwerkelijke harde schijven (physical volumes) worden bij RAID gegroepeerd in pools, waarbinnen virtuele partities (logical volumes) worden aangemaakt — dit is wat de gebruiker als de schijven ziet. Een logical volume kan over meerdere physical volumes verspreid staan, en daarmee groter zijn dan anders mogelijk was geweest.</p>
+<h2 id="lvm">LVM</h2>
+<p>LVM (Logical Volume Manager) is iets gebruikelijker in consumenten-systemen, en is geheel als kernel-niveau software geïmplementeerd. Ook bij LVM wordt de koppeling tussen fysieke media en partities zoveel mogelijk losgelaten, maar bij LVM is het doel met name het combineren van schijven voor opslagruimte. Daarnaast heeft LVM het voordeel dat partities makkelijker aangepast kunnen worden, bijvoorbeeld als deze groter of kleiner dan gewenst is. Bij LVM worden verschillende Physical Volumes (PVs) gecombineerd tot Volume Groups (VGs). Binnen deze VG worden Logical Volumes (LVs) aangemaakt, die als virtuele schijven benaderd worden en een filesystem kunnen hebben. Daarnaast maakt LVM het mogelijk snapshots (momentopnames van de toestand van het systeem op een bepaald moment, als een backup) van LVs te maken, en meerdere PVs met een enkel wachtwoord te encrypten. Concreet nemen we als voorbeeld een computer met twee harde schijven: een harde schijf van 1 TiB en een van 4 TiB. Dit zijn in LVM twee PVs. Iedere harde schijf wordt opgedeeld in meerdere kleine PPs, bijvoorbeeld van 8 MiB. Dit betekent dat de eerste schijf 131072 partities bevat, en de tweede 524288 voor een totaal van 655360. Hiervan kunnen bijvoorbeeld 200000 PPs toegewezen zijn aan de root LV, oftewel 1600000 MiB of 1562.5 GiB. De overige 455360 PPs vormen samen de home LV, met totaal 3642880 MiB oftewel 3557.5 GiB.</p>
+<div id="fig:lvm">
+<figure>
+<img src="https://peikos.net/V1EOS/Images/lvm.png" alt="Figuur: Opbouw LVM" style="width:90.0%" /><figcaption>Figuur: Opbouw LVM</figcaption>
+</figure>
+</div>
+<h2 id="the-next-generation">The Next Generation</h2>
+<p>Om een filesystem power-safe te maken wordt in moderne filesystems gebruik gemaakt van Copy-on-Write. Nieuwe data kan niet zonder meer oude data overschrijven, maar in plaats daarvan wordt de nieuwe situatie elders op de disk opgebouwd. Ongewijzigde data wordt niet gekopieerd, maar verwijst naar de bestaande data; op het moment dat er wel iets verandert, wordt alleen dat deel gekopieerd. Zodra de vernieuwde situatie klaar is, wordt deze “live” gemaakt en kunnen blokken die niet meer nodig zijn van de oude situatie worden verwijderd. Copy-on-Write wordt daarnaast ook gebruikt voor snapshots, waarbij de oude data als snapshot blijft bestaan en naast de nieuwe situatie op te roepen is. Filesystems als ZFS (Sun) en Btrfs (B-Tree FS, Oracle) maken gebruik van deze nieuwe ideeën. ZFS ondersteunt ook een eigen vorm van RAID en logical volume management. Hiermee verhogen zij de veiligheid, performance en capaciteit ten opzichte van de oudere, simpelere filesystems.</p>
+</body>
+</html>
