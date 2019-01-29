@@ -4,6 +4,9 @@ h1
   margin: 15px 0;
   color: #666; }
 
+h1.title
+{ display: none; }
+
 h1, h2, .h1, .h2
 { font-size: 1.8em;
   line-height: 1.5; }
