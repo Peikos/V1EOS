@@ -238,26 +238,6 @@ Embedded &amp; Operating Systems 3
 <li>Child 2 roept <code>exec()</code> aan met <code>less</code></li>
 <li>Parent wacht tot beide children <code>exit</code>en</li>
 </ol>
-<!--
-## Details Pipes
-::: notes
-Op deze slide zien we een pipe zoals deze in de shell geïmplementeerd is. Hiervoor introduceren we een nieuwe syscall: `SYS_pipe`
-:::
-``` bash
-int fd[2]; pipe(fd);
-int pid1 = fork(); if (pid1 == 0)
-{ close(fd[0]);
-  execv("/bin/find", args1); }
-else
-{ int pid2 = fork(); if (pid2 == 0)
-  { close(fd[1]);
-    execv("/bin/less", args2); }
-  else
-  { close(fd[0]); close(fd[1]);
-    wait(pid2); }
-  wait(pid1); }
-```
--->
 </section>
 <section id="stdin-en-stdout" class="slide level2">
 <h2><code>STDIN</code> en <code>STDOUT</code></h2>
