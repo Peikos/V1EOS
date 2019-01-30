@@ -12,7 +12,7 @@
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <link rel="stylesheet" href="../canvas.css">
+  <link rel="stylesheet" href="../Assets/canvas.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -121,7 +121,7 @@
 <p>Een laatste voordeel van het paging systeem is dat het mogelijk is op meerdere plaatsen naar eenzelfde stuk geheugen te verwijzen. Dit is hoe in de meeste paging-systemen met de syscall table (en rest van de kernel space) wordt omgegaan: de pages die dit deel van het geheugen bevatten worden bij elk proces vooraan gezet. Een ander voorbeeld hiervan is de <code>SYS_fork</code> system-call. Deze maakt een exacte kopie van het draaiende proces, wat ontzettend inefficiënt zou zijn als al het geheugen ook daadwerkelijk gekopieerd zou moeten worden. In plaats daarvan worden dezelfde pages vanuit beide processen aangeroepen, en pas als er iets in een page verandert wordt deze gekopieerd en aangepast. Veel pages bevatten echter programma-code en andere read-only data, dus zullen nooit gekopieerd hoeven worden. Hierom wordt Copy-on-Write toegepast: zolang de data hetzelfde is voor beide processen wordt naar hetzelfde stuk geheugen verwezen, en zodra een proces wijzigingen aanbrengt wordt de relevante pagina gekopieerd zodat beide processen hun eigen versie kunnen behouden.</p>
 <div id="fig:cowfork">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/cowfork.png" alt="Figuur: Forking met Copy-on-Write" style="width:50.0%" /><figcaption>Figuur: Forking met Copy-on-Write</figcaption>
+<img src="https://peikos.net/V1EOS/Images/cowfork.png" alt="Figuur: Forking met Copy-on-Write [Source]" style="width:50.0%" /><figcaption>Figuur: Forking met Copy-on-Write [<a href="https://twitter.com/b0rk">Source</a>]</figcaption>
 </figure>
 </div>
 <h1 id="non-volatile-storage">Non-volatile Storage</h1>

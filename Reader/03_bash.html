@@ -77,7 +77,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../canvas.css">
+  <link rel="stylesheet" href="../Assets/canvas.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -224,26 +224,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Child 2 roept <code>exec()</code> aan met <code>less</code></li>
 <li>Parent wacht tot beide children <code>exit</code>en</li>
 </ol>
-<!-- TODO
-## Details Pipes
-::: notes
-Op deze slide zien we een pipe zoals deze in de shell geïmplementeerd is. Hiervoor introduceren we een nieuwe syscall: `SYS_pipe`
-:::
-``` bash
-int fd[2]; pipe(fd);
-int pid1 = fork(); if (pid1 == 0)
-{ close(fd[0]);
-  execv("/bin/find", args1); }
-else
-{ int pid2 = fork(); if (pid2 == 0)
-  { close(fd[1]);
-    execv("/bin/less", args2); }
-  else
-  { close(fd[0]); close(fd[1]);
-    wait(pid2); }
-  wait(pid1); }
-```
--->
 <h3 id="stdin-en-stdout"><code>STDIN</code> en <code>STDOUT</code></h3>
 <p>Het sturen van de uitvoer noemen we het <em>redirecten</em> van <code>STDOUT</code> (standard out), en het lezen van de invoer is het <em>redirecten</em> van <code>STDIN</code> (standard in). Dit hoeft niet met een pipe te gebeuren, maar kan ook van/naar een bestand. <code>STDOUT</code> is een file descriptor (nummer 1) die in ieder proces aanwezig is, en die gebruikt wordt om alles naartoe te schrijven dat het programma uitvoert (denk aan <code>print</code>s). <code>STDIN</code> is ook een file descriptor (nummer 0), maar deze wordt gelezen voor invoer. Normaal is dit de gebruikersinvoer vanaf de command line, maar dit kan ook prima een bestand of pipe zijn. Daarnaast is er vaak een derde file descriptor, <code>STDERR</code> (standard error, nummer 2), voor foutmeldingen (ook dit is standaard de command line, maar het is hiermee dus mogelijk te splitsen tussen uitvoer en excepties). Het gebruik van file descriptors voor de invoer/uitvoer is weer een voorbeeld van de UNIX-filosofie dat alles een bestand is. Een descriptor is de datastructuur die UNIX intern gebruikt om iets te kunnen benaderen; een file descriptor verwijst dus naar een bestand (en hoe dit gelezen/geschreven kan worden). Waar <code>STDIN</code> en <code>STDOUT</code> precies aan verbonden zijn, is te vinden in de environment informatie die bij een proces hoort. Standaard zijn dit voor processen die je in de shell start de invoer en de uitvoer van de terminal, en als je een child process start worden deze overgeërfd. Tijdens executie van het proces kunnen deze descriptors altijd ergens anders aan verbonden worden, maar de <code>STDIN</code> en <code>STDOUT</code> moeten altijd ergens naar verwijzen. Bij processen die door de kernel gestart worden, zoals <code>init</code> is de <code>STDOUT</code> doorgaans aan het kernel log gekoppeld. <code>STDIN</code> kan aan een buffer of (als het proces geen input verwacht) aan een dummy file gekoppeld zijn: een lege file descriptor die niet aan een daadwerkelijk bestand op de schijf gekoppeld is.</p>
 <div id="fig:io">
