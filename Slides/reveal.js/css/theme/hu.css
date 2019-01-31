@@ -14,6 +14,12 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   --main-fg-colour: #222;
 }
 
+span.fu
+{ color: #7370e9 !important; }
+
+span.va
+{ color: #9390c9 !important; }
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -239,14 +245,14 @@ body {
  * LINKS
  *********************************************/
 .reveal a {
-  color: #2a76dd;
+  color: #ffffff;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
   transition: color .15s ease; }
 
 .reveal a:hover {
-  color: #6ca0e8;
+  color: #000000;
   text-shadow: none;
   border: none; }
 
@@ -287,7 +293,7 @@ body {
   box-shadow: 0 3px 6px rgba(0,0,0,.12), 0 1px 3px rgba(0,0,0,0.24); }
   /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); } */
 
-.reveal section img[src*="course-logo.png"] {
+.reveal section img[src*="images/title_background.png"] {
     background: none !important;
     background-color: none !important;
     border: none !important;
