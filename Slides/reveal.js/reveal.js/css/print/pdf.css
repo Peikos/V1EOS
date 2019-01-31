@@ -15,6 +15,7 @@ body {
 	padding: 0;
 	float: none !important;
 	overflow: visible;
+	color: black !important;
 }
 
 html {
@@ -149,11 +150,28 @@ ul, ol, div, p {
 /* Layout option which makes notes appear on a separate page */
 .reveal .speaker-notes-pdf[data-layout="separate-page"] {
 	position: relative;
-	color: inherit;
+	color: black;
 	background-color: transparent;
 	padding: 20px;
 	page-break-after: always;
 	border: 0;
+}
+
+body,
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal strong,
+.reveal code,
+.reveal table,
+.reveal img,
+.reveal pre,
+.reveal a.sourceLine
+{ color: black !important; 
+  box-shadow: none !important;
+  background: white !important;
+  border: none;
 }
 
 /* Display slide numbers when 'slideNumber' is enabled */
