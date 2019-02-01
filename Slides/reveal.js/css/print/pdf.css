@@ -171,8 +171,7 @@ body,
 { color: black !important; 
   box-shadow: none !important;
   background: white !important;
-  border: none;
-}
+  border: none !important; }
 
 /* Display slide numbers when 'slideNumber' is enabled */
 .reveal .slide-number-pdf {
