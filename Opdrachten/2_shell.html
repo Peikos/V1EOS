@@ -1,0 +1,44 @@
+<h1 id="eos-unit-2-shell-scripting">EOS Unit 2 — Shell Scripting</h1>
+<p>Deze opdracht is individueel. De opdracht is het maken van een aantal Shell scripts, die je in moet leveren via GitHub.</p>
+<p>We hebben inmiddels gezien dat Linux met een grote lading simpele command-line programma’s komt, die met pipes te combineren zijn. De shell kan echter nog veel meer: in principe is het een full-fledged programmeertaal met condities (<code>if</code> en <code>switch</code>), loops en subroutines. Door een serie commando’s en statements in een bestand te zetten (een shellscript) kan je simpele taken automatiseren. In deze opdracht leggen we de basis van het programmeren in shell.</p>
+<h2 id="shellscripts">Shellscripts</h2>
+<p>Een shellscript is in principe niets anders dan een tekstbestand met opdrachten voor de shell, vergelijkbaar met een Python script: de code hoeft niet (zoals bij C++) gecompileerd te worden, maar wordt direct door een interpreter uitgevoerd. In het geval van shellscript is de interpreter de shell waar je ook direct commando’s invoert (doorgaans Bash). Als eerste maken we en simpele Hello World: maak een nieuw tekstbestand, <code>hello</code> (shellscripts hebben doorgaans geen extensie, al wordt <code>.sh</code> soms gebruikt). Zet hierin de volgende inhoud:</p>
+<pre><code>#!/usr/bin/env bash
+echo &quot;Hello World!&quot;</code></pre>
+<p>In plaats van <code>/usr/bin/env bash</code> zul je ook vaak <code>/bin/bash</code> of <code>/bin/sh</code> tegenkomen. De eerste twee doen in principe hetzelfde, al is <code>/usr/bin/env bash</code> iets meer portable: je vraagt het systeem naar het pad van Bash, in plaats van dat je de meest gebruikelijke locatie kiest. Bij <code>/bin/sh</code> wordt een ouder, primitievere shell gebruikt: er zijn meerdere shells waar in gescript wordt, ouder of nieuwer dan Bash; Bash is in principe de standaard keuze, Sh is vooral voor heel oude systemen zinvol.</p>
+<p>Om dit script te kunnen draaien moet het nog wel uitvoerbaar gemaakt worden, gebruik hiervoor het volgende commando in een terminal in de juiste directory. De <code>$</code> moet je niet overnemen, deze geeft aan dat je het commando in je terminal typt (dit is een conventie die je vaker tegenkomt bij Linux). Regels zonder <code>$</code> zijn dan uitvoer (of, bij een tekstblok zonder <code>$</code>, de inhoud van een bestand).</p>
+<pre><code>$ chmod +x hello</code></pre>
+<p>Hierna kun je het bestand uitvoeren:</p>
+<pre><code>$ ./hello
+Hello World!</code></pre>
+<h2 id="zelf-aan-de-slag">Zelf aan de slag</h2>
+<p>Nu gaan we zelf aan de slag met het schrijven van shellscripts. Een aantal dingen om op te letten:</p>
+<ul>
+<li>Maak één script per opdracht.</li>
+<li>Voor het testen van de shellscripts is een mappenstructuur beschikbaar op <a href="https://github.com/peikos/EOS1_bestanden">GitHub</a>. Clone deze om je scripts uit te voeren, en reset deze om alles weer terug te zetten voor een volgende test. <strong>Let op:</strong> zet je scripts zelf niet in deze map, zodat je deze niet mee kan resetten. Het kan helpen je scripts in een <code>~/bin</code> map te zetten en deze aan je <code>PATH</code> toe te voegen.</li>
+<li>Gebruik Bash. Als je een alternatieve shell gebruikt, voer dan eerst <code>bash</code> uit voordat je je script als commando gebruikt.</li>
+<li>Documenteer je script: net als in Python kun je <code>#</code> gebruiken voor commentaar.</li>
+<li>Deze opdrachten gaan over de stof van 2 lessen. Mocht je ergens niet uitkomen, dan ben je mogelijk vooruit aan het lopen en heb je kennis nodig die volgende les wordt behandeld.</li>
+<li>Voorkom <a href="http://porkmail.org/era/unix/award.html">Useless Use of Cat</a>.</li>
+<li>Voorkom hardcoded paden, geef de doelmap als argument mee aan je shellscripts.</li>
+<li><strong>Lever je werk in door een link naar GitHub op te geven. Link hierbij naar een commit, niet naar de repository als geheel!</strong></li>
+</ul>
+<h2 id="opdracht-0">Opdracht 0</h2>
+<p>Maak een shellscript <code>sorteerAfbeeldingen</code> dat een map “Afbeeldingen” aanmaakt, en alle JPEG en PNG bestanden hiernaar verplaatst. Het script wordt aangeroepen met <code>sorteerAfbeeldingen /pad/naar/EOS1_bestanden</code>. Doe dit zowel met een expliciete loop, als met behulp van <code>find -exec</code> of <code>find | xargs</code> (naar keuze).</p>
+<h2 id="opdracht-1">Opdracht 1</h2>
+<p>Maak een shellscript <code>vakantieFotos</code> dat alle vakantie-foto’s binnen “Afbeeldingen” in de submap “Vakantie” zet. Het script wordt aangeroepen met <code>vakantieFotos /pad/naar/EOS1_bestanden</code>. Gebruik hiervoor <code>find</code> en <code>grep</code>.</p>
+<h2 id="opdracht-2">Opdracht 2</h2>
+<p>Maak een shellscript <code>telBestandtypes</code> dat, gegeven een lijst bestandtypes, per bestandtype vertelt hoeveel bestanden er van dit type zijn. Het script wordt bijvoorbeeld aangeroepen met <code>telBestandTypes /pad/naar/EOS1_bestanden pdf jpg doc</code>. Gebruik hiervoor een loop, <code>case</code> en variabelen.</p>
+<h2 id="opdracht-3">Opdracht 3</h2>
+<p>Installeer voor deze opdracht ImageMagick (<code>sudo apt install imagemagick</code>). Maak een shellscript <code>naarPNG</code> dat ieder JPEG bestand in de map converteert naar een PNG van maximaal 128x128 pixels. Gebruik de <code>man</code>-page om je hierbij te helpen. Het script wordt aangeroepen met <code>naarPNG /pad/naar/EOS1_bestanden</code>. HINT: het commando dat je nodig hebt heet <code>convert</code>.</p>
+<h2 id="opdracht-4">Opdracht 4</h2>
+<p>Maak een shellscript <code>checkStatus</code> dat een gegeven commando uit probeert te voeren op ieder bestand in een gegeven map. Per bestand wordt in een gegeven logbestand geschreven of het commando geslaagd is of niet. Het logbestand wordt iedere keer dat <code>checkStatus</code> gedraaid wordt opnieuw aangemaakt. Het script wordt aangeroepen met <code>checkStatus /pad/naar/EOS1_bestanden commando</code>. Gebruik hiervoor de return status en <code>if</code> / <code>test</code>.</p>
+<h2 id="opdracht-5">Opdracht 5</h2>
+<p>Maak een shellscript <code>maakLogin</code> dat:</p>
+<ul>
+<li>Om je naam vraagt, en als deze niet wordt gegeven de huidige gebruikersnaam als default pakt (<code>whoami</code>);</li>
+<li>een wachtwoord vraagt, en dit met een <code>while</code>-loop blijft herhalen tot tweemaal hetzelfde wachtwoord wordt ingevoerd met minstens 8 karakters, een hoofdletter, een kleine letter en een cijfer;</li>
+<li>een tekstbestand schrijft met de gebruikersnaam en een MD5-hash (<code>md5sum</code>) van het gekozen wachtwoord. Het script wordt aangeroepen met <code>maakLogin passwordfile</code>.</li>
+</ul>
+<h2 id="opdracht-6">Opdracht 6</h2>
+<p>Bedenk zelf een toepassing en programmeer deze in een shellscript. Let erop dat je hard-coded paden vermijdt.</p>

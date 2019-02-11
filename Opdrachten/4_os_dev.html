@@ -1,0 +1,15 @@
+<h1 id="eos-unit-4-into-the-operating-system">EOS Unit 4 — Into the Operating System</h1>
+<p>In de laatste opdracht gaan we daadwerkelijk wat aan operating systems sleutelen.</p>
+<h2 id="opdracht-0">Opdracht 0</h2>
+<p>De System calls die we in Unit 2 Opdracht 2 hebben gezien worden allemaal door de Linux Kernel geleverd, net als <a href="https://www.tutorialspoint.com/unix_system_calls/index.htm">een flinke lijst</a> andere calls. Door de Linux Kernel aan te passen, is het mogelijk om zelf system calls toe te voegen.</p>
+<ul>
+<li><strong>Download de source van je kernel.</strong> (hoe dan?)</li>
+<li><strong>Laad je bestaande kernel configuratie met <code>zcat /proc/config.gz &gt; .config</code> (in de root map van je kernel source).</strong> Deze configuratie kunnen we als basis gebruiken om onze eigen kernel te compileren.</li>
+<li><strong>Open <code>.config</code> en vervang de waarde van <code>CONFIG_LOCALVERSION</code> naar <code>-EOS</code>.</strong> Zo is je kernel te onderscheiden van de reguliere kernel.</li>
+<li><strong>Voeg een system-call to aan de system call table: open het bestand <code>arch/x86/entry/syscalls/syscall_64.tbl</code> en voeg een regel toe met het eerste vrij getal (bij mij is dit 548, maar dit hangt van je versie af): <code>548 common  eos sys_eos</code>.</strong> <code>eos</code> is de naam waarmee we de system call straks aan kunnen roepen. <code>sys_eos</code> is de interne naam, doorgaans zijn deze van de vorm <code>sys_naam</code>.</li>
+<li><strong><em>Open <code>kernel/sys.c</code> en voeg een functie <code>eos</code> toe die een bericht print.</em></strong> Hiervoor gebruiken we de <code>SYSCALL_DEFINE0</code> macro (een macro werkt vergelijkbaar met een functie, maar wordt tijdens het compilen al uitgevoerd; het resultaat wordt in de kernel opgeslagen, niet de functie zelf) om een sytem call zonder argumenten te maken. Zoek in de kernel source naar een voorbeeld van een <code>SYSCALL_DEFINE0</code>, of een andere <code>SYSCALL_DEFINEX</code> (<code>X</code> staat voor het aantal argumenten van de syscall). De functie hoeft niet meer te doen dan een simpele <code>printk(KERN_INFO &quot;Never gonna give you up&quot;)</code>. Hoewel de kernel in C is geschreven zou dit met je C++ kennis te doen moeten zijn (zolang je geen objecten of geavanceerde features gebruikt).</li>
+<li><strong><em>Compile de kernel en installeer deze.</em></strong></li>
+<li><strong><em>Reboot je Pi/VM/Laptop en maak een <code>test.cc</code> waarin je in <code>main</code> de syscall aanroept. Voer het programma uit en kijk met <code>dmesg | tail</code> of je boodschap is aangekomen.</em></strong></li>
+</ul>
+<h2 id="opdracht-1">Opdracht 1</h2>
+<p>Opdracht 1 is nog in ontwikkeling.</p>
