@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="keywords" content="EOS" />
+  <title>EOS Unit 1 — OS Level Programming in C++</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../Assets/canvas.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">EOS Unit 1 — OS Level Programming in C++</h1>
+</header>
 <h1 id="eos-unit-1-os-level-programming-in-c">EOS Unit 1 — OS Level Programming in C++</h1>
 <p>Deze opdracht is individueel. De opdracht is het maken van een paar simpele utilities die je als deel van een pipeline kan inzetten, en hierbij gebruik te maken van OS calls. Je kunt de code op je normale systeem of op Linux (bijvoorbeeld in de VM) schrijven, maar voor het compileren en uitvoeren moet je sowieso Linux gebruiken. Voor het op Linux compilen van je code gebruik je <code>g++</code>, bijvoorbeeld <code>g++ file.cc -o file</code>. Als dit goed compileert kun je dit daarna starten met <code>./file</code>. Je levert je code in via een link naar een commit op GitHub. Je kunt <a href="https://github.com/Peikos/V1EOS-practica">deze repo</a> als uitgangspunt gebruiken, bijvoorbeeld door een fork te maken en hierin te werken.</p>
 <h2 id="opdracht-0">Opdracht 0</h2>
@@ -20,3 +43,5 @@
 </ul>
 <h2 id="opdracht-2">Opdracht 2</h2>
 <p>Zoek de werking van de system-calls <code>read</code>, <code>write</code> en <code>lseek</code> op. Gebruik deze om een programmat te schrijven dat op basis van een <code>int</code>-argument een bestand op een bepaalde manier shuffelt. Als het programma bijvoorbeeld met het getal <code>4</code> aangeroepen wordt zal het eerst karakter 0 van het input-bestand opzoeken en deze wegschrijven naar het uitvoerbestand. Vervolgens wordt karakter 4 opgezocht en weggeschreven, en dan 8, en zo verder. Als het programma aan het einde van de input-file komt gaat het verder met tellen vanaf 0, totdat je precies op het eerste karakter (0) uitkomt. Bij een input-bestand met 9 karakters worden de volgende karakters weggeschreven: [0, 4, 8, 12-9=3, 7, 11-9=2, 6, 10-9=1, 5, 9-9=0]. Gebruik de bovengenoemde system-calls om door het bestand te lopen; je kunt hiervoor de “modulo” operator <code>%</code> gebruiken om makkelijk het “voorbij het einde gaan” te programmeren.</p>
+</body>
+</html>
