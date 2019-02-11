@@ -24,73 +24,73 @@
 <p>Hoewel we in deze lessen de nadruk ligt op de algemene theorie achter operating systems, zullen we vaak naar specifieke voorbeelden kijken om te zien hoe alles nou echt in elkaar zit. Voor deze lessen maken we gebruik van Linux, een vrij en gratis OS gebaseerd op Unix. Daarnaast maken we ook kennis met dit besturingssysteem in de rol van programmeur / gebruiker. Per week zal één les met name de focus hebben op de algemene theorie, en zal in de andere les Linux meer centraal staan, waarbij we gaan leren werken met dit OS.</p>
 <div id="fig:tux">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/tux.png" alt="Figuur: Tux, de Linux mascotte" style="width:20.0%" /><figcaption>Figuur: Tux, de Linux mascotte</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/tux.png" alt="Figuur: Tux, de Linux mascotte" style="width:20.0%" /><figcaption>Figuur: Tux, de Linux mascotte</figcaption>
 </figure>
 </div>
 <h1 id="historie">Historie</h1>
 <p>Linux is een afstammeling van de Unix traditie van besturingssystemen, die teruggaat tot Multics dat in de jaren 60 als time sharing OS voor de Multics GE-645 (Figuur <a href="#fig:mainframe">Mainframe</a>) werd ontwikkeld door MIT, AT&amp;T Bell Labs en General Electric. Zoals te zien waren computers toen nog grote gedrochten, en was van de personal computer nog geen sprake. Een mainframe, zoals dit type computer heette, werd door hele bedrijven of afdelingen gedeeld. Programmeurs schreven code, waarna ze moesten wachten op hun beurt om de code te draaien. Als er een fout in zat, kon de programmeur opnieuw beginnen en een nieuwe beurt afwachten. Later werd het langzaam mogelijk met meerdere terminals (werkstations) de computer tegelijk te gebruiken. In deze context werd de grondslag voor Unix gelegd.</p>
 <div id="fig:mainframe">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/ge645.jpg" alt="Figuur: Mainframe" style="width:40.0%" /><figcaption>Figuur: Mainframe</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/ge645.jpg" alt="Figuur: Mainframe" style="width:40.0%" /><figcaption>Figuur: Mainframe</figcaption>
 </figure>
 </div>
 <p>De ontwikkeling van Multics schoot niet op, waardoor Bell Labs besloot haar onderzoekers terug te trekken. Een deel daarvan, met name Ken Thompson, Dennis Ritchie en Brian Kernighan, ging bij Bell Labs verder met hun werk, maar op een kleinere schaal. Het resultaat hiervan is Unix. Unix had een eigen filosofie, waarbij alles als een file gezien werd (ook, bijvoorbeeld, devices). Hierdoor werd het makkelijker programma’s aan elkaar te koppelen, met “bestanden” als koppelstukken. Dit leidde tot een filosofie van kleine, algemene programma’s die oneindig in te zetten en te combineren waren. Dennis Ritchie vatte de filosofie samen als <em>“What we wanted to preserve was not just a good environment in which to do programming, but a system around which a fellowship could form. We knew from experience that the essence of communal computing, as supplied by remote-access, time-shared machines, is not just to type programs into a terminal instead of a keypunch, but to encourage close communication.”</em></p>
 <div id="fig:thompsonritchie">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/thompson_ritchie.jpg" alt="Figuur: Thompson en Ritchie" style="width:40.0%" /><figcaption>Figuur: Thompson en Ritchie</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/thompson_ritchie.jpg" alt="Figuur: Thompson en Ritchie" style="width:40.0%" /><figcaption>Figuur: Thompson en Ritchie</figcaption>
 </figure>
 </div>
 <p>De volgende stap richting Linux was Minix, geschreven door Andrew S. Tanenbaum. Minix was een erg versimpelde Unix afgeleidde die vooral educatief bedoeld was. De hele source-code, gecombineerd met de theorie waarop deze gebaseerd was, was als boek te koop (in het Turing Lab ligt een exemplaar). Hoewel de source-code beschikbaar was, was het niet toegestaan deze te verbeteren of te verspreiden. Daarnaast was de code vanuit educatief perspectief erg goed, maar praktisch gezien vooral al snel verouderd.</p>
 <div style="float:right; max-width:25vw; padding: 10px;">
-<p><img style="max-width: 30vh;" src="https://peikos.net/V1EOS/Images/minix.jpg"></p>
+<p><img style="max-width: 30vh;" src="https://old.peikos.net/V1EOS/Images/minix.jpg"></p>
 </div>
 <h2 id="linux">Linux</h2>
 <p>Linus Torvalds was een student informatica bij de Universiteit van Helsinki. Gebaseerd op het boek van Tanenbaum begon hij in 1991 met zijn eigen OS Kernel. Toen dit een beetje vorm begon te krijgen heeft hij dit <a href="https://www.cs.cmu.edu/~awb/linux.history.html">op usenet beschikbaar gesteld</a> voor wie er iets mee wilde.</p>
 <div id="fig:TODO">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/linus.jpg" alt="Figuur: Linus Torvalds" style="width:30.0%" /><figcaption>Figuur: Linus Torvalds</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/linus.jpg" alt="Figuur: Linus Torvalds" style="width:30.0%" /><figcaption>Figuur: Linus Torvalds</figcaption>
 </figure>
 </div>
 <p>Ondertussen was Richard M. Stallman bezig met een eigen gratis (en vooral: open source) Unix vervanger: <a href="https://www.gnu.org/">GNU</a> (GNU’s Not Unix). Dit was grotendeels compleet, alleen de kernel die hij ontwikkelde wilde geen kritieke massa krijgen. Omdat Linus bij zijn ontwikkeling gebruik had gemaakt van het werk dat voor GNU verzet was, was het een logische stap de twee projecten te combineren tot GNU/Linux. Hoewel we meestal gewoon Linux zeggen, is GNU/Linux de geprefereerde naam voor het hele OS.</p>
 <div style="float:right; max-width:25vw; padding: 10px;">
-<p><img style="max-width: 30vh;" src="https://peikos.net/V1EOS/Images/gnu.png"></p>
+<p><img style="max-width: 30vh;" src="https://old.peikos.net/V1EOS/Images/gnu.png"></p>
 </div>
 <p>Naast GNU heeft Stallman voor meerdere belangrijke open-source projecten gezorgd, waaronder de editor Emacs; deze wordt door gebruikers als een soort religie ervaren, the Church of Emacs (compleet met holy war tegen de andere grote Linux-editor Vim). Stallman wordt daarbij doorgaans als St. IGNUcius aangeduid.</p>
 <div id="fig:rms">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/rms.jpg" alt="Figuur: Richard Stallman (St. IGNUcius)" style="width:30.0%" /><figcaption>Figuur: Richard Stallman (St. IGNUcius)</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/rms.jpg" alt="Figuur: Richard Stallman (St. IGNUcius)" style="width:30.0%" /><figcaption>Figuur: Richard Stallman (St. IGNUcius)</figcaption>
 </figure>
 </div>
 <h1 id="open-source">Open Source</h1>
 <p>GNU en Linux vallen beide onder de <a href="https://www.gnu.org/copyleft/gpl.html">GNU General Public License</a>, een open source licentie. Dit houdt in dat de source code vrij beschikbaar is, mag worden aangepast en mag worden doorgegeven. Er is een grote diversiteit aan open source licenties in gebruik, en nog meer licenties die ruwweg dezelfde ideeën bevatten maar net niet aan de eisen voldoen om “open source” te mogen heten. Een deel van de open source licenties, waaronder de GPL, heeft een clausule die stelt dat hoewel je de code mag aanpassen, dat de resultaten daarvan ook onder dezelfde licentie moeten vallen. Andere open source licenties hebben deze eis niet. Merk op dat er geen verbod is op het verkopen van GPL software (of diensten daaromheen) of andere commerciële toepassingen (al zijn er licenties die dat wel hebben), zolang de source maar vrijelijk beschikbaar blijft. Later in deze les zullen we een aantal commerciële / betaalde toepassingen van Linux tegenkomen.</p>
 <div style="float:right; max-width:25vw; padding: 10px;">
-<p><img style="max-width: 30vh;" src="https://peikos.net/V1EOS/Images/gpl.jpg"></p>
+<p><img style="max-width: 30vh;" src="https://old.peikos.net/V1EOS/Images/gpl.jpg"></p>
 </div>
 <h1 id="linux-customiseren">Linux Customiseren</h1>
 <p>Een van de grote redenen van de populariteit van Linux onder IT’ers is de keuzevrijheid die het platform biedt. Omdat alle onderdelen los van elkaar bestaan en niet (zoals bij Windows en Mac) als één compleet pakket geleverd hoeven te worden heb je erg veel invloed op hoe je besturingssysteem werkt. Daarnaast zorgt het open source model (wat ook voor de meeste pakketten geldt die je bovenop Linux gebruikt) ervoor dat er veel keuzemogelijkheid is in de configuratie van de meeste software. Als een gebruiker een optie mist in software die zij gebruikt, kan ze dit (in theorie) zelf toevoegen en teruggeven aan de community, waardoor de toevoeging mogelijk in de volgende versie van het softwarepakket zal worden opgenomen. Windows (en in mindere mate Mac) wordt vaak vergeleken met een auto waarbij je de motorkap niet open mag maken. Het werkt gewoon, maar het is niet mogelijk of toegestaan zelf je handen vuil te maken. Linux (en andere open source systemen) gaan hier dus tegenin.</p>
 <div style="float:right; max-width:25vw; padding: 10px;">
-<p><img style="max-width: 30vh;" src="https://peikos.net/V1EOS/Images/choices.jpg"></p>
+<p><img style="max-width: 30vh;" src="https://old.peikos.net/V1EOS/Images/choices.jpg"></p>
 </div>
 <h2 id="grafische-omgeving">Grafische Omgeving</h2>
 <p>Een eerste keuze die je doorgaans maakt bij het installeren van Linux is de grafische omgeving. In les 0 hebben we al gezien dat de grafische omgeving geen deel van het OS is. Hier zien we een aantal desktop environments en window managers. Desktop environments leveren een complete user experience, zoals de grafische shells bij Windows en Mac. Window managers beperken zich tot het beheren van schermen (waar staat een scherm, hoe groot is het, overlapt het met andere schermen). Hieronder een aantal voorbeelden desktop environments en window managers:</p>
 <ul>
 <li>Desktop environments
 <ul>
-<li><a href="https://www.gnome.org/">Gnome</a> (<a href="https://peikos.net/V1EOS/Images/gnome.jpg">Screenshot</a>)</li>
-<li><a href="https://www.kde.org/">KDE</a> (<a href="https://peikos.net/V1EOS/Images/kde.png">Screenshot</a>)</li>
-<li><a href="https://lxde.org/">LXDE</a> (<a href="https://peikos.net/V1EOS/Images/lxde.jpg">Screenshot</a>)</li>
-<li><a href="https://www.xfce.org/">Xfce</a> (<a href="https://peikos.net/V1EOS/Images/xfce.png">Screenshot</a>)</li>
+<li><a href="https://www.gnome.org/">Gnome</a> (<a href="https://old.peikos.net/V1EOS/Images/gnome.jpg">Screenshot</a>)</li>
+<li><a href="https://www.kde.org/">KDE</a> (<a href="https://old.peikos.net/V1EOS/Images/kde.png">Screenshot</a>)</li>
+<li><a href="https://lxde.org/">LXDE</a> (<a href="https://old.peikos.net/V1EOS/Images/lxde.jpg">Screenshot</a>)</li>
+<li><a href="https://www.xfce.org/">Xfce</a> (<a href="https://old.peikos.net/V1EOS/Images/xfce.png">Screenshot</a>)</li>
 </ul></li>
 <li>Window Managers
 <ul>
-<li><a href="http://openbox.org/wiki/Main_Page">OpenBox</a> (<a href="https://peikos.net/V1EOS/Images/openbox.jpg">Screenshot</a>)</li>
-<li><a href="https://xmonad.org/">xmonad</a> (<a href="https://peikos.net/V1EOS/Images/xmonad.png">Screenshot</a>)</li>
+<li><a href="http://openbox.org/wiki/Main_Page">OpenBox</a> (<a href="https://old.peikos.net/V1EOS/Images/openbox.jpg">Screenshot</a>)</li>
+<li><a href="https://xmonad.org/">xmonad</a> (<a href="https://old.peikos.net/V1EOS/Images/xmonad.png">Screenshot</a>)</li>
 </ul></li>
 </ul>
 <p>Deze desktop environments en window managers draaien op hun beurt weer bovenop een windowing system, doorgaans X11 (al is Wayland bezig om hier verandering in te brengen). Het windowing system levert een display server, en iedere applicatie met GUI wordt als een client gezien. Een client is in deze context een stuk software dat van een server afhankelijk is voor (een deel van) diens functionaliteiten — in dit geval voor tekenen van de interface op het beeldscherm. Ook de Window Manager (WM), panels en andere componenten van de Desktop Environment (DE) vallen hieronder. De display server krijgt input via de kernel en zorgt ervoor dat de totale inhoud van het beeldscherm bepaald wordt, die dan weer via de kernel naar de grafische kaart wordt gestuurd. X11 is overigens zonder WM of DE te gebruiken, maar dit is wel een vrij kale bedoening.</p>
 <div id="fig:x11">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/x11.png" alt="Figuur: X11 zonder WM" style="width:40.0%" /><figcaption>Figuur: X11 zonder WM</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/x11.png" alt="Figuur: X11 zonder WM" style="width:40.0%" /><figcaption>Figuur: X11 zonder WM</figcaption>
 </figure>
 </div>
 <p>Dus, wat hebben we allemaal nodig om een grafische omgeving te creëren? Naast het windowing system zul je een window manager willen draaien. Deze zijn ruwweg in twee categoriën te verdelen: “normale” window managers met overlappende schermen en een desktop, en “tiling” window managers die de schermen zo indeelt dat het beeld gevuld is en geen enkel scherm overlapt. De laatste categorie is doorgaans wat meer minimalistisch. Naast de window manager kan je een composite manager gebruiken (voor fancy effecten zoals transparante vensters en schaduwen) en één of meerdere bars toevoegen (zoals de taakbalk van Windows of de dock van MacOS). De desktop environment combineert een WM met bars en andere functionaliteiten (al kun je ook een desktop omgeving gebruiken met bijvoorbeeld een andere WM, de combinaties zijn eindeloos). Tot slot heb je doorgaans een display manager nodig; deze levert een login scherm en maakt een sessie als de gebruiker is ingelogd. De display manager is niet per sé noodzakelijk om X11 te gebruiken, het is ook mogelijk eerst in te loggen (via de command line) en later een X sessie te starten. Hieronder een aantal voorbeelden van alle hierboven beschreven componenten:</p>
@@ -124,20 +124,20 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <h2 id="screencast">Screencast</h2>
 <p>In de screencast hieronder zie je de verschillende lagen. Eerst wordt binnen de terminal emulator een nieuw tabblad aangemaakt. Later wordt <code>tmux</code> (een terminal multiplexer) gebruikt om tabs en splits te realiseren. Ieder tabblad en iedere split heeft een eigen shell, was te zien is bij het <code>ps -a</code> commando: dit geeft een lijst processen en op welke terminal deze vanuit het systeem gezien draaien. Tot slot starten we verschillende shells in elkaar (een shell is immers ook gewoon een programma). Het enige verschil dat zo te zien is, is het commando-prompt, maar natuurlijk zijn er meer verschillen tussen de verschillende shells. Voor alle beschreven lagen (terminal emulator, multiplexer en shell) bestaan binnen de Linux wereld verschillende keuzes, die elk weer naar wens te customiseren zijn.</p>
 <video controls="1" width="640" height="480">
-<source src="https://peikos.net/V1EOS/Images/terms.webm" data-external="1" type="video/webm">
+<source src="https://old.peikos.net/V1EOS/Images/terms.webm" data-external="1" type="video/webm">
 </source>
 </video>
 <h1 id="distros">Distro’s</h1>
 <p>Naast de grafische omgeving en de terminals zijn voor bijna ieder stuk software in Linux verschillende alternatieven beschikbaar. Omdat het wat omslachtig is die keuze voor elk deel afzonderlijk te maken, en alles zelf te installeren, wordt Linux meestal gebruikt in de vorm van distributies of distro’s. Een distributie is een verzameling software, die (meestal met een vriendelijke installer) in een keer geïnstalleerd kan worden. De maker van de distributie maakt de keuzes welke software standaard geïnstalleerd is (of biedt meerdere keuzes aan). De gebruiker kan hierna nog zelf software installeren om het systeem aan de wensen aan te passen, maar er is vast een basis. Ook zorgt dit systeem ervoor dat je met periodieke updates aan je distributie je hele systeem up-to-date kan houden. Een distro vergelijkt zich dus meer met Windows of MacOS als compleet software pakket.</p>
 <div id="fig:distro">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/distros.png" alt="Figuur: Enkele grote distro’s" style="width:50.0%" /><figcaption>Figuur: Enkele grote distro’s</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/distros.png" alt="Figuur: Enkele grote distro’s" style="width:50.0%" /><figcaption>Figuur: Enkele grote distro’s</figcaption>
 </figure>
 </div>
 <h2 id="package-managers">Package Managers</h2>
 <p>De meeste distro’s worden geleverd met een package manager: een systeem dat bijhoudt welke software (en welke versies) geïnstalleerd zijn, en die je kan gebruiken om zelf software aan je installatie toe te voegen of te verwijderen. De package manager houdt in de gaten of je alle benodigdheden hebt geïnstalleerd, en zal indien nodig extra software installeren om een werkend systeem op te leveren. In Debian-afgeleidden heet de package manager <code>apt</code>, en kun je software via de command line installeren. Andere distributies gebruiken afgeleiden van <code>rpm</code> zoals <code>yum</code>, of een eigen package manager. In het voorbeeld wordt <code>htop</code> geïnstalleerd, een soort Windows taakbeheer voor de Linux command-line.</p>
 <video controls="1" width="640" height="480">
-<source src="https://peikos.net/V1EOS/Images/apt.webm" data-external="1" type="video/webm">
+<source src="https://old.peikos.net/V1EOS/Images/apt.webm" data-external="1" type="video/webm">
 </source>
 </video>
 <h1 id="linux-binnen-ti">Linux binnen TI</h1>
@@ -145,20 +145,20 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <p>Bekend van CSN, dit draait op de Raspberry Pi. Raspbian is een R-Pi versie van de populaire distributie Debian.</p>
 <div id="fig:pi">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/raspbian.png" alt="Figuur: Raspbian" style="width:20.0%" /><figcaption>Figuur: Raspbian</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/raspbian.png" alt="Figuur: Raspbian" style="width:20.0%" /><figcaption>Figuur: Raspbian</figcaption>
 </figure>
 </div>
 <h2 id="lubuntu-vm">(L)Ubuntu VM</h2>
 <p>Voor dit vak is een VirtualBox VM beschikbaar met LUbuntu Linux (link op Canvas). Je kan deze gebruiken voor de practica, maar als je zelf een Linux systeem of VM hebt mag dit natuurlijk ook. De VM is te gebruiken als fallback, de opdrachten zijn op dit systeem getest. Je kan de image naar eigen wensen aanpassen. Let erop dat het sneller is om Linux direct op een computer of laptop te draaien: door het virtualiseren (gebruik van een VM) wordt alles een stuk langzamer. Ook is er bij de VM gekozen voor een vrij basic werkomgeving, ook weer vanwege de performance in de VM. De omgeving is dezelfde als die op de Raspberry Pi standaard geïnstalleerd staat — die is namelijk ook niet zo snel. Voel je vrij het systeem naar je wensen aan te passen, maar hou er rekening mee dat alles binnen de VM wat trager werkt als je de meest flitsende werkomgeving installeert — dan kun je beter Linux op een fysieke computer draaien.</p>
 <div id="fig:lubuntu">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/lubuntu.jpg" alt="Figuur: Lubuntu" style="width:60.0%" /><figcaption>Figuur: Lubuntu</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/lubuntu.jpg" alt="Figuur: Lubuntu" style="width:60.0%" /><figcaption>Figuur: Lubuntu</figcaption>
 </figure>
 </div>
 <h2 id="gentoo-les-7">Gentoo (Les 7)</h2>
 <p>In opdracht 3 zullen we zelf een tweede Linux VM installeren: Gentoo. Gentoo is wat minder toegankelijk dan de meeste distro’s: in plaats van een mooie installer moet je zelf de bestanden op de juiste plek zetten en software compileren. Dit maakt het wel een goede oefening om kennis te maken met hoe een Linux systeem in elkaar zit. Gentoo heeft de naam erg moeilijk te zijn (en dat is niet geheel onterecht), met eigenlijk alleen Linux From Scratch als overtreffende trap.</p>
 <div style="float:right; max-width:25vw; padding: 10px;">
-<p><img style="max-width: 30vh;" src="https://peikos.net/V1EOS/Images/iceberg.png"></p>
+<p><img style="max-width: 30vh;" src="https://old.peikos.net/V1EOS/Images/iceberg.png"></p>
 </div>
 <h1 id="andere-open-source-unix-opties">Andere open-source Unix opties</h1>
 <p>We hebben nu een hele verzameling gezien van keuzes die je kan maken om een Linux systeem te configureren. Ook Linux is deel van een groter ecosysteem, en niet de enige keuze als je een open-source Unix systeem wil. Alle Unix-achtige systemen hebben een hoge mate van compatibiliteit, waardoor software die hierboven beschreven is vaak ook voor andere, minder gebruikte Unix-varianten beschikbaar is. Andere Unices leggen de focus bijvoorbeeld op veiligheid, en er zijn versies van Unix die commercieel geproduceerd worden (MacOS heeft bijvoorbeeld als basis de open-source Darwin-kernel).</p>

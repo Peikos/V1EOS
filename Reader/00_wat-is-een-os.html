@@ -89,7 +89,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Met CSN hebben we gezien hoe een computer opgebouwd kan worden uit niet veel meer dan NAND-gates. Toen we het computersystemen-gedeelte afsloten hadden we een werkende computer (zie Figuur: <a href="#fig:csncpu">De CPU</a>), die met behulp van instructies (in de vorm van binaire getallen) te programmeren was. Door een set instructies in het geheugen te zetten en de CPU naar de eerste instructie te verwijzen kon een stappenplan worden uitgevoerd, waarna het resultaat ook weer ergens in het geheugen te lezen was.</p>
 <div id="fig:csncpu">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/CPU-io-fix-carry6.png" alt="Figuur: De CPU" style="width:75.0%" /><figcaption>Figuur: De CPU</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/CPU-io-fix-carry6.png" alt="Figuur: De CPU" style="width:75.0%" /><figcaption>Figuur: De CPU</figcaption>
 </figure>
 </div>
 <p>De computer die we hebben opgebouwd is echter nog niet zo makkelijk te gebruiken als bijvoorbeeld je laptop. Bij het opstarten komt deze in een werkende omgeving terecht met Windows, Linux of MacOS, en kun je zelf software schrijven met bijvoorbeeld Python. Python is net als machine-code een manier om de computer te programmeren, maar werkt een stuk makkelijker: je kan met een enkele regel programmeercode complexe bewerkingen uitvoeren, en hoeft niet alles op CPU-niveau uit te denken. In de cursus Embedded &amp; Operating Systems gaan we kijken hoe we deze twee werelden bij elkaar kunnen brengen: de hardware die denkt in enen en nullen, en de programmeur / gebruikers die liever in menselijke termen redeneren.</p>
@@ -126,7 +126,7 @@ infile.close()
 <p>Om deze twee werelden bij elkaar te brengen is een systeem nodig dat enerzijds met de specifeke hardware overweg kan, en anderzijds eenzelfde basis biedt voor software (ongeacht wat de onderliggende hardware is). Dit is het Operating System, dat als laag tussen de applicaties en de hardware zit. Zonder dit OS moet je als programmeur zelf alle details van de computer-hardware managen, waardoor je telkens weer veel (foutgevoelige) code nodig hebt om simpele taken te kunnen programmeren. Denk hierbij aan het opslaan van data, het afwisselen van meerdere taken, of het weergeven van een interface op het scherm. Software zoals een web-browser of office-suite zijn zonder de abstractie van een OS vrijwel onmogelijk te programmeren, en als het al lukt specifiek voor één systeem gemaakt. Met het OS is er een basis waar complexe software op gemaakt kan worden, en in deze cursus maken we kennis met de principes van OS-ontwikkeling — dit is waar de TI-er zich binnen ICT onderscheidt. Het OS bestaat uit twee lagen: de kernel die direct met de hardware communiceert en de rest van het OS. Het verschil zit hem in het feit dat de kernel in kernel mode draait, en de rest van het OS net als de andere software in user mode. Dit is een verschil in welke instructies de CPU wel en niet mag uitvoeren; hier komen we later op terug. Voor nu heeft het OS twee raakvlakken: - De specifieke hardware, die door het OS aangestuurd wordt - Software, waarvoor het OS een generieke basis levert</p>
 <div id="fig:oslayers">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/os-layers-1.png" alt="Figuur: Basismodel Operating Systems" style="width:50.0%" /><figcaption>Figuur: Basismodel Operating Systems</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/os-layers-1.png" alt="Figuur: Basismodel Operating Systems" style="width:50.0%" /><figcaption>Figuur: Basismodel Operating Systems</figcaption>
 </figure>
 </div>
 <h1 id="voorbeelden">Voorbeelden</h1>
@@ -135,28 +135,28 @@ infile.close()
 Microsoft Windows is nog steeds het meest gebruikte desktop OS. De meeste computers worden op het moment met Windows 10 verkocht, dat sinds 2015 de meest recente Windows versie is. De huidige versies van Windows stammen allemaal af van Windows NT uit 1993.
 <div id="fig:windows">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/windows10.jpg" alt="Figuur: Windows" style="width:40.0%" /><figcaption>Figuur: Windows</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/windows10.jpg" alt="Figuur: Windows" style="width:40.0%" /><figcaption>Figuur: Windows</figcaption>
 </figure>
 </div>
 <h2 id="macos">MacOS</h2>
 Apple heeft een eigen besturingssysteem in de vorm van MacOS (voorheen Mac OS X). De huidige versie, Mojave / 10.14, stamt uit 2018. De eerste versie van Mac OS X (10.0) is in 2001 uitgebracht en sindsdien krijgt het systeem ruwweg jaarlijks een grote update waarbij “feature updates” (nieuwe functionaliteiten) en “under the hood” (minder zichtbare verbeteringen) updates elkaar afwisselen.
 <div id="fig:macos">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/macosx.jpg" alt="Figuur: MacOS" style="width:40.0%" /><figcaption>Figuur: MacOS</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/macosx.jpg" alt="Figuur: MacOS" style="width:40.0%" /><figcaption>Figuur: MacOS</figcaption>
 </figure>
 </div>
 <h2 id="linux">Linux</h2>
 Linux is een gratis open-source OS dat sinds 1991 bestaat. Open source betekent dat het vrij te gebruiken en aan te passen is, en dat dit recht doormiddel van copyright beschermd wordt.In tegenstelling tot Windows en MacOS wordt Linux niet als een compleet pakket verkocht, maar is het als los besturingssysteem beschikbaar. Omdat Linux gratis te gebruiken en te verspreiden is bestaan er vele versies waarbij het OS gebundeld wordt met een of andere grafische interface en extra software. In dit vak zullen we Linux vaak gebruiken als voorbeeld en werkplatform; in les 2 komt het OS uitgebreider aan bod.
 <div id="fig:linux">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/ubuntu.jpg" alt="Figuur: Linux" style="width:40.0%" /><figcaption>Figuur: Linux</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/ubuntu.jpg" alt="Figuur: Linux" style="width:40.0%" /><figcaption>Figuur: Linux</figcaption>
 </figure>
 </div>
 <h2 id="mobiele-oss-en-smart-devices">Mobiele OSs en smart devices</h2>
 Ook mobiele telefoons en smart devices (Smart TVs, Tablets, …) maken meestal gebruik van een OS. Voor mobiele telefoons zijn de grootste twee OSs Android (een afgeleide van Linux, ontwikkeld door Google) en iOS (een afgeleide van MacOS). Voor andere apparaten worden vaak ook varianten van Android en iOS gebruikt, gespecialiseerd voor het specifieke apparaat.
 <div id="fig:mobile">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/mobile.jpg" alt="Figuur: Mobiele OSs" style="width:40.0%" /><figcaption>Figuur: Mobiele OSs</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/mobile.jpg" alt="Figuur: Mobiele OSs" style="width:40.0%" /><figcaption>Figuur: Mobiele OSs</figcaption>
 </figure>
 </div>
 <h1 id="taken-operating-system">Taken Operating System</h1>
@@ -184,7 +184,7 @@ Ook mobiele telefoons en smart devices (Smart TVs, Tablets, …) maken meestal g
 <p>Hoewel we het inmiddels een paar keer over processen hebben gehad, leggen we voor nu de nadruk nog even op een computer met een enkele taak. Later zullen we zien hoe een computer meerdere processen kan afwisselen (of met meerdere cores, tegelijk kan draaien). Het geheugen is opgedeeld in een aantal segmenten. De eerste sectie is Text en bevat de instructies van het proces. Dit gedeelte van het geheugen is na het inladen van het proces read-only: als alle code is geladen mag deze in het kader van de veiligheid niet meer veranderd worden. Na de instructies volgen de Data en BSS segmenten. Data bevat alle globale en statische variabelen met een initiele waarde. Deze worden buiten functies gedefinieerd of zijn als static (onveranderbaar) gemarkeerd. BSS (historisch: Block Started by Symbol) bevat de statische variabelen die wel defined, maar niet geïnitialiseerd zijn. Na de BSS volgen de heap en de stack, die in de volgende sectie besproken worden. Beide kunnen hun formaat dynamisch aanpassen. De stack en heap beginnen leeg en groeien naar elkaar toe. Tot slot hebben we in een aantal OSs, waaronder Linux, een stuk kernel space; deze bevat de code van de SysCalls en een index: een tabel met voor elke SysCall het nummer van de call en het geheugenadres waar de bijbehorende code te vinden is. Doorgaans hebben SysCalls ook een naam, maar deze wordt door de computer intern niet gebruikt. Bij het gebruik van een high-level programmeertaal zoals Python heb je als programmeur vaak geen directe invloed op wat waar in het geheugen komt: dit wordt door de Python-interpreter gemanaged.</p>
 <div id="fig:process">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/Process.png" alt="Figuur: Geheugenmodel Proces" style="width:20.0%" /><figcaption>Figuur: Geheugenmodel Proces</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/Process.png" alt="Figuur: Geheugenmodel Proces" style="width:20.0%" /><figcaption>Figuur: Geheugenmodel Proces</figcaption>
 </figure>
 </div>
 <h2 id="de-stack">De Stack</h2>
@@ -193,18 +193,18 @@ Ook mobiele telefoons en smart devices (Smart TVs, Tablets, …) maken meestal g
 Een stack (stapel) is een datastructuur waar dynamisch informatie aan toegevoegd of uitgehaald kan worden. De stack werkt volgens het <strong>Last in, first out</strong> principe, en wordt daarom ook wel de LIFO genoemd. De stack begint leeg, waarna hier data aan kan worden toegevoegd. Nieuwe data wordt bovenop de stack gezet (dit heet een <strong>push</strong>), en alleen het bovenste element van de stack is zichtbaar. Als het bovenste element gelezen wordt, wordt het meteen van de stack verwijderd (dit een heet <strong>pop</strong>).
 <div id="fig:stackstruct">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/Stack%20Structure.png" alt="Figuur: Stack (LIFO)" style="width:50.0%" /><figcaption>Figuur: Stack (LIFO)</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/Stack%20Structure.png" alt="Figuur: Stack (LIFO)" style="width:50.0%" /><figcaption>Figuur: Stack (LIFO)</figcaption>
 </figure>
 </div>
 <p>Ook in het geheugen wordt gebruik gemaakt van een stack. De stack heeft als voordeel dat je altijd de meest recente informatie bovenaan hebt. De stack wordt gebruikt om <em>function calls</em> mogelijk te maken: het aanroepen van een functie. Op het moment dat dit gebeurt wordt er een nieuw stuk van het geheugen uitgevoerd (dus niet simpelweg de volgende instructie). Dit betekent dat de oude variabelen even niet meer toegankelijk moeten zijn, en dat daar mogelijk nieuwe variabelen voor in de plaats komen. Ook moet bekend zijn waar de software gebleven was, zodat die nadat de functie beëindigd is weer op de juiste plek verder kan. Als de functie wordt aangeroepen, wordt een frame aangemaakt. Dit frame bevat de parameters van de functieaanroep, het adres van waaraf de functie werd aangeroepen (return address), lokale variabelen en soms het formaat van het frame of de vorige waarde van de stack pointer (zodat bekend is welke bytes per <em>pop</em> gelezen moeten worden, wanneer frames geen vast formaat hebben). Hierna kan met behulp van een <code>JUMP</code>-instructie (bekend van CSN) naar de functie-instructies gesprongen worden. Als een functiecall klaar is dan keert de computer terug naar de instructie direct na de functieaanroep. Deze is te vinden doordat het return adres in het frame op de stack staat opgeslagen. Zodra de computer het return adres nodig heeft wordt het frame gepopt, en wordt de stack meteen een frame kleiner.</p>
 <p>De stack heeft een maximale grootte. Bij simpele systemen kan dit komen door een beperkte hoeveelheid geheugen, in complexere systemen met meerdere processen is er een maximum vastgesteld. Als dit maximum bereikt wordt, spreken we van een stack overflow, en wordt de executie van het programma onderbroken (met andere woorden: een crash!). Het maximumformaat van de stack is doorgaans vrij groot, een stack overflow wordt dan ook meestal door een programmeerfout veroorzaakt. Het meest simepele voorbeeld is een functie die zichzelf herhaaldelijk aanroept (recursie). Recursie is in principe geen probleem (en in sommige gevallen zelfs de meest nette oplossing) maar als een functie altijd zichzelf aan blijft roepen (en niet na een beperkt aantal keren returnt) dan hebben we een oneindige loop waarbij de stack snel volgezet wordt. Bij een beperktere recursie wordt ook een stack opgebouwd, maar op een gegeven moment zal de laatste aanroep returnen, waarna de aanroep daarvoor returnt, etc. en de stack ook weer wordt afgebroken.</p>
 <div id="fig:stack">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/Memory%20Stack%20All.png" alt="Figuur: De Stack" style="width:80.0%" /><figcaption>Figuur: De Stack</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/Memory%20Stack%20All.png" alt="Figuur: De Stack" style="width:80.0%" /><figcaption>Figuur: De Stack</figcaption>
 </figure>
 </div>
 <div style="float:right; max-width:25vw; padding: 10px;">
-<p><img style="max-width: 30vh;" src="https://peikos.net/V1EOS/Images/stack-overflow.png"></p>
+<p><img style="max-width: 30vh;" src="https://old.peikos.net/V1EOS/Images/stack-overflow.png"></p>
 </div>
 <h2 id="de-heap">De Heap</h2>
 <p>Waar BSS en Data voor statische data gebruikt wordt, is de heap voor dynamische data: data waarvan tijdens het programmeren en compilen nog niet bekend is hoeveel ruimte ervoor nodig is. De heap wordt tijdens het uitvoeren van de code expliciet toebedeeld (gealloceerd). - Dynamische alloceerbaar - Expliciet ruimte reserveren - Na gebruik vrijgeven</p>

@@ -91,18 +91,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Het eerste verschil is de manier waarop de development pipeline in elkaar steekt. Omdat een bare-metal microcontroller geen OS heeft, draait hier geen tekst-editor of compiler op waardoor deze niet direct geprogrammeerd kan worden. In plaats hiervan moeten we gebruik maken van een development-systeem om de code te schrijven, en deze met een cross-compiler omzetten naar een binary voor de micro-controller. Dit binary-bestand kan dan in de microcontroller worden ingeladen door deze naar het EEPROM of Flash-geheugen te schrijven.</p>
 <div id="fig:microcontrollers">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/microcontroller-compilation.png" alt="Figuur: Compilation voor Microcontrollers" /><figcaption>Figuur: Compilation voor Microcontrollers</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/microcontroller-compilation.png" alt="Figuur: Compilation voor Microcontrollers" /><figcaption>Figuur: Compilation voor Microcontrollers</figcaption>
 </figure>
 </div>
 <p>Een andere manier waarop een bare-metal microcontroller van een computer met OS verschilt is de manier waarop het geheugen wordt gebruikt. De computers waar we tot zover naar hebben gekeken maken gebruik van een combinatie van RAM geheugen en persistent storage (harde schijf of SSD). Alle code en bijbehorende data, zowel van het OS als van de applicaties, is ergens op de persistent storage te vinden. Bij het booten wordt de OS code hiervandaan naar het RAM gekopieerd, en bij het starten van een programma komt ook deze code ergens in het RAM te staan. Alle memory-segmenten die we hebben gezien binnen een proces (of het OS) zijn in de binary file aanwezig en worden 1-op-1 in het geheugen overgenomen. Bij een bare-metal microcontroller werkt dit anders: alle code en data is bij het flashen in het ROM geheugen opgeslagen. Bij het uitvoeren wordt dit niet naar RAM geheugen verplaatst, maar wordt alles zoveel mogelijk direct uit het ROM gelezen. Variabele data, dus data die kan veranderen, heeft een initiële waarde in het ROM staan, maar wordt naar het RAM gekopieerd om de data aan te kunnen passen. In Figuur <a href="#due-mem">Memory Map van de Arduino Due</a> zien we een voorbeeld van een memory-map van een microcontroller: de Arduino Due. In latere vakken komt het programmeren van microcontrollers in C++ aan bod, waarbij de Arduino Due gebruikt zal worden. Zoals op de afbeelding is te zien, wordt al het geheugen in een enkele map geplaatst, ongeacht wat voor geheugen het is. Ook externe devices (peripherals) zijn in de memory-map vertegenwoordigd. De totale memorymap van de Arduino Due is 4GB (het maximaal adresseerbare geheugen met 32 bits en 1 byte per adres), maar dat betekent niet dat de Arduino Due ook zoveel geheugen heeft. Een deel van de adressen is niet standaard in gebruik, of verwijst naar devices die geen deel uitmaken van wat we normaal het “geheugen” zouden noemen.</p>
 <div id="fig:due-mem">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/arduino-mem.png" alt="Figuur: Memory Map van de Adruino Due" style="width:40.0%" /><figcaption>Figuur: Memory Map van de Adruino Due</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/arduino-mem.png" alt="Figuur: Memory Map van de Adruino Due" style="width:40.0%" /><figcaption>Figuur: Memory Map van de Adruino Due</figcaption>
 </figure>
 </div>
 <div id="fig:due">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/Arduino-Due.jpg" alt="Figuur: De Arduino Due" style="width:30.0%" /><figcaption>Figuur: De Arduino Due</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/Arduino-Due.jpg" alt="Figuur: De Arduino Due" style="width:30.0%" /><figcaption>Figuur: De Arduino Due</figcaption>
 </figure>
 </div>
 <p>Tot slot is het bij een bare-metal microcontroller niet mogelijk op de BIOS te vertrouwen om bepaalde taken uit te voeren: de BIOS is op zichzelf al een complex stuk software (of beter gezegd, firmware) dat niet op een standaard microcontroller aanwezig zal zijn. Meer nog dan bij het schrijven van een OS worden peripherals (randapparatuur, alles dat zich buiten de CPU en het geheugen bevindt) aangestuurd door direct naar geheugenposities te schrijven en direct uit geheugenposities te lezen: alle peripherals zijn direct in de memory map aanwezig. In code voor operating systems gebeurt dit ook wel (zoals te zien in ons C++ voorbeeld vorige week, waarbij naar een geheugenrange geschreven werd om tekst te printen), maar bij microcontrollers is dit nog meer gebruikelijk.</p>
@@ -126,7 +126,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Een tussenvorm tussen een bare-metal microcontroller en een operating system is een zogenaamd Library OS. Hierbij worden de gebruikelijke diensten die een OS levert aangeboden in de vorm van libraries. Dit maakt het mogelijk complexe functies te gebruiken alsof de applicatie op een OS draait, maar in werklelijkheid is deze functionaliteit in de applicatie opgenomen. Het resultaat is een binary die zowel de applicatie-code als (de relevante delen van) de OS code bevat: een zogenaamde unikernel. Een unikernel heeft een enkele adres-ruimte, dus geen onderscheid tussen kernel-space en user-space, en kan in het geheel op microcontrollers ingezet worden. Een voorbeeld van een library OS is IncludeOS.</p>
 <div id="fig:includeos">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/includeos.png" alt="Figuur: Opbouw IncludeOS" style="width:40.0%" /><figcaption>Figuur: Opbouw IncludeOS</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/includeos.png" alt="Figuur: Opbouw IncludeOS" style="width:40.0%" /><figcaption>Figuur: Opbouw IncludeOS</figcaption>
 </figure>
 </div>
 </body>

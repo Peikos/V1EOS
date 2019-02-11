@@ -90,26 +90,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 id="processen">Processen</h1>
 <div id="fig:proc">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/Process.png" alt="Figuur: Geheugenmodel Proces" style="width:20.0%" /><figcaption>Figuur: Geheugenmodel Proces</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/Process.png" alt="Figuur: Geheugenmodel Proces" style="width:20.0%" /><figcaption>Figuur: Geheugenmodel Proces</figcaption>
 </figure>
 </div>
 <p>Het geheugenmodel van vorige week komt mooi overeen met hoe een proces er van binnen uitziet, alleen zijn we niet tot een enkele taak beperkt. De kernel code is in alle processen aanwezig, maar staat maar op één plek in het geheugen. De CPU wisselt waar nodig tussen beide processen, waarbij alleen het geheugen van het huidige proces in beeld is. Op het moment dat proces A draait dan worden de heap, stack, BSS, text en data van proces A gebruikt. Als er gewisseld wordt naar proces B (een zogenaamde context-switch) worden de heap, stack, BSS, text en dat van proces B gebruikt.</p>
 <div id="fig:2procs">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/Processes.png" alt="Figuur: Meerdere Processen" style="width:60.0%" /><figcaption>Figuur: Meerdere Processen</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/Processes.png" alt="Figuur: Meerdere Processen" style="width:60.0%" /><figcaption>Figuur: Meerdere Processen</figcaption>
 </figure>
 </div>
 <p>In Figuur <a href="#fig:2cores">Twee Cores</a> zien we meerdere processen op twee cores. De rode blokjes staan voor kernel code, de gele, groene en blauwe zijn drie verschillende processen. Bij meerdere cores draait hetzelfde proces nooit op twee cores tegelijkertijd. Kernel code kan wel op meerdere cores actief zijn, waarom is dat? Het verschil tussen kernel-code en een proces is dat het proces een heel script afloopt. De CPU houdt bij, bij welke instructie het proces gebleven is. Als twee cores tegelijk hetzelfde proces zouden draaien, dan gaat dit door elkaar loopt, of worden instructies dubbel uitgevoerd. De kernel-code wordt aangeroepen voor een bepaalde kernel-functie, die zichzelf daarna weer beëindigt. Als een andere core ook iets van de kernel nodig heeft, dan kan dit prima naast elkaar gebeuren (tenzij beide kernel-functies hetzelfde geheugen aanpassen, of hetzelfde device aansturen). Zo lang de kernel dit bijhoudt kunnen botsingen voorkomen worden, en hoeft de ene core niet op de andere te wachten om een kritieke taak uit te voeren. Dit kan, omdat de kernel het totaaloverzicht over het systeem heeft en weet welke resources in gebruik zijn.</p>
 <div id="fig:2cores">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/2cores.png" alt="Figuur: Twee Cores" style="width:60.0%" /><figcaption>Figuur: Twee Cores</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/2cores.png" alt="Figuur: Twee Cores" style="width:60.0%" /><figcaption>Figuur: Twee Cores</figcaption>
 </figure>
 </div>
 <h3 id="process-state">Process State</h3>
 <p>Een proces kan zich in meerdere toestanden bevinden. Een proces dat op dit moment CPU-tijd heeft, noemen we running. Als een proces niet actief is, omdat de CPU iets anders heeft te doen, dan noemen we dit ready-to-run of soms waiting. Die laatste naam heeft echter niet de voorkeur, omdat deze ook soms voor de derde state wordt gebruikt: blocked. Als een proces deze state heeft dan kan het proces niet verder omdat het op nieuwe data moet wachten, zoals bijvoorbeeld een toetsaanslag van de gebruiker of gegevens via een trage netwerkverbinding. Bij het bereiken van een van deze gevallen (ready-to-run en blocked) vindt een context-switch plaats en zal de processor met een ander proces verder gaan. Afhankelijk van de reden van deze switch zal het OS het process opnieuw op de CPU activeren zodra het aan de beurt is, of zodra het de benodigde gegevens heeft om verder te gaan.</p>
 <div id="fig:states">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/states.png" alt="Figuur: Process State Diagram" style="width:40.0%" /><figcaption>Figuur: Process State Diagram</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/states.png" alt="Figuur: Process State Diagram" style="width:40.0%" /><figcaption>Figuur: Process State Diagram</figcaption>
 </figure>
 </div>
 <h3 id="threads">Threads</h3>
@@ -118,7 +118,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Bij het draaien van meerdere processen (of het aanroepen van een SysCall) moet de CPU constant vrijgemaakt worden voor een nieuwe taak. De oude informatie kan echter niet worden weggegooid, want deze is later weer nodig als de bijbehorende taak weer aan de beurt is. Dit noemen we een context switch: het OS zet alle state van het lopende proces opzij en laadt de nieuwe informatie. De informatie wordt opgeslagen in een Process Control Block (PCB) of Switchframe, en bevat de inhoud van de registers (zoals de Program Counter) informatie over het proces, en informatie over welk geheugen bij het proces hoort. Dit laatste betekent dat het geheugen zelf niet verplaatst hoeft te worden, maar dat de CPU enkel de verwijzingen aan hoeft te passen.</p>
 <div id="fig:mtask">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/Context%20Switch.png" alt="Figuur: Context Switch" style="width:60.0%" /><figcaption>Figuur: Context Switch</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/Context%20Switch.png" alt="Figuur: Context Switch" style="width:60.0%" /><figcaption>Figuur: Context Switch</figcaption>
 </figure>
 </div>
 <h3 id="scheduling">Scheduling</h3>
@@ -153,18 +153,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In eerste instantie werd voor dit soort problemen vooral gebruik gemaakt van shared memory: stukken geheugen die door meerdere processen te lezen en schrijven zijn. Dit kan echter makkelijk misgaan; stel bijvoorbeeld het volgende scenario voor: Twee processen willen beide een bestand afdrukken. Proces A is aan de beurt, en zoekt de eerste vrije plaats in de wachtrij. Op dit moment gebeurt er een context switch, en is Proces B is aan de beurt. Ook deze zoekt de eerste vrije plaats, en zet op dat geheugenadres (hetzelfde adres als A had gevonden) een verwijzing naar een te printen bestand. Na de volgende context switch is A weer aan de beurt, die op hetzelfde adres een ander bestand zet. Het originele bestand is overschreven, zonder dat A of B dit gemerkt heeft.</p>
 <div id="fig:overwrite">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/overwrite.png" alt="Figuur: Shared Memory" style="width:60.0%" /><figcaption>Figuur: Shared Memory</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/overwrite.png" alt="Figuur: Shared Memory" style="width:60.0%" /><figcaption>Figuur: Shared Memory</figcaption>
 </figure>
 </div>
 <p>Gelukkkig zijn hier oplossingen voor, maar die voegen een hoop complexiteit toe en zijn vaak lastig toe te passen, zeker in grotere systemen. Voorbeelden hiervan zijn mutexes (Mutual Exclusion) en Semaphores (vlaggen die aangeven dat een stuk geheugen in gebruik is). Elk heeft voor en nadelen, maar hier gaan we deze cursus verder niet op in.</p>
 <div style="float:right; max-width:25vw; padding: 10px;">
-<p><img style="max-width: 30vh;" src="https://peikos.net/V1EOS/Images/skeleton.jpg"></p>
+<p><img style="max-width: 30vh;" src="https://old.peikos.net/V1EOS/Images/skeleton.jpg"></p>
 </div>
 <h3 id="alternatief-message-passing">Alternatief: Message Passing</h3>
 <p>Een alternatief voor shared memory is message passing: beide processen communiceren via een centraal proces naar een printer manager proces, dat alleenrechten heeft op het betreffende stuk geheugen. Zowel de printer manager als de processen communiceren via system calls. Proces A en B gebruiken de <code>send</code> system call met het proces-ID (PID) van de print manager (1248), waarbij een message wordt meegegeven. Zodra de printer manager aan de beurt is kan deze met de <code>recv</code> system call berichten lezen. In Figuur <a href="#fig:messages">Message Passing</a> wordt geen PID meegegeven aan <code>recv</code>, door dit wel te doen kan de eerste message van een specifieke verzender geselecteerd worden. Zowel <code>send</code> als <code>recv</code> kunnen <em>synchroon</em> (blocking) en <em>asynchroon</em> (non-blocking) aangeroepen worden. By een synchrone <code>send</code> wacht het proces tot de hele boodschap succesvol verzonden is, en kan het programma tot dat moment niet verder naar de volgende instructie. Het resultaat van de <code>send</code> (is het versturen gelukt?) is direct als return-value beschikbaar. Bij een asynchrone call gaat het programma gelijk verder, en moet het programma zelf aan het OS vragen of de boodschap verstuurd is. Het versturen wordt door een aparte thread gedaan, die zichzelf beëindigt zodra het bericht verstuurd is. Voor <code>recv</code> wordt bij synchroon gebruik gewacht tot er een bericht is: de software kan niet verder als er geen bericht af te handelen is, en zal dus blokkeren tot er iets binnenkomt. Bij en asynchrone <code>recv</code> kan het resultaat een message zijn, als er eentje klaar staat, zo niet krijgt de software een <code>null</code>-waarde (met andere woorden: niets). Voor het versturen van messages wordt in de meest simpele vorm een buffer gebruikt: een vaste hoeveelheid geheugen die door het OS voor dit doel gereserveerd is. Als deze buffer vol zit en er wordt een message verstuurd, dan zal de verzender blokkeren tot er plaats is; bij een asynchrone <code>send</code> is de verzender een aparte thread voor het versturen van de message, niet de main thread (die kan gewoon verder). Bij <code>recv</code> wordt juist geblokkeerd als de buffer leeg is. In simpele systemen kan ook zonder buffer gewerkt worden. In dit geval is alleen synchrone communicatie mogelijk: de verzender moet het bericht versturen en de ontvanger moet het bericht ontvangen voordat de processen verder kunnen.</p>
 <div id="fig:messages">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/messages.png" alt="Figuur: Message Passing" style="width:60.0%" /><figcaption>Figuur: Message Passing</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/messages.png" alt="Figuur: Message Passing" style="width:60.0%" /><figcaption>Figuur: Message Passing</figcaption>
 </figure>
 </div>
 <p>Beide variaties zijn in de meeste moderne operating systems aanwezig, en voor elk van beide types bestaan er verschillende vormen.</p>
@@ -191,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="fig:tree">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/processtree.png" alt="Figuur: Process Tree" style="width:30.0%" /><figcaption>Figuur: Process Tree</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/processtree.png" alt="Figuur: Process Tree" style="width:30.0%" /><figcaption>Figuur: Process Tree</figcaption>
 </figure>
 </div>
 <h3 id="processen-starten-en-stoppen">Processen Starten en Stoppen</h3>
@@ -226,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb3-3" data-line-number="3">_exit(<span class="dv">0</span>);</a></code></pre></div>
 <div id="fig:states2">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/states2.png" alt="Figuur: Process State Diagram" style="width:40.0%" /><figcaption>Figuur: Process State Diagram</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/states2.png" alt="Figuur: Process State Diagram" style="width:40.0%" /><figcaption>Figuur: Process State Diagram</figcaption>
 </figure>
 </div>
 </body>

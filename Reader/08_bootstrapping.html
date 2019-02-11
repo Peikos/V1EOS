@@ -92,18 +92,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>De boot-sector bevat instructies die nodig zijn om een programma op te starten. Doorgaans is dit programma het OS, maar als een eenvoudig systeem een enkele applicatie moet draaien en geen OS functionaliteit nodig heeft kan deze ook in de plaats van het OS staan. Zodra de BIOS een boot-device geselecteerd heeft wordt de eerste sector (512 bytes) naar het geheugen geplaatst (bij IBM-compatible PCs naar het geheugenadres <code>0x7c00</code>). Deze sector bevat de instructies die nodig zijn om de volgende fase van het boot-proces te laden, en eindigt altijd op de hexadecimale code <code>0x55aa</code>: dit <em>boot sector signature</em> geeft aan dat de instructies als boot-instructie bedoeld zijn, en veilig kunnen worden uitgevoerd. De boot-sector is doorgaans helemaal aan het begin van de harde schijf te vinden, zoals te zien op de afbeelding. Voor de SSD ziet dit er natuurlijk anders uit, maar ook hier vormt de boot-sector het begin van de schijfruimte.</p>
 <div id="fig:bootsectors">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/bootsectors.png" alt="Figuur: Bootsectoren" style="width:40.0%" /><figcaption>Figuur: Bootsectoren</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/bootsectors.png" alt="Figuur: Bootsectoren" style="width:40.0%" /><figcaption>Figuur: Bootsectoren</figcaption>
 </figure>
 </div>
 <p>Omdat de eerste sector (van 512 bytes) ook nog eens informatie over de partitie-indeling van een schijf kan moeten bevatten, en daarmee erg weinig ruimte overblijft om een heel besturingssyteem mee te kunnen laden, wordt het boot-proces vaak in 2 trappen gedaan. De first-stage bootloader bevat alles dat nodig is om de second-stage bootloader te laden, die vervolgens in staat is om een OS te laden en de uitvoering ervan te starten. Tijdens de installatie van de Gentoo VM ben je al een van deze bootloaders tegengekomen: vermoedelijk was dat Grub, al zijn LiLo (Linux Loader) en Syslinux ook mogelijkheden. Ook op Windows wordt een second-stage bootloader gebruikt, doorgaans BOOTMGR of voor oudere versies NTLDR.</p>
 <div id="fig:grub">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/grub.jpg" alt="Figuur: Grub, een Linux bootloader" style="width:40.0%" /><figcaption>Figuur: Grub, een Linux bootloader</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/grub.jpg" alt="Figuur: Grub, een Linux bootloader" style="width:40.0%" /><figcaption>Figuur: Grub, een Linux bootloader</figcaption>
 </figure>
 </div>
 <div id="fig:winboot">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/winboot.png" alt="Figuur: BOOTMGR, de Windows bootloader" style="width:34.0%" /><figcaption>Figuur: BOOTMGR, de Windows bootloader</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/winboot.png" alt="Figuur: BOOTMGR, de Windows bootloader" style="width:34.0%" /><figcaption>Figuur: BOOTMGR, de Windows bootloader</figcaption>
 </figure>
 </div>
 <h1 id="het-boot-proces-in-code">Het boot-proces in code</h1>
@@ -189,7 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>De Global Descriptor Table vertelt de CPU waar de verschillende geheugensegmenten te vinden zijn: de offsets waarop deze beginnen en de grootte van de segmenten. De MMU (les 4) gebruikt deze tabel om het geheugen op de juiste manier onder te verdelen.</p>
 <div id="fig:gdt">
 <figure>
-<img src="https://peikos.net/V1EOS/Images/gdt.png" alt="Figuur: Formaat van een segment descriptor" style="width:80.0%" /><figcaption>Figuur: Formaat van een segment descriptor</figcaption>
+<img src="https://old.peikos.net/V1EOS/Images/gdt.png" alt="Figuur: Formaat van een segment descriptor" style="width:80.0%" /><figcaption>Figuur: Formaat van een segment descriptor</figcaption>
 </figure>
 </div>
 <p>De GDT tabel wordt in de binary opgebouwd uit letterlijke bytewaardes. In assembly worden deze met data-commando’s gegeven: <code>db</code> voor data byte, <code>dw</code> voor data woord, etc. Doordat de tabel een vast formaat heeft weet de CPU wat waar staat en kan de MMU deze data gebruiken om het geheugen klaar te maken voor een OS.</p>
