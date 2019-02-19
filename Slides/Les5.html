@@ -109,6 +109,14 @@ Embedded &amp; Operating Systems 5
 <p>Vorige week hebben we gezien hoe we ons kunnen redden op de Bash command line. Vandaag zullen we nog een aantal meer geavanceerde opties zien, maar zullen we vooral de focus verleggen. Waar we de shell vorige les interactief gebruikt, gaan we nu aan de gang met shellscripts: voorgeprogrammeerde programma’s om te doorlopen. In plaats van dat <code>STDIN</code> direct door ons als gebruiker gevuld wordt, wordt hiervoor een bestand ingelezen. Dit verschil maakt voor de shell in principe niets uit, in beide gevallen is er een lijst met commando’s. In het geval van een interactieve moet er zo af en toe gewacht worden op de gebruiker, terwijl bij een script op de harde schijf of het geheugen gewacht moet worden.</p>
 </aside>
 </section>
+<section id="motivating-example" class="slide level2">
+<h2>Motivating Example</h2>
+<aside class="notes">
+<p>Op de slide staat een kort motivernd voorbeeld van de kracht van pipelines. De uitleg en achtergrond is in <a href="http://www.leancrew.com/all-this/2011/12/more-shell-less-egg">deze blogpost</a> beschreven en wordt hier niet herhaald.</p>
+</aside>
+<p><code>tr -cs A-Za-z '\n' | tr A-Z a-z | sort | uniq -c | sort -rn | sed ${1}q</code></p>
+<p><img data-src="../Images/hackerman.png" style="width:60.0%" /></p>
+</section>
 <section id="inhoud" class="slide level2" data-background="../Images/title_background.png">
 <h2>Inhoud</h2>
 <ul>
@@ -322,6 +330,13 @@ Embedded &amp; Operating Systems 5
 <a class="sourceLine" id="cb13-9" data-line-number="9"><span class="kw">function</span><span class="fu"> filetype_count()</span> <span class="kw">{</span> <span class="fu">find</span> -name <span class="st">&quot;*.</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">wc</span> -l<span class="kw">;</span> <span class="kw">}</span></a>
 <a class="sourceLine" id="cb13-10" data-line-number="10"><span class="kw">function</span><span class="fu"> filetype_count</span> <span class="kw">{</span> <span class="fu">find</span> -name <span class="st">&quot;*.</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">wc</span> -l<span class="kw">;</span> <span class="kw">}</span></a>
 <a class="sourceLine" id="cb13-11" data-line-number="11"><span class="fu">filetype_count()</span> <span class="kw">{</span> <span class="fu">find</span> -name <span class="st">&quot;*.</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">wc</span> -l<span class="kw">;</span> <span class="kw">}</span></a></code></pre></div>
+</section>
+<section id="fork-bombs" class="slide level2">
+<h2>Fork Bombs</h2>
+<aside class="notes">
+
+</aside>
+<p><img data-src="../Images/fork.jpg" style="width:40.0%" /></p>
 </section>
 <section id="inhoud-3" class="slide level2" data-background="../Images/title_background.png">
 <h2>Inhoud</h2>

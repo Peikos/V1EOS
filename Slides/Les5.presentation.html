@@ -109,6 +109,24 @@ Embedded &amp; Operating Systems 5
 <p>Uitvoeren shell script is vergelijkbaar met interactieve shell: STDIN is file i.p.v. user interaction.</p>
 </aside>
 </section>
+<section id="motivating-example" class="slide level2">
+<h2>Motivating Example</h2>
+<aside class="notes">
+<ul>
+<li>Bentley challenge: lees tekstbestand, vind de n meest voorkomende woorden en geef deze gesorteerd terug (woord en frequentie).</li>
+<li>Knuth (een van de vaders van computer science): prachtig gedocumenteerd programma van 10+ pagina’s</li>
+<li>McIlroy: Oneliner van zes Unix tools in een pipeline</li>
+<li>Maak elk woord een regel - splits op alles dat niet a-z is en vervang het door een newline</li>
+<li>Maak alles lowercase</li>
+<li>Sorteer</li>
+<li>Vervang alle duplicaten door woord + count</li>
+<li>Sorteer omgekeerd numeriek (zat ook in scavenger hunt)</li>
+<li>Stream editor; quit (q) na aantal regels uit command line argument</li>
+</ul>
+</aside>
+<p><code>tr -cs A-Za-z '\n' | tr A-Z a-z | sort | uniq -c | sort -rn | sed ${1}q</code></p>
+<p><img data-src="../Images/hackerman.png" style="width:60.0%" /></p>
+</section>
 <section id="inhoud" class="slide level2" data-background="../Images/title_background.png">
 <h2>Inhoud</h2>
 <ul>
@@ -385,6 +403,13 @@ Embedded &amp; Operating Systems 5
 <a class="sourceLine" id="cb13-9" data-line-number="9"><span class="kw">function</span><span class="fu"> filetype_count()</span> <span class="kw">{</span> <span class="fu">find</span> -name <span class="st">&quot;*.</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">wc</span> -l<span class="kw">;</span> <span class="kw">}</span></a>
 <a class="sourceLine" id="cb13-10" data-line-number="10"><span class="kw">function</span><span class="fu"> filetype_count</span> <span class="kw">{</span> <span class="fu">find</span> -name <span class="st">&quot;*.</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">wc</span> -l<span class="kw">;</span> <span class="kw">}</span></a>
 <a class="sourceLine" id="cb13-11" data-line-number="11"><span class="fu">filetype_count()</span> <span class="kw">{</span> <span class="fu">find</span> -name <span class="st">&quot;*.</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">wc</span> -l<span class="kw">;</span> <span class="kw">}</span></a></code></pre></div>
+</section>
+<section id="fork-bombs" class="slide level2">
+<h2>Fork Bombs</h2>
+<aside class="notes">
+
+</aside>
+<p><img data-src="../Images/fork.jpg" style="width:40.0%" /></p>
 </section>
 <section id="inhoud-3" class="slide level2" data-background="../Images/title_background.png">
 <h2>Inhoud</h2>
