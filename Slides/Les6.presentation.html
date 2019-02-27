@@ -221,9 +221,21 @@ Embedded &amp; Operating Systems 6
 <li>soft links wel over partities (maar dode links als niet gemount)</li>
 </ul>
 </aside>
+<p><img data-src="../Images/mount.png" style="width:50.0%" /></p>
+</section>
+<section id="mounting-1" class="slide level2">
+<h2>Mounting</h2>
+<aside class="notes">
+<ul>
+<li>geen drive letters zoals windows: 1 root</li>
+<li>extra filesystems onder root gemount</li>
+<li>mounten in lege directory (anders bestanden verborgen tot unmount)</li>
+<li>hard links niet over partitiegrens (want, eigen inodes)</li>
+<li>soft links wel over partities (maar dode links als niet gemount)</li>
+</ul>
+</aside>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="fu">sudo</span> mount /dev/sda2 /home</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="fu">sudo</span> umount /home <span class="co"># of sudo umount /dev/sda2</span></a></code></pre></div>
-<p><img data-src="../Images/mount.png" style="width:35.0%" /></p>
 </section>
 <section id="inodes-inzien-met-ls--i" class="slide level2">
 <h2>inodes inzien met <code>ls -i</code></h2>
@@ -325,7 +337,7 @@ Embedded &amp; Operating Systems 6
 <li><code>dev</code> - devices (virtueel)</li>
 <li><code>etc</code> - system-level configuratie</li>
 <li><code>home</code> - user-level</li>
-<li><code>lib</code> - libraies</li>
+<li><code>lib</code> - libraries</li>
 <li><code>media</code> - opvolger van <code>mnt</code></li>
 <li><code>mnt</code> - designated mount-point</li>
 <li><code>proc</code> - processen en systeem-informatie (virtueel)</li>
