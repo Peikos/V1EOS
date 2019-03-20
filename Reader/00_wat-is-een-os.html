@@ -207,7 +207,12 @@ Een stack (stapel) is een datastructuur waar dynamisch informatie aan toegevoegd
 <p><img style="max-width: 30vh;" src="https://old.peikos.net/V1EOS/Images/stack-overflow.png"></p>
 </div>
 <h2 id="de-heap">De Heap</h2>
-<p>Waar BSS en Data voor statische data gebruikt wordt, is de heap voor dynamische data: data waarvan tijdens het programmeren en compilen nog niet bekend is hoeveel ruimte ervoor nodig is. De heap wordt tijdens het uitvoeren van de code expliciet toebedeeld (gealloceerd). - Dynamische alloceerbaar - Expliciet ruimte reserveren - Na gebruik vrijgeven</p>
+<p>Waar BSS en Data voor statische data gebruikt wordt, is de heap voor dynamische data: data waarvan tijdens het programmeren en compilen nog niet bekend is hoeveel ruimte ervoor nodig is. De heap wordt tijdens het uitvoeren van de code expliciet toebedeeld (gealloceerd).</p>
+<ul>
+<li>Dynamische alloceerbaar</li>
+<li>Expliciet ruimte reserveren</li>
+<li>Na gebruik vrijgeven</li>
+</ul>
 <h2 id="memory-allocation">Memory Allocation</h2>
 <p>Met behulp van <code>malloc</code> en <code>free</code> geeft de software aan hoeveel geheugenadressen in de adresruimte gekoppeld moet worden aan daadwerkelijk heap-geheugen, zodat de software deze kan gebruiken. Bij het gebruik van <code>malloc</code> moet worden aangegeven hoeveel ruimte nodig is, maar dit kan in de software berekend worden op basis van bijvoorbeeld input. Waar dit geheugen komt te staan wordt door het OS bepaald, maar het zal altijd een aaneengesloten stuk geheugen zijn. Geheugen moet altijd teruggegeven worden om te voorkomen dat er memory leaks onstaan, en het is niet toegestaan geheugen aan te spreken dat niet gealloceerd is (dit leidt tot de error “segmentation fault”). Het niet teruggeven van gereserveerd geheugen is een van de meest voorkomende fouten bij veel latere TI vakken. Onder water wordt gebruik gemaakt van system calls waaronder <code>mmap</code>, <code>brk</code> en <code>munmap</code>. De aanroep naar <code>malloc</code> gebruikt bijvoorbeeld intern ergens een aanroep in de trant van <code>syscall(SYS_brk, 128*128*3)</code> om het besturingssysteem te vragen de ruimte vrij te maken. <code>SYS_brk</code> is een constante met de waarde <code>12</code>, het nummer van de system call.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">// reserveer ruimte voor 128x128 pixels met 3 bytes per pixel</span></a>
